@@ -1,0 +1,1806 @@
+{
+  "generated_at": "2026-04-30T10:54:36",
+  "latest_data_date": "2026-03-04",
+  "region_code": "0105000",
+  "region_name": "전체",
+  "selection": {
+    "max_movies": 10,
+    "rule": "top max_movies nationwide box-office rows by rank on latest_data_date; selected movies are tracked from their release dates"
+  },
+  "concentration": {
+    "basis": "share denominators use all nationwide box-office rows available for the period, not only selected top movies",
+    "daily": {
+      "period": "daily",
+      "start_date": "2026-03-04",
+      "end_date": "2026-03-04",
+      "total_screen_count": 6118,
+      "total_audience_count": 252715,
+      "points": [
+        {
+          "movie_code": "20242837",
+          "movie_name": "왕과 사는 남자",
+          "rank": 1,
+          "screen_count": 1633.0,
+          "audience_count": 189639,
+          "screen_share": 26.692,
+          "audience_share": 75.041
+        },
+        {
+          "movie_code": "20256283",
+          "movie_name": "호퍼스",
+          "rank": 2,
+          "screen_count": 788.0,
+          "audience_count": 17155,
+          "screen_share": 12.88,
+          "audience_share": 6.788
+        },
+        {
+          "movie_code": "20258444",
+          "movie_name": "브라이드!",
+          "rank": 3,
+          "screen_count": 399.0,
+          "audience_count": 7478,
+          "screen_share": 6.522,
+          "audience_share": 2.959
+        },
+        {
+          "movie_code": "20241266",
+          "movie_name": "휴민트",
+          "rank": 4,
+          "screen_count": 549.0,
+          "audience_count": 6837,
+          "screen_share": 8.974,
+          "audience_share": 2.705
+        },
+        {
+          "movie_code": "20241501",
+          "movie_name": "매드 댄스 오피스",
+          "rank": 5,
+          "screen_count": 484.0,
+          "audience_count": 5420,
+          "screen_share": 7.911,
+          "audience_share": 2.145
+        },
+        {
+          "movie_code": "20250875",
+          "movie_name": "우리는 매일매일",
+          "rank": 6,
+          "screen_count": 142.0,
+          "audience_count": 2523,
+          "screen_share": 2.321,
+          "audience_share": 0.998
+        },
+        {
+          "movie_code": "20261181",
+          "movie_name": "너자 2",
+          "rank": 7,
+          "screen_count": 107.0,
+          "audience_count": 2512,
+          "screen_share": 1.749,
+          "audience_share": 0.994
+        },
+        {
+          "movie_code": "20250413",
+          "movie_name": "다이 마이 러브",
+          "rank": 8,
+          "screen_count": 115.0,
+          "audience_count": 2164,
+          "screen_share": 1.88,
+          "audience_share": 0.856
+        },
+        {
+          "movie_code": "20250365",
+          "movie_name": "햄넷",
+          "rank": 9,
+          "screen_count": 164.0,
+          "audience_count": 1979,
+          "screen_share": 2.681,
+          "audience_share": 0.783
+        },
+        {
+          "movie_code": "20261526",
+          "movie_name": "아이엠스타!X프리파라 더 무비 -만남의 기적!-",
+          "rank": 10,
+          "screen_count": 53.0,
+          "audience_count": 1754,
+          "screen_share": 0.866,
+          "audience_share": 0.694
+        }
+      ]
+    },
+    "weekly": {
+      "period": "weekly",
+      "start_date": "2026-02-26",
+      "end_date": "2026-03-04",
+      "total_screen_count": 6420.57,
+      "total_audience_count": 3685947,
+      "points": [
+        {
+          "movie_code": "20242837",
+          "movie_name": "왕과 사는 남자",
+          "rank": 1,
+          "screen_count": 1950.43,
+          "audience_count": 3068920,
+          "screen_share": 30.378,
+          "audience_share": 83.26
+        },
+        {
+          "movie_code": "20256283",
+          "movie_name": "호퍼스",
+          "rank": 2,
+          "screen_count": 788.0,
+          "audience_count": 17155,
+          "screen_share": 12.273,
+          "audience_share": 0.465
+        },
+        {
+          "movie_code": "20258444",
+          "movie_name": "브라이드!",
+          "rank": 3,
+          "screen_count": 399.0,
+          "audience_count": 7478,
+          "screen_share": 6.214,
+          "audience_share": 0.203
+        },
+        {
+          "movie_code": "20241266",
+          "movie_name": "휴민트",
+          "rank": 4,
+          "screen_count": 726.71,
+          "audience_count": 205626,
+          "screen_share": 11.319,
+          "audience_share": 5.579
+        },
+        {
+          "movie_code": "20241501",
+          "movie_name": "매드 댄스 오피스",
+          "rank": 5,
+          "screen_count": 484.0,
+          "audience_count": 5420,
+          "screen_share": 7.538,
+          "audience_share": 0.147
+        },
+        {
+          "movie_code": "20250875",
+          "movie_name": "우리는 매일매일",
+          "rank": 6,
+          "screen_count": 142.0,
+          "audience_count": 2523,
+          "screen_share": 2.212,
+          "audience_share": 0.068
+        },
+        {
+          "movie_code": "20261181",
+          "movie_name": "너자 2",
+          "rank": 7,
+          "screen_count": 223.14,
+          "audience_count": 35995,
+          "screen_share": 3.475,
+          "audience_share": 0.977
+        },
+        {
+          "movie_code": "20250413",
+          "movie_name": "다이 마이 러브",
+          "rank": 8,
+          "screen_count": 115.0,
+          "audience_count": 2164,
+          "screen_share": 1.791,
+          "audience_share": 0.059
+        },
+        {
+          "movie_code": "20250365",
+          "movie_name": "햄넷",
+          "rank": 9,
+          "screen_count": 296.29,
+          "audience_count": 23527,
+          "screen_share": 4.615,
+          "audience_share": 0.638
+        },
+        {
+          "movie_code": "20261526",
+          "movie_name": "아이엠스타!X프리파라 더 무비 -만남의 기적!-",
+          "rank": 10,
+          "screen_count": 56.57,
+          "audience_count": 8845,
+          "screen_share": 0.881,
+          "audience_share": 0.24
+        }
+      ]
+    }
+  },
+  "movies": [
+    {
+      "movie_code": "20242837",
+      "movie_name": "왕과 사는 남자",
+      "release_date": "2026-02-04",
+      "release_type": "original",
+      "original_release_date": "2026-02-04",
+      "latest_rank": 1,
+      "latest_audience_count": 189639,
+      "latest_audience_accumulated": 9597395,
+      "latest_screen_count": 1633,
+      "latest_audience_per_screen": 116.13,
+      "points": [
+        {
+          "date": "2026-02-04",
+          "days_since_release": 0,
+          "week_number": 1,
+          "screen_count": 1658,
+          "audience_count": 117783,
+          "weekly_audience_count": 1165295,
+          "audience_accumulated": 147538,
+          "audience_per_screen": 71.04,
+          "rank": 1
+        },
+        {
+          "date": "2026-02-05",
+          "days_since_release": 1,
+          "week_number": 1,
+          "screen_count": 1612,
+          "audience_count": 91731,
+          "weekly_audience_count": 1165295,
+          "audience_accumulated": 239269,
+          "audience_per_screen": 56.91,
+          "rank": 1
+        },
+        {
+          "date": "2026-02-06",
+          "days_since_release": 2,
+          "week_number": 1,
+          "screen_count": 1653,
+          "audience_count": 126625,
+          "weekly_audience_count": 1165295,
+          "audience_accumulated": 365894,
+          "audience_per_screen": 76.6,
+          "rank": 1
+        },
+        {
+          "date": "2026-02-07",
+          "days_since_release": 3,
+          "week_number": 1,
+          "screen_count": 1717,
+          "audience_count": 327112,
+          "weekly_audience_count": 1165295,
+          "audience_accumulated": 693006,
+          "audience_per_screen": 190.51,
+          "rank": 1
+        },
+        {
+          "date": "2026-02-08",
+          "days_since_release": 4,
+          "week_number": 1,
+          "screen_count": 1724,
+          "audience_count": 308083,
+          "weekly_audience_count": 1165295,
+          "audience_accumulated": 1001089,
+          "audience_per_screen": 178.7,
+          "rank": 1
+        },
+        {
+          "date": "2026-02-09",
+          "days_since_release": 5,
+          "week_number": 1,
+          "screen_count": 1530,
+          "audience_count": 98379,
+          "weekly_audience_count": 1165295,
+          "audience_accumulated": 1099468,
+          "audience_per_screen": 64.3,
+          "rank": 1
+        },
+        {
+          "date": "2026-02-10",
+          "days_since_release": 6,
+          "week_number": 1,
+          "screen_count": 1536,
+          "audience_count": 95582,
+          "weekly_audience_count": 1165295,
+          "audience_accumulated": 1195050,
+          "audience_per_screen": 62.23,
+          "rank": 1
+        },
+        {
+          "date": "2026-02-11",
+          "days_since_release": 7,
+          "week_number": 2,
+          "screen_count": 1150,
+          "audience_count": 86924,
+          "weekly_audience_count": 2326167,
+          "audience_accumulated": 1281974,
+          "audience_per_screen": 75.59,
+          "rank": 2
+        },
+        {
+          "date": "2026-02-12",
+          "days_since_release": 8,
+          "week_number": 2,
+          "screen_count": 1206,
+          "audience_count": 83916,
+          "weekly_audience_count": 2326167,
+          "audience_accumulated": 1365890,
+          "audience_per_screen": 69.58,
+          "rank": 1
+        },
+        {
+          "date": "2026-02-13",
+          "days_since_release": 9,
+          "week_number": 2,
+          "screen_count": 1420,
+          "audience_count": 133573,
+          "weekly_audience_count": 2326167,
+          "audience_accumulated": 1499463,
+          "audience_per_screen": 94.07,
+          "rank": 1
+        },
+        {
+          "date": "2026-02-14",
+          "days_since_release": 10,
+          "week_number": 2,
+          "screen_count": 1729,
+          "audience_count": 357886,
+          "weekly_audience_count": 2326167,
+          "audience_accumulated": 1857349,
+          "audience_per_screen": 206.99,
+          "rank": 1
+        },
+        {
+          "date": "2026-02-15",
+          "days_since_release": 11,
+          "week_number": 2,
+          "screen_count": 1836,
+          "audience_count": 465254,
+          "weekly_audience_count": 2326167,
+          "audience_accumulated": 2322603,
+          "audience_per_screen": 253.41,
+          "rank": 1
+        },
+        {
+          "date": "2026-02-16",
+          "days_since_release": 12,
+          "week_number": 2,
+          "screen_count": 1899,
+          "audience_count": 537175,
+          "weekly_audience_count": 2326167,
+          "audience_accumulated": 2859778,
+          "audience_per_screen": 282.87,
+          "rank": 1
+        },
+        {
+          "date": "2026-02-17",
+          "days_since_release": 13,
+          "week_number": 2,
+          "screen_count": 2010,
+          "audience_count": 661439,
+          "weekly_audience_count": 2326167,
+          "audience_accumulated": 3521217,
+          "audience_per_screen": 329.07,
+          "rank": 1
+        },
+        {
+          "date": "2026-02-18",
+          "days_since_release": 14,
+          "week_number": 3,
+          "screen_count": 2017,
+          "audience_count": 653634,
+          "weekly_audience_count": 2697686,
+          "audience_accumulated": 4174851,
+          "audience_per_screen": 324.06,
+          "rank": 1
+        },
+        {
+          "date": "2026-02-19",
+          "days_since_release": 15,
+          "week_number": 3,
+          "screen_count": 1607,
+          "audience_count": 239783,
+          "weekly_audience_count": 2697686,
+          "audience_accumulated": 4414634,
+          "audience_per_screen": 149.21,
+          "rank": 1
+        },
+        {
+          "date": "2026-02-20",
+          "days_since_release": 16,
+          "week_number": 3,
+          "screen_count": 1771,
+          "audience_count": 264713,
+          "weekly_audience_count": 2697686,
+          "audience_accumulated": 4679347,
+          "audience_per_screen": 149.47,
+          "rank": 1
+        },
+        {
+          "date": "2026-02-21",
+          "days_since_release": 17,
+          "week_number": 3,
+          "screen_count": 2106,
+          "audience_count": 581160,
+          "weekly_audience_count": 2697686,
+          "audience_accumulated": 5260507,
+          "audience_per_screen": 275.95,
+          "rank": 1
+        },
+        {
+          "date": "2026-02-22",
+          "days_since_release": 18,
+          "week_number": 3,
+          "screen_count": 2142,
+          "audience_count": 568288,
+          "weekly_audience_count": 2697686,
+          "audience_accumulated": 5828795,
+          "audience_per_screen": 265.31,
+          "rank": 1
+        },
+        {
+          "date": "2026-02-23",
+          "days_since_release": 19,
+          "week_number": 3,
+          "screen_count": 1756,
+          "audience_count": 195472,
+          "weekly_audience_count": 2697686,
+          "audience_accumulated": 6024267,
+          "audience_per_screen": 111.32,
+          "rank": 1
+        },
+        {
+          "date": "2026-02-24",
+          "days_since_release": 20,
+          "week_number": 3,
+          "screen_count": 1778,
+          "audience_count": 194636,
+          "weekly_audience_count": 2697686,
+          "audience_accumulated": 6218903,
+          "audience_per_screen": 109.47,
+          "rank": 1
+        },
+        {
+          "date": "2026-02-25",
+          "days_since_release": 21,
+          "week_number": 4,
+          "screen_count": 1937,
+          "audience_count": 309572,
+          "weekly_audience_count": 3188853,
+          "audience_accumulated": 6528475,
+          "audience_per_screen": 159.82,
+          "rank": 1
+        },
+        {
+          "date": "2026-02-26",
+          "days_since_release": 22,
+          "week_number": 4,
+          "screen_count": 1803,
+          "audience_count": 204929,
+          "weekly_audience_count": 3188853,
+          "audience_accumulated": 6733404,
+          "audience_per_screen": 113.66,
+          "rank": 1
+        },
+        {
+          "date": "2026-02-27",
+          "days_since_release": 23,
+          "week_number": 4,
+          "screen_count": 1932,
+          "audience_count": 278059,
+          "weekly_audience_count": 3188853,
+          "audience_accumulated": 7011463,
+          "audience_per_screen": 143.92,
+          "rank": 1
+        },
+        {
+          "date": "2026-02-28",
+          "days_since_release": 24,
+          "week_number": 4,
+          "screen_count": 2165,
+          "audience_count": 655719,
+          "weekly_audience_count": 3188853,
+          "audience_accumulated": 7667182,
+          "audience_per_screen": 302.87,
+          "rank": 1
+        },
+        {
+          "date": "2026-03-01",
+          "days_since_release": 25,
+          "week_number": 4,
+          "screen_count": 2170,
+          "audience_count": 817182,
+          "weekly_audience_count": 3188853,
+          "audience_accumulated": 8484364,
+          "audience_per_screen": 376.58,
+          "rank": 1
+        },
+        {
+          "date": "2026-03-02",
+          "days_since_release": 26,
+          "week_number": 4,
+          "screen_count": 2150,
+          "audience_count": 728916,
+          "weekly_audience_count": 3188853,
+          "audience_accumulated": 9213280,
+          "audience_per_screen": 339.03,
+          "rank": 1
+        },
+        {
+          "date": "2026-03-03",
+          "days_since_release": 27,
+          "week_number": 4,
+          "screen_count": 1800,
+          "audience_count": 194476,
+          "weekly_audience_count": 3188853,
+          "audience_accumulated": 9407756,
+          "audience_per_screen": 108.04,
+          "rank": 1
+        },
+        {
+          "date": "2026-03-04",
+          "days_since_release": 28,
+          "week_number": 5,
+          "screen_count": 1633,
+          "audience_count": 189639,
+          "weekly_audience_count": 189639,
+          "audience_accumulated": 9597395,
+          "audience_per_screen": 116.13,
+          "rank": 1
+        }
+      ],
+      "weekly_points": [
+        {
+          "date": "2026-02-10",
+          "week_start_date": "2026-02-04",
+          "week_end_date": "2026-02-10",
+          "days_since_release": 6,
+          "week_number": 1,
+          "observed_days": 7,
+          "screen_count": 1632.86,
+          "audience_count": 1165295,
+          "weekly_audience_count": 1165295,
+          "audience_accumulated": 1195050,
+          "audience_per_screen": 713.65,
+          "rank": 1
+        },
+        {
+          "date": "2026-02-17",
+          "week_start_date": "2026-02-11",
+          "week_end_date": "2026-02-17",
+          "days_since_release": 13,
+          "week_number": 2,
+          "observed_days": 7,
+          "screen_count": 1607.14,
+          "audience_count": 2326167,
+          "weekly_audience_count": 2326167,
+          "audience_accumulated": 3521217,
+          "audience_per_screen": 1447.39,
+          "rank": 1
+        },
+        {
+          "date": "2026-02-24",
+          "week_start_date": "2026-02-18",
+          "week_end_date": "2026-02-24",
+          "days_since_release": 20,
+          "week_number": 3,
+          "observed_days": 7,
+          "screen_count": 1882.43,
+          "audience_count": 2697686,
+          "weekly_audience_count": 2697686,
+          "audience_accumulated": 6218903,
+          "audience_per_screen": 1433.09,
+          "rank": 1
+        },
+        {
+          "date": "2026-03-03",
+          "week_start_date": "2026-02-25",
+          "week_end_date": "2026-03-03",
+          "days_since_release": 27,
+          "week_number": 4,
+          "observed_days": 7,
+          "screen_count": 1993.86,
+          "audience_count": 3188853,
+          "weekly_audience_count": 3188853,
+          "audience_accumulated": 9407756,
+          "audience_per_screen": 1599.34,
+          "rank": 1
+        },
+        {
+          "date": "2026-03-04",
+          "week_start_date": "2026-03-04",
+          "week_end_date": "2026-03-04",
+          "days_since_release": 28,
+          "week_number": 5,
+          "observed_days": 1,
+          "screen_count": 1633.0,
+          "audience_count": 189639,
+          "weekly_audience_count": 189639,
+          "audience_accumulated": 9597395,
+          "audience_per_screen": 116.13,
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "movie_code": "20256283",
+      "movie_name": "호퍼스",
+      "release_date": "2026-03-04",
+      "release_type": "original",
+      "original_release_date": "2026-03-04",
+      "latest_rank": 2,
+      "latest_audience_count": 17155,
+      "latest_audience_accumulated": 69566,
+      "latest_screen_count": 788,
+      "latest_audience_per_screen": 21.77,
+      "points": [
+        {
+          "date": "2026-03-04",
+          "days_since_release": 0,
+          "week_number": 1,
+          "screen_count": 788,
+          "audience_count": 17155,
+          "weekly_audience_count": 17155,
+          "audience_accumulated": 69566,
+          "audience_per_screen": 21.77,
+          "rank": 2
+        }
+      ],
+      "weekly_points": [
+        {
+          "date": "2026-03-04",
+          "week_start_date": "2026-03-04",
+          "week_end_date": "2026-03-04",
+          "days_since_release": 0,
+          "week_number": 1,
+          "observed_days": 1,
+          "screen_count": 788.0,
+          "audience_count": 17155,
+          "weekly_audience_count": 17155,
+          "audience_accumulated": 69566,
+          "audience_per_screen": 21.77,
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "movie_code": "20258444",
+      "movie_name": "브라이드!",
+      "release_date": "2026-03-04",
+      "release_type": "original",
+      "original_release_date": "2026-03-04",
+      "latest_rank": 3,
+      "latest_audience_count": 7478,
+      "latest_audience_accumulated": 7746,
+      "latest_screen_count": 399,
+      "latest_audience_per_screen": 18.74,
+      "points": [
+        {
+          "date": "2026-03-04",
+          "days_since_release": 0,
+          "week_number": 1,
+          "screen_count": 399,
+          "audience_count": 7478,
+          "weekly_audience_count": 7478,
+          "audience_accumulated": 7746,
+          "audience_per_screen": 18.74,
+          "rank": 3
+        }
+      ],
+      "weekly_points": [
+        {
+          "date": "2026-03-04",
+          "week_start_date": "2026-03-04",
+          "week_end_date": "2026-03-04",
+          "days_since_release": 0,
+          "week_number": 1,
+          "observed_days": 1,
+          "screen_count": 399.0,
+          "audience_count": 7478,
+          "weekly_audience_count": 7478,
+          "audience_accumulated": 7746,
+          "audience_per_screen": 18.74,
+          "rank": 3
+        }
+      ]
+    },
+    {
+      "movie_code": "20241266",
+      "movie_name": "휴민트",
+      "release_date": "2026-02-11",
+      "release_type": "original",
+      "original_release_date": "2026-02-11",
+      "latest_rank": 4,
+      "latest_audience_count": 6837,
+      "latest_audience_accumulated": 1881263,
+      "latest_screen_count": 549,
+      "latest_audience_per_screen": 12.45,
+      "points": [
+        {
+          "date": "2026-02-11",
+          "days_since_release": 0,
+          "week_number": 1,
+          "screen_count": 1520,
+          "audience_count": 116740,
+          "weekly_audience_count": 1084970,
+          "audience_accumulated": 131625,
+          "audience_per_screen": 76.8,
+          "rank": 1
+        },
+        {
+          "date": "2026-02-12",
+          "days_since_release": 1,
+          "week_number": 1,
+          "screen_count": 1494,
+          "audience_count": 81183,
+          "weekly_audience_count": 1084970,
+          "audience_accumulated": 212808,
+          "audience_per_screen": 54.34,
+          "rank": 2
+        },
+        {
+          "date": "2026-02-13",
+          "days_since_release": 2,
+          "week_number": 1,
+          "screen_count": 1405,
+          "audience_count": 91891,
+          "weekly_audience_count": 1084970,
+          "audience_accumulated": 304699,
+          "audience_per_screen": 65.4,
+          "rank": 2
+        },
+        {
+          "date": "2026-02-14",
+          "days_since_release": 3,
+          "week_number": 1,
+          "screen_count": 1375,
+          "audience_count": 194546,
+          "weekly_audience_count": 1084970,
+          "audience_accumulated": 499245,
+          "audience_per_screen": 141.49,
+          "rank": 2
+        },
+        {
+          "date": "2026-02-15",
+          "days_since_release": 4,
+          "week_number": 1,
+          "screen_count": 1356,
+          "audience_count": 204552,
+          "weekly_audience_count": 1084970,
+          "audience_accumulated": 703797,
+          "audience_per_screen": 150.85,
+          "rank": 2
+        },
+        {
+          "date": "2026-02-16",
+          "days_since_release": 5,
+          "week_number": 1,
+          "screen_count": 1290,
+          "audience_count": 182655,
+          "weekly_audience_count": 1084970,
+          "audience_accumulated": 886452,
+          "audience_per_screen": 141.59,
+          "rank": 2
+        },
+        {
+          "date": "2026-02-17",
+          "days_since_release": 6,
+          "week_number": 1,
+          "screen_count": 1225,
+          "audience_count": 213403,
+          "weekly_audience_count": 1084970,
+          "audience_accumulated": 1099855,
+          "audience_per_screen": 174.21,
+          "rank": 2
+        },
+        {
+          "date": "2026-02-18",
+          "days_since_release": 7,
+          "week_number": 2,
+          "screen_count": 1188,
+          "audience_count": 184951,
+          "weekly_audience_count": 537890,
+          "audience_accumulated": 1284806,
+          "audience_per_screen": 155.68,
+          "rank": 2
+        },
+        {
+          "date": "2026-02-19",
+          "days_since_release": 8,
+          "week_number": 2,
+          "screen_count": 1116,
+          "audience_count": 54834,
+          "weekly_audience_count": 537890,
+          "audience_accumulated": 1339640,
+          "audience_per_screen": 49.13,
+          "rank": 2
+        },
+        {
+          "date": "2026-02-20",
+          "days_since_release": 9,
+          "week_number": 2,
+          "screen_count": 1089,
+          "audience_count": 51305,
+          "weekly_audience_count": 537890,
+          "audience_accumulated": 1390945,
+          "audience_per_screen": 47.11,
+          "rank": 2
+        },
+        {
+          "date": "2026-02-21",
+          "days_since_release": 10,
+          "week_number": 2,
+          "screen_count": 1048,
+          "audience_count": 100054,
+          "weekly_audience_count": 537890,
+          "audience_accumulated": 1490999,
+          "audience_per_screen": 95.47,
+          "rank": 2
+        },
+        {
+          "date": "2026-02-22",
+          "days_since_release": 11,
+          "week_number": 2,
+          "screen_count": 1026,
+          "audience_count": 88007,
+          "weekly_audience_count": 537890,
+          "audience_accumulated": 1579006,
+          "audience_per_screen": 85.78,
+          "rank": 2
+        },
+        {
+          "date": "2026-02-23",
+          "days_since_release": 12,
+          "week_number": 2,
+          "screen_count": 921,
+          "audience_count": 32115,
+          "weekly_audience_count": 537890,
+          "audience_accumulated": 1611121,
+          "audience_per_screen": 34.87,
+          "rank": 2
+        },
+        {
+          "date": "2026-02-24",
+          "days_since_release": 13,
+          "week_number": 2,
+          "screen_count": 936,
+          "audience_count": 26624,
+          "weekly_audience_count": 537890,
+          "audience_accumulated": 1637745,
+          "audience_per_screen": 28.44,
+          "rank": 2
+        },
+        {
+          "date": "2026-02-25",
+          "days_since_release": 14,
+          "week_number": 3,
+          "screen_count": 855,
+          "audience_count": 37892,
+          "weekly_audience_count": 236681,
+          "audience_accumulated": 1675637,
+          "audience_per_screen": 44.32,
+          "rank": 2
+        },
+        {
+          "date": "2026-02-26",
+          "days_since_release": 15,
+          "week_number": 3,
+          "screen_count": 786,
+          "audience_count": 21909,
+          "weekly_audience_count": 236681,
+          "audience_accumulated": 1697546,
+          "audience_per_screen": 27.87,
+          "rank": 2
+        },
+        {
+          "date": "2026-02-27",
+          "days_since_release": 16,
+          "week_number": 3,
+          "screen_count": 739,
+          "audience_count": 22005,
+          "weekly_audience_count": 236681,
+          "audience_accumulated": 1719551,
+          "audience_per_screen": 29.78,
+          "rank": 2
+        },
+        {
+          "date": "2026-02-28",
+          "days_since_release": 17,
+          "week_number": 3,
+          "screen_count": 816,
+          "audience_count": 47959,
+          "weekly_audience_count": 236681,
+          "audience_accumulated": 1767510,
+          "audience_per_screen": 58.77,
+          "rank": 2
+        },
+        {
+          "date": "2026-03-01",
+          "days_since_release": 18,
+          "week_number": 3,
+          "screen_count": 784,
+          "audience_count": 54656,
+          "weekly_audience_count": 236681,
+          "audience_accumulated": 1822166,
+          "audience_per_screen": 69.71,
+          "rank": 2
+        },
+        {
+          "date": "2026-03-02",
+          "days_since_release": 19,
+          "week_number": 3,
+          "screen_count": 754,
+          "audience_count": 41504,
+          "weekly_audience_count": 236681,
+          "audience_accumulated": 1863670,
+          "audience_per_screen": 55.05,
+          "rank": 2
+        },
+        {
+          "date": "2026-03-03",
+          "days_since_release": 20,
+          "week_number": 3,
+          "screen_count": 659,
+          "audience_count": 10756,
+          "weekly_audience_count": 236681,
+          "audience_accumulated": 1874426,
+          "audience_per_screen": 16.32,
+          "rank": 2
+        },
+        {
+          "date": "2026-03-04",
+          "days_since_release": 21,
+          "week_number": 4,
+          "screen_count": 549,
+          "audience_count": 6837,
+          "weekly_audience_count": 6837,
+          "audience_accumulated": 1881263,
+          "audience_per_screen": 12.45,
+          "rank": 4
+        }
+      ],
+      "weekly_points": [
+        {
+          "date": "2026-02-17",
+          "week_start_date": "2026-02-11",
+          "week_end_date": "2026-02-17",
+          "days_since_release": 6,
+          "week_number": 1,
+          "observed_days": 7,
+          "screen_count": 1380.71,
+          "audience_count": 1084970,
+          "weekly_audience_count": 1084970,
+          "audience_accumulated": 1099855,
+          "audience_per_screen": 785.8,
+          "rank": 2
+        },
+        {
+          "date": "2026-02-24",
+          "week_start_date": "2026-02-18",
+          "week_end_date": "2026-02-24",
+          "days_since_release": 13,
+          "week_number": 2,
+          "observed_days": 7,
+          "screen_count": 1046.29,
+          "audience_count": 537890,
+          "weekly_audience_count": 537890,
+          "audience_accumulated": 1637745,
+          "audience_per_screen": 514.09,
+          "rank": 2
+        },
+        {
+          "date": "2026-03-03",
+          "week_start_date": "2026-02-25",
+          "week_end_date": "2026-03-03",
+          "days_since_release": 20,
+          "week_number": 3,
+          "observed_days": 7,
+          "screen_count": 770.43,
+          "audience_count": 236681,
+          "weekly_audience_count": 236681,
+          "audience_accumulated": 1874426,
+          "audience_per_screen": 307.21,
+          "rank": 2
+        },
+        {
+          "date": "2026-03-04",
+          "week_start_date": "2026-03-04",
+          "week_end_date": "2026-03-04",
+          "days_since_release": 21,
+          "week_number": 4,
+          "observed_days": 1,
+          "screen_count": 549.0,
+          "audience_count": 6837,
+          "weekly_audience_count": 6837,
+          "audience_accumulated": 1881263,
+          "audience_per_screen": 12.45,
+          "rank": 4
+        }
+      ]
+    },
+    {
+      "movie_code": "20241501",
+      "movie_name": "매드 댄스 오피스",
+      "release_date": "2026-03-04",
+      "release_type": "original",
+      "original_release_date": "2026-03-04",
+      "latest_rank": 5,
+      "latest_audience_count": 5420,
+      "latest_audience_accumulated": 8350,
+      "latest_screen_count": 484,
+      "latest_audience_per_screen": 11.2,
+      "points": [
+        {
+          "date": "2026-03-04",
+          "days_since_release": 0,
+          "week_number": 1,
+          "screen_count": 484,
+          "audience_count": 5420,
+          "weekly_audience_count": 5420,
+          "audience_accumulated": 8350,
+          "audience_per_screen": 11.2,
+          "rank": 5
+        }
+      ],
+      "weekly_points": [
+        {
+          "date": "2026-03-04",
+          "week_start_date": "2026-03-04",
+          "week_end_date": "2026-03-04",
+          "days_since_release": 0,
+          "week_number": 1,
+          "observed_days": 1,
+          "screen_count": 484.0,
+          "audience_count": 5420,
+          "weekly_audience_count": 5420,
+          "audience_accumulated": 8350,
+          "audience_per_screen": 11.2,
+          "rank": 5
+        }
+      ]
+    },
+    {
+      "movie_code": "20250875",
+      "movie_name": "우리는 매일매일",
+      "release_date": "2026-03-04",
+      "release_type": "original",
+      "original_release_date": "2026-03-04",
+      "latest_rank": 6,
+      "latest_audience_count": 2523,
+      "latest_audience_accumulated": 3130,
+      "latest_screen_count": 142,
+      "latest_audience_per_screen": 17.77,
+      "points": [
+        {
+          "date": "2026-03-04",
+          "days_since_release": 0,
+          "week_number": 1,
+          "screen_count": 142,
+          "audience_count": 2523,
+          "weekly_audience_count": 2523,
+          "audience_accumulated": 3130,
+          "audience_per_screen": 17.77,
+          "rank": 6
+        }
+      ],
+      "weekly_points": [
+        {
+          "date": "2026-03-04",
+          "week_start_date": "2026-03-04",
+          "week_end_date": "2026-03-04",
+          "days_since_release": 0,
+          "week_number": 1,
+          "observed_days": 1,
+          "screen_count": 142.0,
+          "audience_count": 2523,
+          "weekly_audience_count": 2523,
+          "audience_accumulated": 3130,
+          "audience_per_screen": 17.77,
+          "rank": 6
+        }
+      ]
+    },
+    {
+      "movie_code": "20261181",
+      "movie_name": "너자 2",
+      "release_date": "2026-02-25",
+      "release_type": "original",
+      "original_release_date": "2026-02-25",
+      "latest_rank": 7,
+      "latest_audience_count": 2512,
+      "latest_audience_accumulated": 46134,
+      "latest_screen_count": 107,
+      "latest_audience_per_screen": 23.48,
+      "points": [
+        {
+          "date": "2026-02-25",
+          "days_since_release": 0,
+          "week_number": 1,
+          "screen_count": 277,
+          "audience_count": 6936,
+          "weekly_audience_count": 40419,
+          "audience_accumulated": 10139,
+          "audience_per_screen": 25.04,
+          "rank": 4
+        },
+        {
+          "date": "2026-02-26",
+          "days_since_release": 1,
+          "week_number": 1,
+          "screen_count": 263,
+          "audience_count": 5841,
+          "weekly_audience_count": 40419,
+          "audience_accumulated": 15980,
+          "audience_per_screen": 22.21,
+          "rank": 4
+        },
+        {
+          "date": "2026-02-27",
+          "days_since_release": 2,
+          "week_number": 1,
+          "screen_count": 256,
+          "audience_count": 3638,
+          "weekly_audience_count": 40419,
+          "audience_accumulated": 19618,
+          "audience_per_screen": 14.21,
+          "rank": 6
+        },
+        {
+          "date": "2026-02-28",
+          "days_since_release": 3,
+          "week_number": 1,
+          "screen_count": 260,
+          "audience_count": 7981,
+          "weekly_audience_count": 40419,
+          "audience_accumulated": 27599,
+          "audience_per_screen": 30.7,
+          "rank": 5
+        },
+        {
+          "date": "2026-03-01",
+          "days_since_release": 4,
+          "week_number": 1,
+          "screen_count": 242,
+          "audience_count": 7249,
+          "weekly_audience_count": 40419,
+          "audience_accumulated": 34848,
+          "audience_per_screen": 29.95,
+          "rank": 7
+        },
+        {
+          "date": "2026-03-02",
+          "days_since_release": 5,
+          "week_number": 1,
+          "screen_count": 231,
+          "audience_count": 6934,
+          "weekly_audience_count": 40419,
+          "audience_accumulated": 41782,
+          "audience_per_screen": 30.02,
+          "rank": 6
+        },
+        {
+          "date": "2026-03-03",
+          "days_since_release": 6,
+          "week_number": 1,
+          "screen_count": 203,
+          "audience_count": 1840,
+          "weekly_audience_count": 40419,
+          "audience_accumulated": 43622,
+          "audience_per_screen": 9.06,
+          "rank": 8
+        },
+        {
+          "date": "2026-03-04",
+          "days_since_release": 7,
+          "week_number": 2,
+          "screen_count": 107,
+          "audience_count": 2512,
+          "weekly_audience_count": 2512,
+          "audience_accumulated": 46134,
+          "audience_per_screen": 23.48,
+          "rank": 7
+        }
+      ],
+      "weekly_points": [
+        {
+          "date": "2026-03-03",
+          "week_start_date": "2026-02-25",
+          "week_end_date": "2026-03-03",
+          "days_since_release": 6,
+          "week_number": 1,
+          "observed_days": 7,
+          "screen_count": 247.43,
+          "audience_count": 40419,
+          "weekly_audience_count": 40419,
+          "audience_accumulated": 43622,
+          "audience_per_screen": 163.36,
+          "rank": 8
+        },
+        {
+          "date": "2026-03-04",
+          "week_start_date": "2026-03-04",
+          "week_end_date": "2026-03-04",
+          "days_since_release": 7,
+          "week_number": 2,
+          "observed_days": 1,
+          "screen_count": 107.0,
+          "audience_count": 2512,
+          "weekly_audience_count": 2512,
+          "audience_accumulated": 46134,
+          "audience_per_screen": 23.48,
+          "rank": 7
+        }
+      ]
+    },
+    {
+      "movie_code": "20250413",
+      "movie_name": "다이 마이 러브",
+      "release_date": "2026-03-04",
+      "release_type": "original",
+      "original_release_date": "2026-03-04",
+      "latest_rank": 8,
+      "latest_audience_count": 2164,
+      "latest_audience_accumulated": 2164,
+      "latest_screen_count": 115,
+      "latest_audience_per_screen": 18.82,
+      "points": [
+        {
+          "date": "2026-03-04",
+          "days_since_release": 0,
+          "week_number": 1,
+          "screen_count": 115,
+          "audience_count": 2164,
+          "weekly_audience_count": 2164,
+          "audience_accumulated": 2164,
+          "audience_per_screen": 18.82,
+          "rank": 8
+        }
+      ],
+      "weekly_points": [
+        {
+          "date": "2026-03-04",
+          "week_start_date": "2026-03-04",
+          "week_end_date": "2026-03-04",
+          "days_since_release": 0,
+          "week_number": 1,
+          "observed_days": 1,
+          "screen_count": 115.0,
+          "audience_count": 2164,
+          "weekly_audience_count": 2164,
+          "audience_accumulated": 2164,
+          "audience_per_screen": 18.82,
+          "rank": 8
+        }
+      ]
+    },
+    {
+      "movie_code": "20250365",
+      "movie_name": "햄넷",
+      "release_date": "2026-02-25",
+      "release_type": "original",
+      "original_release_date": "2026-02-25",
+      "latest_rank": 9,
+      "latest_audience_count": 1979,
+      "latest_audience_accumulated": 34648,
+      "latest_screen_count": 164,
+      "latest_audience_per_screen": 12.07,
+      "points": [
+        {
+          "date": "2026-02-25",
+          "days_since_release": 0,
+          "week_number": 1,
+          "screen_count": 381,
+          "audience_count": 5633,
+          "weekly_audience_count": 27181,
+          "audience_accumulated": 11121,
+          "audience_per_screen": 14.78,
+          "rank": 5
+        },
+        {
+          "date": "2026-02-26",
+          "days_since_release": 1,
+          "week_number": 1,
+          "screen_count": 352,
+          "audience_count": 3031,
+          "weekly_audience_count": 27181,
+          "audience_accumulated": 14152,
+          "audience_per_screen": 8.61,
+          "rank": 9
+        },
+        {
+          "date": "2026-02-27",
+          "days_since_release": 2,
+          "week_number": 1,
+          "screen_count": 329,
+          "audience_count": 2752,
+          "weekly_audience_count": 27181,
+          "audience_accumulated": 16904,
+          "audience_per_screen": 8.36,
+          "rank": 10
+        },
+        {
+          "date": "2026-02-28",
+          "days_since_release": 3,
+          "week_number": 1,
+          "screen_count": 326,
+          "audience_count": 4566,
+          "weekly_audience_count": 27181,
+          "audience_accumulated": 21470,
+          "audience_per_screen": 14.01,
+          "rank": 8
+        },
+        {
+          "date": "2026-03-01",
+          "days_since_release": 4,
+          "week_number": 1,
+          "screen_count": 309,
+          "audience_count": 4346,
+          "weekly_audience_count": 27181,
+          "audience_accumulated": 25816,
+          "audience_per_screen": 14.06,
+          "rank": 8
+        },
+        {
+          "date": "2026-03-02",
+          "days_since_release": 5,
+          "week_number": 1,
+          "screen_count": 292,
+          "audience_count": 4622,
+          "weekly_audience_count": 27181,
+          "audience_accumulated": 30438,
+          "audience_per_screen": 15.83,
+          "rank": 8
+        },
+        {
+          "date": "2026-03-03",
+          "days_since_release": 6,
+          "week_number": 1,
+          "screen_count": 302,
+          "audience_count": 2231,
+          "weekly_audience_count": 27181,
+          "audience_accumulated": 32669,
+          "audience_per_screen": 7.39,
+          "rank": 6
+        },
+        {
+          "date": "2026-03-04",
+          "days_since_release": 7,
+          "week_number": 2,
+          "screen_count": 164,
+          "audience_count": 1979,
+          "weekly_audience_count": 1979,
+          "audience_accumulated": 34648,
+          "audience_per_screen": 12.07,
+          "rank": 9
+        }
+      ],
+      "weekly_points": [
+        {
+          "date": "2026-03-03",
+          "week_start_date": "2026-02-25",
+          "week_end_date": "2026-03-03",
+          "days_since_release": 6,
+          "week_number": 1,
+          "observed_days": 7,
+          "screen_count": 327.29,
+          "audience_count": 27181,
+          "weekly_audience_count": 27181,
+          "audience_accumulated": 32669,
+          "audience_per_screen": 83.05,
+          "rank": 6
+        },
+        {
+          "date": "2026-03-04",
+          "week_start_date": "2026-03-04",
+          "week_end_date": "2026-03-04",
+          "days_since_release": 7,
+          "week_number": 2,
+          "observed_days": 1,
+          "screen_count": 164.0,
+          "audience_count": 1979,
+          "weekly_audience_count": 1979,
+          "audience_accumulated": 34648,
+          "audience_per_screen": 12.07,
+          "rank": 9
+        }
+      ]
+    },
+    {
+      "movie_code": "20261526",
+      "movie_name": "아이엠스타!X프리파라 더 무비 -만남의 기적!-",
+      "release_date": "2026-02-04",
+      "release_type": "original",
+      "original_release_date": "2026-02-04",
+      "latest_rank": 10,
+      "latest_audience_count": 1754,
+      "latest_audience_accumulated": 75777,
+      "latest_screen_count": 53,
+      "latest_audience_per_screen": 33.09,
+      "points": [
+        {
+          "date": "2026-02-04",
+          "days_since_release": 0,
+          "week_number": 1,
+          "screen_count": 118,
+          "audience_count": 7064,
+          "weekly_audience_count": 22745,
+          "audience_accumulated": 7064,
+          "audience_per_screen": 59.86,
+          "rank": 6
+        },
+        {
+          "date": "2026-02-05",
+          "days_since_release": 1,
+          "week_number": 1,
+          "screen_count": 115,
+          "audience_count": 3994,
+          "weekly_audience_count": 22745,
+          "audience_accumulated": 11058,
+          "audience_per_screen": 34.73,
+          "rank": 7
+        },
+        {
+          "date": "2026-02-06",
+          "days_since_release": 2,
+          "week_number": 1,
+          "screen_count": 108,
+          "audience_count": 3431,
+          "weekly_audience_count": 22745,
+          "audience_accumulated": 14489,
+          "audience_per_screen": 31.77,
+          "rank": 7
+        },
+        {
+          "date": "2026-02-07",
+          "days_since_release": 3,
+          "week_number": 1,
+          "screen_count": 125,
+          "audience_count": 2975,
+          "weekly_audience_count": 22745,
+          "audience_accumulated": 17464,
+          "audience_per_screen": 23.8,
+          "rank": 13
+        },
+        {
+          "date": "2026-02-08",
+          "days_since_release": 4,
+          "week_number": 1,
+          "screen_count": 130,
+          "audience_count": 2999,
+          "weekly_audience_count": 22745,
+          "audience_accumulated": 20463,
+          "audience_per_screen": 23.07,
+          "rank": 14
+        },
+        {
+          "date": "2026-02-09",
+          "days_since_release": 5,
+          "week_number": 1,
+          "screen_count": 112,
+          "audience_count": 1230,
+          "weekly_audience_count": 22745,
+          "audience_accumulated": 21693,
+          "audience_per_screen": 10.98,
+          "rank": 11
+        },
+        {
+          "date": "2026-02-10",
+          "days_since_release": 6,
+          "week_number": 1,
+          "screen_count": 118,
+          "audience_count": 1052,
+          "weekly_audience_count": 22745,
+          "audience_accumulated": 22745,
+          "audience_per_screen": 8.92,
+          "rank": 14
+        },
+        {
+          "date": "2026-02-11",
+          "days_since_release": 7,
+          "week_number": 2,
+          "screen_count": 95,
+          "audience_count": 6239,
+          "weekly_audience_count": 19641,
+          "audience_accumulated": 28984,
+          "audience_per_screen": 65.67,
+          "rank": 8
+        },
+        {
+          "date": "2026-02-12",
+          "days_since_release": 8,
+          "week_number": 2,
+          "screen_count": 83,
+          "audience_count": 3390,
+          "weekly_audience_count": 19641,
+          "audience_accumulated": 32374,
+          "audience_per_screen": 40.84,
+          "rank": 8
+        },
+        {
+          "date": "2026-02-13",
+          "days_since_release": 9,
+          "week_number": 2,
+          "screen_count": 76,
+          "audience_count": 2894,
+          "weekly_audience_count": 19641,
+          "audience_accumulated": 35268,
+          "audience_per_screen": 38.08,
+          "rank": 10
+        },
+        {
+          "date": "2026-02-14",
+          "days_since_release": 10,
+          "week_number": 2,
+          "screen_count": 80,
+          "audience_count": 2584,
+          "weekly_audience_count": 19641,
+          "audience_accumulated": 37852,
+          "audience_per_screen": 32.3,
+          "rank": 12
+        },
+        {
+          "date": "2026-02-15",
+          "days_since_release": 11,
+          "week_number": 2,
+          "screen_count": 77,
+          "audience_count": 2246,
+          "weekly_audience_count": 19641,
+          "audience_accumulated": 40098,
+          "audience_per_screen": 29.17,
+          "rank": 13
+        },
+        {
+          "date": "2026-02-16",
+          "days_since_release": 12,
+          "week_number": 2,
+          "screen_count": 75,
+          "audience_count": 1340,
+          "weekly_audience_count": 19641,
+          "audience_accumulated": 41438,
+          "audience_per_screen": 17.87,
+          "rank": 16
+        },
+        {
+          "date": "2026-02-17",
+          "days_since_release": 13,
+          "week_number": 2,
+          "screen_count": 72,
+          "audience_count": 948,
+          "weekly_audience_count": 19641,
+          "audience_accumulated": 42386,
+          "audience_per_screen": 13.17,
+          "rank": 15
+        },
+        {
+          "date": "2026-02-18",
+          "days_since_release": 14,
+          "week_number": 3,
+          "screen_count": 74,
+          "audience_count": 7831,
+          "weekly_audience_count": 22037,
+          "audience_accumulated": 50217,
+          "audience_per_screen": 105.82,
+          "rank": 9
+        },
+        {
+          "date": "2026-02-19",
+          "days_since_release": 15,
+          "week_number": 3,
+          "screen_count": 71,
+          "audience_count": 5533,
+          "weekly_audience_count": 22037,
+          "audience_accumulated": 55750,
+          "audience_per_screen": 77.93,
+          "rank": 6
+        },
+        {
+          "date": "2026-02-20",
+          "days_since_release": 16,
+          "week_number": 3,
+          "screen_count": 75,
+          "audience_count": 3408,
+          "weekly_audience_count": 22037,
+          "audience_accumulated": 59158,
+          "audience_per_screen": 45.44,
+          "rank": 8
+        },
+        {
+          "date": "2026-02-21",
+          "days_since_release": 17,
+          "week_number": 3,
+          "screen_count": 77,
+          "audience_count": 2003,
+          "weekly_audience_count": 22037,
+          "audience_accumulated": 61161,
+          "audience_per_screen": 26.01,
+          "rank": 11
+        },
+        {
+          "date": "2026-02-22",
+          "days_since_release": 18,
+          "week_number": 3,
+          "screen_count": 77,
+          "audience_count": 1609,
+          "weekly_audience_count": 22037,
+          "audience_accumulated": 62770,
+          "audience_per_screen": 20.9,
+          "rank": 13
+        },
+        {
+          "date": "2026-02-23",
+          "days_since_release": 19,
+          "week_number": 3,
+          "screen_count": 68,
+          "audience_count": 937,
+          "weekly_audience_count": 22037,
+          "audience_accumulated": 63707,
+          "audience_per_screen": 13.78,
+          "rank": 13
+        },
+        {
+          "date": "2026-02-24",
+          "days_since_release": 20,
+          "week_number": 3,
+          "screen_count": 67,
+          "audience_count": 716,
+          "weekly_audience_count": 22037,
+          "audience_accumulated": 64423,
+          "audience_per_screen": 10.69,
+          "rank": 14
+        },
+        {
+          "date": "2026-02-25",
+          "days_since_release": 21,
+          "week_number": 4,
+          "screen_count": 58,
+          "audience_count": 2509,
+          "weekly_audience_count": 9600,
+          "audience_accumulated": 66932,
+          "audience_per_screen": 43.26,
+          "rank": 10
+        },
+        {
+          "date": "2026-02-26",
+          "days_since_release": 22,
+          "week_number": 4,
+          "screen_count": 59,
+          "audience_count": 1129,
+          "weekly_audience_count": 9600,
+          "audience_accumulated": 68061,
+          "audience_per_screen": 19.14,
+          "rank": 13
+        },
+        {
+          "date": "2026-02-27",
+          "days_since_release": 23,
+          "week_number": 4,
+          "screen_count": 54,
+          "audience_count": 785,
+          "weekly_audience_count": 9600,
+          "audience_accumulated": 68846,
+          "audience_per_screen": 14.54,
+          "rank": 19
+        },
+        {
+          "date": "2026-02-28",
+          "days_since_release": 24,
+          "week_number": 4,
+          "screen_count": 63,
+          "audience_count": 2961,
+          "weekly_audience_count": 9600,
+          "audience_accumulated": 71807,
+          "audience_per_screen": 47.0,
+          "rank": 12
+        },
+        {
+          "date": "2026-03-01",
+          "days_since_release": 25,
+          "week_number": 4,
+          "screen_count": 62,
+          "audience_count": 1118,
+          "weekly_audience_count": 9600,
+          "audience_accumulated": 72925,
+          "audience_per_screen": 18.03,
+          "rank": 17
+        },
+        {
+          "date": "2026-03-02",
+          "days_since_release": 26,
+          "week_number": 4,
+          "screen_count": 58,
+          "audience_count": 785,
+          "weekly_audience_count": 9600,
+          "audience_accumulated": 73710,
+          "audience_per_screen": 13.53,
+          "rank": 20
+        },
+        {
+          "date": "2026-03-03",
+          "days_since_release": 27,
+          "week_number": 4,
+          "screen_count": 47,
+          "audience_count": 313,
+          "weekly_audience_count": 9600,
+          "audience_accumulated": 74023,
+          "audience_per_screen": 6.66,
+          "rank": 19
+        },
+        {
+          "date": "2026-03-04",
+          "days_since_release": 28,
+          "week_number": 5,
+          "screen_count": 53,
+          "audience_count": 1754,
+          "weekly_audience_count": 1754,
+          "audience_accumulated": 75777,
+          "audience_per_screen": 33.09,
+          "rank": 10
+        }
+      ],
+      "weekly_points": [
+        {
+          "date": "2026-02-10",
+          "week_start_date": "2026-02-04",
+          "week_end_date": "2026-02-10",
+          "days_since_release": 6,
+          "week_number": 1,
+          "observed_days": 7,
+          "screen_count": 118.0,
+          "audience_count": 22745,
+          "weekly_audience_count": 22745,
+          "audience_accumulated": 22745,
+          "audience_per_screen": 192.75,
+          "rank": 14
+        },
+        {
+          "date": "2026-02-17",
+          "week_start_date": "2026-02-11",
+          "week_end_date": "2026-02-17",
+          "days_since_release": 13,
+          "week_number": 2,
+          "observed_days": 7,
+          "screen_count": 79.71,
+          "audience_count": 19641,
+          "weekly_audience_count": 19641,
+          "audience_accumulated": 42386,
+          "audience_per_screen": 246.39,
+          "rank": 15
+        },
+        {
+          "date": "2026-02-24",
+          "week_start_date": "2026-02-18",
+          "week_end_date": "2026-02-24",
+          "days_since_release": 20,
+          "week_number": 3,
+          "observed_days": 7,
+          "screen_count": 72.71,
+          "audience_count": 22037,
+          "weekly_audience_count": 22037,
+          "audience_accumulated": 64423,
+          "audience_per_screen": 303.06,
+          "rank": 14
+        },
+        {
+          "date": "2026-03-03",
+          "week_start_date": "2026-02-25",
+          "week_end_date": "2026-03-03",
+          "days_since_release": 27,
+          "week_number": 4,
+          "observed_days": 7,
+          "screen_count": 57.29,
+          "audience_count": 9600,
+          "weekly_audience_count": 9600,
+          "audience_accumulated": 74023,
+          "audience_per_screen": 167.58,
+          "rank": 19
+        },
+        {
+          "date": "2026-03-04",
+          "week_start_date": "2026-03-04",
+          "week_end_date": "2026-03-04",
+          "days_since_release": 28,
+          "week_number": 5,
+          "observed_days": 1,
+          "screen_count": 53.0,
+          "audience_count": 1754,
+          "weekly_audience_count": 1754,
+          "audience_accumulated": 75777,
+          "audience_per_screen": 33.09,
+          "rank": 10
+        }
+      ]
+    }
+  ]
+}

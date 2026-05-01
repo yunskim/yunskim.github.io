@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>스크롤 스토리 샘플</title>
+    <meta name="description" content="Tufte CSS 노트 안에서 full-screen hero와 sticky visual step을 구현하는 scrollytelling 샘플.">
+    <link rel="canonical" href="https://yunskim.github.io/mathematics/notes/2026-05-01-scroll-reveal-sample/">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="스크롤 스토리 샘플">
+    <meta property="og:description" content="Tufte CSS 노트 안에서 full-screen hero와 sticky visual step을 구현하는 scrollytelling 샘플.">
+    <meta property="og:url" content="https://yunskim.github.io/mathematics/notes/2026-05-01-scroll-reveal-sample/">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="/common/tufte.css">
+    <link rel="stylesheet" href="/common/site.css">
+    <link rel="stylesheet" href="/mathematics/styles.css">
+    <link rel="stylesheet" href="/mathematics/notes/scroll-reveal-sample.css">
+
+  </head>
+  <body>
+    <article class="math-note">
+      <nav class="site-nav" aria-label="사이트 네비게이션">
+        <a href="/">Home</a>
+        <a href="/boxoffice/">Boxoffice</a>
+        <a href="/starbucks/">Starbucks</a>
+        <a href="/zipcodes/">Zipcodes</a>
+        <a href="/apartments/">Apartments</a>
+        <a href="/mathematics/" aria-current="page">Mathematics</a>
+      </nav>
+      <p class="project-path"><a href="/mathematics/">Mathematics</a> / notes</p>
+      <h1>스크롤 스토리 샘플</h1>
+      <p class="subtitle">스크롤 위치에 따라 화면, 문단, 도표가 전환되는 스페셜 노트 예시.</p>
+      <p class="note-meta sans">2026-05-01</p>
+      <p class="note-tags sans"><span>sample</span> <span>interaction</span></p>
+      <div class="fullwidth story-note">
+  <nav class="story-nav sans" data-scroll-nav aria-label="스토리 섹션">
+    <a href="#story-start">START</a>
+    <a href="#story-risk">정의</a>
+    <a href="#story-chart">도표</a>
+    <a href="#story-end">END</a>
+  </nav>
+
+  <div class="story-dots" data-scroll-dots aria-label="스크롤 위치">
+    <button type="button" data-target="story-start" aria-label="첫 화면"></button>
+    <button type="button" data-target="story-risk" aria-label="정의"></button>
+    <button type="button" data-target="story-chart" aria-label="도표"></button>
+    <button type="button" data-target="story-end" aria-label="마지막"></button>
+  </div>
+
+  <section class="story-hero" id="story-start" data-section="story-start">
+    <p class="story-kicker">SCROLL SAMPLE</p>
+    <h2>스크롤로 읽는 수학 노트</h2>
+    <p>
+      긴 증명이나 계산 결과를 한 화면씩 넘기며 보여 주는 형식이다. 일반 Tufte
+      노트 안에서도 필요한 섹션만 이렇게 스페셜 페이지처럼 구성할 수 있다.
+    </p>
+  </section>
+
+  <section class="story-section" id="story-risk" data-section="story-risk">
+    <figure class="story-visual">
+      <svg viewBox="0 0 640 420" role="img" aria-label="단계별 곡선 변화">
+        <rect x="60" y="70" width="120" height="260" fill="var(--accent-soft)"></rect>
+        <rect x="260" y="70" width="120" height="260" fill="var(--accent-soft)"></rect>
+        <rect x="460" y="70" width="120" height="260" fill="var(--accent-soft)"></rect>
+        <path d="M80 285 C170 250, 210 170, 300 190 S455 300, 560 120" fill="none" stroke="var(--accent)" stroke-width="8"></path>
+        <circle cx="80" cy="285" r="10" fill="var(--accent)"></circle>
+        <circle cx="300" cy="190" r="10" fill="var(--accent)"></circle>
+        <circle cx="560" cy="120" r="10" fill="var(--accent)"></circle>
+      </svg>
+    </figure>
+    <div class="story-copy">
+      <div class="story-step" data-step>
+        <h3>한 번에 한 주장</h3>
+        <p>
+          스크롤이 특정 문단에 도달하면 문단이 밝아진다. 긴 설명을 단계별 주장으로
+          쪼개면 독자는 현재 보고 있는 수식이나 도표에 집중할 수 있다.
+        </p>
+      </div>
+      <div class="story-step" data-step>
+        <h3>시각 요소는 고정</h3>
+        <p>
+          왼쪽 도표는 sticky 상태로 머물고, 오른쪽 설명만 바뀐다. 증명의 가정,
+          중간 단계, 결론이 같은 그림 위에서 어떻게 달라지는지 보여 주기에 좋다.
+        </p>
+      </div>
+      <div class="story-step" data-step>
+        <h3>Tufte 흐름과 병행</h3>
+        <p>
+          필요한 구간만 full-screen으로 쓰고, 나머지는 일반 노트처럼 쓸 수 있다.
+          즉 하나의 노트 안에서 논문식 설명과 스토리텔링 설명을 섞을 수 있다.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="story-section" id="story-chart" data-section="story-chart">
+    <figure class="story-visual">
+      <svg viewBox="0 0 640 420" role="img" aria-label="작은 배수 도표 예시">
+        <g transform="translate(70 80)">
+          <text x="0" y="-24" fill="currentColor">01</text>
+          <line x1="0" y1="220" x2="190" y2="220" stroke="currentColor"></line>
+          <polyline points="0,190 40,150 80,160 120,80 180,50" fill="none" stroke="var(--accent)" stroke-width="5"></polyline>
+        </g>
+        <g transform="translate(370 80)">
+          <text x="0" y="-24" fill="currentColor">02</text>
+          <line x1="0" y1="220" x2="190" y2="220" stroke="currentColor"></line>
+          <polyline points="0,60 40,100 80,130 120,170 180,190" fill="none" stroke="var(--accent)" stroke-width="5"></polyline>
+        </g>
+      </svg>
+    </figure>
+    <div class="story-copy">
+      <div class="story-step" data-step>
+        <h3>여러 지표를 나란히</h3>
+        <p>
+          참고 페이지처럼 항목별 지표를 나누고, 독자가 선택하거나 스크롤할 때
+          강조 지표를 바꾸는 방식으로 확장할 수 있다.
+        </p>
+      </div>
+      <div class="story-step" data-step>
+        <h3>텍스트는 짧게</h3>
+        <p>
+          이 형식에서는 문단을 짧게 유지하는 편이 낫다. 화면 하나가 하나의
+          메시지를 갖도록 설계하면 모바일에서도 읽기 쉽다.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="story-ending" id="story-end" data-section="story-end">
+    <h2>일반 노트로 돌아가기</h2>
+    <p>
+      이 샘플은 한 노트 전체를 스페셜 기사처럼 구성했지만, 실제 글에서는
+      필요한 부분만 story block으로 만들 수 있다. 스크립트가 길어지면 front
+      matter의 <code>scripts</code> 필드로 분리하면 된다.
+    </p>
+  </section>
+</div>
+      
+      <section aria-labelledby="related-notes-heading">
+        <h2 id="related-notes-heading">관련 노트</h2>
+        <ol class="related-notes sans">
+          <li><a href="/mathematics/notes/2026-05-01-first-note/">첫 번째 수학 노트</a></li>
+        </ol>
+      </section>
+    </article>
+    <script>
+      (() => {
+        const steps = document.querySelectorAll("[data-step]");
+        const sections = document.querySelectorAll("[data-section]");
+        const navLinks = document.querySelectorAll("[data-scroll-nav] a");
+        const dots = document.querySelectorAll("[data-scroll-dots] button");
+
+        const stepObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+            }
+          });
+        }, { threshold: 0.35 });
+
+        const sectionObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            const id = entry.target.dataset.section;
+            navLinks.forEach((link) => {
+              link.classList.toggle("is-active", link.getAttribute("href") === `#${id}`);
+            });
+            dots.forEach((dot) => {
+              dot.classList.toggle("is-active", dot.dataset.target === id);
+            });
+          });
+        }, { threshold: 0.48 });
+
+        dots.forEach((dot) => {
+          dot.addEventListener("click", () => {
+            document.getElementById(dot.dataset.target)?.scrollIntoView({ behavior: "smooth" });
+          });
+        });
+
+        steps.forEach((step) => stepObserver.observe(step));
+        sections.forEach((section) => sectionObserver.observe(section));
+      })();
+    </script>
+  </body>
+</html>

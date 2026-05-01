@@ -1,0 +1,993 @@
+{
+  "apartment": "파크리오",
+  "query_address": "서울특별시 송파구 신천동 17 파크리오",
+  "source_csv": "apartments/data/downloads/songpa_11710_apartment_trades/apartment_trades_songpa_11710_200601_202604.csv",
+  "generated_at": "2026-05-01T16:38:47+0900",
+  "geocode": {
+    "status": "ok",
+    "lat": 37.5205366173754,
+    "lng": 127.10615089337,
+    "address_name": "서울 송파구 신천동 17",
+    "address_type": "REGION_ADDR",
+    "road_address_name": "서울 송파구 올림픽로 435",
+    "result_count": 1
+  },
+  "summary": {
+    "trade_count": 5166,
+    "first_trade_date": "2008-09-06",
+    "last_trade_date": "2026-04-24",
+    "min_deal_amount_만원": 15000,
+    "max_deal_amount_만원": 385000,
+    "most_common_area_buckets": [
+      {
+        "area_bucket": "80㎡대",
+        "count": 2943
+      },
+      {
+        "area_bucket": "60㎡대",
+        "count": 1039
+      },
+      {
+        "area_bucket": "120㎡대",
+        "count": 422
+      },
+      {
+        "area_bucket": "40㎡대",
+        "count": 386
+      },
+      {
+        "area_bucket": "140㎡대",
+        "count": 376
+      }
+    ],
+    "trend_groups": [
+      {
+        "group": "85㎡대",
+        "count": 2943
+      },
+      {
+        "group": "기타 면적",
+        "count": 2223
+      }
+    ],
+    "floor_count": 36
+  },
+  "quarterly_trends": [
+    {
+      "quarter": "2008-Q3",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 2,
+          "median_price_per_pyeong_만원": 3372.5
+        },
+        "기타 면적": {
+          "trade_count": 1,
+          "median_price_per_pyeong_만원": 3143.1
+        }
+      }
+    },
+    {
+      "quarter": "2008-Q4",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 13,
+          "median_price_per_pyeong_만원": 2924.1
+        },
+        "기타 면적": {
+          "trade_count": 24,
+          "median_price_per_pyeong_만원": 2861.9
+        }
+      }
+    },
+    {
+      "quarter": "2009-Q1",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 23,
+          "median_price_per_pyeong_만원": 3138.5
+        },
+        "기타 면적": {
+          "trade_count": 38,
+          "median_price_per_pyeong_만원": 3196.3
+        }
+      }
+    },
+    {
+      "quarter": "2009-Q2",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 40,
+          "median_price_per_pyeong_만원": 3397.3
+        },
+        "기타 면적": {
+          "trade_count": 28,
+          "median_price_per_pyeong_만원": 3560.0
+        }
+      }
+    },
+    {
+      "quarter": "2009-Q3",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 21,
+          "median_price_per_pyeong_만원": 3621.2
+        },
+        "기타 면적": {
+          "trade_count": 34,
+          "median_price_per_pyeong_만원": 3752.3
+        }
+      }
+    },
+    {
+      "quarter": "2009-Q4",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 11,
+          "median_price_per_pyeong_만원": 3465.4
+        },
+        "기타 면적": {
+          "trade_count": 11,
+          "median_price_per_pyeong_만원": 3658.5
+        }
+      }
+    },
+    {
+      "quarter": "2010-Q1",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 10,
+          "median_price_per_pyeong_만원": 3592.4
+        },
+        "기타 면적": {
+          "trade_count": 11,
+          "median_price_per_pyeong_만원": 3649.1
+        }
+      }
+    },
+    {
+      "quarter": "2010-Q2",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 10,
+          "median_price_per_pyeong_만원": 3212.3
+        },
+        "기타 면적": {
+          "trade_count": 9,
+          "median_price_per_pyeong_만원": 3788.3
+        }
+      }
+    },
+    {
+      "quarter": "2010-Q3",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 18,
+          "median_price_per_pyeong_만원": 3259.2
+        },
+        "기타 면적": {
+          "trade_count": 21,
+          "median_price_per_pyeong_만원": 3533.3
+        }
+      }
+    },
+    {
+      "quarter": "2010-Q4",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 38,
+          "median_price_per_pyeong_만원": 3390.0
+        },
+        "기타 면적": {
+          "trade_count": 29,
+          "median_price_per_pyeong_만원": 3752.3
+        }
+      }
+    },
+    {
+      "quarter": "2011-Q1",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 24,
+          "median_price_per_pyeong_만원": 3426.5
+        },
+        "기타 면적": {
+          "trade_count": 20,
+          "median_price_per_pyeong_만원": 3958.4
+        }
+      }
+    },
+    {
+      "quarter": "2011-Q2",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 20,
+          "median_price_per_pyeong_만원": 3311.8
+        },
+        "기타 면적": {
+          "trade_count": 15,
+          "median_price_per_pyeong_만원": 3755.3
+        }
+      }
+    },
+    {
+      "quarter": "2011-Q3",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 35,
+          "median_price_per_pyeong_만원": 3314.0
+        },
+        "기타 면적": {
+          "trade_count": 21,
+          "median_price_per_pyeong_만원": 3970.3
+        }
+      }
+    },
+    {
+      "quarter": "2011-Q4",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 33,
+          "median_price_per_pyeong_만원": 3231.8
+        },
+        "기타 면적": {
+          "trade_count": 26,
+          "median_price_per_pyeong_만원": 3755.3
+        }
+      }
+    },
+    {
+      "quarter": "2012-Q1",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 21,
+          "median_price_per_pyeong_만원": 3187.3
+        },
+        "기타 면적": {
+          "trade_count": 16,
+          "median_price_per_pyeong_만원": 3579.5
+        }
+      }
+    },
+    {
+      "quarter": "2012-Q2",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 33,
+          "median_price_per_pyeong_만원": 3080.0
+        },
+        "기타 면적": {
+          "trade_count": 30,
+          "median_price_per_pyeong_만원": 3534.4
+        }
+      }
+    },
+    {
+      "quarter": "2012-Q3",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 44,
+          "median_price_per_pyeong_만원": 2883.2
+        },
+        "기타 면적": {
+          "trade_count": 30,
+          "median_price_per_pyeong_만원": 3134.7
+        }
+      }
+    },
+    {
+      "quarter": "2012-Q4",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 58,
+          "median_price_per_pyeong_만원": 2915.4
+        },
+        "기타 면적": {
+          "trade_count": 41,
+          "median_price_per_pyeong_만원": 3367.7
+        }
+      }
+    },
+    {
+      "quarter": "2013-Q1",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 63,
+          "median_price_per_pyeong_만원": 2970.9
+        },
+        "기타 면적": {
+          "trade_count": 40,
+          "median_price_per_pyeong_만원": 3446.1
+        }
+      }
+    },
+    {
+      "quarter": "2013-Q2",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 50,
+          "median_price_per_pyeong_만원": 3146.2
+        },
+        "기타 면적": {
+          "trade_count": 46,
+          "median_price_per_pyeong_만원": 3595.2
+        }
+      }
+    },
+    {
+      "quarter": "2013-Q3",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 30,
+          "median_price_per_pyeong_만원": 3138.4
+        },
+        "기타 면적": {
+          "trade_count": 24,
+          "median_price_per_pyeong_만원": 3567.6
+        }
+      }
+    },
+    {
+      "quarter": "2013-Q4",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 50,
+          "median_price_per_pyeong_만원": 3179.4
+        },
+        "기타 면적": {
+          "trade_count": 51,
+          "median_price_per_pyeong_만원": 3653.8
+        }
+      }
+    },
+    {
+      "quarter": "2014-Q1",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 66,
+          "median_price_per_pyeong_만원": 3280.8
+        },
+        "기타 면적": {
+          "trade_count": 38,
+          "median_price_per_pyeong_만원": 3752.3
+        }
+      }
+    },
+    {
+      "quarter": "2014-Q2",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 33,
+          "median_price_per_pyeong_만원": 3216.5
+        },
+        "기타 면적": {
+          "trade_count": 20,
+          "median_price_per_pyeong_만원": 3752.3
+        }
+      }
+    },
+    {
+      "quarter": "2014-Q3",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 80,
+          "median_price_per_pyeong_만원": 3275.0
+        },
+        "기타 면적": {
+          "trade_count": 37,
+          "median_price_per_pyeong_만원": 3749.7
+        }
+      }
+    },
+    {
+      "quarter": "2014-Q4",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 40,
+          "median_price_per_pyeong_만원": 3268.8
+        },
+        "기타 면적": {
+          "trade_count": 27,
+          "median_price_per_pyeong_만원": 3799.2
+        }
+      }
+    },
+    {
+      "quarter": "2015-Q1",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 83,
+          "median_price_per_pyeong_만원": 3290.2
+        },
+        "기타 면적": {
+          "trade_count": 48,
+          "median_price_per_pyeong_만원": 3818.7
+        }
+      }
+    },
+    {
+      "quarter": "2015-Q2",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 65,
+          "median_price_per_pyeong_만원": 3325.7
+        },
+        "기타 면적": {
+          "trade_count": 51,
+          "median_price_per_pyeong_만원": 3942.7
+        }
+      }
+    },
+    {
+      "quarter": "2015-Q3",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 92,
+          "median_price_per_pyeong_만원": 3407.0
+        },
+        "기타 면적": {
+          "trade_count": 52,
+          "median_price_per_pyeong_만원": 4025.4
+        }
+      }
+    },
+    {
+      "quarter": "2015-Q4",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 64,
+          "median_price_per_pyeong_만원": 3465.4
+        },
+        "기타 면적": {
+          "trade_count": 62,
+          "median_price_per_pyeong_만원": 4102.9
+        }
+      }
+    },
+    {
+      "quarter": "2016-Q1",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 45,
+          "median_price_per_pyeong_만원": 3430.9
+        },
+        "기타 면적": {
+          "trade_count": 28,
+          "median_price_per_pyeong_만원": 4091.9
+        }
+      }
+    },
+    {
+      "quarter": "2016-Q2",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 138,
+          "median_price_per_pyeong_만원": 3504.4
+        },
+        "기타 면적": {
+          "trade_count": 74,
+          "median_price_per_pyeong_만원": 4226.0
+        }
+      }
+    },
+    {
+      "quarter": "2016-Q3",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 115,
+          "median_price_per_pyeong_만원": 3648.4
+        },
+        "기타 면적": {
+          "trade_count": 72,
+          "median_price_per_pyeong_만원": 4121.9
+        }
+      }
+    },
+    {
+      "quarter": "2016-Q4",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 50,
+          "median_price_per_pyeong_만원": 3803.7
+        },
+        "기타 면적": {
+          "trade_count": 33,
+          "median_price_per_pyeong_만원": 3756.1
+        }
+      }
+    },
+    {
+      "quarter": "2017-Q1",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 39,
+          "median_price_per_pyeong_만원": 3738.0
+        },
+        "기타 면적": {
+          "trade_count": 34,
+          "median_price_per_pyeong_만원": 4657.8
+        }
+      }
+    },
+    {
+      "quarter": "2017-Q2",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 126,
+          "median_price_per_pyeong_만원": 3935.8
+        },
+        "기타 면적": {
+          "trade_count": 80,
+          "median_price_per_pyeong_만원": 3777.9
+        }
+      }
+    },
+    {
+      "quarter": "2017-Q3",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 50,
+          "median_price_per_pyeong_만원": 4500.2
+        },
+        "기타 면적": {
+          "trade_count": 62,
+          "median_price_per_pyeong_만원": 4008.9
+        }
+      }
+    },
+    {
+      "quarter": "2017-Q4",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 85,
+          "median_price_per_pyeong_만원": 4678.5
+        },
+        "기타 면적": {
+          "trade_count": 61,
+          "median_price_per_pyeong_만원": 4690.4
+        }
+      }
+    },
+    {
+      "quarter": "2018-Q1",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 49,
+          "median_price_per_pyeong_만원": 5458.3
+        },
+        "기타 면적": {
+          "trade_count": 50,
+          "median_price_per_pyeong_만원": 4769.9
+        }
+      }
+    },
+    {
+      "quarter": "2018-Q2",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 8,
+          "median_price_per_pyeong_만원": 5276.0
+        },
+        "기타 면적": {
+          "trade_count": 3,
+          "median_price_per_pyeong_만원": 4087.4
+        }
+      }
+    },
+    {
+      "quarter": "2018-Q3",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 51,
+          "median_price_per_pyeong_만원": 5602.4
+        },
+        "기타 면적": {
+          "trade_count": 44,
+          "median_price_per_pyeong_만원": 6357.9
+        }
+      }
+    },
+    {
+      "quarter": "2018-Q4",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 5,
+          "median_price_per_pyeong_만원": 5848.2
+        },
+        "기타 면적": {
+          "trade_count": 5,
+          "median_price_per_pyeong_만원": 6913.6
+        }
+      }
+    },
+    {
+      "quarter": "2019-Q1",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 13,
+          "median_price_per_pyeong_만원": 5243.9
+        },
+        "기타 면적": {
+          "trade_count": 9,
+          "median_price_per_pyeong_만원": 6148.4
+        }
+      }
+    },
+    {
+      "quarter": "2019-Q2",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 66,
+          "median_price_per_pyeong_만원": 5610.6
+        },
+        "기타 면적": {
+          "trade_count": 64,
+          "median_price_per_pyeong_만원": 6592.8
+        }
+      }
+    },
+    {
+      "quarter": "2019-Q3",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 73,
+          "median_price_per_pyeong_만원": 6074.2
+        },
+        "기타 면적": {
+          "trade_count": 63,
+          "median_price_per_pyeong_만원": 7223.2
+        }
+      }
+    },
+    {
+      "quarter": "2019-Q4",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 82,
+          "median_price_per_pyeong_만원": 6559.7
+        },
+        "기타 면적": {
+          "trade_count": 48,
+          "median_price_per_pyeong_만원": 7712.3
+        }
+      }
+    },
+    {
+      "quarter": "2020-Q1",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 11,
+          "median_price_per_pyeong_만원": 6705.9
+        },
+        "기타 면적": {
+          "trade_count": 8,
+          "median_price_per_pyeong_만원": 7946.5
+        }
+      }
+    },
+    {
+      "quarter": "2020-Q2",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 70,
+          "median_price_per_pyeong_만원": 6682.1
+        },
+        "기타 면적": {
+          "trade_count": 63,
+          "median_price_per_pyeong_만원": 7692.2
+        }
+      }
+    },
+    {
+      "quarter": "2020-Q3",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 29,
+          "median_price_per_pyeong_만원": 7787.5
+        },
+        "기타 면적": {
+          "trade_count": 23,
+          "median_price_per_pyeong_만원": 8911.7
+        }
+      }
+    },
+    {
+      "quarter": "2020-Q4",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 47,
+          "median_price_per_pyeong_만원": 7787.5
+        },
+        "기타 면적": {
+          "trade_count": 26,
+          "median_price_per_pyeong_만원": 9005.5
+        }
+      }
+    },
+    {
+      "quarter": "2021-Q1",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 25,
+          "median_price_per_pyeong_만원": 8293.7
+        },
+        "기타 면적": {
+          "trade_count": 12,
+          "median_price_per_pyeong_만원": 7053.0
+        }
+      }
+    },
+    {
+      "quarter": "2021-Q2",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 11,
+          "median_price_per_pyeong_만원": 8176.9
+        },
+        "기타 면적": {
+          "trade_count": 10,
+          "median_price_per_pyeong_만원": 8194.1
+        }
+      }
+    },
+    {
+      "quarter": "2021-Q3",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 27,
+          "median_price_per_pyeong_만원": 8760.9
+        },
+        "기타 면적": {
+          "trade_count": 23,
+          "median_price_per_pyeong_만원": 9815.3
+        }
+      }
+    },
+    {
+      "quarter": "2021-Q4",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 6,
+          "median_price_per_pyeong_만원": 9068.6
+        },
+        "기타 면적": {
+          "trade_count": 6,
+          "median_price_per_pyeong_만원": 8223.6
+        }
+      }
+    },
+    {
+      "quarter": "2022-Q1",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 6,
+          "median_price_per_pyeong_만원": 8496.1
+        },
+        "기타 면적": {
+          "trade_count": 3,
+          "median_price_per_pyeong_만원": 10752.8
+        }
+      }
+    },
+    {
+      "quarter": "2022-Q2",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 11,
+          "median_price_per_pyeong_만원": 8577.3
+        },
+        "기타 면적": {
+          "trade_count": 7,
+          "median_price_per_pyeong_만원": 9474.6
+        }
+      }
+    },
+    {
+      "quarter": "2022-Q3",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 2,
+          "median_price_per_pyeong_만원": 8109.5
+        },
+        "기타 면적": {
+          "trade_count": 2,
+          "median_price_per_pyeong_만원": 7941.1
+        }
+      }
+    },
+    {
+      "quarter": "2022-Q4",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 13,
+          "median_price_per_pyeong_만원": 6627.9
+        },
+        "기타 면적": {
+          "trade_count": 4,
+          "median_price_per_pyeong_만원": 7832.8
+        }
+      }
+    },
+    {
+      "quarter": "2023-Q1",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 42,
+          "median_price_per_pyeong_만원": 7008.7
+        },
+        "기타 면적": {
+          "trade_count": 27,
+          "median_price_per_pyeong_만원": 8271.4
+        }
+      }
+    },
+    {
+      "quarter": "2023-Q2",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 37,
+          "median_price_per_pyeong_만원": 7592.8
+        },
+        "기타 면적": {
+          "trade_count": 39,
+          "median_price_per_pyeong_만원": 8547.1
+        }
+      }
+    },
+    {
+      "quarter": "2023-Q3",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 24,
+          "median_price_per_pyeong_만원": 8415.9
+        },
+        "기타 면적": {
+          "trade_count": 36,
+          "median_price_per_pyeong_만원": 8762.4
+        }
+      }
+    },
+    {
+      "quarter": "2023-Q4",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 14,
+          "median_price_per_pyeong_만원": 7748.5
+        },
+        "기타 면적": {
+          "trade_count": 7,
+          "median_price_per_pyeong_만원": 8583.4
+        }
+      }
+    },
+    {
+      "quarter": "2024-Q1",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 24,
+          "median_price_per_pyeong_만원": 8031.5
+        },
+        "기타 면적": {
+          "trade_count": 20,
+          "median_price_per_pyeong_만원": 7161.7
+        }
+      }
+    },
+    {
+      "quarter": "2024-Q2",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 87,
+          "median_price_per_pyeong_만원": 8157.4
+        },
+        "기타 면적": {
+          "trade_count": 52,
+          "median_price_per_pyeong_만원": 9740.9
+        }
+      }
+    },
+    {
+      "quarter": "2024-Q3",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 55,
+          "median_price_per_pyeong_만원": 8741.4
+        },
+        "기타 면적": {
+          "trade_count": 38,
+          "median_price_per_pyeong_만원": 8395.8
+        }
+      }
+    },
+    {
+      "quarter": "2024-Q4",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 27,
+          "median_price_per_pyeong_만원": 9045.2
+        },
+        "기타 면적": {
+          "trade_count": 21,
+          "median_price_per_pyeong_만원": 9474.6
+        }
+      }
+    },
+    {
+      "quarter": "2025-Q1",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 86,
+          "median_price_per_pyeong_만원": 9380.3
+        },
+        "기타 면적": {
+          "trade_count": 87,
+          "median_price_per_pyeong_만원": 10807.9
+        }
+      }
+    },
+    {
+      "quarter": "2025-Q2",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 42,
+          "median_price_per_pyeong_만원": 10182.1
+        },
+        "기타 면적": {
+          "trade_count": 16,
+          "median_price_per_pyeong_만원": 12936.7
+        }
+      }
+    },
+    {
+      "quarter": "2025-Q3",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 16,
+          "median_price_per_pyeong_만원": 11306.5
+        },
+        "기타 면적": {
+          "trade_count": 18,
+          "median_price_per_pyeong_만원": 12100.6
+        }
+      }
+    },
+    {
+      "quarter": "2025-Q4",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 37,
+          "median_price_per_pyeong_만원": 11501.4
+        },
+        "기타 면적": {
+          "trade_count": 21,
+          "median_price_per_pyeong_만원": 14524.2
+        }
+      }
+    },
+    {
+      "quarter": "2026-Q1",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 19,
+          "median_price_per_pyeong_만원": 11603.3
+        },
+        "기타 면적": {
+          "trade_count": 18,
+          "median_price_per_pyeong_만원": 13772.3
+        }
+      }
+    },
+    {
+      "quarter": "2026-Q2",
+      "groups": {
+        "85㎡대": {
+          "trade_count": 10,
+          "median_price_per_pyeong_만원": 10909.5
+        },
+        "기타 면적": {
+          "trade_count": 5,
+          "median_price_per_pyeong_만원": 14116.4
+        }
+      }
+    }
+  ]
+}

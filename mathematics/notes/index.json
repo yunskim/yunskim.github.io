@@ -1,0 +1,38 @@
+[
+  {
+    "title": "스크롤 스토리 샘플",
+    "slug": "2026-05-01-scroll-reveal-sample",
+    "date": "2026-05-01",
+    "tags": [
+      "sample",
+      "interaction"
+    ],
+    "summary": "스크롤 위치에 따라 화면, 문단, 도표가 전환되는 스페셜 노트 예시.",
+    "description": "Tufte CSS 노트 안에서 full-screen hero와 sticky visual step을 구현하는 scrollytelling 샘플.",
+    "href": "/mathematics/notes/2026-05-01-scroll-reveal-sample/",
+    "canonical": "/mathematics/notes/2026-05-01-scroll-reveal-sample/",
+    "og_image": "",
+    "mathjax": false,
+    "scroll_reveal": true,
+    "related": [
+      "2026-05-01-first-note"
+    ]
+  },
+  {
+    "title": "첫 번째 수학 노트",
+    "slug": "2026-05-01-first-note",
+    "date": "2026-05-01",
+    "tags": [
+      "example",
+      "html"
+    ],
+    "summary": "mathematics 프로젝트에서 HTML 원본 노트를 site 산출물로 빌드하는 예시.",
+    "description": "HTML fragment를 Tufte CSS 페이지로 감싸고 링크 미리보기용 meta 정보를 생성하는 예시.",
+    "href": "/mathematics/notes/2026-05-01-first-note/",
+    "canonical": "/mathematics/notes/2026-05-01-first-note/",
+    "og_image": "",
+    "mathjax": true,
+    "scroll_reveal": false,
+    "related": []
+  }
+]

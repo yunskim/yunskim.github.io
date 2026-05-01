@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ko" data-data-version="2026-04-28-weekly-unified">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>한국 영화 박스 오피스</title>
+    <meta
+      name="description"
+      content="영화진흥위원회 일별 박스오피스 데이터로 살펴보는 한국 영화 관객 수 trajectory."
+    >
+    <link rel="stylesheet" href="/common/tufte.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700;800&family=Noto+Serif+KR:wght@400;600&display=swap">
+    <link rel="stylesheet" href="/common/site.css">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <article>
+      <nav class="site-nav" aria-label="사이트 네비게이션">
+        <a href="/">Home</a>
+        <a href="/boxoffice/" aria-current="page">Boxoffice</a>
+        <a href="/starbucks/">Starbucks</a>
+        <a href="/zipcodes/">Zipcodes</a>
+        <a href="/apartments/">Apartments</a>
+        <a href="/mathematics/">Mathematics</a>
+      </nav>
+      <h1>한국 영화 박스 오피스</h1>
+      <p class="subtitle">KOFIC nationwide daily box office</p>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-controls="chartControls" aria-expanded="false" aria-label="차트 설정 열기">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <section class="toolbar" id="chartControls" aria-label="Chart controls">
+        <label class="field">
+          <span>기준일</span>
+          <select id="dateFilter"></select>
+        </label>
+        <label class="field">
+          <span>영화</span>
+          <select id="movieFilter"></select>
+        </label>
+      </section>
+
+      <section class="selected-summary" id="selectedSummary" aria-live="polite"></section>
+      <section class="movie-chips" id="movieChips" aria-label="Movie quick selector"></section>
+
+      <h2>현재 개봉 영화 trajectory</h2>
+      <figure class="chart-panel">
+        <svg id="trajectoryChart" role="img" aria-label="Screen count and audience per screen trajectories"></svg>
+        <div id="tooltip" class="tooltip" hidden></div>
+      </figure>
+
+      <figure class="chart-panel concentration-panel">
+        <svg id="concentrationChart" role="img" aria-label="Screen share and audience share bubble chart"></svg>
+        <div id="concentrationTooltip" class="tooltip" hidden></div>
+      </figure>
+
+      <h2>역대 누적 관객 Top 10</h2>
+      <section class="selected-summary" id="allTimeSummary" aria-live="polite"></section>
+      <section class="movie-chips" id="allTimeChips" aria-label="All-time movie quick selector"></section>
+      <figure class="chart-panel all-time-panel">
+        <svg id="allTimeTrajectoryChart" role="img" aria-label="All-time top audience movie trajectories"></svg>
+        <div id="allTimeTooltip" class="tooltip" hidden></div>
+      </figure>
+
+      <h2>첫 번째 spell 최장 연속 관측 Top 10</h2>
+      <section class="selected-summary" id="longestSpellSummary" aria-live="polite"></section>
+      <section class="movie-chips" id="longestSpellChips" aria-label="Longest first spell observation movie quick selector"></section>
+      <figure class="chart-panel longest-spell-panel">
+        <svg id="longestSpellTrajectoryChart" role="img" aria-label="Longest first spell observation movie trajectories"></svg>
+        <div id="longestSpellTooltip" class="tooltip" hidden></div>
+      </figure>
+
+      <h2>첫 주 스크린당 관객 반감기 Top 10</h2>
+      <section class="selected-summary" id="halfLifeSummary" aria-live="polite"></section>
+      <section class="movie-chips" id="halfLifeChips" aria-label="First week screen audience half-life movie quick selector"></section>
+      <figure class="chart-panel half-life-panel">
+        <svg id="halfLifeTrajectoryChart" role="img" aria-label="First week screen audience half-life movie trajectories"></svg>
+        <div id="halfLifeTooltip" class="tooltip" hidden></div>
+      </figure>
+
+      <section class="movie-list" id="movieList" aria-label="Current movies"></section>
+
+      <h2>영화 검색 trajectory</h2>
+      <section class="search-panel" aria-label="Movie trajectory search">
+        <label class="search-field">
+          <span>영화 검색</span>
+          <input id="movieSearchInput" type="search" autocomplete="off" placeholder="영화명 또는 영화코드">
+        </label>
+        <div class="search-results" id="movieSearchResults" aria-live="polite"></div>
+      </section>
+      <section class="selected-summary" id="searchSummary" aria-live="polite"></section>
+      <section class="movie-chips" id="searchChips" aria-label="Selected searched movie quick selector"></section>
+      <figure class="chart-panel search-trajectory-panel">
+        <svg id="searchTrajectoryChart" role="img" aria-label="Searched movie trajectories"></svg>
+        <div id="searchTooltip" class="tooltip" hidden></div>
+      </figure>
+    </article>
+
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="app.js?v=2026-04-28-weekly-unified"></script>
+  </body>
+</html>

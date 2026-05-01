@@ -1,0 +1,93 @@
+:root {
+  color-scheme: light dark;
+  --ink: #161616;
+  --muted: #5e5a54;
+  --rule: #d8d1c5;
+  --accent: #0f6b63;
+  --accent-soft: #e6f1ef;
+  --paper: #fffff8;
+  --panel: #fffdf3;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #ddd;
+    --muted: #aaa;
+    --rule: #555;
+    --accent: #8fd3c8;
+    --accent-soft: #263c38;
+    --paper: #151515;
+    --panel: #1c1c1c;
+  }
+}
+
+@font-face {
+  font-family: "APL386 Unicode";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("https://cdn.jsdelivr.net/gh/abrudz/APL386@master/APL386.ttf") format("truetype");
+}
+
+body {
+  color: var(--ink);
+  background-color: var(--paper);
+  font-family: et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, "Noto Serif KR", "Source Han Serif KR", "본명조", serif;
+}
+
+html {
+  background-color: var(--paper);
+}
+
+.sans,
+button,
+input,
+select,
+textarea {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Noto Sans KR", "Source Han Sans KR", "본고딕", sans-serif;
+}
+
+code,
+pre > code,
+kbd,
+samp {
+  font-family: "APL386 Unicode", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+.project-path {
+  color: var(--muted);
+  font-size: 1.1rem;
+}
+
+footer p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1rem;
+  margin: 0 0 3rem;
+  padding: 0;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Noto Sans KR", "Source Han Sans KR", "본고딕", sans-serif;
+  font-size: 1rem;
+}
+
+.site-nav a {
+  color: var(--muted);
+  text-decoration: none;
+  text-shadow: none;
+  background: transparent;
+}
+
+.site-nav a[aria-current="page"] {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.site-nav a:focus,
+.site-nav a:hover {
+  background: var(--accent-soft);
+  color: var(--ink);
+}

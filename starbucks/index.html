@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>스타벅스 입점 H3 히트맵</title>
+    <link rel="stylesheet" href="/common/tufte.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="stylesheet" href="/common/site.css">
+    <link rel="stylesheet" href="/starbucks/styles.css">
+  </head>
+  <body>
+    <article>
+      <nav class="site-nav" aria-label="사이트 네비게이션">
+        <a href="/">Home</a>
+        <a href="/boxoffice/">Boxoffice</a>
+        <a href="/starbucks/" aria-current="page">Starbucks</a>
+        <a href="/zipcodes/">Zipcodes</a>
+        <a href="/apartments/">Apartments</a>
+        <a href="/mathematics/">Mathematics</a>
+      </nav>
+      <h1>스타벅스 입점 H3 히트맵</h1>
+      <p class="subtitle">
+        지방행정 인허가 자료를 바탕으로 스타벅스 입점을 시간적으로 재구성한다.
+      </p>
+
+        <section aria-labelledby="region-heading">
+          <h2 id="region-heading">지역별 입점</h2>
+          <p>
+            지도는 같은 H3 해상도에서 시작한다.<label for="sn-map-resolution" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-map-resolution" class="margin-toggle"><span class="sidenote" id="resolution-note">모든 지도는 같은 H3 해상도를 사용합니다.</span>
+          </p>
+          <figure class="time-controls fullwidth" role="group" aria-label="시점 설정">
+            <div>
+              <span>현재 시점</span>
+              <strong id="time-year">-</strong>
+            </div>
+            <input id="time-slider" type="range" min="0" max="0" value="0" step="1" aria-label="표시 월">
+            <button type="button" id="resume-animation" aria-pressed="false">재생</button>
+          </figure>
+          <section id="city-maps" aria-label="광역 지자체별 스타벅스 H3 지도"></section>
+        </section>
+
+        <section class="context-section" aria-labelledby="year-heading">
+          <h2 id="year-heading">연도별 스타벅스 입점</h2>
+          <figure id="year-chart" class="year-chart" aria-label="연도별 인허가와 폐업 막대 차트"></figure>
+        </section>
+    </article>
+
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="/starbucks/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,133 @@
+.location-summary {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.65rem;
+  margin: 1rem 0;
+}
+
+.location-summary div {
+  border-top: 1px solid var(--rule);
+  padding-top: 0.45rem;
+}
+
+.location-summary dt {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.location-summary dd {
+  margin: 0.2rem 0 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.map-canvas {
+  height: 54vh;
+  min-height: 28rem;
+  border: 1px solid var(--rule);
+  background: #eef1e8;
+}
+
+.map-note {
+  color: var(--muted);
+  font-size: 1rem;
+  margin-top: 0.55rem;
+}
+
+.leaflet-container {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Noto Sans KR", "Source Han Sans KR", "본고딕", sans-serif;
+}
+
+.trend-panel {
+  position: relative;
+}
+
+.trend-panel figcaption {
+  color: var(--muted);
+}
+
+.trend-panel figcaption code {
+  font-size: 0.95em;
+}
+
+.trend-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem 1rem;
+  margin: 0.2rem 0 0.8rem;
+}
+
+.trend-legend span {
+  display: inline-flex;
+  gap: 0.35rem;
+  align-items: center;
+  color: var(--muted);
+}
+
+.trend-legend i {
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 999px;
+}
+
+.trend-chart {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: 24rem;
+  margin-top: 1rem;
+  border: 1px solid var(--rule);
+  background: var(--panel);
+}
+
+.trend-chart text {
+  fill: var(--muted);
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Noto Sans KR", "Source Han Sans KR", "본고딕", sans-serif;
+  font-size: 13px;
+}
+
+.trend-chart .domain,
+.trend-chart .tick line {
+  stroke: var(--rule);
+}
+
+.trend-tooltip {
+  position: absolute;
+  min-width: 12rem;
+  border: 1px solid var(--rule);
+  padding: 0.45rem 0.55rem;
+  background: var(--paper);
+  box-shadow: 0 0.2rem 0.8rem rgb(0 0 0 / 12%);
+  color: var(--ink);
+  pointer-events: none;
+  z-index: 500;
+}
+
+.trend-tooltip strong,
+.trend-tooltip span {
+  display: block;
+}
+
+.trend-tooltip span {
+  color: var(--muted);
+}
+
+@media (max-width: 760px) {
+  .location-summary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  figure.trend-panel.fullwidth {
+    max-width: 100%;
+  }
+
+  .map-canvas {
+    height: 48vh;
+    min-height: 22rem;
+  }
+
+  .trend-chart {
+    height: 20rem;
+  }
+}

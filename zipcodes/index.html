@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>한국 우편번호 지도</title>
+    <meta
+      name="description"
+      content="한국 5자리 우편번호 prefix가 지역을 좁혀 가는 과정을 지도에서 살펴본다."
+    >
+    <link rel="stylesheet" href="/common/tufte.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="stylesheet" href="/common/site.css">
+    <link rel="stylesheet" href="/zipcodes/styles.css">
+  </head>
+  <body>
+    <article>
+      <nav class="site-nav" aria-label="사이트 네비게이션">
+        <a href="/">Home</a>
+        <a href="/boxoffice/">Boxoffice</a>
+        <a href="/starbucks/">Starbucks</a>
+        <a href="/zipcodes/" aria-current="page">Zipcodes</a>
+        <a href="/apartments/">Apartments</a>
+        <a href="/mathematics/">Mathematics</a>
+      </nav>
+
+      <h1>한국 우편번호 지도</h1>
+      <p class="subtitle">우편번호는 공간에 어떻게 대응되나?</p>
+
+      <section>
+        <p>
+          2015년 이후의 5자리 우편번호는 국가기초구역번호를 사용한다.
+          앞 2자리는 특별시·광역시·도를, 앞 3자리는 시·군·자치구 수준을,
+          뒤 2자리는 그 안의 일련번호를 나타낸다.
+          <label for="sn-source" class="margin-toggle sidenote-number"></label>
+          <input type="checkbox" id="sn-source" class="margin-toggle">
+          <span class="sidenote">
+            우정사업본부 설명에 따르면 앞 2자리는 광역 단위, 세 번째 자리는
+            시·군·자치구, 뒤 2자리는 북서에서 남동 방향의 일련번호 성격을 가진다.
+          </span>
+        </p>
+      </section>
+
+      <section aria-labelledby="explorer-heading">
+        <h2 id="explorer-heading">Prefix Explorer</h2>
+        <p id="prefix-summary" class="sans" aria-live="polite"></p>
+        <figure class="fullwidth">
+          <div class="controls">
+            <label>
+              <span>우편번호 prefix</span>
+              <input id="prefix-input" inputmode="numeric" pattern="[0-9]*" maxlength="5" aria-describedby="prefix-summary">
+            </label>
+            <menu id="quick-prefixes" class="quick-prefixes" aria-label="빠른 선택"></menu>
+          </div>
+          <div id="map" class="map-canvas" aria-label="우편번호 prefix 지도"></div>
+        </figure>
+      </section>
+
+      <section aria-labelledby="address-heading">
+        <h2 id="address-heading">주소 목록</h2>
+        <p id="address-summary" class="sans" aria-live="polite"></p>
+        <ol id="address-details" class="address-list" aria-live="polite"></ol>
+      </section>
+    </article>
+
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="/zipcodes/app.js"></script>
+  </body>
+</html>

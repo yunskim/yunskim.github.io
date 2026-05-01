@@ -1,0 +1,104 @@
+.topic-list {
+  padding-left: 1.4rem;
+}
+
+.topic-list li {
+  margin: 0.8rem 0;
+}
+
+.topic-list strong,
+.topic-list span {
+  display: block;
+}
+
+.topic-list span {
+  color: var(--muted);
+}
+
+.project-files {
+  display: grid;
+  gap: 0.7rem;
+  margin-top: 1rem;
+}
+
+.project-files div {
+  display: grid;
+  grid-template-columns: minmax(6rem, 8rem) minmax(0, 1fr);
+  gap: 0.8rem;
+  border-top: 1px solid var(--rule);
+  padding-top: 0.7rem;
+}
+
+.project-files dt {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.project-files dd {
+  margin: 0;
+  color: var(--muted);
+}
+
+.notes-list {
+  padding-left: 0;
+  list-style: none;
+}
+
+.notes-list li {
+  border-top: 1px solid var(--rule);
+  padding: 0.65rem 0;
+}
+
+.notes-list a,
+.notes-list span,
+.notes-list small,
+.note-tags span,
+.related-notes a {
+  display: block;
+}
+
+.notes-list a {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.notes-list span,
+.notes-list small,
+.note-meta,
+.note-tags {
+  color: var(--muted);
+}
+
+.note-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.note-tags span {
+  border: 1px solid var(--rule);
+  padding: 0.1rem 0.35rem;
+}
+
+.related-notes {
+  padding-left: 0;
+  list-style: none;
+}
+
+.related-notes li {
+  border-top: 1px solid var(--rule);
+  padding: 0.45rem 0;
+}
+
+.math-note figure svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 760px) {
+  .project-files div {
+    grid-template-columns: 1fr;
+    gap: 0.2rem;
+  }
+}

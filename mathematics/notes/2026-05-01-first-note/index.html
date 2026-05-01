@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>첫 번째 수학 노트</title>
+    <meta name="description" content="HTML fragment를 Tufte CSS 페이지로 감싸고 링크 미리보기용 meta 정보를 생성하는 예시.">
+    <link rel="canonical" href="https://yunskim.github.io/mathematics/notes/2026-05-01-first-note/">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="첫 번째 수학 노트">
+    <meta property="og:description" content="HTML fragment를 Tufte CSS 페이지로 감싸고 링크 미리보기용 meta 정보를 생성하는 예시.">
+    <meta property="og:url" content="https://yunskim.github.io/mathematics/notes/2026-05-01-first-note/">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="/common/tufte.css">
+    <link rel="stylesheet" href="/common/site.css">
+    <link rel="stylesheet" href="/mathematics/styles.css">
+
+  </head>
+  <body>
+    <article class="math-note">
+      <nav class="site-nav" aria-label="사이트 네비게이션">
+        <a href="/">Home</a>
+        <a href="/boxoffice/">Boxoffice</a>
+        <a href="/starbucks/">Starbucks</a>
+        <a href="/zipcodes/">Zipcodes</a>
+        <a href="/apartments/">Apartments</a>
+        <a href="/mathematics/" aria-current="page">Mathematics</a>
+      </nav>
+      <p class="project-path"><a href="/mathematics/">Mathematics</a> / notes</p>
+      <h1>첫 번째 수학 노트</h1>
+      <p class="subtitle">mathematics 프로젝트에서 HTML 원본 노트를 site 산출물로 빌드하는 예시.</p>
+      <p class="note-meta sans">2026-05-01</p>
+      <p class="note-tags sans"><span>example</span> <span>html</span></p>
+      <section>
+  <h2>목적</h2>
+  <p>
+    이 파일은 <code>mathematics/notes</code>에 두는 HTML 원본 노트 예시다.
+    빌드 스크립트는 이 fragment를 Tufte CSS가 적용된 페이지 안에 삽입하고,
+    <code>mathematics/site/notes</code> 아래 HTML과 <code>index.json</code>을
+    생성한다.
+  </p>
+</section>
+
+<section>
+  <h2>수식</h2>
+  <p>
+    MathJax를 켠 노트에서는 인라인 수식 \(e^{i\pi} + 1 = 0\)과 별도 행 수식을
+    사용할 수 있다.
+  </p>
+  <p>
+    \[
+      \int_{-\infty}^{\infty} e^{-x^2}\,dx = \sqrt{\pi}.
+    \]
+  </p>
+  <p>
+    분수와 극한도 본문 안에서 자연스럽게 쓸 수 있다.
+    \[
+      \lim_{n \to \infty}\left(1 + \frac{1}{n}\right)^n = e.
+    \]
+  </p>
+</section>
+
+<section>
+  <h2>전개와 행렬</h2>
+  <p>
+    여러 줄 전개는 <code>aligned</code> 환경을 사용한다.
+    \[
+      \begin{aligned}
+      (a + b)^2
+        &= (a + b)(a + b) \\
+        &= a^2 + 2ab + b^2.
+      \end{aligned}
+    \]
+  </p>
+  <p>
+    행렬은 <code>bmatrix</code>로 쓸 수 있다.
+    \[
+      A =
+      \begin{bmatrix}
+        1 & 2 \\
+        3 & 4
+      \end{bmatrix},
+      \qquad
+      \det(A) = -2.
+    \]
+  </p>
+</section>
+
+<section>
+  <h2>구간별 정의</h2>
+  <p>
+    경우를 나누는 함수는 <code>cases</code> 환경이 읽기 좋다.
+    \[
+      f(x) =
+      \begin{cases}
+        x^2, & x \ge 0, \\
+        -x, & x < 0.
+      \end{cases}
+    \]
+  </p>
+  <p>
+    합과 평균도 기본 TeX 표기를 그대로 쓴다.
+    \[
+      \bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i,
+      \qquad
+      \operatorname{Var}(X) = \mathbb{E}[X^2] - \mathbb{E}[X]^2.
+    \]
+  </p>
+</section>
+
+<section>
+  <h2>작성 규칙</h2>
+  <ul>
+    <li>파일명은 날짜와 짧은 slug를 함께 쓴다.</li>
+    <li>제목, 날짜, 태그, 요약은 front matter에 둔다.</li>
+    <li>본문에는 Tufte CSS가 기대하는 <code>section</code>, <code>figure</code>, <code>figcaption</code> 구조를 직접 쓴다.</li>
+    <li>차트가 필요하면 노트 내부에 <code>svg</code>와 <code>script</code>를 넣는다.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>간단한 도표</h2>
+  <figure class="fullwidth">
+    <svg id="example-note-chart" viewBox="0 0 640 180" role="img" aria-label="예시 막대 도표">
+      <line x1="40" y1="150" x2="600" y2="150" stroke="currentColor"></line>
+      <rect x="80" y="90" width="70" height="60" fill="var(--accent)"></rect>
+      <rect x="200" y="55" width="70" height="95" fill="var(--accent)"></rect>
+      <rect x="320" y="30" width="70" height="120" fill="var(--accent)"></rect>
+      <rect x="440" y="70" width="70" height="80" fill="var(--accent)"></rect>
+      <text x="80" y="170">A</text>
+      <text x="200" y="170">B</text>
+      <text x="320" y="170">C</text>
+      <text x="440" y="170">D</text>
+    </svg>
+    <figcaption class="sans">
+      노트 원본이 HTML이므로 필요한 경우 SVG, Canvas, D3 차트를 직접 넣을 수 있다.
+    </figcaption>
+  </figure>
+</section>
+      
+    </article>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [["\\(", "\\)"]],
+          displayMath: [["\\[", "\\]"]]
+        },
+        svg: {
+          fontCache: "global"
+        }
+      };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+  </body>
+</html>
