@@ -1,0 +1,208 @@
+.story-note {
+  color: var(--ink);
+  background: var(--paper);
+}
+
+.story-nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--rule);
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter: blur(12px);
+}
+
+.story-nav a {
+  color: var(--muted);
+  font-size: 0.9rem;
+  text-decoration: none;
+  text-shadow: none;
+  background: transparent;
+}
+
+.story-nav a.is-active {
+  color: var(--ink);
+  border-bottom: 1px solid var(--accent);
+}
+
+.story-hero {
+  min-height: 94vh;
+  display: grid;
+  align-content: end;
+  padding: 10vh min(8vw, 6rem);
+  background:
+    linear-gradient(180deg, transparent, var(--paper)),
+    radial-gradient(circle at 70% 30%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 28rem),
+    linear-gradient(135deg, var(--panel), var(--paper) 58%);
+}
+
+.story-kicker {
+  color: var(--accent);
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Noto Sans KR", "Source Han Sans KR", "본고딕", sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0;
+}
+
+.story-hero h2 {
+  max-width: 58rem;
+  margin: 1rem 0;
+  font-size: clamp(3rem, 9vw, 7rem);
+  line-height: 0.95;
+}
+
+.story-hero p {
+  max-width: 40rem;
+  width: auto;
+  color: var(--muted);
+  font-size: 1.35rem;
+  line-height: 1.8;
+}
+
+.story-section {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(18rem, 28rem);
+  gap: min(6vw, 5rem);
+  padding: 12vh min(8vw, 6rem);
+  border-top: 1px solid var(--rule);
+}
+
+.story-visual {
+  position: sticky;
+  top: 6rem;
+  align-self: start;
+  min-height: 72vh;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--rule);
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--accent) 10%, transparent) 1px, transparent 1px),
+    linear-gradient(180deg, color-mix(in srgb, var(--accent) 10%, transparent) 1px, transparent 1px),
+    var(--panel);
+  background-size: 2rem 2rem;
+}
+
+.story-visual svg {
+  width: min(42rem, 88%);
+  max-width: 100%;
+}
+
+.story-copy {
+  display: grid;
+  gap: 56vh;
+  align-content: start;
+  padding-top: 8vh;
+}
+
+.story-step {
+  min-height: 34vh;
+  padding: 1rem 0 1rem 1rem;
+  border-left: 2px solid var(--rule);
+  opacity: 0.28;
+  transform: translateY(1rem);
+  transition: opacity 360ms ease, transform 360ms ease, border-color 360ms ease;
+}
+
+.story-step.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  border-color: var(--accent);
+}
+
+.story-step h3 {
+  margin-top: 0;
+  font-size: 1.8rem;
+}
+
+.story-step p {
+  width: auto;
+  color: var(--muted);
+  font-size: 1.15rem;
+  line-height: 1.7;
+}
+
+.story-ending {
+  min-height: 86vh;
+  display: grid;
+  align-content: center;
+  padding: 10vh min(8vw, 6rem);
+  border-top: 1px solid var(--rule);
+}
+
+.story-ending p {
+  max-width: 42rem;
+  color: var(--muted);
+}
+
+.story-dots {
+  position: fixed;
+  right: calc(10vw + 1rem);
+  top: 50%;
+  z-index: 30;
+  display: grid;
+  gap: 0.45rem;
+  transform: translateY(-50%);
+}
+
+.story-dots button {
+  width: 0.7rem;
+  height: 0.7rem;
+  border: 1px solid var(--muted);
+  border-radius: 999px;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.story-dots button.is-active {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.story-note code {
+  color: var(--ink);
+}
+
+@media (max-width: 760px) {
+  .story-nav {
+    overflow-x: auto;
+    justify-content: start;
+  }
+
+  .story-hero {
+    padding: 10vh 8vw;
+  }
+
+  .story-section {
+    display: block;
+    padding: 8vh 8vw;
+  }
+
+  .story-visual {
+    position: relative;
+    top: auto;
+    min-height: 52vh;
+    margin-bottom: 10vh;
+  }
+
+  .story-copy {
+    gap: 28vh;
+    padding-top: 0;
+  }
+
+  .story-dots {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .story-step {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

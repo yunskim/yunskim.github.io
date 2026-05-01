@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Notebook</title>
+    <meta
+      name="description"
+      content="아이디어, 증명, 계산 실험을 HTML 노트로 정리하는 프로젝트."
+    >
+    <link rel="stylesheet" href="/common/tufte.css">
+    <link rel="stylesheet" href="/common/site.css">
+    <link rel="stylesheet" href="/notebook/styles.css">
+  </head>
+  <body>
+    <article>
+      <nav class="site-nav" aria-label="사이트 네비게이션">
+        <a href="/">Home</a>
+        <a href="/boxoffice/">Boxoffice</a>
+        <a href="/starbucks/">Starbucks</a>
+        <a href="/zipcodes/">Zipcodes</a>
+        <a href="/apartments/">Apartments</a>
+        <a href="/notebook/" aria-current="page">Notebook</a>
+      </nav>
+
+      <h1>Notebook</h1>
+      <p class="subtitle">증명, 계산, 시각화를 위한 HTML 노트 작업 공간</p>
+
+      <section>
+        <p>
+          이 프로젝트는 아이디어와 계산 결과를 짧은 HTML 노트로 정리하기
+          위한 출발점이다. 데이터와 생성 스크립트는 프로젝트 내부의
+          <code>data</code>, <code>scripts</code> 디렉터리에 두고, 공개 결과는
+          <code>site</code> 아래에서 제공한다.
+          <label for="sn-layout" class="margin-toggle sidenote-number"></label>
+          <input type="checkbox" id="sn-layout" class="margin-toggle">
+          <span class="sidenote">
+            로컬 테스트 서버에서는 <code>/notebook/</code> 요청이
+            <code>notebook/site/</code>로 매핑된다.
+          </span>
+        </p>
+      </section>
+
+      <section aria-labelledby="topics-heading">
+        <h2 id="topics-heading">주제</h2>
+        <ol class="topic-list">
+          <li>
+            <strong>증명 노트</strong>
+            <span>정리, 가정, 증명 전략을 한 페이지 안에서 추적한다.</span>
+          </li>
+          <li>
+            <strong>계산 실험</strong>
+            <span>수치 예제와 시뮬레이션 결과를 재현 가능한 스크립트로 남긴다.</span>
+          </li>
+          <li>
+            <strong>시각화</strong>
+            <span>수식이나 구조가 눈에 보일 때 이해가 쉬운 내용을 웹에서 탐색한다.</span>
+          </li>
+        </ol>
+      </section>
+
+      <section aria-labelledby="notes-heading">
+        <h2 id="notes-heading">노트</h2>
+        <ol id="notes-list" class="notes-list sans" aria-live="polite"></ol>
+      </section>
+
+      <section aria-labelledby="workspace-heading">
+        <h2 id="workspace-heading">작업 공간</h2>
+        <dl class="project-files sans">
+          <div>
+            <dt>site</dt>
+            <dd>정적 페이지, 스타일, 브라우저 스크립트</dd>
+          </div>
+          <div>
+            <dt>notes</dt>
+            <dd>HTML 원본 노트</dd>
+          </div>
+          <div>
+            <dt>data</dt>
+            <dd>원자료와 파생 데이터</dd>
+          </div>
+          <div>
+            <dt>scripts</dt>
+            <dd>데이터 생성과 검증 스크립트</dd>
+          </div>
+        </dl>
+      </section>
+    </article>
+
+    <script src="/notebook/app.js"></script>
+  </body>
+</html>
