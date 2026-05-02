@@ -300,6 +300,15 @@
           거래가격을 직접 비교한다. 이벤트 시각은 두 번째 이후 반복거래일이고,
           현재 가격이 같은 pseudo-unit의 직전 가격 이상이면 상승/유지, 낮으면 하강이다.
         </p>
+        <p>
+          <code>alpha</code>는 이벤트가 발생했을 때 이후 intensity를 얼마나 올리는지
+          나타내는 값이다. 따라서 하강 이벤트의 <code>alpha</code>가 작지 않더라도,
+          하락 국면에서 거래 자체가 줄어들면 새 excitation이 공급되지 않는다. 이때
+          fitted intensity는 상승/유지와 하강 양쪽 모두에서 decay할 수 있다.
+          <code>alpha</code>는 특정 하락 구간 하나에서 따로 추정한 값이 아니라,
+          전체 관측 기간의 상승/유지 이벤트와 하강 이벤트 배열을 함께 사용해 얻은
+          공통 파라미터다.
+        </p>
         <dl class="hawkes-summary sans" id="repeat-change-hawkes-summary"></dl>
         <figure class="hawkes-matrix-figure">
           <svg id="repeat-change-hawkes-alpha-chart" class="hawkes-chart hawkes-alpha-chart" role="img" aria-label="파크리오 repeat-change 2-type Hawkes excitation matrix"></svg>

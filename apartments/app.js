@@ -156,11 +156,11 @@ function priceChartMargin(width) {
 
 function showTooltip(event, html) {
   const tooltip = d3.select("#trend-tooltip");
-  const panel = document.querySelector(".trend-panel").getBoundingClientRect();
   tooltip
     .attr("hidden", null)
-    .style("left", `${event.clientX - panel.left + 14}px`)
-    .style("top", `${event.clientY - panel.top + 14}px`)
+    .style("position", "fixed")
+    .style("left", `${event.clientX + 14}px`)
+    .style("top", `${event.clientY + 14}px`)
     .html(html);
 }
 
@@ -943,72 +943,12 @@ function renderOneTypeCorrelationChart(data) {
 }
 
 function renderHawkesIntensityChart(data) {
-  const selector = "#hawkes-intensity-chart";
-  const { width, height } = chartSize(selector);
-  const margin = {
-    top: 34,
-    right: width < 460 ? 34 : 28,
-    bottom: 42,
-    left: width < 460 ? 52 : 62,
-  };
-  const innerWidth = width - margin.left - margin.right;
-  const innerHeight = height - margin.top - margin.bottom;
-  const svg = d3.select(selector);
-  setSvgSize(svg, width, height);
-  svg.selectAll("*").remove();
-
-  const rows = (data.intensity_series || []).map((row) => ({
-    date: new Date(row.date),
-    intensity: row.intensity,
-    events: row.events,
-  }));
-  if (!rows.length) return;
-  const hawkesTypes = data.event_types || defaultHawkesTypes;
-
-  const x = d3.scaleTime()
-    .domain(d3.extent(rows, (row) => row.date))
-    .range([0, innerWidth]);
-  const y = d3.scaleLinear()
-    .domain([0, d3.max(rows, (row) => d3.max(hawkesTypes, (type) => row.intensity[type])) || 1])
-    .nice()
-    .range([innerHeight, 0]);
-  const g = svg.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
-
-  g.append("g")
-    .attr("transform", `translate(0,${innerHeight})`)
-    .call(d3.axisBottom(x).ticks(yearTickCount(width)).tickFormat(d3.timeFormat("%Y")));
-  g.append("g").call(d3.axisLeft(y).ticks(5));
-
-  hawkesTypes.forEach((group) => {
-    const line = d3.line()
-      .x((row) => x(row.date))
-      .y((row) => y(row.intensity[group]));
-    g.append("path")
-      .datum(rows)
-      .attr("fill", "none")
-      .attr("stroke", groupColors[group])
-      .attr("stroke-width", 2)
-      .attr("d", line);
-
-    const eventRows = rows.filter((row) => row.events[group] > 0);
-    g.selectAll(`line[data-hawkes-event="${group}"]`)
-      .data(eventRows)
-      .join("line")
-      .attr("data-hawkes-event", group)
-      .attr("x1", (row) => x(row.date))
-      .attr("x2", (row) => x(row.date))
-      .attr("y1", innerHeight)
-      .attr("y2", innerHeight - 10)
-      .attr("stroke", groupColors[group])
-      .attr("stroke-opacity", 0.35);
-  });
-
-  g.append("text")
-    .attr("x", 0)
-    .attr("y", -12)
-    .attr("font-weight", 600)
-    .attr("fill", "var(--ink)")
-    .text("Fitted daily intensity and observed event rug");
+  renderTypedHawkesIntensityChart(
+    data,
+    "#hawkes-intensity-chart",
+    "Fitted daily intensity and observed event rug",
+    { showIndex: false },
+  );
 }
 
 function renderMovingWindowChart(data) {
@@ -1499,6 +1439,38 @@ function renderTypedHawkesIntensityChart(data, selector, title, options = {}) {
       .attr("fill", "var(--muted)")
       .text(item.label);
   });
+
+  const bisectIntensity = d3.bisector((row) => row.date).center;
+  const bisectIndex = d3.bisector((row) => row.date).center;
+  const dateFormatter = d3.timeFormat("%Y-%m-%d");
+  g.append("rect")
+    .attr("class", "hawkes-tooltip-layer")
+    .attr("x", 0)
+    .attr("y", 0)
+    .attr("width", innerWidth)
+    .attr("height", innerHeight)
+    .attr("fill", "transparent")
+    .style("cursor", "crosshair")
+    .on("mousemove", (event) => {
+      const [pointerX] = d3.pointer(event);
+      const targetDate = x.invert(pointerX);
+      const row = rows[Math.max(0, Math.min(rows.length - 1, bisectIntensity(rows, targetDate)))];
+      const indexRow = indexRows.length
+        ? indexRows[Math.max(0, Math.min(indexRows.length - 1, bisectIndex(indexRows, targetDate)))]
+        : null;
+      const intensityLines = hawkesTypes.map((group) => {
+        const intensity = Number(row.intensity[group]);
+        return `<span>${group} intensity ${Number.isFinite(intensity) ? intensity.toFixed(4) : "-"} · event ${formatter.format(row.events[group] || 0)}건</span>`;
+      }).join("");
+      const indexLine = indexRow
+        ? `<span>index ${priceFormatter.format(indexRow.index)} · ${indexRow.direction || "-"}</span>`
+        : "";
+      showTooltip(
+        event,
+        `<strong>${dateFormatter(row.date)}</strong>${intensityLines}${indexLine}`,
+      );
+    })
+    .on("mouseleave", hideTooltip);
 }
 
 function renderRepeatSalesHawkes(data) {
