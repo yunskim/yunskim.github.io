@@ -2,7 +2,7 @@
   "apartment": "파크리오",
   "query_address": "서울특별시 송파구 신천동 17 파크리오",
   "source_csv": "apartments/data/downloads/songpa_11710_apartment_trades/apartment_trades_songpa_11710_200601_202604.csv",
-  "generated_at": "2026-05-01T16:38:47+0900",
+  "generated_at": "2026-05-02T18:41:28+0900",
   "geocode": {
     "status": "ok",
     "lat": 37.5205366173754,
@@ -989,5 +989,925 @@
         }
       }
     }
-  ]
+  ],
+  "standardization": {
+    "target_group": "85㎡대",
+    "coverage": {
+      "trade_count": 2943,
+      "floor_filled_count": 2943,
+      "apt_dong_filled_count": 475
+    },
+    "floor_buckets": [
+      "저층(1-5)",
+      "중층(6-15)",
+      "고층(16+)"
+    ],
+    "annual_floor_trends": [
+      {
+        "year": "2008",
+        "year_median_price_per_pyeong_만원": 2956.8,
+        "groups": {
+          "저층(1-5)": {
+            "trade_count": 4,
+            "p10_price_per_pyeong_만원": 2476.7,
+            "p25_price_per_pyeong_만원": 2507.4,
+            "median_price_per_pyeong_만원": 2656.1,
+            "p75_price_per_pyeong_만원": 2787.6,
+            "p90_price_per_pyeong_만원": 2787.6,
+            "p10_vs_year_median_만원": -480.1,
+            "p25_vs_year_median_만원": -449.4,
+            "median_vs_year_median_만원": -300.7,
+            "p75_vs_year_median_만원": -169.2,
+            "p90_vs_year_median_만원": -169.2
+          },
+          "중층(6-15)": {
+            "trade_count": 4,
+            "p10_price_per_pyeong_만원": 2827.4,
+            "p25_price_per_pyeong_만원": 2887.1,
+            "median_price_per_pyeong_만원": 2922.2,
+            "p75_price_per_pyeong_만원": 2932.3,
+            "p90_price_per_pyeong_만원": 2947.0,
+            "p10_vs_year_median_만원": -129.4,
+            "p25_vs_year_median_만원": -69.7,
+            "median_vs_year_median_만원": -34.6,
+            "p75_vs_year_median_만원": -24.5,
+            "p90_vs_year_median_만원": -9.8
+          },
+          "고층(16+)": {
+            "trade_count": 7,
+            "p10_price_per_pyeong_만원": 3072.2,
+            "p25_price_per_pyeong_만원": 3163.9,
+            "median_price_per_pyeong_만원": 3236.0,
+            "p75_price_per_pyeong_만원": 3409.2,
+            "p90_price_per_pyeong_만원": 3506.2,
+            "p10_vs_year_median_만원": 115.4,
+            "p25_vs_year_median_만원": 207.1,
+            "median_vs_year_median_만원": 279.2,
+            "p75_vs_year_median_만원": 452.4,
+            "p90_vs_year_median_만원": 549.4
+          }
+        }
+      },
+      {
+        "year": "2009",
+        "year_median_price_per_pyeong_만원": 3414.8,
+        "groups": {
+          "저층(1-5)": {
+            "trade_count": 12,
+            "p10_price_per_pyeong_만원": 3203.8,
+            "p25_price_per_pyeong_만원": 3231.8,
+            "median_price_per_pyeong_만원": 3331.3,
+            "p75_price_per_pyeong_만원": 3437.8,
+            "p90_price_per_pyeong_만원": 3500.9,
+            "p10_vs_year_median_만원": -211.0,
+            "p25_vs_year_median_만원": -183.0,
+            "median_vs_year_median_만원": -83.5,
+            "p75_vs_year_median_만원": 23.0,
+            "p90_vs_year_median_만원": 86.1
+          },
+          "중층(6-15)": {
+            "trade_count": 36,
+            "p10_price_per_pyeong_만원": 3019.5,
+            "p25_price_per_pyeong_만원": 3181.2,
+            "median_price_per_pyeong_만원": 3387.6,
+            "p75_price_per_pyeong_만원": 3529.9,
+            "p90_price_per_pyeong_만원": 3694.1,
+            "p10_vs_year_median_만원": -395.3,
+            "p25_vs_year_median_만원": -233.6,
+            "median_vs_year_median_만원": -27.2,
+            "p75_vs_year_median_만원": 115.1,
+            "p90_vs_year_median_만원": 279.3
+          },
+          "고층(16+)": {
+            "trade_count": 47,
+            "p10_price_per_pyeong_만원": 3126.7,
+            "p25_price_per_pyeong_만원": 3331.3,
+            "median_price_per_pyeong_만원": 3465.4,
+            "p75_price_per_pyeong_만원": 3586.9,
+            "p90_price_per_pyeong_만원": 3708.5,
+            "p10_vs_year_median_만원": -288.1,
+            "p25_vs_year_median_만원": -83.5,
+            "median_vs_year_median_만원": 50.6,
+            "p75_vs_year_median_만원": 172.1,
+            "p90_vs_year_median_만원": 293.7
+          }
+        }
+      },
+      {
+        "year": "2010",
+        "year_median_price_per_pyeong_만원": 3391.9,
+        "groups": {
+          "저층(1-5)": {
+            "trade_count": 11,
+            "p10_price_per_pyeong_만원": 2924.1,
+            "p25_price_per_pyeong_만원": 3130.7,
+            "median_price_per_pyeong_만원": 3307.0,
+            "p75_price_per_pyeong_만원": 3457.0,
+            "p90_price_per_pyeong_만원": 3540.1,
+            "p10_vs_year_median_만원": -467.8,
+            "p25_vs_year_median_만원": -261.2,
+            "median_vs_year_median_만원": -84.9,
+            "p75_vs_year_median_만원": 65.1,
+            "p90_vs_year_median_만원": 148.2
+          },
+          "중층(6-15)": {
+            "trade_count": 28,
+            "p10_price_per_pyeong_만원": 3167.6,
+            "p25_price_per_pyeong_만원": 3299.1,
+            "median_price_per_pyeong_만원": 3428.7,
+            "p75_price_per_pyeong_만원": 3508.9,
+            "p90_price_per_pyeong_만원": 3592.7,
+            "p10_vs_year_median_만원": -224.3,
+            "p25_vs_year_median_만원": -92.8,
+            "median_vs_year_median_만원": 36.8,
+            "p75_vs_year_median_만원": 117.0,
+            "p90_vs_year_median_만원": 200.8
+          },
+          "고층(16+)": {
+            "trade_count": 37,
+            "p10_price_per_pyeong_만원": 3134.5,
+            "p25_price_per_pyeong_만원": 3212.3,
+            "median_price_per_pyeong_만원": 3341.3,
+            "p75_price_per_pyeong_만원": 3501.5,
+            "p90_price_per_pyeong_만원": 3603.3,
+            "p10_vs_year_median_만원": -257.4,
+            "p25_vs_year_median_만원": -179.6,
+            "median_vs_year_median_만원": -50.6,
+            "p75_vs_year_median_만원": 109.6,
+            "p90_vs_year_median_만원": 211.4
+          }
+        }
+      },
+      {
+        "year": "2011",
+        "year_median_price_per_pyeong_만원": 3314.0,
+        "groups": {
+          "저층(1-5)": {
+            "trade_count": 15,
+            "p10_price_per_pyeong_만원": 3045.7,
+            "p25_price_per_pyeong_만원": 3123.5,
+            "median_price_per_pyeong_만원": 3192.9,
+            "p75_price_per_pyeong_만원": 3333.5,
+            "p90_price_per_pyeong_만원": 3501.1,
+            "p10_vs_year_median_만원": -268.3,
+            "p25_vs_year_median_만원": -190.5,
+            "median_vs_year_median_만원": -121.1,
+            "p75_vs_year_median_만원": 19.5,
+            "p90_vs_year_median_만원": 187.1
+          },
+          "중층(6-15)": {
+            "trade_count": 36,
+            "p10_price_per_pyeong_만원": 3134.5,
+            "p25_price_per_pyeong_만원": 3224.0,
+            "median_price_per_pyeong_만원": 3311.8,
+            "p75_price_per_pyeong_만원": 3483.6,
+            "p90_price_per_pyeong_만원": 3659.0,
+            "p10_vs_year_median_만원": -179.5,
+            "p25_vs_year_median_만원": -90.0,
+            "median_vs_year_median_만원": -2.2,
+            "p75_vs_year_median_만원": 169.6,
+            "p90_vs_year_median_만원": 345.0
+          },
+          "고층(16+)": {
+            "trade_count": 61,
+            "p10_price_per_pyeong_만원": 3181.2,
+            "p25_price_per_pyeong_만원": 3224.0,
+            "median_price_per_pyeong_만원": 3348.6,
+            "p75_price_per_pyeong_만원": 3504.4,
+            "p90_price_per_pyeong_만원": 3606.4,
+            "p10_vs_year_median_만원": -132.8,
+            "p25_vs_year_median_만원": -90.0,
+            "median_vs_year_median_만원": 34.6,
+            "p75_vs_year_median_만원": 190.4,
+            "p90_vs_year_median_만원": 292.4
+          }
+        }
+      },
+      {
+        "year": "2012",
+        "year_median_price_per_pyeong_만원": 3000.1,
+        "groups": {
+          "저층(1-5)": {
+            "trade_count": 30,
+            "p10_price_per_pyeong_만원": 2721.7,
+            "p25_price_per_pyeong_만원": 2806.4,
+            "median_price_per_pyeong_만원": 2875.4,
+            "p75_price_per_pyeong_만원": 3074.2,
+            "p90_price_per_pyeong_만원": 3153.3,
+            "p10_vs_year_median_만원": -278.4,
+            "p25_vs_year_median_만원": -193.7,
+            "median_vs_year_median_만원": -124.7,
+            "p75_vs_year_median_만원": 74.1,
+            "p90_vs_year_median_만원": 153.2
+          },
+          "중층(6-15)": {
+            "trade_count": 42,
+            "p10_price_per_pyeong_만원": 2786.0,
+            "p25_price_per_pyeong_만원": 2866.8,
+            "median_price_per_pyeong_만원": 2970.9,
+            "p75_price_per_pyeong_만원": 3158.0,
+            "p90_price_per_pyeong_만원": 3273.8,
+            "p10_vs_year_median_만원": -214.1,
+            "p25_vs_year_median_만원": -133.3,
+            "median_vs_year_median_만원": -29.2,
+            "p75_vs_year_median_만원": 157.9,
+            "p90_vs_year_median_만원": 273.7
+          },
+          "고층(16+)": {
+            "trade_count": 84,
+            "p10_price_per_pyeong_만원": 2784.0,
+            "p25_price_per_pyeong_만원": 2881.4,
+            "median_price_per_pyeong_만원": 3047.9,
+            "p75_price_per_pyeong_만원": 3180.4,
+            "p90_price_per_pyeong_만원": 3293.3,
+            "p10_vs_year_median_만원": -216.1,
+            "p25_vs_year_median_만원": -118.7,
+            "median_vs_year_median_만원": 47.8,
+            "p75_vs_year_median_만원": 180.3,
+            "p90_vs_year_median_만원": 293.2
+          }
+        }
+      },
+      {
+        "year": "2013",
+        "year_median_price_per_pyeong_만원": 3119.0,
+        "groups": {
+          "저층(1-5)": {
+            "trade_count": 19,
+            "p10_price_per_pyeong_만원": 2695.2,
+            "p25_price_per_pyeong_만원": 2823.0,
+            "median_price_per_pyeong_만원": 2924.1,
+            "p75_price_per_pyeong_만원": 3078.1,
+            "p90_price_per_pyeong_만원": 3240.7,
+            "p10_vs_year_median_만원": -423.8,
+            "p25_vs_year_median_만원": -296.0,
+            "median_vs_year_median_만원": -194.9,
+            "p75_vs_year_median_만원": -40.9,
+            "p90_vs_year_median_만원": 121.7
+          },
+          "중층(6-15)": {
+            "trade_count": 53,
+            "p10_price_per_pyeong_만원": 2904.7,
+            "p25_price_per_pyeong_만원": 2990.4,
+            "median_price_per_pyeong_만원": 3158.0,
+            "p75_price_per_pyeong_만원": 3325.7,
+            "p90_price_per_pyeong_만원": 3390.5,
+            "p10_vs_year_median_만원": -214.3,
+            "p25_vs_year_median_만원": -128.6,
+            "median_vs_year_median_만원": 39.0,
+            "p75_vs_year_median_만원": 206.7,
+            "p90_vs_year_median_만원": 271.5
+          },
+          "고층(16+)": {
+            "trade_count": 121,
+            "p10_price_per_pyeong_만원": 2928.1,
+            "p25_price_per_pyeong_만원": 3037.1,
+            "median_price_per_pyeong_만원": 3130.7,
+            "p75_price_per_pyeong_만원": 3236.0,
+            "p90_price_per_pyeong_만원": 3348.6,
+            "p10_vs_year_median_만원": -190.9,
+            "p25_vs_year_median_만원": -81.9,
+            "median_vs_year_median_만원": 11.7,
+            "p75_vs_year_median_만원": 117.0,
+            "p90_vs_year_median_만원": 229.6
+          }
+        }
+      },
+      {
+        "year": "2014",
+        "year_median_price_per_pyeong_만원": 3270.7,
+        "groups": {
+          "저층(1-5)": {
+            "trade_count": 26,
+            "p10_price_per_pyeong_만원": 2886.1,
+            "p25_price_per_pyeong_만원": 3022.5,
+            "median_price_per_pyeong_만원": 3158.0,
+            "p75_price_per_pyeong_만원": 3343.2,
+            "p90_price_per_pyeong_만원": 3395.8,
+            "p10_vs_year_median_만원": -384.6,
+            "p25_vs_year_median_만원": -248.2,
+            "median_vs_year_median_만원": -112.7,
+            "p75_vs_year_median_만원": 72.5,
+            "p90_vs_year_median_만원": 125.1
+          },
+          "중층(6-15)": {
+            "trade_count": 78,
+            "p10_price_per_pyeong_만원": 3112.7,
+            "p25_price_per_pyeong_만원": 3153.9,
+            "median_price_per_pyeong_만원": 3286.5,
+            "p75_price_per_pyeong_만원": 3411.4,
+            "p90_price_per_pyeong_만원": 3486.7,
+            "p10_vs_year_median_만원": -158.0,
+            "p25_vs_year_median_만원": -116.8,
+            "median_vs_year_median_만원": 15.8,
+            "p75_vs_year_median_만원": 140.7,
+            "p90_vs_year_median_만원": 216.0
+          },
+          "고층(16+)": {
+            "trade_count": 115,
+            "p10_price_per_pyeong_만원": 3134.5,
+            "p25_price_per_pyeong_만원": 3193.0,
+            "median_price_per_pyeong_만원": 3270.7,
+            "p75_price_per_pyeong_만원": 3384.2,
+            "p90_price_per_pyeong_만원": 3466.8,
+            "p10_vs_year_median_만원": -136.2,
+            "p25_vs_year_median_만원": -77.7,
+            "median_vs_year_median_만원": 0.0,
+            "p75_vs_year_median_만원": 113.5,
+            "p90_vs_year_median_만원": 196.1
+          }
+        }
+      },
+      {
+        "year": "2015",
+        "year_median_price_per_pyeong_만원": 3382.0,
+        "groups": {
+          "저층(1-5)": {
+            "trade_count": 43,
+            "p10_price_per_pyeong_만원": 3063.6,
+            "p25_price_per_pyeong_만원": 3124.7,
+            "median_price_per_pyeong_만원": 3275.0,
+            "p75_price_per_pyeong_만원": 3399.5,
+            "p90_price_per_pyeong_만원": 3487.9,
+            "p10_vs_year_median_만원": -318.4,
+            "p25_vs_year_median_만원": -257.3,
+            "median_vs_year_median_만원": -107.0,
+            "p75_vs_year_median_만원": 17.5,
+            "p90_vs_year_median_만원": 105.9
+          },
+          "중층(6-15)": {
+            "trade_count": 90,
+            "p10_price_per_pyeong_만원": 3210.8,
+            "p25_price_per_pyeong_만원": 3277.8,
+            "median_price_per_pyeong_만원": 3381.7,
+            "p75_price_per_pyeong_만원": 3484.2,
+            "p90_price_per_pyeong_만원": 3588.1,
+            "p10_vs_year_median_만원": -171.2,
+            "p25_vs_year_median_만원": -104.2,
+            "median_vs_year_median_만원": -0.3,
+            "p75_vs_year_median_만원": 102.2,
+            "p90_vs_year_median_만원": 206.1
+          },
+          "고층(16+)": {
+            "trade_count": 171,
+            "p10_price_per_pyeong_만원": 3204.5,
+            "p25_price_per_pyeong_만원": 3290.2,
+            "median_price_per_pyeong_만원": 3407.0,
+            "p75_price_per_pyeong_만원": 3489.4,
+            "p90_price_per_pyeong_만원": 3508.9,
+            "p10_vs_year_median_만원": -177.5,
+            "p25_vs_year_median_만원": -91.8,
+            "median_vs_year_median_만원": 25.0,
+            "p75_vs_year_median_만원": 107.4,
+            "p90_vs_year_median_만원": 126.9
+          }
+        }
+      },
+      {
+        "year": "2016",
+        "year_median_price_per_pyeong_만원": 3508.9,
+        "groups": {
+          "저층(1-5)": {
+            "trade_count": 61,
+            "p10_price_per_pyeong_만원": 3192.9,
+            "p25_price_per_pyeong_만원": 3310.1,
+            "median_price_per_pyeong_만원": 3469.9,
+            "p75_price_per_pyeong_만원": 3508.9,
+            "p90_price_per_pyeong_만원": 3696.0,
+            "p10_vs_year_median_만원": -316.0,
+            "p25_vs_year_median_만원": -198.8,
+            "median_vs_year_median_만원": -39.0,
+            "p75_vs_year_median_만원": 0.0,
+            "p90_vs_year_median_만원": 187.1
+          },
+          "중층(6-15)": {
+            "trade_count": 102,
+            "p10_price_per_pyeong_만원": 3387.6,
+            "p25_price_per_pyeong_만원": 3487.8,
+            "median_price_per_pyeong_만원": 3508.9,
+            "p75_price_per_pyeong_만원": 3699.1,
+            "p90_price_per_pyeong_만원": 3875.4,
+            "p10_vs_year_median_만원": -121.3,
+            "p25_vs_year_median_만원": -21.1,
+            "median_vs_year_median_만원": 0.0,
+            "p75_vs_year_median_만원": 190.2,
+            "p90_vs_year_median_만원": 366.5
+          },
+          "고층(16+)": {
+            "trade_count": 185,
+            "p10_price_per_pyeong_만원": 3426.5,
+            "p25_price_per_pyeong_만원": 3497.2,
+            "median_price_per_pyeong_만원": 3586.9,
+            "p75_price_per_pyeong_만원": 3777.9,
+            "p90_price_per_pyeong_만원": 3859.8,
+            "p10_vs_year_median_만원": -82.4,
+            "p25_vs_year_median_만원": -11.7,
+            "median_vs_year_median_만원": 78.0,
+            "p75_vs_year_median_만원": 269.0,
+            "p90_vs_year_median_만원": 350.9
+          }
+        }
+      },
+      {
+        "year": "2017",
+        "year_median_price_per_pyeong_만원": 4204.1,
+        "groups": {
+          "저층(1-5)": {
+            "trade_count": 46,
+            "p10_price_per_pyeong_만원": 3606.4,
+            "p25_price_per_pyeong_만원": 3778.2,
+            "median_price_per_pyeong_만원": 3896.3,
+            "p75_price_per_pyeong_만원": 4208.7,
+            "p90_price_per_pyeong_만원": 4533.3,
+            "p10_vs_year_median_만원": -597.7,
+            "p25_vs_year_median_만원": -425.9,
+            "median_vs_year_median_만원": -307.8,
+            "p75_vs_year_median_만원": 4.6,
+            "p90_vs_year_median_만원": 329.2
+          },
+          "중층(6-15)": {
+            "trade_count": 100,
+            "p10_price_per_pyeong_만원": 3717.8,
+            "p25_price_per_pyeong_만원": 3815.9,
+            "median_price_per_pyeong_만원": 4174.3,
+            "p75_price_per_pyeong_만원": 4662.4,
+            "p90_price_per_pyeong_만원": 4905.1,
+            "p10_vs_year_median_만원": -486.3,
+            "p25_vs_year_median_만원": -388.2,
+            "median_vs_year_median_만원": -29.8,
+            "p75_vs_year_median_만원": 458.3,
+            "p90_vs_year_median_만원": 701.0
+          },
+          "고층(16+)": {
+            "trade_count": 154,
+            "p10_price_per_pyeong_만원": 3776.9,
+            "p25_price_per_pyeong_만원": 3895.0,
+            "median_price_per_pyeong_만원": 4288.7,
+            "p75_price_per_pyeong_만원": 4670.5,
+            "p90_price_per_pyeong_만원": 4887.1,
+            "p10_vs_year_median_만원": -427.2,
+            "p25_vs_year_median_만원": -309.1,
+            "median_vs_year_median_만원": 84.6,
+            "p75_vs_year_median_만원": 466.4,
+            "p90_vs_year_median_만원": 683.0
+          }
+        }
+      },
+      {
+        "year": "2018",
+        "year_median_price_per_pyeong_만원": 5490.2,
+        "groups": {
+          "저층(1-5)": {
+            "trade_count": 15,
+            "p10_price_per_pyeong_만원": 4904.7,
+            "p25_price_per_pyeong_만원": 5033.8,
+            "median_price_per_pyeong_만원": 5178.7,
+            "p75_price_per_pyeong_만원": 5396.4,
+            "p90_price_per_pyeong_만원": 5557.5,
+            "p10_vs_year_median_만원": -585.5,
+            "p25_vs_year_median_만원": -456.4,
+            "median_vs_year_median_만원": -311.5,
+            "p75_vs_year_median_만원": -93.8,
+            "p90_vs_year_median_만원": 67.3
+          },
+          "중층(6-15)": {
+            "trade_count": 30,
+            "p10_price_per_pyeong_만원": 5110.5,
+            "p25_price_per_pyeong_만원": 5183.5,
+            "median_price_per_pyeong_만원": 5448.6,
+            "p75_price_per_pyeong_만원": 5729.4,
+            "p90_price_per_pyeong_만원": 5998.3,
+            "p10_vs_year_median_만원": -379.7,
+            "p25_vs_year_median_만원": -306.7,
+            "median_vs_year_median_만원": -41.6,
+            "p75_vs_year_median_만원": 239.2,
+            "p90_vs_year_median_만원": 508.1
+          },
+          "고층(16+)": {
+            "trade_count": 68,
+            "p10_price_per_pyeong_만원": 5144.0,
+            "p25_price_per_pyeong_만원": 5428.7,
+            "median_price_per_pyeong_만원": 5577.5,
+            "p75_price_per_pyeong_만원": 5840.6,
+            "p90_price_per_pyeong_만원": 5948.0,
+            "p10_vs_year_median_만원": -346.2,
+            "p25_vs_year_median_만원": -61.5,
+            "median_vs_year_median_만원": 87.3,
+            "p75_vs_year_median_만원": 350.4,
+            "p90_vs_year_median_만원": 457.8
+          }
+        }
+      },
+      {
+        "year": "2019",
+        "year_median_price_per_pyeong_만원": 6074.2,
+        "groups": {
+          "저층(1-5)": {
+            "trade_count": 39,
+            "p10_price_per_pyeong_만원": 5242.3,
+            "p25_price_per_pyeong_만원": 5575.3,
+            "median_price_per_pyeong_만원": 5906.7,
+            "p75_price_per_pyeong_만원": 6068.4,
+            "p90_price_per_pyeong_만원": 6634.9,
+            "p10_vs_year_median_만원": -831.9,
+            "p25_vs_year_median_만원": -498.9,
+            "median_vs_year_median_만원": -167.5,
+            "p75_vs_year_median_만원": -5.8,
+            "p90_vs_year_median_만원": 560.7
+          },
+          "중층(6-15)": {
+            "trade_count": 71,
+            "p10_price_per_pyeong_만원": 5458.3,
+            "p25_price_per_pyeong_만원": 5717.8,
+            "median_price_per_pyeong_만원": 6171.6,
+            "p75_price_per_pyeong_만원": 6448.3,
+            "p90_price_per_pyeong_만원": 6736.2,
+            "p10_vs_year_median_만원": -615.9,
+            "p25_vs_year_median_만원": -356.4,
+            "median_vs_year_median_만원": 97.4,
+            "p75_vs_year_median_만원": 374.1,
+            "p90_vs_year_median_만원": 662.0
+          },
+          "고층(16+)": {
+            "trade_count": 124,
+            "p10_price_per_pyeong_만원": 5256.5,
+            "p25_price_per_pyeong_만원": 5711.7,
+            "median_price_per_pyeong_만원": 6161.8,
+            "p75_price_per_pyeong_만원": 6511.0,
+            "p90_price_per_pyeong_만원": 6744.9,
+            "p10_vs_year_median_만원": -817.7,
+            "p25_vs_year_median_만원": -362.5,
+            "median_vs_year_median_만원": 87.6,
+            "p75_vs_year_median_만원": 436.8,
+            "p90_vs_year_median_만원": 670.7
+          }
+        }
+      },
+      {
+        "year": "2020",
+        "year_median_price_per_pyeong_만원": 7212.8,
+        "groups": {
+          "저층(1-5)": {
+            "trade_count": 25,
+            "p10_price_per_pyeong_만원": 5996.4,
+            "p25_price_per_pyeong_만원": 6230.0,
+            "median_price_per_pyeong_만원": 7003.0,
+            "p75_price_per_pyeong_만원": 7329.7,
+            "p90_price_per_pyeong_만원": 7756.3,
+            "p10_vs_year_median_만원": -1216.4,
+            "p25_vs_year_median_만원": -982.8,
+            "median_vs_year_median_만원": -209.8,
+            "p75_vs_year_median_만원": 116.9,
+            "p90_vs_year_median_만원": 543.5
+          },
+          "중층(6-15)": {
+            "trade_count": 52,
+            "p10_price_per_pyeong_만원": 6442.8,
+            "p25_price_per_pyeong_만원": 6625.8,
+            "median_price_per_pyeong_만원": 7169.1,
+            "p75_price_per_pyeong_만원": 7592.8,
+            "p90_price_per_pyeong_만원": 7952.5,
+            "p10_vs_year_median_만원": -770.0,
+            "p25_vs_year_median_만원": -587.0,
+            "median_vs_year_median_만원": -43.7,
+            "p75_vs_year_median_만원": 380.0,
+            "p90_vs_year_median_만원": 739.7
+          },
+          "고층(16+)": {
+            "trade_count": 80,
+            "p10_price_per_pyeong_만원": 6490.5,
+            "p25_price_per_pyeong_만원": 6804.3,
+            "median_price_per_pyeong_만원": 7398.1,
+            "p75_price_per_pyeong_만원": 7915.0,
+            "p90_price_per_pyeong_만원": 8177.9,
+            "p10_vs_year_median_만원": -722.3,
+            "p25_vs_year_median_만원": -408.5,
+            "median_vs_year_median_만원": 185.3,
+            "p75_vs_year_median_만원": 702.2,
+            "p90_vs_year_median_만원": 965.1
+          }
+        }
+      },
+      {
+        "year": "2021",
+        "year_median_price_per_pyeong_만원": 8577.3,
+        "groups": {
+          "저층(1-5)": {
+            "trade_count": 10,
+            "p10_price_per_pyeong_만원": 7651.2,
+            "p25_price_per_pyeong_만원": 7832.0,
+            "median_price_per_pyeong_만원": 8162.8,
+            "p75_price_per_pyeong_만원": 8564.1,
+            "p90_price_per_pyeong_만원": 8706.8,
+            "p10_vs_year_median_만원": -926.1,
+            "p25_vs_year_median_만원": -745.3,
+            "median_vs_year_median_만원": -414.5,
+            "p75_vs_year_median_만원": -13.2,
+            "p90_vs_year_median_만원": 129.5
+          },
+          "중층(6-15)": {
+            "trade_count": 17,
+            "p10_price_per_pyeong_만원": 7904.3,
+            "p25_price_per_pyeong_만원": 8176.9,
+            "median_price_per_pyeong_만원": 8577.3,
+            "p75_price_per_pyeong_만원": 8772.3,
+            "p90_price_per_pyeong_만원": 9084.1,
+            "p10_vs_year_median_만원": -673.0,
+            "p25_vs_year_median_만원": -400.4,
+            "median_vs_year_median_만원": 0.0,
+            "p75_vs_year_median_만원": 195.0,
+            "p90_vs_year_median_만원": 506.8
+          },
+          "고층(16+)": {
+            "trade_count": 42,
+            "p10_price_per_pyeong_만원": 7983.2,
+            "p25_price_per_pyeong_만원": 8296.4,
+            "median_price_per_pyeong_만원": 8649.7,
+            "p75_price_per_pyeong_만원": 8984.8,
+            "p90_price_per_pyeong_만원": 9574.2,
+            "p10_vs_year_median_만원": -594.1,
+            "p25_vs_year_median_만원": -280.9,
+            "median_vs_year_median_만원": 72.4,
+            "p75_vs_year_median_만원": 407.5,
+            "p90_vs_year_median_만원": 996.9
+          }
+        }
+      },
+      {
+        "year": "2022",
+        "year_median_price_per_pyeong_만원": 8250.3,
+        "groups": {
+          "저층(1-5)": {
+            "trade_count": 3,
+            "p10_price_per_pyeong_만원": 6976.7,
+            "p25_price_per_pyeong_만원": 7499.7,
+            "median_price_per_pyeong_만원": 8371.5,
+            "p75_price_per_pyeong_만원": 8474.4,
+            "p90_price_per_pyeong_만원": 8536.2,
+            "p10_vs_year_median_만원": -1273.6,
+            "p25_vs_year_median_만원": -750.6,
+            "median_vs_year_median_만원": 121.2,
+            "p75_vs_year_median_만원": 224.1,
+            "p90_vs_year_median_만원": 285.9
+          },
+          "중층(6-15)": {
+            "trade_count": 7,
+            "p10_price_per_pyeong_만원": 6507.6,
+            "p25_price_per_pyeong_만원": 6764.4,
+            "median_price_per_pyeong_만원": 7875.6,
+            "p75_price_per_pyeong_만원": 8503.8,
+            "p90_price_per_pyeong_만원": 9162.2,
+            "p10_vs_year_median_만원": -1742.7,
+            "p25_vs_year_median_만원": -1485.9,
+            "median_vs_year_median_만원": -374.7,
+            "p75_vs_year_median_만원": 253.5,
+            "p90_vs_year_median_만원": 911.9
+          },
+          "고층(16+)": {
+            "trade_count": 22,
+            "p10_price_per_pyeong_만원": 6545.4,
+            "p25_price_per_pyeong_만원": 6718.9,
+            "median_price_per_pyeong_만원": 8304.4,
+            "p75_price_per_pyeong_만원": 8566.2,
+            "p90_price_per_pyeong_만원": 8862.2,
+            "p10_vs_year_median_만원": -1704.9,
+            "p25_vs_year_median_만원": -1531.4,
+            "median_vs_year_median_만원": 54.1,
+            "p75_vs_year_median_만원": 315.9,
+            "p90_vs_year_median_만원": 611.9
+          }
+        }
+      },
+      {
+        "year": "2023",
+        "year_median_price_per_pyeong_만원": 7524.7,
+        "groups": {
+          "저층(1-5)": {
+            "trade_count": 21,
+            "p10_price_per_pyeong_만원": 6697.2,
+            "p25_price_per_pyeong_만원": 6822.9,
+            "median_price_per_pyeong_만원": 7078.8,
+            "p75_price_per_pyeong_만원": 7407.7,
+            "p90_price_per_pyeong_만원": 8382.4,
+            "p10_vs_year_median_만원": -827.5,
+            "p25_vs_year_median_만원": -701.8,
+            "median_vs_year_median_만원": -445.9,
+            "p75_vs_year_median_만원": -117.0,
+            "p90_vs_year_median_만원": 857.7
+          },
+          "중층(6-15)": {
+            "trade_count": 30,
+            "p10_price_per_pyeong_만원": 6966.8,
+            "p25_price_per_pyeong_만원": 7059.4,
+            "median_price_per_pyeong_만원": 7539.3,
+            "p75_price_per_pyeong_만원": 7982.2,
+            "p90_price_per_pyeong_만원": 8259.6,
+            "p10_vs_year_median_만원": -557.9,
+            "p25_vs_year_median_만원": -465.3,
+            "median_vs_year_median_만원": 14.6,
+            "p75_vs_year_median_만원": 457.5,
+            "p90_vs_year_median_만원": 734.9
+          },
+          "고층(16+)": {
+            "trade_count": 66,
+            "p10_price_per_pyeong_만원": 6872.5,
+            "p25_price_per_pyeong_만원": 7066.6,
+            "median_price_per_pyeong_만원": 7597.7,
+            "p75_price_per_pyeong_만원": 8335.8,
+            "p90_price_per_pyeong_만원": 8577.3,
+            "p10_vs_year_median_만원": -652.2,
+            "p25_vs_year_median_만원": -458.1,
+            "median_vs_year_median_만원": 73.0,
+            "p75_vs_year_median_만원": 811.1,
+            "p90_vs_year_median_만원": 1052.6
+          }
+        }
+      },
+      {
+        "year": "2024",
+        "year_median_price_per_pyeong_만원": 8488.4,
+        "groups": {
+          "저층(1-5)": {
+            "trade_count": 27,
+            "p10_price_per_pyeong_만원": 7444.8,
+            "p25_price_per_pyeong_만원": 7748.5,
+            "median_price_per_pyeong_만원": 8079.5,
+            "p75_price_per_pyeong_만원": 8429.9,
+            "p90_price_per_pyeong_만원": 8666.4,
+            "p10_vs_year_median_만원": -1043.6,
+            "p25_vs_year_median_만원": -739.9,
+            "median_vs_year_median_만원": -408.9,
+            "p75_vs_year_median_만원": -58.5,
+            "p90_vs_year_median_만원": 178.0
+          },
+          "중층(6-15)": {
+            "trade_count": 61,
+            "p10_price_per_pyeong_만원": 7787.5,
+            "p25_price_per_pyeong_만원": 7992.5,
+            "median_price_per_pyeong_만원": 8488.4,
+            "p75_price_per_pyeong_만원": 8760.9,
+            "p90_price_per_pyeong_만원": 9142.8,
+            "p10_vs_year_median_만원": -700.9,
+            "p25_vs_year_median_만원": -495.9,
+            "median_vs_year_median_만원": 0.0,
+            "p75_vs_year_median_만원": 272.5,
+            "p90_vs_year_median_만원": 654.4
+          },
+          "고층(16+)": {
+            "trade_count": 105,
+            "p10_price_per_pyeong_만원": 7908.4,
+            "p25_price_per_pyeong_만원": 8176.9,
+            "median_price_per_pyeong_만원": 8577.3,
+            "p75_price_per_pyeong_만원": 8928.2,
+            "p90_price_per_pyeong_만원": 9208.9,
+            "p10_vs_year_median_만원": -580.0,
+            "p25_vs_year_median_만원": -311.5,
+            "median_vs_year_median_만원": 88.9,
+            "p75_vs_year_median_만원": 439.8,
+            "p90_vs_year_median_만원": 720.5
+          }
+        }
+      },
+      {
+        "year": "2025",
+        "year_median_price_per_pyeong_만원": 10058.9,
+        "groups": {
+          "저층(1-5)": {
+            "trade_count": 29,
+            "p10_price_per_pyeong_만원": 8566.2,
+            "p25_price_per_pyeong_만원": 9259.5,
+            "median_price_per_pyeong_만원": 9902.9,
+            "p75_price_per_pyeong_만원": 11214.0,
+            "p90_price_per_pyeong_만원": 11501.4,
+            "p10_vs_year_median_만원": -1492.7,
+            "p25_vs_year_median_만원": -799.4,
+            "median_vs_year_median_만원": -156.0,
+            "p75_vs_year_median_만원": 1155.1,
+            "p90_vs_year_median_만원": 1442.5
+          },
+          "중층(6-15)": {
+            "trade_count": 58,
+            "p10_price_per_pyeong_만원": 9004.7,
+            "p25_price_per_pyeong_만원": 9416.0,
+            "median_price_per_pyeong_만원": 10052.4,
+            "p75_price_per_pyeong_만원": 10913.1,
+            "p90_price_per_pyeong_만원": 11624.2,
+            "p10_vs_year_median_만원": -1054.2,
+            "p25_vs_year_median_만원": -642.9,
+            "median_vs_year_median_만원": -6.5,
+            "p75_vs_year_median_만원": 854.2,
+            "p90_vs_year_median_만원": 1565.3
+          },
+          "고층(16+)": {
+            "trade_count": 94,
+            "p10_price_per_pyeong_만원": 8998.0,
+            "p25_price_per_pyeong_만원": 9400.0,
+            "median_price_per_pyeong_만원": 10119.6,
+            "p75_price_per_pyeong_만원": 11188.4,
+            "p90_price_per_pyeong_만원": 11678.8,
+            "p10_vs_year_median_만원": -1060.9,
+            "p25_vs_year_median_만원": -658.9,
+            "median_vs_year_median_만원": 60.7,
+            "p75_vs_year_median_만원": 1129.5,
+            "p90_vs_year_median_만원": 1619.9
+          }
+        }
+      },
+      {
+        "year": "2026",
+        "year_median_price_per_pyeong_만원": 11384.5,
+        "groups": {
+          "저층(1-5)": {
+            "trade_count": 3,
+            "p10_price_per_pyeong_만원": 10784.1,
+            "p25_price_per_pyeong_만원": 10936.1,
+            "median_price_per_pyeong_만원": 11189.5,
+            "p75_price_per_pyeong_만원": 11374.7,
+            "p90_price_per_pyeong_만원": 11485.8,
+            "p10_vs_year_median_만원": -600.4,
+            "p25_vs_year_median_만원": -448.4,
+            "median_vs_year_median_만원": -195.0,
+            "p75_vs_year_median_만원": -9.8,
+            "p90_vs_year_median_만원": 101.3
+          },
+          "중층(6-15)": {
+            "trade_count": 9,
+            "p10_price_per_pyeong_만원": 10684.4,
+            "p25_price_per_pyeong_만원": 10902.5,
+            "median_price_per_pyeong_만원": 11306.5,
+            "p75_price_per_pyeong_만원": 11384.5,
+            "p90_price_per_pyeong_만원": 12143.4,
+            "p10_vs_year_median_만원": -700.1,
+            "p25_vs_year_median_만원": -482.0,
+            "median_vs_year_median_만원": -78.0,
+            "p75_vs_year_median_만원": 0.0,
+            "p90_vs_year_median_만원": 758.9
+          },
+          "고층(16+)": {
+            "trade_count": 17,
+            "p10_price_per_pyeong_만원": 10752.2,
+            "p25_price_per_pyeong_만원": 11111.6,
+            "median_price_per_pyeong_만원": 11583.9,
+            "p75_price_per_pyeong_만원": 11774.3,
+            "p90_price_per_pyeong_만원": 11891.5,
+            "p10_vs_year_median_만원": -632.3,
+            "p25_vs_year_median_만원": -272.9,
+            "median_vs_year_median_만원": 199.4,
+            "p75_vs_year_median_만원": 389.8,
+            "p90_vs_year_median_만원": 507.0
+          }
+        }
+      }
+    ],
+    "apt_dong_counts": [
+      {
+        "apt_dong": "229",
+        "count": 29
+      },
+      {
+        "apt_dong": "309",
+        "count": 23
+      },
+      {
+        "apt_dong": "306",
+        "count": 21
+      },
+      {
+        "apt_dong": "113",
+        "count": 20
+      },
+      {
+        "apt_dong": "210",
+        "count": 20
+      },
+      {
+        "apt_dong": "115",
+        "count": 20
+      },
+      {
+        "apt_dong": "217",
+        "count": 18
+      },
+      {
+        "apt_dong": "213",
+        "count": 17
+      },
+      {
+        "apt_dong": "314",
+        "count": 17
+      },
+      {
+        "apt_dong": "114",
+        "count": 16
+      },
+      {
+        "apt_dong": "312",
+        "count": 16
+      },
+      {
+        "apt_dong": "216",
+        "count": 15
+      }
+    ]
+  }
 }
