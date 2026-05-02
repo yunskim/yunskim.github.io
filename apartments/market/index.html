@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>서울 아파트 시장 동향</title>
+    <meta
+      name="description"
+      content="지역별 pseudo-repeat-sales index와 거래 intensity를 비교하기 위한 서울 아파트 시장 동향 페이지."
+    >
+    <link rel="stylesheet" href="/common/tufte.css">
+    <link rel="stylesheet" href="/common/site.css">
+    <link rel="stylesheet" href="/apartments/styles.css">
+    <script defer src="/notebook/promoted-notes.js"></script>
+  </head>
+  <body>
+    <article>
+      <nav class="site-nav" aria-label="사이트 네비게이션">
+        <a href="/">Home</a>
+        <a href="/boxoffice/">Boxoffice</a>
+        <a href="/starbucks/">Starbucks</a>
+        <a href="/zipcodes/">Zipcodes</a>
+        <a href="/apartments/" aria-current="page">Apartments</a>
+        <a href="/notebook/">Notebook</a>
+      </nav>
+
+      <h1>서울 아파트 시장 동향</h1>
+      <p class="subtitle">지역별 가격지수와 거래 강도 비교</p>
+      <nav class="app-tabs sans" aria-label="Apartments sections">
+        <a href="/apartments/">거래 이벤트 분석</a>
+        <a href="/apartments/market/" aria-current="page">지역별 시장 동향</a>
+      </nav>
+
+      <section aria-labelledby="market-purpose">
+        <h2 id="market-purpose">분석 목표</h2>
+        <p>
+          이 페이지는 서울 25개 구의 pseudo-repeat-sales index와 repeat-change
+          Hawkes intensity를 지역별로 비교하기 위한 공간이다. 현재는 거래 이벤트
+          분석에서 검토한 정의를 유지하고, 지역 선택 UI와 사전 계산된 지표를
+          추가하기 전의 기본 페이지로 둔다.
+        </p>
+      </section>
+
+      <section aria-labelledby="market-plan">
+        <h2 id="market-plan">예정 지표</h2>
+        <p>
+          먼저 구별 pseudo-repeat-sales index를 만들고, 표본이 충분한 지역에 대해
+          repeat-change Hawkes process를 계산한다. 가격 상승이 거래 확산을 동반하는지,
+          또는 얇은 거래 속에서 가격만 움직이는지를 지역별로 비교하는 것이 목적이다.
+        </p>
+        <ul>
+          <li>지역별 pseudo-repeat-sales index</li>
+          <li>상승/유지와 하강 repeat-change intensity</li>
+          <li>index와 intensity overlay</li>
+          <li>지역별 excitation matrix</li>
+        </ul>
+      </section>
+    </article>
+  </body>
+</html>

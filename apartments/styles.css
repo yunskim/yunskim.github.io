@@ -1,3 +1,31 @@
+.app-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 1.25rem 0 2rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.app-tabs a {
+  display: inline-block;
+  border: 1px solid var(--rule);
+  border-bottom: 0;
+  padding: 0.38rem 0.65rem 0.34rem;
+  background: var(--panel);
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.app-tabs a[aria-current="page"] {
+  background: var(--paper);
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.app-tabs a:hover {
+  color: var(--ink);
+}
+
 .location-summary,
 .standardization-summary {
   display: grid;
