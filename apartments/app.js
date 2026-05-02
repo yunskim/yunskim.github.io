@@ -21,6 +21,8 @@ const alphaColors = {
 let cachedTrendData = null;
 let cachedHawkesData = null;
 let cachedRepeatSalesData = null;
+let cachedRepeatSalesHawkesData = null;
+let cachedRepeatChangeHawkesData = null;
 let resizeTimer = null;
 
 function formatAmount(value) {
@@ -1255,6 +1257,276 @@ function renderRepeatSales(data) {
   renderRepeatSalesIndexChart(data);
 }
 
+function renderTypedHawkesSummary(data, selector, mode) {
+  const container = d3.select(selector);
+  if (container.empty()) return;
+
+  const fit = data.fit || {};
+  const counts = data.event_counts || {};
+  const indexSummary = data.repeat_sales_index?.summary || {};
+  const repeatSummary = data.repeat_summary || {};
+  const rows = [
+    ["기간", `${data.period?.start || "-"} - ${data.period?.end || "-"}`],
+    mode === "index"
+      ? ["기준월", `${indexSummary.base_month || "-"} = ${indexSummary.base_index || 100}`]
+      : ["중앙 gap", `${formatter.format(repeatSummary.median_gap_days || 0)}일`],
+    ["상승/유지 이벤트", `${formatter.format(counts["상승/유지"] || 0)}건`],
+    ["하강 이벤트", `${formatter.format(counts["하강"] || 0)}건`],
+    mode === "index"
+      ? ["repeat-sales pair", `${formatter.format(indexSummary.repeat_pairs || 0)}개`]
+      : ["repeat-change event", `${formatter.format(repeatSummary.repeat_change_events || 0)}개`],
+    ["half-life", `${fit.half_life_days ?? "-"}일`],
+  ];
+
+  container.selectAll("*").remove();
+  const item = container.selectAll(":scope > div")
+    .data(rows)
+    .join("div");
+  item.append("dt").text((row) => row[0]);
+  item.append("dd").text((row) => row[1]);
+}
+
+function renderTypedHawkesAlphaChart(data, selector, title) {
+  const element = document.querySelector(selector);
+  if (!element) return;
+
+  const { width, height } = chartSize(selector);
+  const margin = { top: 46, right: 28, bottom: 58, left: width < 460 ? 84 : 104 };
+  const innerWidth = width - margin.left - margin.right;
+  const innerHeight = height - margin.top - margin.bottom;
+  const svg = d3.select(selector);
+  setSvgSize(svg, width, height);
+  svg.selectAll("*").remove();
+
+  const hawkesTypes = data.event_types || defaultHawkesTypes;
+  const alpha = data.fit?.alpha || {};
+  const cells = hawkesTypes.flatMap((target) => hawkesTypes.map((source) => ({
+    target,
+    source,
+    value: alpha[target]?.[source] ?? 0,
+  })));
+  const x = d3.scaleBand().domain(hawkesTypes).range([0, innerWidth]).padding(0.12);
+  const y = d3.scaleBand().domain(hawkesTypes).range([0, innerHeight]).padding(0.12);
+  const color = d3.scaleLinear()
+    .domain([0, d3.max(cells, (cell) => cell.value) || 1])
+    .range(["#f4efe7", "#0f6b63"]);
+  const g = svg.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
+
+  g.append("text")
+    .attr("x", 0)
+    .attr("y", -16)
+    .attr("font-weight", 600)
+    .attr("fill", "var(--ink)")
+    .text(title);
+  g.append("g")
+    .attr("transform", `translate(0,${innerHeight})`)
+    .call(d3.axisBottom(x));
+  g.append("g").call(d3.axisLeft(y));
+
+  g.selectAll("rect.alpha-cell")
+    .data(cells)
+    .join("rect")
+    .attr("class", "alpha-cell")
+    .attr("x", (cell) => x(cell.source))
+    .attr("y", (cell) => y(cell.target))
+    .attr("width", x.bandwidth())
+    .attr("height", y.bandwidth())
+    .attr("fill", (cell) => color(cell.value));
+
+  g.selectAll(".alpha-label-bg")
+    .data(cells)
+    .join("rect")
+    .attr("class", "alpha-label-bg")
+    .attr("x", (cell) => x(cell.source) + x.bandwidth() / 2 - 24)
+    .attr("y", (cell) => y(cell.target) + y.bandwidth() / 2 - 12)
+    .attr("width", 48)
+    .attr("height", 22)
+    .attr("rx", 2)
+    .attr("fill", "var(--paper)")
+    .attr("fill-opacity", 0.9);
+
+  g.selectAll(".alpha-label")
+    .data(cells)
+    .join("text")
+    .attr("class", "alpha-label")
+    .attr("x", (cell) => x(cell.source) + x.bandwidth() / 2)
+    .attr("y", (cell) => y(cell.target) + y.bandwidth() / 2 + 5)
+    .attr("text-anchor", "middle")
+    .attr("fill", "var(--ink)")
+    .attr("font-weight", 700)
+    .text((cell) => cell.value.toFixed(3));
+}
+
+function renderTypedHawkesIntensityChart(data, selector, title, options = {}) {
+  const element = document.querySelector(selector);
+  if (!element) return;
+
+  const { width, height } = chartSize(selector);
+  const margin = {
+    top: 34,
+    right: width < 560 ? 24 : 150,
+    bottom: width < 560 ? 84 : 42,
+    left: width < 460 ? 52 : 62,
+  };
+  const innerWidth = width - margin.left - margin.right;
+  const innerHeight = height - margin.top - margin.bottom;
+  const svg = d3.select(selector);
+  setSvgSize(svg, width, height);
+  svg.selectAll("*").remove();
+
+  const rows = (data.intensity_series || []).map((row) => ({
+    date: new Date(row.date),
+    intensity: row.intensity,
+    events: row.events,
+  }));
+  if (!rows.length) return;
+  const indexRows = options.showIndex ? (data.repeat_sales_index?.series || []).map((row) => ({
+    date: new Date(`${row.month}-01T00:00:00`),
+    month: row.month,
+    index: row.repeat_sales_index,
+    direction: row.direction,
+  })).filter((row) => Number.isFinite(row.index)) : [];
+  const switchRows = indexRows.filter((row, index) => (
+    index > 0
+    && row.direction
+    && indexRows[index - 1].direction
+    && row.direction !== indexRows[index - 1].direction
+  ));
+  const hawkesTypes = data.event_types || defaultHawkesTypes;
+  const x = d3.scaleTime()
+    .domain(d3.extent(rows, (row) => row.date))
+    .range([0, innerWidth]);
+  const y = d3.scaleLinear()
+    .domain([0, d3.max(rows, (row) => d3.max(hawkesTypes, (type) => row.intensity[type])) || 1])
+    .nice()
+    .range([innerHeight, 0]);
+  const indexY = d3.scaleLinear()
+    .domain(indexRows.length ? d3.extent(indexRows, (row) => row.index) : [0, 1])
+    .nice()
+    .range([innerHeight, 0]);
+  const g = svg.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
+
+  g.selectAll(".repeat-index-switch")
+    .data(switchRows)
+    .join("line")
+    .attr("class", "repeat-index-switch")
+    .attr("x1", (row) => x(row.date))
+    .attr("x2", (row) => x(row.date))
+    .attr("y1", 0)
+    .attr("y2", innerHeight)
+    .attr("stroke", "var(--ink)")
+    .attr("stroke-opacity", 0.18)
+    .attr("stroke-dasharray", "3 5");
+
+  g.append("g")
+    .attr("transform", `translate(0,${innerHeight})`)
+    .call(d3.axisBottom(x).ticks(yearTickCount(width)).tickFormat(d3.timeFormat("%Y")));
+  g.append("g").call(d3.axisLeft(y).ticks(5));
+  if (indexRows.length) {
+    g.append("g")
+      .attr("transform", `translate(${innerWidth},0)`)
+      .call(d3.axisRight(indexY).ticks(5).tickFormat((value) => priceFormatter.format(value)));
+  }
+
+  hawkesTypes.forEach((group) => {
+    const line = d3.line()
+      .x((row) => x(row.date))
+      .y((row) => y(row.intensity[group]));
+    g.append("path")
+      .datum(rows)
+      .attr("fill", "none")
+      .attr("stroke", groupColors[group])
+      .attr("stroke-width", 2)
+      .attr("d", line);
+
+    const eventRows = rows.filter((row) => row.events[group] > 0);
+    g.selectAll(`line[data-repeat-sales-hawkes-event="${group}"]`)
+      .data(eventRows)
+      .join("line")
+      .attr("data-repeat-sales-hawkes-event", group)
+      .attr("x1", (row) => x(row.date))
+      .attr("x2", (row) => x(row.date))
+      .attr("y1", innerHeight)
+      .attr("y2", innerHeight - 10)
+      .attr("stroke", groupColors[group])
+      .attr("stroke-opacity", 0.35);
+  });
+
+  if (indexRows.length) {
+    const indexLine = d3.line()
+      .x((row) => x(row.date))
+      .y((row) => indexY(row.index))
+      .curve(d3.curveMonotoneX);
+    g.append("path")
+      .datum(indexRows)
+      .attr("fill", "none")
+      .attr("stroke", alphaColors["하강 <- 하강"])
+      .attr("stroke-width", 2)
+      .attr("stroke-opacity", 0.86)
+      .attr("d", indexLine);
+  }
+
+  g.append("text")
+    .attr("x", 0)
+    .attr("y", -12)
+    .attr("font-weight", 600)
+    .attr("fill", "var(--ink)")
+    .text(title);
+
+  const legend = width < 560
+    ? svg.append("g").attr("transform", `translate(${margin.left},${height - (options.showIndex ? 74 : 52)})`)
+    : svg.append("g").attr("transform", `translate(${margin.left + innerWidth + 18},${margin.top + 4})`);
+  const legendRows = [
+    ...hawkesTypes.map((group) => ({ label: group, color: groupColors[group], dash: null })),
+    ...(options.showIndex ? [
+      { label: "index", color: alphaColors["하강 <- 하강"], dash: null },
+      { label: "direction switch", color: "var(--ink)", dash: "3 5" },
+    ] : []),
+  ];
+  legendRows.forEach((item, index) => {
+    const row = legend.append("g").attr("transform", `translate(0,${index * 20})`);
+    row.append("line")
+      .attr("x1", 0)
+      .attr("x2", 16)
+      .attr("y1", 0)
+      .attr("y2", 0)
+      .attr("stroke", item.color)
+      .attr("stroke-width", 2)
+      .attr("stroke-dasharray", item.dash);
+    row.append("text")
+      .attr("x", 22)
+      .attr("y", 4)
+      .attr("fill", "var(--muted)")
+      .text(item.label);
+  });
+}
+
+function renderRepeatSalesHawkes(data) {
+  cachedRepeatSalesHawkesData = data;
+  if (typeof d3 === "undefined") return;
+  renderTypedHawkesSummary(data, "#repeat-sales-hawkes-summary", "index");
+  renderTypedHawkesAlphaChart(data, "#repeat-sales-hawkes-alpha-chart", "Pseudo-repeat-sales event excitation matrix");
+  renderTypedHawkesIntensityChart(
+    data,
+    "#repeat-sales-hawkes-intensity-chart",
+    "Fitted intensity with pseudo-repeat-sales index and direction switches",
+    { showIndex: true },
+  );
+}
+
+function renderRepeatChangeHawkes(data) {
+  cachedRepeatChangeHawkesData = data;
+  if (typeof d3 === "undefined") return;
+  renderTypedHawkesSummary(data, "#repeat-change-hawkes-summary", "repeat-change");
+  renderTypedHawkesAlphaChart(data, "#repeat-change-hawkes-alpha-chart", "Repeat-change event excitation matrix");
+  renderTypedHawkesIntensityChart(
+    data,
+    "#repeat-change-hawkes-intensity-chart",
+    "Fitted intensity with pseudo-repeat-sales index",
+    { showIndex: true },
+  );
+}
+
 function renderHawkes(data) {
   cachedHawkesData = data;
   if (typeof d3 === "undefined") return;
@@ -1289,6 +1561,26 @@ async function initRepeatSales() {
   }
 }
 
+async function initRepeatSalesHawkes() {
+  try {
+    const response = await fetch("/apartments/data/park_rio_repeat_sales_hawkes_2type.json");
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    renderRepeatSalesHawkes(await response.json());
+  } catch (error) {
+    setText("#repeat-sales-hawkes-summary", "Pseudo-repeat-sales Hawkes 결과 데이터를 불러오지 못했습니다.");
+  }
+}
+
+async function initRepeatChangeHawkes() {
+  try {
+    const response = await fetch("/apartments/data/park_rio_repeat_change_hawkes_2type.json");
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    renderRepeatChangeHawkes(await response.json());
+  } catch (error) {
+    setText("#repeat-change-hawkes-summary", "Repeat-change Hawkes 결과 데이터를 불러오지 못했습니다.");
+  }
+}
+
 async function initParkRioMap() {
   try {
     const response = await fetch("/apartments/data/park_rio_location.json");
@@ -1305,6 +1597,8 @@ async function initParkRioMap() {
 initParkRioMap();
 initHawkes();
 initRepeatSales();
+initRepeatSalesHawkes();
+initRepeatChangeHawkes();
 
 window.addEventListener("resize", () => {
   window.clearTimeout(resizeTimer);
@@ -1312,5 +1606,7 @@ window.addEventListener("resize", () => {
     if (cachedTrendData) renderTrends(cachedTrendData);
     if (cachedHawkesData) renderHawkes(cachedHawkesData);
     if (cachedRepeatSalesData) renderRepeatSales(cachedRepeatSalesData);
+    if (cachedRepeatSalesHawkesData) renderRepeatSalesHawkes(cachedRepeatSalesHawkesData);
+    if (cachedRepeatChangeHawkesData) renderRepeatChangeHawkes(cachedRepeatChangeHawkesData);
   }, 150);
 });

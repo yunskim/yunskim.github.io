@@ -266,6 +266,60 @@
         </figure>
       </section>
 
+      <section aria-labelledby="repeat-sales-hawkes">
+        <h2 id="repeat-sales-hawkes">Pseudo-Repeat Sales Hawkes</h2>
+        <p>
+          파크리오 85㎡대 개별 거래일은 이벤트 시각으로 유지하되, 이벤트 타입은
+          해당 거래가 속한 월의 파크리오 85㎡대 pseudo-repeat-sales index 방향으로
+          정한다. 월별 지수가 전월 이상이면 상승/유지, 전월 미만이면 하강이다.
+        </p>
+        <dl class="hawkes-summary sans" id="repeat-sales-hawkes-summary"></dl>
+        <figure class="hawkes-matrix-figure">
+          <svg id="repeat-sales-hawkes-alpha-chart" class="hawkes-chart hawkes-alpha-chart" role="img" aria-label="파크리오 pseudo-repeat-sales 2-type Hawkes excitation matrix"></svg>
+          <figcaption class="sans">
+            행은 영향을 받는 target intensity, 열은 과거 source event다. 이벤트 타입은
+            개별 거래가격의 직전 거래 대비 방향이 아니라 월별 pseudo-repeat-sales
+            index의 방향으로 정했다.
+          </figcaption>
+        </figure>
+        <figure class="fullwidth hawkes-panel">
+          <svg id="repeat-sales-hawkes-intensity-chart" class="hawkes-chart" role="img" aria-label="파크리오 pseudo-repeat-sales 2-type Hawkes fitted intensity"></svg>
+          <figcaption class="sans">
+            rug는 파크리오 85㎡대 개별 거래일이다. 색은 해당 월 pseudo-repeat-sales
+            index가 전월 대비 상승/유지인지 하강인지 나타낸다. 파란 선은 같은
+            pseudo-repeat-sales index이고, 세로 점선은 월별 index 방향이 바뀐
+            시점이다.
+          </figcaption>
+        </figure>
+      </section>
+
+      <section aria-labelledby="repeat-change-hawkes">
+        <h2 id="repeat-change-hawkes">Repeat-Change Hawkes</h2>
+        <p>
+          이번에는 월별 index를 쓰지 않고, 각 pseudo-unit의 직전 거래가격과 현재
+          거래가격을 직접 비교한다. 이벤트 시각은 두 번째 이후 반복거래일이고,
+          현재 가격이 같은 pseudo-unit의 직전 가격 이상이면 상승/유지, 낮으면 하강이다.
+        </p>
+        <dl class="hawkes-summary sans" id="repeat-change-hawkes-summary"></dl>
+        <figure class="hawkes-matrix-figure">
+          <svg id="repeat-change-hawkes-alpha-chart" class="hawkes-chart hawkes-alpha-chart" role="img" aria-label="파크리오 repeat-change 2-type Hawkes excitation matrix"></svg>
+          <figcaption class="sans">
+            행은 영향을 받는 target intensity, 열은 과거 source event다. 이 정의는
+            월말까지 기다려야 알 수 있는 index 방향이 아니라, 같은 pseudo-unit의
+            직전 반복거래 대비 가격 변화만 사용한다.
+          </figcaption>
+        </figure>
+        <figure class="fullwidth hawkes-panel">
+          <svg id="repeat-change-hawkes-intensity-chart" class="hawkes-chart" role="img" aria-label="파크리오 repeat-change 2-type Hawkes fitted intensity"></svg>
+          <figcaption class="sans">
+            rug는 각 pseudo-unit의 두 번째 이후 거래일이다. 같은 pseudo-unit의 직전
+            거래가격보다 현재 가격이 높거나 같으면 상승/유지, 낮으면 하강으로 표시한다.
+            파란 선은 같은 파크리오 85㎡대 pseudo-repeat-sales index이고, 세로
+            점선은 index 방향이 바뀐 시점이다.
+          </figcaption>
+        </figure>
+      </section>
+
       <section aria-labelledby="cautions">
         <h2 id="cautions">주의점</h2>
         <p>
