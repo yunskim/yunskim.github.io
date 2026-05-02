@@ -20,6 +20,7 @@ const alphaColors = {
 };
 let cachedTrendData = null;
 let cachedHawkesData = null;
+let cachedRepeatSalesData = null;
 let resizeTimer = null;
 
 function formatAmount(value) {
@@ -1103,6 +1104,157 @@ function renderMovingWindowChart(data) {
   });
 }
 
+function renderRepeatSalesSummary(data) {
+  const container = d3.select("#repeat-sales-summary");
+  if (container.empty()) return;
+
+  const summary = data.summary || {};
+  const readCounts = summary.read_counts || {};
+  const usedRows = readCounts.rows_used || 0;
+  const repeatTradeCount = summary.repeat_trade_count || 0;
+  const repeatShare = usedRows ? repeatTradeCount / usedRows * 100 : null;
+  const rows = [
+    ["기준월", `${summary.base_month || "-"} = ${summary.base_index || 100}`],
+    ["기간", `${summary.first_month || "-"} - ${summary.last_month || "-"}`],
+    ["사용 거래", `${formatter.format(usedRows)}건`],
+    ["반복거래 unit", `${formatter.format(summary.repeat_units || 0)}개`],
+    ["회귀 pair", `${formatter.format(summary.repeat_pairs || 0)}개`],
+    ["대상 거래 비율", repeatShare === null ? "-" : `${repeatShare.toFixed(1)}%`],
+  ];
+
+  container.selectAll("*").remove();
+  const item = container.selectAll(":scope > div")
+    .data(rows)
+    .join("div");
+  item.append("dt").text((row) => row[0]);
+  item.append("dd").text((row) => row[1]);
+}
+
+function renderRepeatSalesIndexChart(data) {
+  const selector = "#repeat-sales-index-chart";
+  const element = document.querySelector(selector);
+  if (!element) return;
+
+  const rows = (data.series || []).map((row) => ({
+    date: new Date(`${row.month}-01T00:00:00`),
+    month: row.month,
+    marketPeriod: row.market_period,
+    marketPeriodLabel: row.market_period_label,
+    index: row.repeat_sales_index,
+    pairCount: row.repeat_pair_end_count,
+  })).filter((row) => Number.isFinite(row.index));
+  if (!rows.length) return;
+
+  const { width, height } = chartSize(selector);
+  const margin = {
+    top: 42,
+    right: width < 460 ? 24 : 30,
+    bottom: 46,
+    left: width < 460 ? 50 : 62,
+  };
+  const innerWidth = width - margin.left - margin.right;
+  const innerHeight = height - margin.top - margin.bottom;
+  const svg = d3.select(selector);
+  setSvgSize(svg, width, height);
+  svg.selectAll("*").remove();
+
+  const x = d3.scaleTime()
+    .domain(d3.extent(rows, (row) => row.date))
+    .range([0, innerWidth]);
+  const y = d3.scaleLinear()
+    .domain([0, d3.max(rows, (row) => row.index) || 100])
+    .nice()
+    .range([innerHeight, 0]);
+  const line = d3.line()
+    .x((row) => x(row.date))
+    .y((row) => y(row.index))
+    .curve(d3.curveMonotoneX);
+  const g = svg.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
+
+  const periods = [
+    { label: "상승기", start: new Date("2007-01-01T00:00:00"), end: new Date("2010-02-01T00:00:00"), color: groupColors["85㎡대"] },
+    { label: "하강기", start: new Date("2010-02-01T00:00:00"), end: new Date("2014-04-01T00:00:00"), color: groupColors["기타 면적"] },
+  ];
+  g.selectAll(".repeat-period")
+    .data(periods)
+    .join("rect")
+    .attr("class", "repeat-period")
+    .attr("x", (period) => x(period.start))
+    .attr("y", 0)
+    .attr("width", (period) => Math.max(0, x(period.end) - x(period.start)))
+    .attr("height", innerHeight)
+    .attr("fill", (period) => period.color)
+    .attr("fill-opacity", 0.08);
+
+  g.append("g")
+    .attr("transform", `translate(0,${innerHeight})`)
+    .call(d3.axisBottom(x).ticks(yearTickCount(width)).tickFormat(d3.timeFormat("%Y")));
+  g.append("g").call(d3.axisLeft(y).ticks(5));
+
+  g.append("line")
+    .attr("x1", 0)
+    .attr("x2", innerWidth)
+    .attr("y1", y(100))
+    .attr("y2", y(100))
+    .attr("stroke", "var(--rule)")
+    .attr("stroke-dasharray", "4 4");
+
+  g.append("path")
+    .datum(rows)
+    .attr("fill", "none")
+    .attr("stroke", groupColors["85㎡대"])
+    .attr("stroke-width", 2.2)
+    .attr("d", line);
+
+  const keyMonths = new Set(["2006-01", "2010-01", "2014-03", "2026-04"]);
+  g.selectAll(".repeat-key-point")
+    .data(rows.filter((row) => keyMonths.has(row.month)))
+    .join("circle")
+    .attr("class", "repeat-key-point")
+    .attr("cx", (row) => x(row.date))
+    .attr("cy", (row) => y(row.index))
+    .attr("r", 3.6)
+    .attr("fill", groupColors["85㎡대"])
+    .attr("stroke", "var(--paper)")
+    .attr("stroke-width", 1.4);
+
+  g.append("text")
+    .attr("x", 0)
+    .attr("y", -16)
+    .attr("font-weight", 600)
+    .attr("fill", "var(--ink)")
+    .text("Seoul pseudo-repeat-sales index, 2006-01 = 100");
+
+  const legend = g.append("g")
+    .attr("transform", `translate(${Math.max(0, innerWidth - 190)},${width < 460 ? 4 : 0})`);
+  [
+    ["Repeat-sales index", groupColors["85㎡대"], 1],
+    ["상승기", groupColors["85㎡대"], 0.12],
+    ["하강기", groupColors["기타 면적"], 0.12],
+  ].forEach(([label, color, opacity], index) => {
+    const item = legend.append("g").attr("transform", `translate(0,${index * 19})`);
+    item.append("rect")
+      .attr("x", 0)
+      .attr("y", -8)
+      .attr("width", 16)
+      .attr("height", 10)
+      .attr("fill", color)
+      .attr("fill-opacity", opacity);
+    item.append("text")
+      .attr("x", 22)
+      .attr("y", 1)
+      .attr("fill", "var(--muted)")
+      .text(label);
+  });
+}
+
+function renderRepeatSales(data) {
+  cachedRepeatSalesData = data;
+  if (typeof d3 === "undefined") return;
+  renderRepeatSalesSummary(data);
+  renderRepeatSalesIndexChart(data);
+}
+
 function renderHawkes(data) {
   cachedHawkesData = data;
   if (typeof d3 === "undefined") return;
@@ -1127,6 +1279,16 @@ async function initHawkes() {
   }
 }
 
+async function initRepeatSales() {
+  try {
+    const response = await fetch("/apartments/data/seoul_repeat_sales_index.json");
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    renderRepeatSales(await response.json());
+  } catch (error) {
+    setText("#repeat-sales-summary", "Repeat-sales index 데이터를 불러오지 못했습니다.");
+  }
+}
+
 async function initParkRioMap() {
   try {
     const response = await fetch("/apartments/data/park_rio_location.json");
@@ -1142,11 +1304,13 @@ async function initParkRioMap() {
 
 initParkRioMap();
 initHawkes();
+initRepeatSales();
 
 window.addEventListener("resize", () => {
   window.clearTimeout(resizeTimer);
   resizeTimer = window.setTimeout(() => {
     if (cachedTrendData) renderTrends(cachedTrendData);
     if (cachedHawkesData) renderHawkes(cachedHawkesData);
+    if (cachedRepeatSalesData) renderRepeatSales(cachedRepeatSalesData);
   }, 150);
 });

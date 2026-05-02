@@ -1,0 +1,2242 @@
+{
+  "summary": {
+    "base_month": "2006-01",
+    "base_index": 100,
+    "pair_mode": "adjacent",
+    "solver": "solve",
+    "months": 244,
+    "repeat_units": 175071,
+    "repeat_trade_count": 1322880,
+    "repeat_pairs": 1054817,
+    "skipped_same_month_pairs": 92992,
+    "first_month": "2006-01",
+    "last_month": "2026-04",
+    "market_period_definitions": [
+      {
+        "market_period": "boom",
+        "market_period_label": "상승기",
+        "start_month": "2007-01",
+        "end_month": "2010-01"
+      },
+      {
+        "market_period": "recession",
+        "market_period_label": "하강기",
+        "start_month": "2010-02",
+        "end_month": "2014-03"
+      }
+    ],
+    "source_csv": "apartments/data/downloads/seoul_11_apartment_trades/apartment_trades_seoul_11_200601_202604.csv",
+    "index_csv": "apartments/data/downloads/seoul_11_apartment_trades/repeat_sales_index/seoul_repeat_sales_index_200601_base.csv",
+    "pseudo_unit_key": [
+      "source_lawd_cd",
+      "umdNm",
+      "jibun",
+      "aptNm",
+      "excluUseAr rounded to 0.01",
+      "floor"
+    ],
+    "read_counts": {
+      "rows_read": 1410393,
+      "rows_used": 1393979,
+      "cancelled_rows_skipped": 16414
+    }
+  },
+  "series": [
+    {
+      "month": "2006-01",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 100.0,
+      "log_index": 0.0,
+      "repeat_unit_trade_count": 3851,
+      "repeat_pair_end_count": 0
+    },
+    {
+      "month": "2006-02",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 100.810405,
+      "log_index": 0.008071387,
+      "repeat_unit_trade_count": 5657,
+      "repeat_pair_end_count": 495
+    },
+    {
+      "month": "2006-03",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 103.653218,
+      "log_index": 0.035880696,
+      "repeat_unit_trade_count": 9845,
+      "repeat_pair_end_count": 1475
+    },
+    {
+      "month": "2006-04",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 105.383452,
+      "log_index": 0.052435433,
+      "repeat_unit_trade_count": 8558,
+      "repeat_pair_end_count": 2243
+    },
+    {
+      "month": "2006-05",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 105.708381,
+      "log_index": 0.055513997,
+      "repeat_unit_trade_count": 7529,
+      "repeat_pair_end_count": 2418
+    },
+    {
+      "month": "2006-06",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 105.656114,
+      "log_index": 0.055019429,
+      "repeat_unit_trade_count": 4826,
+      "repeat_pair_end_count": 1834
+    },
+    {
+      "month": "2006-07",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 105.726798,
+      "log_index": 0.055688207,
+      "repeat_unit_trade_count": 4892,
+      "repeat_pair_end_count": 1958
+    },
+    {
+      "month": "2006-08",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 106.96025,
+      "log_index": 0.067287085,
+      "repeat_unit_trade_count": 7017,
+      "repeat_pair_end_count": 2903
+    },
+    {
+      "month": "2006-09",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 109.647682,
+      "log_index": 0.092102147,
+      "repeat_unit_trade_count": 13575,
+      "repeat_pair_end_count": 5653
+    },
+    {
+      "month": "2006-10",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 115.725618,
+      "log_index": 0.146051844,
+      "repeat_unit_trade_count": 18711,
+      "repeat_pair_end_count": 7925
+    },
+    {
+      "month": "2006-11",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 118.535678,
+      "log_index": 0.170043813,
+      "repeat_unit_trade_count": 14733,
+      "repeat_pair_end_count": 6962
+    },
+    {
+      "month": "2006-12",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 122.189624,
+      "log_index": 0.200403949,
+      "repeat_unit_trade_count": 8787,
+      "repeat_pair_end_count": 4651
+    },
+    {
+      "month": "2007-01",
+      "market_period": "boom",
+      "market_period_label": "상승기",
+      "repeat_sales_index": 122.134836,
+      "log_index": 0.199955465,
+      "repeat_unit_trade_count": 4049,
+      "repeat_pair_end_count": 2345
+    },
+    {
+      "month": "2007-02",
+      "market_period": "boom",
+      "market_period_label": "상승기",
+      "repeat_sales_index": 123.092505,
+      "log_index": 0.207765958,
+      "repeat_unit_trade_count": 3473,
+      "repeat_pair_end_count": 2030
+    },
+    {
+      "month": "2007-03",
+      "market_period": "boom",
+      "market_period_label": "상승기",
+      "repeat_sales_index": 123.478278,
+      "log_index": 0.210895068,
+      "repeat_unit_trade_count": 5035,
+      "repeat_pair_end_count": 3069
+    },
+    {
+      "month": "2007-04",
+      "market_period": "boom",
+      "market_period_label": "상승기",
+      "repeat_sales_index": 123.819311,
+      "log_index": 0.213653149,
+      "repeat_unit_trade_count": 3810,
+      "repeat_pair_end_count": 2395
+    },
+    {
+      "month": "2007-05",
+      "market_period": "boom",
+      "market_period_label": "상승기",
+      "repeat_sales_index": 122.901639,
+      "log_index": 0.206214163,
+      "repeat_unit_trade_count": 2944,
+      "repeat_pair_end_count": 1934
+    },
+    {
+      "month": "2007-06",
+      "market_period": "boom",
+      "market_period_label": "상승기",
+      "repeat_sales_index": 125.451417,
+      "log_index": 0.226748379,
+      "repeat_unit_trade_count": 4141,
+      "repeat_pair_end_count": 2731
+    },
+    {
+      "month": "2007-07",
+      "market_period": "boom",
+      "market_period_label": "상승기",
+      "repeat_sales_index": 127.151294,
+      "log_index": 0.24020748,
+      "repeat_unit_trade_count": 4982,
+      "repeat_pair_end_count": 3257
+    },
+    {
+      "month": "2007-08",
+      "market_period": "boom",
+      "market_period_label": "상승기",
+      "repeat_sales_index": 127.530868,
+      "log_index": 0.243188249,
+      "repeat_unit_trade_count": 4215,
+      "repeat_pair_end_count": 2825
+    },
+    {
+      "month": "2007-09",
+      "market_period": "boom",
+      "market_period_label": "상승기",
+      "repeat_sales_index": 128.693621,
+      "log_index": 0.252264361,
+      "repeat_unit_trade_count": 3808,
+      "repeat_pair_end_count": 2609
+    },
+    {
+      "month": "2007-10",
+      "market_period": "boom",
+      "market_period_label": "상승기",
+      "repeat_sales_index": 129.696046,
+      "log_index": 0.26002342,
+      "repeat_unit_trade_count": 5633,
+      "repeat_pair_end_count": 3829
+    },
+    {
+      "month": "2007-11",
+      "market_period": "boom",
+      "market_period_label": "상승기",
+      "repeat_sales_index": 130.339859,
+      "log_index": 0.26497515,
+      "repeat_unit_trade_count": 4594,
+      "repeat_pair_end_count": 3177
+    },
+    {
+      "month": "2007-12",
+      "market_period": "boom",
+      "market_period_label": "상승기",
+      "repeat_sales_index": 131.249252,
+      "log_index": 0.271928019,
+      "repeat_unit_trade_count": 4410,
+      "repeat_pair_end_count": 3073
+    },
+    {
+      "month": "2008-01",
+      "market_period": "boom",
+      "market_period_label": "상승기",
+      "repeat_sales_index": 133.196285,
+      "log_index": 0.286653684,
+      "repeat_unit_trade_count": 5014,
+      "repeat_pair_end_count": 3552
+    },
+    {
+      "month": "2008-02",
+      "market_period": "boom",
+      "market_period_label": "상승기",
+      "repeat_sales_index": 136.046591,
+      "log_index": 0.307827224,
+      "repeat_unit_trade_count": 5651,
+      "repeat_pair_end_count": 3950
+    },
+    {
+      "month": "2008-03",
+      "market_period": "boom",
+      "market_period_label": "상승기",
+      "repeat_sales_index": 140.996409,
+      "log_index": 0.343564233,
+      "repeat_unit_trade_count": 8914,
+      "repeat_pair_end_count": 6007
+    },
+    {
+      "month": "2008-04",
+      "market_period": "boom",
+      "market_period_label": "상승기",
+      "repeat_sales_index": 144.453397,
+      "log_index": 0.367786759,
+      "repeat_unit_trade_count": 6814,
+      "repeat_pair_end_count": 4719
+    },
+    {
+      "month": "2008-05",
+      "market_period": "boom",
+      "market_period_label": "상승기",
+      "repeat_sales_index": 145.451661,
+      "log_index": 0.374673616,
+      "repeat_unit_trade_count": 4925,
+      "repeat_pair_end_count": 3407
+    },
+    {
+      "month": "2008-06",
+      "market_period": "boom",
+      "market_period_label": "상승기",
+      "repeat_sales_index": 146.653459,
+      "log_index": 0.382902195,
+      "repeat_unit_trade_count": 3846,
+      "repeat_pair_end_count": 2738
+    },
+    {
+      "month": "2008-07",
+      "market_period": "boom",
+      "market_period_label": "상승기",
+      "repeat_sales_index": 145.59188,
+      "log_index": 0.37563718,
+      "repeat_unit_trade_count": 3099,
+      "repeat_pair_end_count": 2078
+    },
+    {
+      "month": "2008-08",
+      "market_period": "boom",
+      "market_period_label": "상승기",
+      "repeat_sales_index": 144.27754,
+      "log_index": 0.366568618,
+      "repeat_unit_trade_count": 2238,
+      "repeat_pair_end_count": 1524
+    },
+    {
+      "month": "2008-09",
+      "market_period": "boom",
+      "market_period_label": "상승기",
+      "repeat_sales_index": 141.286988,
+      "log_index": 0.345623012,
+      "repeat_unit_trade_count": 1762,
+      "repeat_pair_end_count": 1120
+    },
+    {
+      "month": "2008-10",
+      "market_period": "boom",
+      "market_period_label": "상승기",
+      "repeat_sales_index": 136.328235,
+      "log_index": 0.309895283,
+      "repeat_unit_trade_count": 1392,
+      "repeat_pair_end_count": 839
+    },
+    {
+      "month": "2008-11",
+      "market_period": "boom",
+      "market_period_label": "상승기",
+      "repeat_sales_index": 128.001527,
+      "log_index": 0.246872006,
+      "repeat_unit_trade_count": 1109,
+      "repeat_pair_end_count": 749
+    },
+    {
+      "month": "2008-12",
+      "market_period": "boom",
+      "market_period_label": "상승기",
+      "repeat_sales_index": 118.41758,
+      "log_index": 0.169047007,
+      "repeat_unit_trade_count": 1454,
+      "repeat_pair_end_count": 961
+    },
+    {
+      "month": "2009-01",
+      "market_period": "boom",
+      "market_period_label": "상승기",
+      "repeat_sales_index": 124.755674,
+      "log_index": 0.221187032,
+      "repeat_unit_trade_count": 3643,
+      "repeat_pair_end_count": 2341
+    },
+    {
+      "month": "2009-02",
+      "market_period": "boom",
+      "market_period_label": "상승기",
+      "repeat_sales_index": 130.197725,
+      "log_index": 0.263884072,
+      "repeat_unit_trade_count": 4732,
+      "repeat_pair_end_count": 3184
+    },
+    {
+      "month": "2009-03",
+      "market_period": "boom",
+      "market_period_label": "상승기",
+      "repeat_sales_index": 131.756182,
+      "log_index": 0.275782921,
+      "repeat_unit_trade_count": 5157,
+      "repeat_pair_end_count": 3390
+    },
+    {
+      "month": "2009-04",
+      "market_period": "boom",
+      "market_period_label": "상승기",
+      "repeat_sales_index": 135.701634,
+      "log_index": 0.305288422,
+      "repeat_unit_trade_count": 8003,
+      "repeat_pair_end_count": 5374
+    },
+    {
+      "month": "2009-05",
+      "market_period": "boom",
+      "market_period_label": "상승기",
+      "repeat_sales_index": 138.400854,
+      "log_index": 0.324984031,
+      "repeat_unit_trade_count": 6765,
+      "repeat_pair_end_count": 4621
+    },
+    {
+      "month": "2009-06",
+      "market_period": "boom",
+      "market_period_label": "상승기",
+      "repeat_sales_index": 141.429935,
+      "log_index": 0.346634246,
+      "repeat_unit_trade_count": 8643,
+      "repeat_pair_end_count": 6063
+    },
+    {
+      "month": "2009-07",
+      "market_period": "boom",
+      "market_period_label": "상승기",
+      "repeat_sales_index": 144.128733,
+      "log_index": 0.365536693,
+      "repeat_unit_trade_count": 7536,
+      "repeat_pair_end_count": 5525
+    },
+    {
+      "month": "2009-08",
+      "market_period": "boom",
+      "market_period_label": "상승기",
+      "repeat_sales_index": 147.054654,
+      "log_index": 0.385634127,
+      "repeat_unit_trade_count": 9186,
+      "repeat_pair_end_count": 6701
+    },
+    {
+      "month": "2009-09",
+      "market_period": "boom",
+      "market_period_label": "상승기",
+      "repeat_sales_index": 149.246209,
+      "log_index": 0.400427167,
+      "repeat_unit_trade_count": 6837,
+      "repeat_pair_end_count": 5111
+    },
+    {
+      "month": "2009-10",
+      "market_period": "boom",
+      "market_period_label": "상승기",
+      "repeat_sales_index": 148.037419,
+      "log_index": 0.392294887,
+      "repeat_unit_trade_count": 3551,
+      "repeat_pair_end_count": 2708
+    },
+    {
+      "month": "2009-11",
+      "market_period": "boom",
+      "market_period_label": "상승기",
+      "repeat_sales_index": 145.694982,
+      "log_index": 0.376345083,
+      "repeat_unit_trade_count": 2908,
+      "repeat_pair_end_count": 2234
+    },
+    {
+      "month": "2009-12",
+      "market_period": "boom",
+      "market_period_label": "상승기",
+      "repeat_sales_index": 145.40354,
+      "log_index": 0.374342725,
+      "repeat_unit_trade_count": 3699,
+      "repeat_pair_end_count": 2841
+    },
+    {
+      "month": "2010-01",
+      "market_period": "boom",
+      "market_period_label": "상승기",
+      "repeat_sales_index": 147.114156,
+      "log_index": 0.386038668,
+      "repeat_unit_trade_count": 4648,
+      "repeat_pair_end_count": 3581
+    },
+    {
+      "month": "2010-02",
+      "market_period": "recession",
+      "market_period_label": "하강기",
+      "repeat_sales_index": 147.286376,
+      "log_index": 0.387208639,
+      "repeat_unit_trade_count": 3611,
+      "repeat_pair_end_count": 2747
+    },
+    {
+      "month": "2010-03",
+      "market_period": "recession",
+      "market_period_label": "하강기",
+      "repeat_sales_index": 146.555635,
+      "log_index": 0.382234934,
+      "repeat_unit_trade_count": 3711,
+      "repeat_pair_end_count": 2819
+    },
+    {
+      "month": "2010-04",
+      "market_period": "recession",
+      "market_period_label": "하강기",
+      "repeat_sales_index": 142.637566,
+      "log_index": 0.355136721,
+      "repeat_unit_trade_count": 2483,
+      "repeat_pair_end_count": 1871
+    },
+    {
+      "month": "2010-05",
+      "market_period": "recession",
+      "market_period_label": "하강기",
+      "repeat_sales_index": 139.95659,
+      "log_index": 0.336162119,
+      "repeat_unit_trade_count": 2021,
+      "repeat_pair_end_count": 1589
+    },
+    {
+      "month": "2010-06",
+      "market_period": "recession",
+      "market_period_label": "하강기",
+      "repeat_sales_index": 139.579397,
+      "log_index": 0.333463408,
+      "repeat_unit_trade_count": 2028,
+      "repeat_pair_end_count": 1559
+    },
+    {
+      "month": "2010-07",
+      "market_period": "recession",
+      "market_period_label": "하강기",
+      "repeat_sales_index": 138.06923,
+      "log_index": 0.322585039,
+      "repeat_unit_trade_count": 2078,
+      "repeat_pair_end_count": 1601
+    },
+    {
+      "month": "2010-08",
+      "market_period": "recession",
+      "market_period_label": "하강기",
+      "repeat_sales_index": 137.072577,
+      "log_index": 0.315340357,
+      "repeat_unit_trade_count": 2214,
+      "repeat_pair_end_count": 1715
+    },
+    {
+      "month": "2010-09",
+      "market_period": "recession",
+      "market_period_label": "하강기",
+      "repeat_sales_index": 137.897857,
+      "log_index": 0.321343055,
+      "repeat_unit_trade_count": 2694,
+      "repeat_pair_end_count": 2099
+    },
+    {
+      "month": "2010-10",
+      "market_period": "recession",
+      "market_period_label": "하강기",
+      "repeat_sales_index": 138.42809,
+      "log_index": 0.3251808,
+      "repeat_unit_trade_count": 4667,
+      "repeat_pair_end_count": 3666
+    },
+    {
+      "month": "2010-11",
+      "market_period": "recession",
+      "market_period_label": "하강기",
+      "repeat_sales_index": 139.955786,
+      "log_index": 0.33615637,
+      "repeat_unit_trade_count": 5956,
+      "repeat_pair_end_count": 4554
+    },
+    {
+      "month": "2010-12",
+      "market_period": "recession",
+      "market_period_label": "하강기",
+      "repeat_sales_index": 141.083733,
+      "log_index": 0.344183382,
+      "repeat_unit_trade_count": 6215,
+      "repeat_pair_end_count": 4763
+    },
+    {
+      "month": "2011-01",
+      "market_period": "recession",
+      "market_period_label": "하강기",
+      "repeat_sales_index": 143.641814,
+      "log_index": 0.362152609,
+      "repeat_unit_trade_count": 6912,
+      "repeat_pair_end_count": 5339
+    },
+    {
+      "month": "2011-02",
+      "market_period": "recession",
+      "market_period_label": "하강기",
+      "repeat_sales_index": 145.264825,
+      "log_index": 0.37338827,
+      "repeat_unit_trade_count": 5771,
+      "repeat_pair_end_count": 4606
+    },
+    {
+      "month": "2011-03",
+      "market_period": "recession",
+      "market_period_label": "하강기",
+      "repeat_sales_index": 144.772785,
+      "log_index": 0.36999533,
+      "repeat_unit_trade_count": 5138,
+      "repeat_pair_end_count": 4073
+    },
+    {
+      "month": "2011-04",
+      "market_period": "recession",
+      "market_period_label": "하강기",
+      "repeat_sales_index": 143.978429,
+      "log_index": 0.364493307,
+      "repeat_unit_trade_count": 3834,
+      "repeat_pair_end_count": 3097
+    },
+    {
+      "month": "2011-05",
+      "market_period": "recession",
+      "market_period_label": "하강기",
+      "repeat_sales_index": 142.641747,
+      "log_index": 0.355166036,
+      "repeat_unit_trade_count": 3638,
+      "repeat_pair_end_count": 2841
+    },
+    {
+      "month": "2011-06",
+      "market_period": "recession",
+      "market_period_label": "하강기",
+      "repeat_sales_index": 142.123623,
+      "log_index": 0.351527081,
+      "repeat_unit_trade_count": 3524,
+      "repeat_pair_end_count": 2877
+    },
+    {
+      "month": "2011-07",
+      "market_period": "recession",
+      "market_period_label": "하강기",
+      "repeat_sales_index": 142.588937,
+      "log_index": 0.354795736,
+      "repeat_unit_trade_count": 4151,
+      "repeat_pair_end_count": 3335
+    },
+    {
+      "month": "2011-08",
+      "market_period": "recession",
+      "market_period_label": "하강기",
+      "repeat_sales_index": 142.050653,
+      "log_index": 0.351013521,
+      "repeat_unit_trade_count": 4511,
+      "repeat_pair_end_count": 3647
+    },
+    {
+      "month": "2011-09",
+      "market_period": "recession",
+      "market_period_label": "하강기",
+      "repeat_sales_index": 142.819602,
+      "log_index": 0.356412124,
+      "repeat_unit_trade_count": 4010,
+      "repeat_pair_end_count": 3260
+    },
+    {
+      "month": "2011-10",
+      "market_period": "recession",
+      "market_period_label": "하강기",
+      "repeat_sales_index": 141.619268,
+      "log_index": 0.347972061,
+      "repeat_unit_trade_count": 3843,
+      "repeat_pair_end_count": 3168
+    },
+    {
+      "month": "2011-11",
+      "market_period": "recession",
+      "market_period_label": "하강기",
+      "repeat_sales_index": 139.684923,
+      "log_index": 0.334219149,
+      "repeat_unit_trade_count": 3365,
+      "repeat_pair_end_count": 2741
+    },
+    {
+      "month": "2011-12",
+      "market_period": "recession",
+      "market_period_label": "하강기",
+      "repeat_sales_index": 138.727593,
+      "log_index": 0.327342059,
+      "repeat_unit_trade_count": 3572,
+      "repeat_pair_end_count": 2861
+    },
+    {
+      "month": "2012-01",
+      "market_period": "recession",
+      "market_period_label": "하강기",
+      "repeat_sales_index": 139.614589,
+      "log_index": 0.333715507,
+      "repeat_unit_trade_count": 2670,
+      "repeat_pair_end_count": 2207
+    },
+    {
+      "month": "2012-02",
+      "market_period": "recession",
+      "market_period_label": "하강기",
+      "repeat_sales_index": 138.724122,
+      "log_index": 0.327317041,
+      "repeat_unit_trade_count": 3790,
+      "repeat_pair_end_count": 2984
+    },
+    {
+      "month": "2012-03",
+      "market_period": "recession",
+      "market_period_label": "하강기",
+      "repeat_sales_index": 138.417866,
+      "log_index": 0.325106938,
+      "repeat_unit_trade_count": 3891,
+      "repeat_pair_end_count": 3122
+    },
+    {
+      "month": "2012-04",
+      "market_period": "recession",
+      "market_period_label": "하강기",
+      "repeat_sales_index": 136.873787,
+      "log_index": 0.313889051,
+      "repeat_unit_trade_count": 3272,
+      "repeat_pair_end_count": 2591
+    },
+    {
+      "month": "2012-05",
+      "market_period": "recession",
+      "market_period_label": "하강기",
+      "repeat_sales_index": 135.833435,
+      "log_index": 0.306259209,
+      "repeat_unit_trade_count": 3355,
+      "repeat_pair_end_count": 2738
+    },
+    {
+      "month": "2012-06",
+      "market_period": "recession",
+      "market_period_label": "하강기",
+      "repeat_sales_index": 135.080422,
+      "log_index": 0.300700134,
+      "repeat_unit_trade_count": 2448,
+      "repeat_pair_end_count": 2040
+    },
+    {
+      "month": "2012-07",
+      "market_period": "recession",
+      "market_period_label": "하강기",
+      "repeat_sales_index": 133.48772,
+      "log_index": 0.288839301,
+      "repeat_unit_trade_count": 2061,
+      "repeat_pair_end_count": 1654
+    },
+    {
+      "month": "2012-08",
+      "market_period": "recession",
+      "market_period_label": "하강기",
+      "repeat_sales_index": 132.145935,
+      "log_index": 0.278736698,
+      "repeat_unit_trade_count": 2151,
+      "repeat_pair_end_count": 1758
+    },
+    {
+      "month": "2012-09",
+      "market_period": "recession",
+      "market_period_label": "하강기",
+      "repeat_sales_index": 131.495813,
+      "log_index": 0.273804822,
+      "repeat_unit_trade_count": 3269,
+      "repeat_pair_end_count": 2631
+    },
+    {
+      "month": "2012-10",
+      "market_period": "recession",
+      "market_period_label": "하강기",
+      "repeat_sales_index": 131.063723,
+      "log_index": 0.270513454,
+      "repeat_unit_trade_count": 4733,
+      "repeat_pair_end_count": 3867
+    },
+    {
+      "month": "2012-11",
+      "market_period": "recession",
+      "market_period_label": "하강기",
+      "repeat_sales_index": 130.717654,
+      "log_index": 0.267869499,
+      "repeat_unit_trade_count": 4170,
+      "repeat_pair_end_count": 3420
+    },
+    {
+      "month": "2012-12",
+      "market_period": "recession",
+      "market_period_label": "하강기",
+      "repeat_sales_index": 130.272542,
+      "log_index": 0.264458543,
+      "repeat_unit_trade_count": 3607,
+      "repeat_pair_end_count": 2816
+    },
+    {
+      "month": "2013-01",
+      "market_period": "recession",
+      "market_period_label": "하강기",
+      "repeat_sales_index": 130.123662,
+      "log_index": 0.263315059,
+      "repeat_unit_trade_count": 3306,
+      "repeat_pair_end_count": 2665
+    },
+    {
+      "month": "2013-02",
+      "market_period": "recession",
+      "market_period_label": "하강기",
+      "repeat_sales_index": 130.638843,
+      "log_index": 0.267266403,
+      "repeat_unit_trade_count": 4318,
+      "repeat_pair_end_count": 3476
+    },
+    {
+      "month": "2013-03",
+      "market_period": "recession",
+      "market_period_label": "하강기",
+      "repeat_sales_index": 131.384261,
+      "log_index": 0.272956132,
+      "repeat_unit_trade_count": 6326,
+      "repeat_pair_end_count": 5111
+    },
+    {
+      "month": "2013-04",
+      "market_period": "recession",
+      "market_period_label": "하강기",
+      "repeat_sales_index": 131.951827,
+      "log_index": 0.27726672,
+      "repeat_unit_trade_count": 6436,
+      "repeat_pair_end_count": 5196
+    },
+    {
+      "month": "2013-05",
+      "market_period": "recession",
+      "market_period_label": "하강기",
+      "repeat_sales_index": 133.024906,
+      "log_index": 0.285366188,
+      "repeat_unit_trade_count": 6076,
+      "repeat_pair_end_count": 4889
+    },
+    {
+      "month": "2013-06",
+      "market_period": "recession",
+      "market_period_label": "하강기",
+      "repeat_sales_index": 131.678777,
+      "log_index": 0.275195261,
+      "repeat_unit_trade_count": 4882,
+      "repeat_pair_end_count": 3967
+    },
+    {
+      "month": "2013-07",
+      "market_period": "recession",
+      "market_period_label": "하강기",
+      "repeat_sales_index": 131.730861,
+      "log_index": 0.27559072,
+      "repeat_unit_trade_count": 3146,
+      "repeat_pair_end_count": 2650
+    },
+    {
+      "month": "2013-08",
+      "market_period": "recession",
+      "market_period_label": "하강기",
+      "repeat_sales_index": 132.363961,
+      "log_index": 0.280385224,
+      "repeat_unit_trade_count": 5121,
+      "repeat_pair_end_count": 4322
+    },
+    {
+      "month": "2013-09",
+      "market_period": "recession",
+      "market_period_label": "하강기",
+      "repeat_sales_index": 133.510704,
+      "log_index": 0.28901147,
+      "repeat_unit_trade_count": 7055,
+      "repeat_pair_end_count": 5708
+    },
+    {
+      "month": "2013-10",
+      "market_period": "recession",
+      "market_period_label": "하강기",
+      "repeat_sales_index": 134.33477,
+      "log_index": 0.29516478,
+      "repeat_unit_trade_count": 7430,
+      "repeat_pair_end_count": 6057
+    },
+    {
+      "month": "2013-11",
+      "market_period": "recession",
+      "market_period_label": "하강기",
+      "repeat_sales_index": 133.70286,
+      "log_index": 0.290449685,
+      "repeat_unit_trade_count": 5066,
+      "repeat_pair_end_count": 4194
+    },
+    {
+      "month": "2013-12",
+      "market_period": "recession",
+      "market_period_label": "하강기",
+      "repeat_sales_index": 133.596525,
+      "log_index": 0.289654068,
+      "repeat_unit_trade_count": 6251,
+      "repeat_pair_end_count": 4995
+    },
+    {
+      "month": "2014-01",
+      "market_period": "recession",
+      "market_period_label": "하강기",
+      "repeat_sales_index": 134.222698,
+      "log_index": 0.294330159,
+      "repeat_unit_trade_count": 6992,
+      "repeat_pair_end_count": 5742
+    },
+    {
+      "month": "2014-02",
+      "market_period": "recession",
+      "market_period_label": "하강기",
+      "repeat_sales_index": 135.782411,
+      "log_index": 0.305883502,
+      "repeat_unit_trade_count": 8547,
+      "repeat_pair_end_count": 6930
+    },
+    {
+      "month": "2014-03",
+      "market_period": "recession",
+      "market_period_label": "하강기",
+      "repeat_sales_index": 136.687957,
+      "log_index": 0.312530453,
+      "repeat_unit_trade_count": 7682,
+      "repeat_pair_end_count": 6369
+    },
+    {
+      "month": "2014-04",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 136.357499,
+      "log_index": 0.310109922,
+      "repeat_unit_trade_count": 5171,
+      "repeat_pair_end_count": 4385
+    },
+    {
+      "month": "2014-05",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 135.529572,
+      "log_index": 0.304019671,
+      "repeat_unit_trade_count": 4589,
+      "repeat_pair_end_count": 3847
+    },
+    {
+      "month": "2014-06",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 135.695676,
+      "log_index": 0.305244519,
+      "repeat_unit_trade_count": 5027,
+      "repeat_pair_end_count": 4175
+    },
+    {
+      "month": "2014-07",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 135.319755,
+      "log_index": 0.302470351,
+      "repeat_unit_trade_count": 6179,
+      "repeat_pair_end_count": 5054
+    },
+    {
+      "month": "2014-08",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 136.387312,
+      "log_index": 0.310328531,
+      "repeat_unit_trade_count": 8568,
+      "repeat_pair_end_count": 6875
+    },
+    {
+      "month": "2014-09",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 137.787898,
+      "log_index": 0.320545345,
+      "repeat_unit_trade_count": 9442,
+      "repeat_pair_end_count": 7753
+    },
+    {
+      "month": "2014-10",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 138.679488,
+      "log_index": 0.326995242,
+      "repeat_unit_trade_count": 7986,
+      "repeat_pair_end_count": 6667
+    },
+    {
+      "month": "2014-11",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 138.36975,
+      "log_index": 0.324759261,
+      "repeat_unit_trade_count": 5613,
+      "repeat_pair_end_count": 4737
+    },
+    {
+      "month": "2014-12",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 138.313576,
+      "log_index": 0.324353211,
+      "repeat_unit_trade_count": 6022,
+      "repeat_pair_end_count": 4950
+    },
+    {
+      "month": "2015-01",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 139.361646,
+      "log_index": 0.331902137,
+      "repeat_unit_trade_count": 9182,
+      "repeat_pair_end_count": 7636
+    },
+    {
+      "month": "2015-02",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 140.385033,
+      "log_index": 0.339218695,
+      "repeat_unit_trade_count": 9421,
+      "repeat_pair_end_count": 7887
+    },
+    {
+      "month": "2015-03",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 141.847937,
+      "log_index": 0.349585433,
+      "repeat_unit_trade_count": 14833,
+      "repeat_pair_end_count": 11962
+    },
+    {
+      "month": "2015-04",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 143.396977,
+      "log_index": 0.360446658,
+      "repeat_unit_trade_count": 11293,
+      "repeat_pair_end_count": 9339
+    },
+    {
+      "month": "2015-05",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 144.393871,
+      "log_index": 0.367374595,
+      "repeat_unit_trade_count": 9716,
+      "repeat_pair_end_count": 8150
+    },
+    {
+      "month": "2015-06",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 145.332624,
+      "log_index": 0.373854888,
+      "repeat_unit_trade_count": 10263,
+      "repeat_pair_end_count": 8662
+    },
+    {
+      "month": "2015-07",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 146.990961,
+      "log_index": 0.385200906,
+      "repeat_unit_trade_count": 10596,
+      "repeat_pair_end_count": 8866
+    },
+    {
+      "month": "2015-08",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 148.44539,
+      "log_index": 0.395046962,
+      "repeat_unit_trade_count": 8301,
+      "repeat_pair_end_count": 7147
+    },
+    {
+      "month": "2015-09",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 149.622363,
+      "log_index": 0.402944351,
+      "repeat_unit_trade_count": 9418,
+      "repeat_pair_end_count": 7798
+    },
+    {
+      "month": "2015-10",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 150.474469,
+      "log_index": 0.408623241,
+      "repeat_unit_trade_count": 10137,
+      "repeat_pair_end_count": 8527
+    },
+    {
+      "month": "2015-11",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 150.821569,
+      "log_index": 0.410927288,
+      "repeat_unit_trade_count": 6816,
+      "repeat_pair_end_count": 5908
+    },
+    {
+      "month": "2015-12",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 150.289185,
+      "log_index": 0.407391153,
+      "repeat_unit_trade_count": 4627,
+      "repeat_pair_end_count": 4043
+    },
+    {
+      "month": "2016-01",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 150.005411,
+      "log_index": 0.405501178,
+      "repeat_unit_trade_count": 4725,
+      "repeat_pair_end_count": 4143
+    },
+    {
+      "month": "2016-02",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 150.396722,
+      "log_index": 0.408106427,
+      "repeat_unit_trade_count": 5093,
+      "repeat_pair_end_count": 4383
+    },
+    {
+      "month": "2016-03",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 150.505978,
+      "log_index": 0.408832619,
+      "repeat_unit_trade_count": 8459,
+      "repeat_pair_end_count": 7111
+    },
+    {
+      "month": "2016-04",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 150.64817,
+      "log_index": 0.409776932,
+      "repeat_unit_trade_count": 9986,
+      "repeat_pair_end_count": 8392
+    },
+    {
+      "month": "2016-05",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 151.572258,
+      "log_index": 0.415892278,
+      "repeat_unit_trade_count": 10358,
+      "repeat_pair_end_count": 8707
+    },
+    {
+      "month": "2016-06",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 153.219895,
+      "log_index": 0.426703927,
+      "repeat_unit_trade_count": 12759,
+      "repeat_pair_end_count": 10547
+    },
+    {
+      "month": "2016-07",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 155.381026,
+      "log_index": 0.440710145,
+      "repeat_unit_trade_count": 11321,
+      "repeat_pair_end_count": 9564
+    },
+    {
+      "month": "2016-08",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 157.18605,
+      "log_index": 0.452259947,
+      "repeat_unit_trade_count": 10473,
+      "repeat_pair_end_count": 8926
+    },
+    {
+      "month": "2016-09",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 159.147249,
+      "log_index": 0.464659684,
+      "repeat_unit_trade_count": 10785,
+      "repeat_pair_end_count": 9168
+    },
+    {
+      "month": "2016-10",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 161.612283,
+      "log_index": 0.480029964,
+      "repeat_unit_trade_count": 11572,
+      "repeat_pair_end_count": 9834
+    },
+    {
+      "month": "2016-11",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 161.658902,
+      "log_index": 0.480318388,
+      "repeat_unit_trade_count": 5468,
+      "repeat_pair_end_count": 4810
+    },
+    {
+      "month": "2016-12",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 161.020192,
+      "log_index": 0.476359586,
+      "repeat_unit_trade_count": 3992,
+      "repeat_pair_end_count": 3503
+    },
+    {
+      "month": "2017-01",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 160.630486,
+      "log_index": 0.47393642,
+      "repeat_unit_trade_count": 3499,
+      "repeat_pair_end_count": 3056
+    },
+    {
+      "month": "2017-02",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 161.08815,
+      "log_index": 0.476781542,
+      "repeat_unit_trade_count": 5471,
+      "repeat_pair_end_count": 4885
+    },
+    {
+      "month": "2017-03",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 161.805835,
+      "log_index": 0.481226884,
+      "repeat_unit_trade_count": 8111,
+      "repeat_pair_end_count": 7072
+    },
+    {
+      "month": "2017-04",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 162.182909,
+      "log_index": 0.483554578,
+      "repeat_unit_trade_count": 8879,
+      "repeat_pair_end_count": 7694
+    },
+    {
+      "month": "2017-05",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 164.099665,
+      "log_index": 0.495303769,
+      "repeat_unit_trade_count": 14196,
+      "repeat_pair_end_count": 11768
+    },
+    {
+      "month": "2017-06",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 167.63554,
+      "log_index": 0.516622034,
+      "repeat_unit_trade_count": 12259,
+      "repeat_pair_end_count": 10427
+    },
+    {
+      "month": "2017-07",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 171.760247,
+      "log_index": 0.540929407,
+      "repeat_unit_trade_count": 14230,
+      "repeat_pair_end_count": 11830
+    },
+    {
+      "month": "2017-08",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 172.801657,
+      "log_index": 0.54697426,
+      "repeat_unit_trade_count": 4805,
+      "repeat_pair_end_count": 4302
+    },
+    {
+      "month": "2017-09",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 172.668951,
+      "log_index": 0.546205995,
+      "repeat_unit_trade_count": 6535,
+      "repeat_pair_end_count": 5841
+    },
+    {
+      "month": "2017-10",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 174.562791,
+      "log_index": 0.557114325,
+      "repeat_unit_trade_count": 6005,
+      "repeat_pair_end_count": 5414
+    },
+    {
+      "month": "2017-11",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 175.714686,
+      "log_index": 0.563691389,
+      "repeat_unit_trade_count": 7722,
+      "repeat_pair_end_count": 6895
+    },
+    {
+      "month": "2017-12",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 177.642615,
+      "log_index": 0.574603565,
+      "repeat_unit_trade_count": 8121,
+      "repeat_pair_end_count": 7144
+    },
+    {
+      "month": "2018-01",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 181.521703,
+      "log_index": 0.596205035,
+      "repeat_unit_trade_count": 11903,
+      "repeat_pair_end_count": 10292
+    },
+    {
+      "month": "2018-02",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 184.228434,
+      "log_index": 0.611006292,
+      "repeat_unit_trade_count": 8632,
+      "repeat_pair_end_count": 7571
+    },
+    {
+      "month": "2018-03",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 186.284208,
+      "log_index": 0.622103321,
+      "repeat_unit_trade_count": 8844,
+      "repeat_pair_end_count": 7794
+    },
+    {
+      "month": "2018-04",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 188.669657,
+      "log_index": 0.634827456,
+      "repeat_unit_trade_count": 4183,
+      "repeat_pair_end_count": 3835
+    },
+    {
+      "month": "2018-05",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 189.986083,
+      "log_index": 0.641780635,
+      "repeat_unit_trade_count": 4441,
+      "repeat_pair_end_count": 4100
+    },
+    {
+      "month": "2018-06",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 190.770546,
+      "log_index": 0.64590119,
+      "repeat_unit_trade_count": 4947,
+      "repeat_pair_end_count": 4553
+    },
+    {
+      "month": "2018-07",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 194.570437,
+      "log_index": 0.665624053,
+      "repeat_unit_trade_count": 6680,
+      "repeat_pair_end_count": 6050
+    },
+    {
+      "month": "2018-08",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 202.880272,
+      "log_index": 0.707445827,
+      "repeat_unit_trade_count": 14347,
+      "repeat_pair_end_count": 12226
+    },
+    {
+      "month": "2018-09",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 213.846617,
+      "log_index": 0.760088831,
+      "repeat_unit_trade_count": 6807,
+      "repeat_pair_end_count": 6150
+    },
+    {
+      "month": "2018-10",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 214.381533,
+      "log_index": 0.762587108,
+      "repeat_unit_trade_count": 3067,
+      "repeat_pair_end_count": 2821
+    },
+    {
+      "month": "2018-11",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 212.153632,
+      "log_index": 0.752140507,
+      "repeat_unit_trade_count": 1591,
+      "repeat_pair_end_count": 1472
+    },
+    {
+      "month": "2018-12",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 208.505321,
+      "log_index": 0.734794375,
+      "repeat_unit_trade_count": 1457,
+      "repeat_pair_end_count": 1322
+    },
+    {
+      "month": "2019-01",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 207.843997,
+      "log_index": 0.731617596,
+      "repeat_unit_trade_count": 1555,
+      "repeat_pair_end_count": 1389
+    },
+    {
+      "month": "2019-02",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 207.022844,
+      "log_index": 0.727658961,
+      "repeat_unit_trade_count": 1335,
+      "repeat_pair_end_count": 1229
+    },
+    {
+      "month": "2019-03",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 203.66999,
+      "log_index": 0.711330802,
+      "repeat_unit_trade_count": 2111,
+      "repeat_pair_end_count": 1957
+    },
+    {
+      "month": "2019-04",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 204.194446,
+      "log_index": 0.713902521,
+      "repeat_unit_trade_count": 2867,
+      "repeat_pair_end_count": 2608
+    },
+    {
+      "month": "2019-05",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 206.341487,
+      "log_index": 0.724362316,
+      "repeat_unit_trade_count": 4139,
+      "repeat_pair_end_count": 3776
+    },
+    {
+      "month": "2019-06",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 210.952619,
+      "log_index": 0.746463368,
+      "repeat_unit_trade_count": 6591,
+      "repeat_pair_end_count": 5809
+    },
+    {
+      "month": "2019-07",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 215.675149,
+      "log_index": 0.768603151,
+      "repeat_unit_trade_count": 8425,
+      "repeat_pair_end_count": 7477
+    },
+    {
+      "month": "2019-08",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 218.509535,
+      "log_index": 0.781659466,
+      "repeat_unit_trade_count": 6239,
+      "repeat_pair_end_count": 5592
+    },
+    {
+      "month": "2019-09",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 220.720951,
+      "log_index": 0.791729051,
+      "repeat_unit_trade_count": 6653,
+      "repeat_pair_end_count": 5986
+    },
+    {
+      "month": "2019-10",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 224.519379,
+      "log_index": 0.808791839,
+      "repeat_unit_trade_count": 10990,
+      "repeat_pair_end_count": 9711
+    },
+    {
+      "month": "2019-11",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 228.988757,
+      "log_index": 0.828502719,
+      "repeat_unit_trade_count": 10955,
+      "repeat_pair_end_count": 9667
+    },
+    {
+      "month": "2019-12",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 233.180081,
+      "log_index": 0.84664085,
+      "repeat_unit_trade_count": 9030,
+      "repeat_pair_end_count": 7904
+    },
+    {
+      "month": "2020-01",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 234.282264,
+      "log_index": 0.851356458,
+      "repeat_unit_trade_count": 6110,
+      "repeat_pair_end_count": 5571
+    },
+    {
+      "month": "2020-02",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 238.026299,
+      "log_index": 0.867210982,
+      "repeat_unit_trade_count": 7851,
+      "repeat_pair_end_count": 7039
+    },
+    {
+      "month": "2020-03",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 239.070716,
+      "log_index": 0.871589203,
+      "repeat_unit_trade_count": 4184,
+      "repeat_pair_end_count": 3817
+    },
+    {
+      "month": "2020-04",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 236.863257,
+      "log_index": 0.862312813,
+      "repeat_unit_trade_count": 2863,
+      "repeat_pair_end_count": 2684
+    },
+    {
+      "month": "2020-05",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 239.156727,
+      "log_index": 0.871948912,
+      "repeat_unit_trade_count": 5248,
+      "repeat_pair_end_count": 4790
+    },
+    {
+      "month": "2020-06",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 249.240954,
+      "log_index": 0.913249929,
+      "repeat_unit_trade_count": 14902,
+      "repeat_pair_end_count": 12729
+    },
+    {
+      "month": "2020-07",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 261.42217,
+      "log_index": 0.960966426,
+      "repeat_unit_trade_count": 9986,
+      "repeat_pair_end_count": 8935
+    },
+    {
+      "month": "2020-08",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 269.70492,
+      "log_index": 0.992158285,
+      "repeat_unit_trade_count": 4606,
+      "repeat_pair_end_count": 4224
+    },
+    {
+      "month": "2020-09",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 272.816389,
+      "log_index": 1.003628814,
+      "repeat_unit_trade_count": 3498,
+      "repeat_pair_end_count": 3239
+    },
+    {
+      "month": "2020-10",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 274.069783,
+      "log_index": 1.008212571,
+      "repeat_unit_trade_count": 4009,
+      "repeat_pair_end_count": 3652
+    },
+    {
+      "month": "2020-11",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 279.448319,
+      "log_index": 1.027647186,
+      "repeat_unit_trade_count": 5908,
+      "repeat_pair_end_count": 5376
+    },
+    {
+      "month": "2020-12",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 286.48809,
+      "log_index": 1.05252678,
+      "repeat_unit_trade_count": 7053,
+      "repeat_pair_end_count": 6223
+    },
+    {
+      "month": "2021-01",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 296.2089,
+      "log_index": 1.085894764,
+      "repeat_unit_trade_count": 5418,
+      "repeat_pair_end_count": 4847
+    },
+    {
+      "month": "2021-02",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 299.652135,
+      "log_index": 1.097452065,
+      "repeat_unit_trade_count": 3546,
+      "repeat_pair_end_count": 3216
+    },
+    {
+      "month": "2021-03",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 299.418169,
+      "log_index": 1.096670968,
+      "repeat_unit_trade_count": 3460,
+      "repeat_pair_end_count": 3193
+    },
+    {
+      "month": "2021-04",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 300.456147,
+      "log_index": 1.100131623,
+      "repeat_unit_trade_count": 3391,
+      "repeat_pair_end_count": 3156
+    },
+    {
+      "month": "2021-05",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 306.459628,
+      "log_index": 1.119915842,
+      "repeat_unit_trade_count": 4538,
+      "repeat_pair_end_count": 4031
+    },
+    {
+      "month": "2021-06",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 316.330207,
+      "log_index": 1.151616441,
+      "repeat_unit_trade_count": 3666,
+      "repeat_pair_end_count": 3320
+    },
+    {
+      "month": "2021-07",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 323.820551,
+      "log_index": 1.175019323,
+      "repeat_unit_trade_count": 4355,
+      "repeat_pair_end_count": 4047
+    },
+    {
+      "month": "2021-08",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 329.619197,
+      "log_index": 1.192767852,
+      "repeat_unit_trade_count": 3757,
+      "repeat_pair_end_count": 3474
+    },
+    {
+      "month": "2021-09",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 332.206036,
+      "log_index": 1.200585181,
+      "repeat_unit_trade_count": 2430,
+      "repeat_pair_end_count": 2257
+    },
+    {
+      "month": "2021-10",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 332.14565,
+      "log_index": 1.200403392,
+      "repeat_unit_trade_count": 1980,
+      "repeat_pair_end_count": 1833
+    },
+    {
+      "month": "2021-11",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 322.827299,
+      "log_index": 1.171947318,
+      "repeat_unit_trade_count": 1227,
+      "repeat_pair_end_count": 1136
+    },
+    {
+      "month": "2021-12",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 317.160457,
+      "log_index": 1.154237632,
+      "repeat_unit_trade_count": 1008,
+      "repeat_pair_end_count": 932
+    },
+    {
+      "month": "2022-01",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 314.047959,
+      "log_index": 1.144375525,
+      "repeat_unit_trade_count": 913,
+      "repeat_pair_end_count": 809
+    },
+    {
+      "month": "2022-02",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 311.693384,
+      "log_index": 1.136849775,
+      "repeat_unit_trade_count": 746,
+      "repeat_pair_end_count": 681
+    },
+    {
+      "month": "2022-03",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 321.07504,
+      "log_index": 1.166504679,
+      "repeat_unit_trade_count": 1324,
+      "repeat_pair_end_count": 1162
+    },
+    {
+      "month": "2022-04",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 323.290687,
+      "log_index": 1.173381691,
+      "repeat_unit_trade_count": 1588,
+      "repeat_pair_end_count": 1495
+    },
+    {
+      "month": "2022-05",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 315.575396,
+      "log_index": 1.14922744,
+      "repeat_unit_trade_count": 1570,
+      "repeat_pair_end_count": 1349
+    },
+    {
+      "month": "2022-06",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 318.081379,
+      "log_index": 1.157137072,
+      "repeat_unit_trade_count": 971,
+      "repeat_pair_end_count": 782
+    },
+    {
+      "month": "2022-07",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 301.639407,
+      "log_index": 1.104062102,
+      "repeat_unit_trade_count": 574,
+      "repeat_pair_end_count": 533
+    },
+    {
+      "month": "2022-08",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 295.088781,
+      "log_index": 1.082106077,
+      "repeat_unit_trade_count": 688,
+      "repeat_pair_end_count": 544
+    },
+    {
+      "month": "2022-09",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 286.420503,
+      "log_index": 1.052290836,
+      "repeat_unit_trade_count": 563,
+      "repeat_pair_end_count": 480
+    },
+    {
+      "month": "2022-10",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 276.68725,
+      "log_index": 1.017717621,
+      "repeat_unit_trade_count": 503,
+      "repeat_pair_end_count": 460
+    },
+    {
+      "month": "2022-11",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 260.73874,
+      "log_index": 0.958348725,
+      "repeat_unit_trade_count": 683,
+      "repeat_pair_end_count": 483
+    },
+    {
+      "month": "2022-12",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 251.483047,
+      "log_index": 0.922205392,
+      "repeat_unit_trade_count": 730,
+      "repeat_pair_end_count": 606
+    },
+    {
+      "month": "2023-01",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 254.531915,
+      "log_index": 0.934256045,
+      "repeat_unit_trade_count": 1297,
+      "repeat_pair_end_count": 1137
+    },
+    {
+      "month": "2023-02",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 259.04819,
+      "log_index": 0.951843919,
+      "repeat_unit_trade_count": 2313,
+      "repeat_pair_end_count": 2014
+    },
+    {
+      "month": "2023-03",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 262.651184,
+      "log_index": 0.965656669,
+      "repeat_unit_trade_count": 2798,
+      "repeat_pair_end_count": 2296
+    },
+    {
+      "month": "2023-04",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 265.550072,
+      "log_index": 0.976633232,
+      "repeat_unit_trade_count": 2948,
+      "repeat_pair_end_count": 2621
+    },
+    {
+      "month": "2023-05",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 268.640233,
+      "log_index": 0.988202873,
+      "repeat_unit_trade_count": 3143,
+      "repeat_pair_end_count": 2831
+    },
+    {
+      "month": "2023-06",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 273.136566,
+      "log_index": 1.004801727,
+      "repeat_unit_trade_count": 3545,
+      "repeat_pair_end_count": 3106
+    },
+    {
+      "month": "2023-07",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 276.425763,
+      "log_index": 1.016772112,
+      "repeat_unit_trade_count": 3350,
+      "repeat_pair_end_count": 3050
+    },
+    {
+      "month": "2023-08",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 279.628863,
+      "log_index": 1.02829305,
+      "repeat_unit_trade_count": 3599,
+      "repeat_pair_end_count": 3219
+    },
+    {
+      "month": "2023-09",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 283.450993,
+      "log_index": 1.041869058,
+      "repeat_unit_trade_count": 3118,
+      "repeat_pair_end_count": 2874
+    },
+    {
+      "month": "2023-10",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 283.395594,
+      "log_index": 1.041673596,
+      "repeat_unit_trade_count": 2079,
+      "repeat_pair_end_count": 1946
+    },
+    {
+      "month": "2023-11",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 279.940412,
+      "log_index": 1.02940658,
+      "repeat_unit_trade_count": 1643,
+      "repeat_pair_end_count": 1533
+    },
+    {
+      "month": "2023-12",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 275.741831,
+      "log_index": 1.014294848,
+      "repeat_unit_trade_count": 1663,
+      "repeat_pair_end_count": 1565
+    },
+    {
+      "month": "2024-01",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 275.967414,
+      "log_index": 1.015112606,
+      "repeat_unit_trade_count": 2398,
+      "repeat_pair_end_count": 2231
+    },
+    {
+      "month": "2024-02",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 277.98326,
+      "log_index": 1.02239071,
+      "repeat_unit_trade_count": 2417,
+      "repeat_pair_end_count": 2252
+    },
+    {
+      "month": "2024-03",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 277.656768,
+      "log_index": 1.021215518,
+      "repeat_unit_trade_count": 3928,
+      "repeat_pair_end_count": 3649
+    },
+    {
+      "month": "2024-04",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 279.88085,
+      "log_index": 1.029193793,
+      "repeat_unit_trade_count": 4098,
+      "repeat_pair_end_count": 3777
+    },
+    {
+      "month": "2024-05",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 281.746546,
+      "log_index": 1.035837708,
+      "repeat_unit_trade_count": 4695,
+      "repeat_pair_end_count": 4332
+    },
+    {
+      "month": "2024-06",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 285.587059,
+      "log_index": 1.049376733,
+      "repeat_unit_trade_count": 7059,
+      "repeat_pair_end_count": 6278
+    },
+    {
+      "month": "2024-07",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 292.013739,
+      "log_index": 1.071630665,
+      "repeat_unit_trade_count": 8234,
+      "repeat_pair_end_count": 7412
+    },
+    {
+      "month": "2024-08",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 297.063881,
+      "log_index": 1.088777019,
+      "repeat_unit_trade_count": 5827,
+      "repeat_pair_end_count": 5398
+    },
+    {
+      "month": "2024-09",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 297.25026,
+      "log_index": 1.089404225,
+      "repeat_unit_trade_count": 2770,
+      "repeat_pair_end_count": 2626
+    },
+    {
+      "month": "2024-10",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 296.752277,
+      "log_index": 1.08772752,
+      "repeat_unit_trade_count": 3382,
+      "repeat_pair_end_count": 3228
+    },
+    {
+      "month": "2024-11",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 296.935911,
+      "log_index": 1.088346141,
+      "repeat_unit_trade_count": 3073,
+      "repeat_pair_end_count": 2861
+    },
+    {
+      "month": "2024-12",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 295.326854,
+      "log_index": 1.082912538,
+      "repeat_unit_trade_count": 2862,
+      "repeat_pair_end_count": 2583
+    },
+    {
+      "month": "2025-01",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 296.115078,
+      "log_index": 1.085577971,
+      "repeat_unit_trade_count": 3049,
+      "repeat_pair_end_count": 2892
+    },
+    {
+      "month": "2025-02",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 299.923738,
+      "log_index": 1.098358051,
+      "repeat_unit_trade_count": 5845,
+      "repeat_pair_end_count": 5410
+    },
+    {
+      "month": "2025-03",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 304.689624,
+      "log_index": 1.114123447,
+      "repeat_unit_trade_count": 9021,
+      "repeat_pair_end_count": 8203
+    },
+    {
+      "month": "2025-04",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 303.398599,
+      "log_index": 1.109877262,
+      "repeat_unit_trade_count": 4834,
+      "repeat_pair_end_count": 4443
+    },
+    {
+      "month": "2025-05",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 306.729034,
+      "log_index": 1.120794546,
+      "repeat_unit_trade_count": 6994,
+      "repeat_pair_end_count": 6255
+    },
+    {
+      "month": "2025-06",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 314.625343,
+      "log_index": 1.146212359,
+      "repeat_unit_trade_count": 10333,
+      "repeat_pair_end_count": 9459
+    },
+    {
+      "month": "2025-07",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 315.229406,
+      "log_index": 1.148130461,
+      "repeat_unit_trade_count": 3764,
+      "repeat_pair_end_count": 3592
+    },
+    {
+      "month": "2025-08",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 313.296272,
+      "log_index": 1.141979112,
+      "repeat_unit_trade_count": 3911,
+      "repeat_pair_end_count": 3609
+    },
+    {
+      "month": "2025-09",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 323.522035,
+      "log_index": 1.17409704,
+      "repeat_unit_trade_count": 7995,
+      "repeat_pair_end_count": 7263
+    },
+    {
+      "month": "2025-10",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 328.136136,
+      "log_index": 1.188258384,
+      "repeat_unit_trade_count": 7811,
+      "repeat_pair_end_count": 7222
+    },
+    {
+      "month": "2025-11",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 329.980383,
+      "log_index": 1.193863023,
+      "repeat_unit_trade_count": 3073,
+      "repeat_pair_end_count": 2945
+    },
+    {
+      "month": "2025-12",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 329.798297,
+      "log_index": 1.19331106,
+      "repeat_unit_trade_count": 4359,
+      "repeat_pair_end_count": 4013
+    },
+    {
+      "month": "2026-01",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 336.562677,
+      "log_index": 1.213614208,
+      "repeat_unit_trade_count": 4888,
+      "repeat_pair_end_count": 4691
+    },
+    {
+      "month": "2026-02",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 342.124556,
+      "log_index": 1.230004684,
+      "repeat_unit_trade_count": 5304,
+      "repeat_pair_end_count": 4994
+    },
+    {
+      "month": "2026-03",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 338.806071,
+      "log_index": 1.220257694,
+      "repeat_unit_trade_count": 5033,
+      "repeat_pair_end_count": 4799
+    },
+    {
+      "month": "2026-04",
+      "market_period": "outside_sample",
+      "market_period_label": "분석구간밖",
+      "repeat_sales_index": 337.572375,
+      "log_index": 1.216609744,
+      "repeat_unit_trade_count": 4168,
+      "repeat_pair_end_count": 3992
+    }
+  ]
+}

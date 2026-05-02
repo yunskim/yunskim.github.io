@@ -246,6 +246,26 @@
         </figure>
       </section>
 
+      <section aria-labelledby="repeat-sales-index">
+        <h2 id="repeat-sales-index">Pseudo-Repeat Sales Index</h2>
+        <p>
+          서울 전체 실거래 자료에서 같은 구, 법정동, 지번, 아파트명, 전용면적,
+          층이 반복 거래된 경우를 pseudo-repeat unit으로 보고 월별 repeat-sales
+          index를 추정한다. 기준월은 <code>2006-01 = 100</code>이다.
+        </p>
+        <dl class="hawkes-summary sans" id="repeat-sales-summary"></dl>
+        <figure class="fullwidth hawkes-panel">
+          <svg id="repeat-sales-index-chart" class="hawkes-chart" role="img" aria-label="서울 아파트 repeat-sales index"></svg>
+          <figcaption class="sans">
+            회귀에는 같은 pseudo-unit 안에서 시간순 인접 거래쌍을 사용했다. 같은 달
+            거래쌍은 월별 가격지수 변화를 식별하지 못하므로 제외했다. 음영은 <a href="https://ideas.repec.org/a/eee/regeco/v68y2018icp36-45.html">논문</a>
+            기준 구간을 그대로 적용한 것으로, 상승기는 <code>2007-01</code>부터
+            <code>2010-01</code>, 하강기는 <code>2010-02</code>부터
+            <code>2014-03</code>까지다.
+          </figcaption>
+        </figure>
+      </section>
+
       <section aria-labelledby="cautions">
         <h2 id="cautions">주의점</h2>
         <p>
