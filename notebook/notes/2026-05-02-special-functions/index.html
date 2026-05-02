@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Special Functions</title>
+    <meta name="description" content="notebook 노트가 promoted app으로 승격되어 프로젝트 네비게이션과 루트 목록에 표시되는 샘플.">
+    <link rel="canonical" href="https://yunskim.github.io/notebook/notes/2026-05-02-special-functions/">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Special Functions">
+    <meta property="og:description" content="notebook 노트가 promoted app으로 승격되어 프로젝트 네비게이션과 루트 목록에 표시되는 샘플.">
+    <meta property="og:url" content="https://yunskim.github.io/notebook/notes/2026-05-02-special-functions/">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="/common/tufte.css">
+    <link rel="stylesheet" href="/common/site.css">
+    <link rel="stylesheet" href="/notebook/styles.css">
+
+    <script defer src="/notebook/promoted-notes.js"></script>
+  </head>
+  <body>
+    <article class="math-note">
+      <nav class="site-nav" aria-label="사이트 네비게이션">
+        <a href="/">Home</a>
+        <a href="/boxoffice/">Boxoffice</a>
+        <a href="/starbucks/">Starbucks</a>
+        <a href="/zipcodes/">Zipcodes</a>
+        <a href="/apartments/">Apartments</a>
+        <a href="/notebook/notes/2026-05-02-special-functions/" aria-current="page">Special Functions</a>
+        <a href="/notebook/">Notebook</a>
+      </nav>
+      <p class="project-path"><a href="/notebook/">Notebook</a> / notes</p>
+      <h1>Special Functions</h1>
+      <p class="subtitle">front matter 옵션으로 노트를 앱처럼 루트와 네비게이션에 노출하는 예시.</p>
+      <p class="note-meta sans">2026-05-02</p>
+      <p class="note-tags sans"><a href="/notebook/?tag=math">math</a> <a href="/notebook/?tag=statistics">statistics</a></p>
+      <section>
+  <h2>승격 옵션</h2>
+  <p>
+    이 노트는 front matter에 <code>promote_app: true</code>를 둔 예시다.
+    빌드 후 <code>/notebook/notes/apps.json</code>에 포함되고, 루트 페이지와
+    네비게이션에 앱 링크로 표시된다.
+  </p>
+</section>
+
+<section>
+  <h2>간단한 인터랙션</h2>
+  <p>
+    아래 입력값은 같은 노트 안의 작은 앱 상태를 바꾼다.
+  </p>
+  <figure>
+    <label class="sans" for="sample-app-value">값</label>
+    <input id="sample-app-value" type="range" min="1" max="12" value="7">
+    <svg id="sample-app-chart" viewBox="0 0 360 120" role="img" aria-label="입력값에 반응하는 샘플 막대">
+      <line x1="24" y1="96" x2="336" y2="96" stroke="currentColor"></line>
+      <rect id="sample-app-bar" x="48" y="32" width="180" height="64" fill="currentColor"></rect>
+      <text id="sample-app-label" x="246" y="70">7</text>
+    </svg>
+  </figure>
+</section>
+      
+    </article>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [["\\(", "\\)"]],
+          displayMath: [["\\[", "\\]"]]
+        },
+        svg: {
+          fontCache: "global"
+        }
+      };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <script src="./assets/app.js"></script>
+  </body>
+</html>

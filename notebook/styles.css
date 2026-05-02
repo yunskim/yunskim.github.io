@@ -52,7 +52,6 @@
 .notes-list a,
 .notes-list span,
 .notes-list small,
-.note-tags span,
 .related-notes a {
   display: block;
 }
@@ -75,9 +74,58 @@
   gap: 0.35rem;
 }
 
-.note-tags span {
+.note-tags a,
+.note-list-tags a,
+.tag-list a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 1.45rem;
   border: 1px solid var(--rule);
-  padding: 0.1rem 0.35rem;
+  padding: 0.12rem 0.45rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.2;
+  text-decoration: none;
+  text-shadow: none;
+  background: transparent;
+  box-sizing: border-box;
+}
+
+.note-list-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-top: 0.4rem;
+}
+
+.note-list-tags a {
+  font-size: 0.8rem;
+}
+
+.tag-filter {
+  margin: 0.5rem 0 1rem;
+}
+
+.tag-filter p {
+  margin: 0 0 0.6rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.tag-list a.is-active,
+.tag-list a:hover,
+.note-tags a:hover,
+.note-list-tags a:hover {
+  border-color: var(--accent);
+  color: var(--ink);
+  background: var(--accent-soft);
 }
 
 .related-notes {

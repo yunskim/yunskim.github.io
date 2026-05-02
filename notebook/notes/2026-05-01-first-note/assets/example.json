@@ -1,0 +1,8 @@
+{
+  "title": "노트별 데이터 예시",
+  "values": [
+    { "label": "A", "value": 3 },
+    { "label": "B", "value": 5 },
+    { "label": "C", "value": 8 }
+  ]
+}

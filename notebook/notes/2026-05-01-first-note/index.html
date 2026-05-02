@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="/common/site.css">
     <link rel="stylesheet" href="/notebook/styles.css">
 
+    <script defer src="/notebook/promoted-notes.js"></script>
   </head>
   <body>
     <article class="math-note">
@@ -24,13 +25,14 @@
         <a href="/starbucks/">Starbucks</a>
         <a href="/zipcodes/">Zipcodes</a>
         <a href="/apartments/">Apartments</a>
+        <a href="/notebook/notes/2026-05-02-special-functions/">Special Functions</a>
         <a href="/notebook/" aria-current="page">Notebook</a>
       </nav>
       <p class="project-path"><a href="/notebook/">Notebook</a> / notes</p>
       <h1>첫 번째 수학 노트</h1>
       <p class="subtitle">notebook 프로젝트에서 HTML 원본 노트를 site 산출물로 빌드하는 예시.</p>
       <p class="note-meta sans">2026-05-01</p>
-      <p class="note-tags sans"><span>example</span> <span>html</span></p>
+      <p class="note-tags sans"><a href="/notebook/?tag=example">example</a> <a href="/notebook/?tag=html">html</a></p>
       <section>
   <h2>목적</h2>
   <p>
@@ -38,6 +40,11 @@
     빌드 스크립트는 이 fragment를 Tufte CSS가 적용된 페이지 안에 삽입하고,
     <code>notebook/site/notes</code> 아래 HTML과 <code>index.json</code>을
     생성한다.
+  </p>
+  <p>
+    노트별 데이터와 자산은 같은 노트 폴더의 <code>assets</code> 디렉터리에 둔다. 예를 들어
+    이 노트의 예시 데이터는 <code>./assets/example.json</code>
+    경로로 읽을 수 있다.
   </p>
 </section>
 

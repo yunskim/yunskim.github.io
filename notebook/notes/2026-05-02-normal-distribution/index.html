@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Normal Distribution</title>
+    <meta name="description" content="special function 측면에서 normal distribution의 성질을 이해한다.">
+    <link rel="canonical" href="https://yunskim.github.io/notebook/notes/2026-05-02-normal-distribution/">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Normal Distribution">
+    <meta property="og:description" content="special function 측면에서 normal distribution의 성질을 이해한다.">
+    <meta property="og:url" content="https://yunskim.github.io/notebook/notes/2026-05-02-normal-distribution/">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="/common/tufte.css">
+    <link rel="stylesheet" href="/common/site.css">
+    <link rel="stylesheet" href="/notebook/styles.css">
+    <link rel="stylesheet" href="./assets/style.css">
+
+    <script defer src="/notebook/promoted-notes.js"></script>
+  </head>
+  <body>
+    <article class="math-note">
+      <nav class="site-nav" aria-label="사이트 네비게이션">
+        <a href="/">Home</a>
+        <a href="/boxoffice/">Boxoffice</a>
+        <a href="/starbucks/">Starbucks</a>
+        <a href="/zipcodes/">Zipcodes</a>
+        <a href="/apartments/">Apartments</a>
+        <a href="/notebook/notes/2026-05-02-special-functions/">Special Functions</a>
+        <a href="/notebook/" aria-current="page">Notebook</a>
+      </nav>
+      <p class="project-path"><a href="/notebook/">Notebook</a> / notes</p>
+      <h1>Normal Distribution</h1>
+      <p class="subtitle">normal distribution은 mean에서 멀어지는 정도에 비례해 선형으로 discount되는 분포이다.</p>
+      <p class="note-meta sans">2026-05-02</p>
+      <p class="note-tags sans"><a href="/notebook/?tag=math">math</a> <a href="/notebook/?tag=statistics">statistics</a></p>
+      <section>
+    <h2>수포자</h2>
+    <h3>우리는 모두 수포자이다.</h3>
+    <p>
+        수학을 좋아하는 사람은 드물고 수학을 싫어한다는 이야기는 너무 자주 들어 당연한 사실처럼 들린다. 나와 당신만 그런 것도 아니고 아래와 같이 영화가 있을 정도로 거의 모든 사람들은 수학을 싫어한다.
+    </p>
+
+    <figure class="iframe-wrapper">
+        <iframe
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/TNKIUzEuNIg"
+                title="왜 나는 수학이 싫어졌을까? (How I Came to Hate Math)"
+                frameborder="0"
+                allowfullscreen>
+        </iframe>
+    </figure>
+
+    <p>
+        결국 우리는 모두 수포자이다. 우리는 인생의 어느 순간부터 수학을 포기한다. 차이가 있다면 어디서부터 포기하느냐는 것 뿐이다. 중학교 분수, 고등학교 로그, 삼각함수, 기하와 벡터 등 평범한 한국인의
+        삶에 수학을 포기하고 싶은 순간은 지뢰밭처럼 깔려있고 우리는 그 길을 걸으며 한 번은 수학을 포기하는 지뢰를 밟는다. 대학교에 가도 이 운명을 비껴갈 수 없다. 대학원도 박사도 교수도 수학을 포기하는
+        순간이 온다. 예외는 없다.
+    </p>
+    <p>
+        수업을 듣다가 머리 속에서 "툭"하고 신경이 끊어지는 소리가 들리는 듯한 순간을 경험했다. 수학을 좋아한 적도 없지만 더이상 관심을 가지고 싶지도 않았다.
+    </p>
+</section>
+
+<section>
+    <h2>수포자의 깨달음</h2>
+    <h3>하지만 당신은 이미 충분히 훌륭한 수학자이다.</h3>
+    <p>
+        정말 이렇게 수학을 피하며 살아야 하나? 수학 시험에서 자유로워진 지금 다시 생각해 보니 꼭 그럴 필요는 없는 것 같다. 내가 알아야 하는 중요한 개념을 내가 이미 알고 있는 경우가 많다는 걸 깨닫게
+        되었다. 일상은 물론이거니와 꽤 고차원적인 사회/자연 현상을 나는 이해하고 있다. 다만 내가 이미 알고 있는 개념을 수학과 연결해보는 기회를 가지지 못했을 뿐이며 나는 그 개념들을 수학이라는 맥락에서
+        인출해 본 경험이 부족할 뿐이었다.
+    </p>
+    <p>
+        교과서에 등장할 만한 개념은 사실 역사상 누구라도 발견했을 법한, 어떻게 보면 발명보다 발견에 가까운 경우가 많다. 간단한 아이디어를 수학이라는 관점에서 기호로 표기한 것일 뿐 그리 대단한 것이
+        아니다.
+        <label for="sn-with-proper-understanding" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-with-proper-understanding" class="margin-toggle"/><span class="sidenote">물론 제대로 이해한다는 가정 하에...</span>
+        일상에서 매일 사용하는 개념이며, 매일의 대화에 늘 등장하고 있는 경우가 많다. 남은 단계는 수학 맥락으로 넌지시 밀어주는 계기가 필요할 뿐이다.
+    </p>
+</section>
+
+<section>
+    <h2>exponential function의 상대변화율은 상수</h2>
+    <h3>같은 비율로 증가하는 </h3>
+    <p>
+        지수함수 \(f(x)=e^x\)의 특별한 점은 미분해도 자기 자신이 된다는 것이다.
+        즉 \(f'(x)=e^x\)이고, 어떤 지점 \(x=a\)에서의 기울기도 \(e^a\)이다.
+        그래서 수준 \(f(x)\)는 지점마다 달라지지만 상대 변화율<label for="sn-score-function-wikipedia" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-score-function-wikipedia" class="margin-toggle"/><span class="sidenote">확률 쪽에서는 이런 걸 <a href="https://en.wikipedia.org/wiki/Informant_(statistics)">score function</a>이라고 부른다. 어떤 규칙으로 한 지점에서 상대변화율이 변화하는지 파악하는 것은 확률분포를 이해하는데 도움이 된다.</span>
+        \(\frac{f'(x)}{f(x)}\)는 항상 \(1\)로 일정하다.
+    </p>
+    <figure class="exponential-demo">
+        <svg id="exponential-slope-chart" role="img" aria-label="지수함수의 접선과 상대 변화율"></svg>
+    </figure>
+    <div id="exponential-slope-values" class="exponential-values sans" aria-live="polite"></div>
+    <p>
+        위 패널의 곡선은 \(y=e^x\), 짧은 직선들은 \(x=0,1,2\)에서의 접선이다.
+        아래 패널은 같은 지점에서 계산한 \(\frac{f'(x)}{f(x)}\)이며 항상 \(1\)이다.
+    </p>
+    <p>
+        그래서 exponential function을 단 한마디로 요약하자면(=일상어로 설명하면) 같은 <em>비율</em>로 증가하는 함수라고 할 수 있다.
+    </p>
+    <h3>같은 비율로 감소하는</h3>
+    <figure class="exponential-demo">
+        <svg id="exponential-decay-chart" role="img" aria-label="감소하는 지수함수의 접선과 상대 변화율"></svg>
+    </figure>
+    <div id="exponential-decay-values" class="exponential-values sans" aria-live="polite"></div>
+    <p>
+        \(f(x)=e^{-x}\)는 같은 방식으로 보되, 방향이 반대이다. 위 패널의 접선은 \(x=0,1,2\)에서 모두 음의 기울기를 갖고,
+        아래 패널의 \(\frac{f'(x)}{f(x)}\)는 항상 \(-1\)이다. 따라서 \(e^{-x}\)는 같은 비율로 감소하는 함수이다.
+    </p>
+</section>
+
+<section>
+    <h2>할인율</h2>
+</section>
+      
+      <section aria-labelledby="related-notes-heading">
+        <h2 id="related-notes-heading">관련 노트</h2>
+        <ol class="related-notes sans">
+          <li><a href="/notebook/notes/2026-05-02-exponential-distribution/">Exponential Distribution</a></li>
+        </ol>
+      </section>
+    </article>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [["\\(", "\\)"]],
+          displayMath: [["\\[", "\\]"]]
+        },
+        svg: {
+          fontCache: "global"
+        }
+      };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="./assets/app.js"></script>
+  </body>
+</html>
