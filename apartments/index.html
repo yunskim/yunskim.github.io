@@ -329,6 +329,30 @@
         </figure>
       </section>
 
+      <section aria-labelledby="gangnam-repeat-change-hawkes">
+        <h2 id="gangnam-repeat-change-hawkes">Gangnam Repeat-Change Hawkes</h2>
+        <p>
+          같은 repeat-change 정의를 강남구 전체 아파트 거래에 적용한다.
+          pseudo-unit은 구, 법정동, 지번, 아파트명, 전용면적, 층 조합이고,
+          각 pseudo-unit의 두 번째 이후 거래일을 이벤트 시각으로 둔다.
+        </p>
+        <dl class="hawkes-summary sans" id="gangnam-repeat-change-hawkes-summary"></dl>
+        <figure class="hawkes-matrix-figure">
+          <svg id="gangnam-repeat-change-hawkes-alpha-chart" class="hawkes-chart hawkes-alpha-chart" role="img" aria-label="강남구 repeat-change 2-type Hawkes excitation matrix"></svg>
+          <figcaption class="sans">
+            강남구 전체 거래의 repeat-change 이벤트로 추정한 excitation matrix다.
+            행은 영향을 받는 target intensity, 열은 과거 source event다.
+          </figcaption>
+        </figure>
+        <figure class="fullwidth hawkes-panel">
+          <svg id="gangnam-repeat-change-hawkes-intensity-chart" class="hawkes-chart" role="img" aria-label="강남구 repeat-change 2-type Hawkes fitted intensity"></svg>
+          <figcaption class="sans">
+            파란 선은 강남구 전체 pseudo-repeat-sales index이고, 세로 점선은 index
+            방향이 바뀐 시점이다. rug는 각 pseudo-unit의 두 번째 이후 거래일이다.
+          </figcaption>
+        </figure>
+      </section>
+
       <section aria-labelledby="cautions">
         <h2 id="cautions">주의점</h2>
         <p>

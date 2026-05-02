@@ -23,6 +23,7 @@ let cachedHawkesData = null;
 let cachedRepeatSalesData = null;
 let cachedRepeatSalesHawkesData = null;
 let cachedRepeatChangeHawkesData = null;
+let cachedGangnamRepeatChangeHawkesData = null;
 let resizeTimer = null;
 
 function formatAmount(value) {
@@ -1499,6 +1500,19 @@ function renderRepeatChangeHawkes(data) {
   );
 }
 
+function renderGangnamRepeatChangeHawkes(data) {
+  cachedGangnamRepeatChangeHawkesData = data;
+  if (typeof d3 === "undefined") return;
+  renderTypedHawkesSummary(data, "#gangnam-repeat-change-hawkes-summary", "repeat-change");
+  renderTypedHawkesAlphaChart(data, "#gangnam-repeat-change-hawkes-alpha-chart", "Gangnam repeat-change event excitation matrix");
+  renderTypedHawkesIntensityChart(
+    data,
+    "#gangnam-repeat-change-hawkes-intensity-chart",
+    "Gangnam fitted intensity with pseudo-repeat-sales index",
+    { showIndex: true },
+  );
+}
+
 function renderHawkes(data) {
   cachedHawkesData = data;
   if (typeof d3 === "undefined") return;
@@ -1553,6 +1567,16 @@ async function initRepeatChangeHawkes() {
   }
 }
 
+async function initGangnamRepeatChangeHawkes() {
+  try {
+    const response = await fetch("/apartments/data/gangnam_repeat_change_hawkes_2type.json");
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    renderGangnamRepeatChangeHawkes(await response.json());
+  } catch (error) {
+    setText("#gangnam-repeat-change-hawkes-summary", "강남구 Repeat-change Hawkes 결과 데이터를 불러오지 못했습니다.");
+  }
+}
+
 async function initParkRioMap() {
   try {
     const response = await fetch("/apartments/data/park_rio_location.json");
@@ -1571,6 +1595,7 @@ initHawkes();
 initRepeatSales();
 initRepeatSalesHawkes();
 initRepeatChangeHawkes();
+initGangnamRepeatChangeHawkes();
 
 window.addEventListener("resize", () => {
   window.clearTimeout(resizeTimer);
@@ -1580,5 +1605,6 @@ window.addEventListener("resize", () => {
     if (cachedRepeatSalesData) renderRepeatSales(cachedRepeatSalesData);
     if (cachedRepeatSalesHawkesData) renderRepeatSalesHawkes(cachedRepeatSalesHawkesData);
     if (cachedRepeatChangeHawkesData) renderRepeatChangeHawkes(cachedRepeatChangeHawkesData);
+    if (cachedGangnamRepeatChangeHawkesData) renderGangnamRepeatChangeHawkes(cachedGangnamRepeatChangeHawkesData);
   }, 150);
 });
