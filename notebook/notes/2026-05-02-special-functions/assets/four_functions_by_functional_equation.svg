@@ -1,0 +1,72 @@
+<svg width="100%" height="auto" viewBox="0 0 680 620" role="img" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+<title>네 함수의 함수방정식 분류</title>
+<desc>각 함수가 만족하는 함수방정식의 형태로 네 함수를 분류한 다이어그램</desc>
+<style>
+text {
+  fill: #111;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Noto Sans KR", "Source Han Sans KR", sans-serif;
+  font-size: 13px;
+}
+text[opacity],
+text[fill="#5F5C52"] {
+  fill: #5f5c52;
+}
+text[dominant-baseline][font-family],
+text[fill="#2F6F68"],
+text[fill="#1F514C"],
+text[fill="#8A4F3D"],
+text[fill="#643727"] {
+  font-size: 13px;
+}
+rect {
+  shape-rendering: geometricPrecision;
+}
+</style>
+<defs>
+
+</defs>
+
+<text x="340" y="40" text-anchor="middle">함수방정식으로 본 네 함수</text>
+<text x="340" y="60" text-anchor="middle" opacity="0.7">입력 연산을 출력 연산으로 어떻게 바꾸는가</text>
+
+<text x="340" y="100" text-anchor="middle" opacity="0.7">입력의 연산</text>
+<text x="220" y="135" text-anchor="middle">덧셈</text>
+<text x="220" y="155" text-anchor="middle" fill="#5F5C52">f(x + y)</text>
+<text x="500" y="135" text-anchor="middle">곱셈</text>
+<text x="500" y="155" text-anchor="middle" fill="#5F5C52">f(xy)</text>
+
+<text x="40" y="350" text-anchor="middle" opacity="0.7" transform="rotate(-90 40 350)">출력의 연산</text>
+<text x="100" y="240" text-anchor="middle">덧셈</text>
+<text x="100" y="258" text-anchor="middle" fill="#5F5C52">= f(x) + f(y)</text>
+<text x="100" y="450" text-anchor="middle">곱셈</text>
+<text x="100" y="468" text-anchor="middle" fill="#5F5C52">= f(x) · f(y)</text>
+
+<rect x="160" y="195" width="200" height="115" rx="8" fill="#EDF3F1" stroke="#2F6F68" stroke-width="0.5"/>
+<text x="260" y="220" text-anchor="middle" dominant-baseline="central" fill="#1F514C">Linear</text>
+<text x="260" y="245" text-anchor="middle" dominant-baseline="central" fill="#2F6F68">f(x) = cx</text>
+<line x1="180" y1="262" x2="340" y2="262" stroke="#2F6F68" stroke-width="0.3" opacity="0.4"/>
+<text x="260" y="282" text-anchor="middle" dominant-baseline="central" fill="#1F514C">f(x+y) = f(x) + f(y)</text>
+<text x="260" y="300" text-anchor="middle" dominant-baseline="central" fill="#2F6F68">덧셈 → 덧셈</text>
+
+<rect x="460" y="195" width="200" height="115" rx="8" fill="#F4ECE6" stroke="#8A4F3D" stroke-width="0.5"/>
+<text x="560" y="220" text-anchor="middle" dominant-baseline="central" fill="#643727">Log</text>
+<text x="560" y="245" text-anchor="middle" dominant-baseline="central" fill="#8A4F3D">f(x) = c log(x)</text>
+<line x1="480" y1="262" x2="640" y2="262" stroke="#8A4F3D" stroke-width="0.3" opacity="0.4"/>
+<text x="560" y="282" text-anchor="middle" dominant-baseline="central" fill="#643727">f(xy) = f(x) + f(y)</text>
+<text x="560" y="300" text-anchor="middle" dominant-baseline="central" fill="#8A4F3D">곱셈 → 덧셈</text>
+
+<rect x="160" y="405" width="200" height="115" rx="8" fill="#F4ECE6" stroke="#8A4F3D" stroke-width="0.5"/>
+<text x="260" y="430" text-anchor="middle" dominant-baseline="central" fill="#643727">Exponential</text>
+<text x="260" y="455" text-anchor="middle" dominant-baseline="central" fill="#8A4F3D">f(x) = e^(cx)</text>
+<line x1="180" y1="472" x2="340" y2="472" stroke="#8A4F3D" stroke-width="0.3" opacity="0.4"/>
+<text x="260" y="492" text-anchor="middle" dominant-baseline="central" fill="#643727">f(x+y) = f(x) · f(y)</text>
+<text x="260" y="510" text-anchor="middle" dominant-baseline="central" fill="#8A4F3D">덧셈 → 곱셈</text>
+
+<rect x="460" y="405" width="200" height="115" rx="8" fill="#EDF3F1" stroke="#2F6F68" stroke-width="0.5"/>
+<text x="560" y="430" text-anchor="middle" dominant-baseline="central" fill="#1F514C">Power</text>
+<text x="560" y="455" text-anchor="middle" dominant-baseline="central" fill="#2F6F68">f(x) = x^c</text>
+<line x1="480" y1="472" x2="640" y2="472" stroke="#2F6F68" stroke-width="0.3" opacity="0.4"/>
+<text x="560" y="492" text-anchor="middle" dominant-baseline="central" fill="#1F514C">f(xy) = f(x) · f(y)</text>
+<text x="560" y="510" text-anchor="middle" dominant-baseline="central" fill="#2F6F68">곱셈 → 곱셈</text>
+
+</svg>

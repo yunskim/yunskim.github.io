@@ -1,0 +1,114 @@
+.math-note .exponential-demo svg {
+  display: block;
+  width: 100%;
+  height: 540px;
+}
+
+.math-note .distribution-discount-demo svg {
+  display: block;
+  width: 100%;
+  height: 760px;
+}
+
+.exponential-curve,
+.exponential-ratio-line {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 2.4;
+}
+
+.exponential-ratio-line {
+  stroke: var(--accent);
+}
+
+.distribution-discount-line,
+.distribution-density-line {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 2.4;
+}
+
+.distribution-density-line {
+  stroke: var(--accent);
+}
+
+.exponential-tangent {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+}
+
+.exponential-point,
+.exponential-ratio-point,
+.distribution-discount-point {
+  fill: var(--paper);
+  stroke: var(--accent);
+  stroke-width: 2;
+}
+
+.distribution-marker-line {
+  stroke: var(--accent);
+  stroke-width: 1;
+  stroke-dasharray: 3 4;
+  opacity: 0.7;
+}
+
+.exponential-axis path,
+.exponential-axis line,
+.exponential-grid line {
+  stroke: var(--rule);
+}
+
+.exponential-grid path {
+  display: none;
+}
+
+.exponential-axis text,
+.exponential-label,
+.distribution-marker-label {
+  fill: var(--muted);
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Noto Sans KR", sans-serif;
+  font-size: 12px;
+}
+
+.distribution-marker-label {
+  fill: var(--accent);
+}
+
+.exponential-values {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  gap: 0.75rem;
+  width: 55%;
+  margin: 1rem 0 2rem;
+}
+
+.exponential-value-card {
+  border-top: 1px solid var(--rule);
+  padding-top: 0.55rem;
+}
+
+.exponential-value-card strong,
+.exponential-value-card span {
+  display: block;
+}
+
+.exponential-value-card span {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 760px) {
+  .math-note .exponential-demo svg {
+    height: 460px;
+  }
+
+  .math-note .distribution-discount-demo svg {
+    height: 980px;
+  }
+
+  .exponential-values {
+    width: 100%;
+  }
+}

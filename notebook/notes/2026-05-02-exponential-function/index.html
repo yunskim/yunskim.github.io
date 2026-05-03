@@ -39,18 +39,18 @@
     <h2>exponential function의 상대변화율은 상수</h2>
     <h3>같은 비율로 증가하는 </h3>
     <p>
-        지수함수 \(f(x)=e^x\)의 특별한 점은 미분해도 자기 자신이 된다는 것이다.
-        즉 \(f'(x)=e^x\)이고, 어떤 지점 \(x=a\)에서의 기울기도 \(e^a\)이다.
+        지수함수 \(f(x)=e^{cx}\)의 특별한 점은 미분해도 자기 자신의 상수배가 된다는 것이다.
+        즉 \(f'(x)=c e^{cx}\)이고, 어떤 지점 \(x=a\)에서의 기울기도 \(c e^{ca}\)이다.
         그래서 수준 \(f(x)\)는 지점마다 달라지지만 상대 변화율<label for="sn-score-function-wikipedia" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-score-function-wikipedia" class="margin-toggle"/><span class="sidenote">확률 쪽에서는 이런 걸 <a href="https://en.wikipedia.org/wiki/Informant_(statistics)">score function</a>이라고 부른다. 어떤 규칙으로 한 지점에서 상대변화율이 변화하는지 파악하는 것은 확률분포를 이해하는데 도움이 된다.</span>
-        \(\frac{f'(x)}{f(x)}\)는 항상 \(1\)로 일정하다.
+        \(\frac{f'(x)}{f(x)}\)는 항상 \(c\)로 일정하다.
     </p>
     <figure class="exponential-demo">
         <svg id="exponential-slope-chart" role="img" aria-label="지수함수의 접선과 상대 변화율"></svg>
     </figure>
     <div id="exponential-slope-values" class="exponential-values sans" aria-live="polite"></div>
     <p>
-        위 패널의 곡선은 \(y=e^x\), 짧은 직선들은 \(x=0,1,2\)에서의 접선이다.
-        아래 패널은 같은 지점에서 계산한 \(\frac{f'(x)}{f(x)}\)이며 항상 \(1\)이다.
+        위 패널의 곡선은 예시로 \(c=0.7\)을 둔 \(y=e^{0.7x}\), 짧은 직선들은 \(x=0,1,2\)에서의 접선이다.
+        아래 패널은 같은 지점에서 계산한 \(\frac{f'(x)}{f(x)}\)이며 항상 \(0.7\)이다.
     </p>
     <p>
         그래서 exponential function을 단 한마디로 요약하자면(=일상어로 설명하면) 같은 <em>비율</em>로 증가하는 함수라고 할 수 있다.
@@ -61,8 +61,8 @@
     </figure>
     <div id="exponential-decay-values" class="exponential-values sans" aria-live="polite"></div>
     <p>
-        \(f(x)=e^{-x}\)는 같은 방식으로 보되, 방향이 반대이다. 위 패널의 접선은 \(x=0,1,2\)에서 모두 음의 기울기를 갖고,
-        아래 패널의 \(\frac{f'(x)}{f(x)}\)는 항상 \(-1\)이다. 따라서 \(e^{-x}\)는 같은 비율로 감소하는 함수이다.
+        \(f(x)=e^{-cx}\)는 같은 방식으로 보되, 방향이 반대이다. 예시로 \(c=0.7\)을 두면 위 패널의 접선은 \(x=0,1,2\)에서 모두 음의 기울기를 갖고,
+        아래 패널의 \(\frac{f'(x)}{f(x)}\)는 항상 \(-0.7\)이다. 따라서 \(e^{-cx}\)는 같은 비율로 감소하는 함수이다.
     </p>
 </section>
 

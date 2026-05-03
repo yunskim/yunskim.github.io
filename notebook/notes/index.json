@@ -1,5 +1,29 @@
 [
   {
+    "title": "t-Distribution",
+    "slug": "2026-05-02-t-distribution",
+    "date": "2026-XX-XX",
+    "tags": [
+      "math",
+      "statistics"
+    ],
+    "summary": "",
+    "description": "",
+    "href": "/notebook/notes/2026-05-02-t-distribution/",
+    "canonical": "/notebook/notes/2026-05-02-t-distribution/",
+    "og_image": "",
+    "mathjax": true,
+    "scroll_reveal": false,
+    "promote_app": false,
+    "app_label": "t-Distribution",
+    "app_summary": "",
+    "related": [
+      "2026-05-02-chi-square-distribution",
+      "2025-05-02-normal-distribution"
+    ],
+    "assets_href": "/notebook/notes/2026-05-02-t-distribution/assets/"
+  },
+  {
     "title": "Special Functions",
     "slug": "2026-05-02-special-functions",
     "date": "2026-XX-XX",
@@ -230,6 +254,29 @@
     "assets_href": "/notebook/notes/2026-05-02-gamma-distribution/assets/"
   },
   {
+    "title": "F-Distribution",
+    "slug": "2026-05-02-f-distribution",
+    "date": "2026-XX-XX",
+    "tags": [
+      "math",
+      "statistics"
+    ],
+    "summary": "Beta Distribution의 비율",
+    "description": "Beta Distribution의 비율",
+    "href": "/notebook/notes/2026-05-02-f-distribution/",
+    "canonical": "/notebook/notes/2026-05-02-f-distribution/",
+    "og_image": "",
+    "mathjax": true,
+    "scroll_reveal": false,
+    "promote_app": false,
+    "app_label": "F-Distribution",
+    "app_summary": "Beta Distribution의 비율",
+    "related": [
+      "2026-05-02-beta-distribution"
+    ],
+    "assets_href": "/notebook/notes/2026-05-02-f-distribution/assets/"
+  },
+  {
     "title": "Exponential Function",
     "slug": "2026-05-02-exponential-function",
     "date": "2026-XX-XX",
@@ -322,8 +369,8 @@
     "assets_href": "/notebook/notes/2026-05-02-circle-functions/assets/"
   },
   {
-    "title": "Chi-Square Function",
-    "slug": "2026-05-02-chi-square-function",
+    "title": "Chi-Square Distribution",
+    "slug": "2026-05-02-chi-square-distribution",
     "date": "2026-XX-XX",
     "tags": [
       "math",
@@ -331,18 +378,18 @@
     ],
     "summary": "Chi-Square distribution은 gamma distribution의 특수 케이스이다.",
     "description": "exponential function은 같은 비율로 증가하고 감소하는 현상을 설명한다.",
-    "href": "/notebook/notes/2026-05-02-chi-square-function/",
-    "canonical": "/notebook/notes/2026-05-02-chi-square-function/",
+    "href": "/notebook/notes/2026-05-02-chi-square-distribution/",
+    "canonical": "/notebook/notes/2026-05-02-chi-square-distribution/",
     "og_image": "",
     "mathjax": true,
     "scroll_reveal": false,
     "promote_app": false,
-    "app_label": "Chi-Square Function",
+    "app_label": "Chi-Square Distribution",
     "app_summary": "Chi-Square distribution은 gamma distribution의 특수 케이스이다.",
     "related": [
       "2026-05-02-exponential-distribution"
     ],
-    "assets_href": "/notebook/notes/2026-05-02-chi-square-function/assets/"
+    "assets_href": "/notebook/notes/2026-05-02-chi-square-distribution/assets/"
   },
   {
     "title": "Binomial Distribution",

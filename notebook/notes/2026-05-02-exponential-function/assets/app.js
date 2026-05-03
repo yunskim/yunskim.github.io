@@ -8,6 +8,7 @@
   const bottomHeight = height - margin.top - margin.bottom - topHeight - gap;
   const xDomain = [-2.2, 2.2];
   const tangentXValues = [0, 1, 2];
+  const c = 0.7;
 
   function renderExponentialDemo({
     chartSelector,
@@ -27,7 +28,7 @@
     if (svg.empty() || !values) return;
 
     const x = d3.scaleLinear().domain(xDomain).range([0, innerWidth]);
-    const y = d3.scaleLinear().domain([0, Math.exp(2.2)]).nice().range([topHeight, 0]);
+    const y = d3.scaleLinear().domain([0, Math.exp(c * 2.2)]).nice().range([topHeight, 0]);
     const ratioY = d3.scaleLinear().domain(ratioDomain).range([bottomHeight, 0]);
     const curvePoints = d3.range(xDomain[0], xDomain[1] + 0.001, 0.04).map((xValue) => {
       const yValue = fn(xValue);
@@ -154,13 +155,13 @@
   renderExponentialDemo({
     chartSelector: "#exponential-slope-chart",
     valuesSelector: "#exponential-slope-values",
-    fn: Math.exp,
-    derivative: Math.exp,
-    ratioDomain: [0.4, 1.6],
-    ratioTicks: [0.5, 1, 1.5],
-    curveLabel: "y = e^x",
-    ratioLabel: "f'(x) / f(x) = 1",
-    valueLabel: "e^x",
+    fn: (xValue) => Math.exp(c * xValue),
+    derivative: (xValue) => c * Math.exp(c * xValue),
+    ratioDomain: [0.1, 1.1],
+    ratioTicks: [0.3, 0.7, 1.1],
+    curveLabel: "y = e^(0.7x)",
+    ratioLabel: "f'(x) / f(x) = 0.7",
+    valueLabel: "e^(0.7x)",
     derivativeLabel: "f'(x)",
     tangentSpan: (xValue) => (xValue === 2 ? 0.28 : 0.48),
   });
@@ -168,13 +169,13 @@
   renderExponentialDemo({
     chartSelector: "#exponential-decay-chart",
     valuesSelector: "#exponential-decay-values",
-    fn: (xValue) => Math.exp(-xValue),
-    derivative: (xValue) => -Math.exp(-xValue),
-    ratioDomain: [-1.6, -0.4],
-    ratioTicks: [-1.5, -1, -0.5],
-    curveLabel: "y = e^-x",
-    ratioLabel: "f'(x) / f(x) = -1",
-    valueLabel: "e^-x",
+    fn: (xValue) => Math.exp(-c * xValue),
+    derivative: (xValue) => -c * Math.exp(-c * xValue),
+    ratioDomain: [-1.1, -0.1],
+    ratioTicks: [-1.1, -0.7, -0.3],
+    curveLabel: "y = e^(-0.7x)",
+    ratioLabel: "f'(x) / f(x) = -0.7",
+    valueLabel: "e^(-0.7x)",
     derivativeLabel: "f'(x)",
     tangentSpan: () => 0.48,
   });
