@@ -2,7 +2,7 @@
   {
     "title": "Special Functions",
     "slug": "2026-05-02-special-functions",
-    "date": "2026-05-02",
+    "date": "2026-XX-XX",
     "tags": [
       "math",
       "statistics"
@@ -23,7 +23,7 @@
   {
     "title": "Power Function",
     "slug": "2026-05-02-power-function",
-    "date": "2026-05-02",
+    "date": "2026-XX-XX",
     "tags": [
       "math",
       "statistics"
@@ -46,7 +46,7 @@
   {
     "title": "Poisson Distribution",
     "slug": "2026-05-02-poisson-distribution",
-    "date": "2026-05-02",
+    "date": "2026-XX-XX",
     "tags": [
       "math",
       "statistics"
@@ -69,7 +69,7 @@
   {
     "title": "Normal Distribution",
     "slug": "2026-05-02-normal-distribution",
-    "date": "2026-05-02",
+    "date": "2026-XX-XX",
     "tags": [
       "math",
       "statistics"
@@ -92,7 +92,7 @@
   {
     "title": "Negative Binomial Distribution",
     "slug": "2026-05-02-negative-binomial-distribution",
-    "date": "2026-05-02",
+    "date": "2026-XX-XX",
     "tags": [
       "math",
       "statistics"
@@ -115,7 +115,7 @@
   {
     "title": "Mean and Variance",
     "slug": "2026-05-02-mean-and-variance",
-    "date": "2026-05-02",
+    "date": "2026-XX-XX",
     "tags": [
       "math",
       "statistics"
@@ -138,7 +138,7 @@
   {
     "title": "Log Function",
     "slug": "2026-05-02-log-function",
-    "date": "2026-05-02",
+    "date": "2026-XX-XX",
     "tags": [
       "math",
       "statistics"
@@ -163,7 +163,7 @@
   {
     "title": "Linear Function",
     "slug": "2026-05-02-linear-function",
-    "date": "2026-05-02",
+    "date": "2026-XX-XX",
     "tags": [
       "math",
       "statistics"
@@ -188,12 +188,12 @@
   {
     "title": "Linear Algebra",
     "slug": "2026-05-02-linear-algebra",
-    "date": "2026-05-02",
+    "date": "2026-XX-XX",
     "tags": [
       "math"
     ],
-    "summary": "독립적인 기본 요소들로 모든 것을 표현하는 법",
-    "description": "독립적인 기본 요소들로 모든 것을 표현하는 법",
+    "summary": "독립적인 기본 요소들로 모든 것을 표현하기",
+    "description": "독립적인 기본 요소들로 모든 것을 표현하기",
     "href": "/notebook/notes/2026-05-02-linear-algebra/",
     "canonical": "/notebook/notes/2026-05-02-linear-algebra/",
     "og_image": "",
@@ -208,7 +208,7 @@
   {
     "title": "Gamma Distribution",
     "slug": "2026-05-02-gamma-distribution",
-    "date": "2026-05-02",
+    "date": "2026-XX-XX",
     "tags": [
       "math",
       "statistics"
@@ -232,7 +232,7 @@
   {
     "title": "Exponential Function",
     "slug": "2026-05-02-exponential-function",
-    "date": "2026-05-02",
+    "date": "2026-XX-XX",
     "tags": [
       "math",
       "statistics"
@@ -255,7 +255,7 @@
   {
     "title": "Exponential Distribution",
     "slug": "2026-05-02-exponential-distribution",
-    "date": "2026-05-02",
+    "date": "2026-XX-XX",
     "tags": [
       "math",
       "statistics"
@@ -278,7 +278,7 @@
   {
     "title": "Covariance",
     "slug": "2026-05-02-covariance",
-    "date": "2026-05-02",
+    "date": "2026-XX-XX",
     "tags": [
       "math",
       "statistics"
@@ -301,7 +301,7 @@
   {
     "title": "Circle Functions",
     "slug": "2026-05-02-circle-functions",
-    "date": "2026-05-02",
+    "date": "2026-XX-XX",
     "tags": [
       "math",
       "statistics"
@@ -324,7 +324,7 @@
   {
     "title": "Chi-Square Function",
     "slug": "2026-05-02-chi-square-function",
-    "date": "2026-05-02",
+    "date": "2026-XX-XX",
     "tags": [
       "math",
       "statistics"
@@ -347,7 +347,7 @@
   {
     "title": "Binomial Distribution",
     "slug": "2026-05-02-binomial-distribution",
-    "date": "2026-05-02",
+    "date": "2026-XX-XX",
     "tags": [
       "math",
       "statistics"
@@ -370,7 +370,7 @@
   {
     "title": "스크롤 스토리 샘플",
     "slug": "2026-05-01-scroll-reveal-sample",
-    "date": "2026-05-01",
+    "date": "2026-XX-XX",
     "tags": [
       "sample",
       "interaction"
@@ -393,7 +393,7 @@
   {
     "title": "첫 번째 수학 노트",
     "slug": "2026-05-01-first-note",
-    "date": "2026-05-01",
+    "date": "2026-XX-XX",
     "tags": [
       "example",
       "html"
