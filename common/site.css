@@ -54,6 +54,16 @@ samp {
   font-family: "APL386 Unicode", Consolas, "Liberation Mono", Menlo, Courier, monospace;
 }
 
+.sidenote code.sidenote-code-block,
+.marginnote code.sidenote-code-block {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  margin-top: 0.35rem;
+  overflow-x: auto;
+  white-space: pre-wrap;
+}
+
 .project-path {
   color: var(--muted);
   font-size: 1.1rem;
