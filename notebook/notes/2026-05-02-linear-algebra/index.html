@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Linear Algebra</title>
+    <meta name="description" content="독립적인 기본 요소들로 모든 것을 표현하는 법">
+    <link rel="canonical" href="https://yunskim.github.io/notebook/notes/2026-05-02-linear-algebra/">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Linear Algebra">
+    <meta property="og:description" content="독립적인 기본 요소들로 모든 것을 표현하는 법">
+    <meta property="og:url" content="https://yunskim.github.io/notebook/notes/2026-05-02-linear-algebra/">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="/common/tufte.css">
+    <link rel="stylesheet" href="/common/site.css">
+    <link rel="stylesheet" href="/notebook/styles.css">
+
+    <script defer src="/notebook/promoted-notes.js"></script>
+  </head>
+  <body>
+    <article class="math-note">
+      <nav class="site-nav" aria-label="사이트 네비게이션">
+        <a href="/">Home</a>
+        <a href="/boxoffice/">Boxoffice</a>
+        <a href="/starbucks/">Starbucks</a>
+        <a href="/zipcodes/">Zipcodes</a>
+        <a href="/apartments/">Apartments</a>
+        <a href="/notebook/notes/2026-05-02-special-functions/">Special Functions</a>
+        <a href="/notebook/notes/2026-05-02-linear-algebra/" aria-current="page">Linear Algebra</a>
+        <a href="/notebook/">Notebook</a>
+      </nav>
+      <p class="project-path"><a href="/notebook/">Notebook</a> / notes</p>
+      <h1>Linear Algebra</h1>
+      <p class="subtitle">독립적인 기본 요소들로 모든 것을 표현하는 법</p>
+      <p class="note-meta sans">2026-05-02</p>
+      <p class="note-tags sans"><a href="/notebook/?tag=math">math</a></p>
+      <section>
+    <h2>Linear Algebra</h2>
+    <h3></h3>
+    <p>
+        이미 잘 알고 있는 기본 요소를 더하고 빼서 모든 것을 표현할 수 있다면 어떤 일이 생길까?
+    </p>
+    <p>
+        새로운 걸 배워야 하는 부담이 있지만 더 많이 배우는 과정이 꼭 더 힘든 것은 아니다. 추상화하고 패턴을 발견하면 오히려 배움이 즐거워진다.
+        <a href="/notebook/notes/2026-05-02-special-functions/">Special Functions</a>에서 많은 이야기를 나누었지만
+        <label for="sn-auto-1" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-auto-1" class="margin-toggle"/><span class="sidenote">늘 이야기하지만 우리는 많을 것을 이미 알고 있다. 우리 안의 수학자를 깨워라.</span>
+        함수를 주로 다루는 파트에서 이야기하기 적당하지 않은 linear algebra 관련 노트를 아래에 모아두었다.
+    </p>
+    <p>
+        언제나 이야기하듯 필요한 만큼 배우면 되는 것이 수학이라서 내용에 부담을 가지지 않기를 바란다. 내 마음이 가는 만큼만 가면 그것으로 충분하다.
+    </p>
+</section>
+<section>
+    <h2>주요 개념</h2>
+    <ul>
+        <li>scalar</li>
+        <li>vector: 모든 것들의 집합에 포함된 그 어떤 것들</li>
+        <li>linear combination</li>
+        <li>span</li>
+        <li>dependency</li>
+        <li>linear independency</li>
+        <li>basis</li>
+        <li>여러 가지 basis</li>
+        <li>dimension</li>
+        <li>subspace: origin을 반드시 지나야 하는</li>
+        <li>scalar coordinate로 이해하는 것과 vector로 이해하는 것의 차이</li>
+        <li>어떤 vector가 basis의 linear combination으로 분해될 수 있나?</li>
+        <li>change of basis</li>
+        <li>matrix: scalar로 구성된 rectangle로 보는</li>
+        <li>column major/row major</li>
+        <li>(linear functional, vector) notation 소개</li>
+        <li>complex number가 scalar일 때 (linear functional, vector) notation 주의사항</li>
+        <li>linear transform</li>
+        <li>kernel, image</li>
+        <li>projection</li>
+        <li>네 가지 subspace: row space, column space, null space, left null space</li>
+        <li>rank</li>
+        <li>matrix: linear transform으로 보는</li>
+        <li>matrix: row major</li>
+        <li>matrix: column major</li>
+        <li>transpose</li>
+        <li>symmetric/Hermitian matrix</li>
+        <li>trace</li>
+        <li>determinant</li>
+        <li>determinant 구하기: 정의대로</li>
+        <li>determinant와 permutation의 관계</li>
+        <li>eigenvector</li>
+        <li>eigenvector가 basis라는 말의 의미</li>
+        <li>positive definite matrix</li>
+        <li>inner product의 정의</li>
+        <li>inner product의 예</li>
+        <li>orthogonality</li>
+        <li>orthonormality</li>
+        <li>linear form과 inner product의 관계</li>
+        <li>(linear functional, vector) notation 다시 등장</li>
+        <li>transpose 다시 정의하기</li>
+        <li>여러가지 inner product의 예</li>
+    </ul>
+</section>
+      
+    </article>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [["\\(", "\\)"]],
+          displayMath: [["\\[", "\\]"]]
+        },
+        svg: {
+          fontCache: "global"
+        }
+      };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <script src="./assets/app.js"></script>
+  </body>
+</html>

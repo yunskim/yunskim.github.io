@@ -2,7 +2,7 @@
   "model": "2-type exponential Hawkes process",
   "region": "강남구",
   "source_csv": "apartments/data/downloads/seoul_11_apartment_trades/apartment_trades_seoul_11_200601_202604.csv",
-  "generated_at": "2026-05-02T23:16:01+0900",
+  "generated_at": "2026-05-03T08:34:48+0900",
   "event_types": [
     "상승/유지",
     "하강"
@@ -84324,5 +84324,1418 @@
         "하강": 0
       }
     }
-  ]
+  ],
+  "moving_windows": {
+    "window_days": 548,
+    "step_days": 182,
+    "min_events": 60,
+    "fits": [
+      {
+        "start": "2006-01-09",
+        "end": "2007-07-10",
+        "midpoint": "2006-10-10",
+        "window_days": 548,
+        "event_count": 3061,
+        "event_counts": {
+          "상승/유지": 2346,
+          "하강": 715
+        },
+        "fit": {
+          "kernel": "alpha_ij * beta * exp(-beta * dt)",
+          "time_unit": "day",
+          "log_likelihood": 1100.03,
+          "horizon_days": 548.0,
+          "mu_per_day": {
+            "상승/유지": 3.210766,
+            "하강": 1.0
+          },
+          "alpha": {
+            "상승/유지": {
+              "상승/유지": 0.25,
+              "하강": 0.25
+            },
+            "하강": {
+              "상승/유지": 0.075,
+              "하강": 0.075
+            }
+          },
+          "beta_per_day": 0.166667,
+          "half_life_days": 4.16,
+          "branching_row_sums": {
+            "상승/유지": 0.5,
+            "하강": 0.15
+          }
+        }
+      },
+      {
+        "start": "2006-07-10",
+        "end": "2008-01-08",
+        "midpoint": "2007-04-10",
+        "window_days": 548,
+        "event_count": 3204,
+        "event_counts": {
+          "상승/유지": 2419,
+          "하강": 785
+        },
+        "fit": {
+          "kernel": "alpha_ij * beta * exp(-beta * dt)",
+          "time_unit": "day",
+          "log_likelihood": 1151.163,
+          "horizon_days": 548.0,
+          "mu_per_day": {
+            "상승/유지": 3.310675,
+            "하강": 1.0
+          },
+          "alpha": {
+            "상승/유지": {
+              "상승/유지": 0.25,
+              "하강": 0.25
+            },
+            "하강": {
+              "상승/유지": 0.075,
+              "하강": 0.1
+            }
+          },
+          "beta_per_day": 0.166667,
+          "half_life_days": 4.16,
+          "branching_row_sums": {
+            "상승/유지": 0.5,
+            "하강": 0.175
+          }
+        }
+      },
+      {
+        "start": "2007-01-08",
+        "end": "2008-07-08",
+        "midpoint": "2007-10-09",
+        "window_days": 548,
+        "event_count": 2452,
+        "event_counts": {
+          "상승/유지": 1698,
+          "하강": 754
+        },
+        "fit": {
+          "kernel": "alpha_ij * beta * exp(-beta * dt)",
+          "time_unit": "day",
+          "log_likelihood": -222.042,
+          "horizon_days": 548.0,
+          "mu_per_day": {
+            "상승/유지": 2.323905,
+            "하강": 1.0
+          },
+          "alpha": {
+            "상승/유지": {
+              "상승/유지": 0.25,
+              "하강": 0.1
+            },
+            "하강": {
+              "상승/유지": 0.1,
+              "하강": 0.1
+            }
+          },
+          "beta_per_day": 0.166667,
+          "half_life_days": 4.16,
+          "branching_row_sums": {
+            "상승/유지": 0.35,
+            "하강": 0.2
+          }
+        }
+      },
+      {
+        "start": "2007-07-09",
+        "end": "2009-01-06",
+        "midpoint": "2008-04-08",
+        "window_days": 548,
+        "event_count": 2372,
+        "event_counts": {
+          "상승/유지": 1458,
+          "하강": 914
+        },
+        "fit": {
+          "kernel": "alpha_ij * beta * exp(-beta * dt)",
+          "time_unit": "day",
+          "log_likelihood": -347.214,
+          "horizon_days": 548.0,
+          "mu_per_day": {
+            "상승/유지": 1.995438,
+            "하강": 1.250912
+          },
+          "alpha": {
+            "상승/유지": {
+              "상승/유지": 0.25,
+              "하강": 0.0
+            },
+            "하강": {
+              "상승/유지": 0.025,
+              "하강": 0.25
+            }
+          },
+          "beta_per_day": 0.166667,
+          "half_life_days": 4.16,
+          "branching_row_sums": {
+            "상승/유지": 0.25,
+            "하강": 0.275
+          }
+        }
+      },
+      {
+        "start": "2008-01-07",
+        "end": "2009-07-07",
+        "midpoint": "2008-10-07",
+        "window_days": 548,
+        "event_count": 4237,
+        "event_counts": {
+          "상승/유지": 2498,
+          "하강": 1739
+        },
+        "fit": {
+          "kernel": "alpha_ij * beta * exp(-beta * dt)",
+          "time_unit": "day",
+          "log_likelihood": 2179.289,
+          "horizon_days": 548.0,
+          "mu_per_day": {
+            "상승/유지": 3.418796,
+            "하강": 2.380018
+          },
+          "alpha": {
+            "상승/유지": {
+              "상승/유지": 0.25,
+              "하강": 0.2
+            },
+            "하강": {
+              "상승/유지": 0.1,
+              "하강": 0.25
+            }
+          },
+          "beta_per_day": 0.166667,
+          "half_life_days": 4.16,
+          "branching_row_sums": {
+            "상승/유지": 0.45,
+            "하강": 0.35
+          }
+        }
+      },
+      {
+        "start": "2008-07-07",
+        "end": "2010-01-05",
+        "midpoint": "2009-04-07",
+        "window_days": 548,
+        "event_count": 5059,
+        "event_counts": {
+          "상승/유지": 3096,
+          "하강": 1963
+        },
+        "fit": {
+          "kernel": "alpha_ij * beta * exp(-beta * dt)",
+          "time_unit": "day",
+          "log_likelihood": 3443.972,
+          "horizon_days": 548.0,
+          "mu_per_day": {
+            "상승/유지": 4.237226,
+            "하강": 2.686588
+          },
+          "alpha": {
+            "상승/유지": {
+              "상승/유지": 0.25,
+              "하강": 0.175
+            },
+            "하강": {
+              "상승/유지": 0.075,
+              "하강": 0.25
+            }
+          },
+          "beta_per_day": 0.166667,
+          "half_life_days": 4.16,
+          "branching_row_sums": {
+            "상승/유지": 0.425,
+            "하강": 0.325
+          }
+        }
+      },
+      {
+        "start": "2009-01-05",
+        "end": "2010-07-06",
+        "midpoint": "2009-10-06",
+        "window_days": 548,
+        "event_count": 5745,
+        "event_counts": {
+          "상승/유지": 3641,
+          "하강": 2104
+        },
+        "fit": {
+          "kernel": "alpha_ij * beta * exp(-beta * dt)",
+          "time_unit": "day",
+          "log_likelihood": 4384.979,
+          "horizon_days": 548.0,
+          "mu_per_day": {
+            "상승/유지": 4.98312,
+            "하강": 2.879562
+          },
+          "alpha": {
+            "상승/유지": {
+              "상승/유지": 0.25,
+              "하강": 0.15
+            },
+            "하강": {
+              "상승/유지": 0.025,
+              "하강": 0.25
+            }
+          },
+          "beta_per_day": 0.166667,
+          "half_life_days": 4.16,
+          "branching_row_sums": {
+            "상승/유지": 0.4,
+            "하강": 0.275
+          }
+        }
+      },
+      {
+        "start": "2009-07-06",
+        "end": "2011-01-04",
+        "midpoint": "2010-04-06",
+        "window_days": 548,
+        "event_count": 4855,
+        "event_counts": {
+          "상승/유지": 2970,
+          "하강": 1885
+        },
+        "fit": {
+          "kernel": "alpha_ij * beta * exp(-beta * dt)",
+          "time_unit": "day",
+          "log_likelihood": 2840.036,
+          "horizon_days": 548.0,
+          "mu_per_day": {
+            "상승/유지": 4.064781,
+            "하강": 2.579836
+          },
+          "alpha": {
+            "상승/유지": {
+              "상승/유지": 0.25,
+              "하강": 0.1
+            },
+            "하강": {
+              "상승/유지": 0.025,
+              "하강": 0.25
+            }
+          },
+          "beta_per_day": 0.166667,
+          "half_life_days": 4.16,
+          "branching_row_sums": {
+            "상승/유지": 0.35,
+            "하강": 0.275
+          }
+        }
+      },
+      {
+        "start": "2010-01-04",
+        "end": "2011-07-05",
+        "midpoint": "2010-10-05",
+        "window_days": 548,
+        "event_count": 4580,
+        "event_counts": {
+          "상승/유지": 2649,
+          "하강": 1931
+        },
+        "fit": {
+          "kernel": "alpha_ij * beta * exp(-beta * dt)",
+          "time_unit": "day",
+          "log_likelihood": 2304.05,
+          "horizon_days": 548.0,
+          "mu_per_day": {
+            "상승/유지": 3.625456,
+            "하강": 2.642792
+          },
+          "alpha": {
+            "상승/유지": {
+              "상승/유지": 0.25,
+              "하강": 0.1
+            },
+            "하강": {
+              "상승/유지": 0.05,
+              "하강": 0.25
+            }
+          },
+          "beta_per_day": 0.166667,
+          "half_life_days": 4.16,
+          "branching_row_sums": {
+            "상승/유지": 0.35,
+            "하강": 0.3
+          }
+        }
+      },
+      {
+        "start": "2010-07-05",
+        "end": "2012-01-03",
+        "midpoint": "2011-04-05",
+        "window_days": 548,
+        "event_count": 4797,
+        "event_counts": {
+          "상승/유지": 2610,
+          "하강": 2187
+        },
+        "fit": {
+          "kernel": "alpha_ij * beta * exp(-beta * dt)",
+          "time_unit": "day",
+          "log_likelihood": 2530.996,
+          "horizon_days": 548.0,
+          "mu_per_day": {
+            "상승/유지": 3.57208,
+            "하강": 2.993157
+          },
+          "alpha": {
+            "상승/유지": {
+              "상승/유지": 0.25,
+              "하강": 0.075
+            },
+            "하강": {
+              "상승/유지": 0.025,
+              "하강": 0.25
+            }
+          },
+          "beta_per_day": 0.166667,
+          "half_life_days": 4.16,
+          "branching_row_sums": {
+            "상승/유지": 0.325,
+            "하강": 0.275
+          }
+        }
+      },
+      {
+        "start": "2011-01-03",
+        "end": "2012-07-03",
+        "midpoint": "2011-10-04",
+        "window_days": 548,
+        "event_count": 4061,
+        "event_counts": {
+          "상승/유지": 2069,
+          "하강": 1992
+        },
+        "fit": {
+          "kernel": "alpha_ij * beta * exp(-beta * dt)",
+          "time_unit": "day",
+          "log_likelihood": 1404.992,
+          "horizon_days": 548.0,
+          "mu_per_day": {
+            "상승/유지": 2.831661,
+            "하강": 2.726277
+          },
+          "alpha": {
+            "상승/유지": {
+              "상승/유지": 0.25,
+              "하강": 0.0
+            },
+            "하강": {
+              "상승/유지": 0.0,
+              "하강": 0.25
+            }
+          },
+          "beta_per_day": 0.166667,
+          "half_life_days": 4.16,
+          "branching_row_sums": {
+            "상승/유지": 0.25,
+            "하강": 0.25
+          }
+        }
+      },
+      {
+        "start": "2011-07-04",
+        "end": "2013-01-01",
+        "midpoint": "2012-04-03",
+        "window_days": 548,
+        "event_count": 3554,
+        "event_counts": {
+          "상승/유지": 1322,
+          "하강": 2232
+        },
+        "fit": {
+          "kernel": "alpha_ij * beta * exp(-beta * dt)",
+          "time_unit": "day",
+          "log_likelihood": 848.008,
+          "horizon_days": 548.0,
+          "mu_per_day": {
+            "상승/유지": 1.809307,
+            "하강": 3.054745
+          },
+          "alpha": {
+            "상승/유지": {
+              "상승/유지": 0.25,
+              "하강": 0.0
+            },
+            "하강": {
+              "상승/유지": 0.05,
+              "하강": 0.25
+            }
+          },
+          "beta_per_day": 0.166667,
+          "half_life_days": 4.16,
+          "branching_row_sums": {
+            "상승/유지": 0.25,
+            "하강": 0.3
+          }
+        }
+      },
+      {
+        "start": "2012-01-02",
+        "end": "2013-07-02",
+        "midpoint": "2012-10-02",
+        "window_days": 548,
+        "event_count": 3985,
+        "event_counts": {
+          "상승/유지": 1463,
+          "하강": 2522
+        },
+        "fit": {
+          "kernel": "alpha_ij * beta * exp(-beta * dt)",
+          "time_unit": "day",
+          "log_likelihood": 1472.293,
+          "horizon_days": 548.0,
+          "mu_per_day": {
+            "상승/유지": 2.002281,
+            "하강": 3.451642
+          },
+          "alpha": {
+            "상승/유지": {
+              "상승/유지": 0.25,
+              "하강": 0.025
+            },
+            "하강": {
+              "상승/유지": 0.175,
+              "하강": 0.2
+            }
+          },
+          "beta_per_day": 0.166667,
+          "half_life_days": 4.16,
+          "branching_row_sums": {
+            "상승/유지": 0.275,
+            "하강": 0.375
+          }
+        }
+      },
+      {
+        "start": "2012-07-02",
+        "end": "2013-12-31",
+        "midpoint": "2013-04-02",
+        "window_days": 548,
+        "event_count": 4733,
+        "event_counts": {
+          "상승/유지": 1965,
+          "하강": 2768
+        },
+        "fit": {
+          "kernel": "alpha_ij * beta * exp(-beta * dt)",
+          "time_unit": "day",
+          "log_likelihood": 2480.035,
+          "horizon_days": 548.0,
+          "mu_per_day": {
+            "상승/유지": 2.689325,
+            "하강": 3.788321
+          },
+          "alpha": {
+            "상승/유지": {
+              "상승/유지": 0.25,
+              "하강": 0.025
+            },
+            "하강": {
+              "상승/유지": 0.175,
+              "하강": 0.175
+            }
+          },
+          "beta_per_day": 0.166667,
+          "half_life_days": 4.16,
+          "branching_row_sums": {
+            "상승/유지": 0.275,
+            "하강": 0.35
+          }
+        }
+      },
+      {
+        "start": "2012-12-31",
+        "end": "2014-07-01",
+        "midpoint": "2013-10-01",
+        "window_days": 548,
+        "event_count": 5809,
+        "event_counts": {
+          "상승/유지": 3110,
+          "하강": 2699
+        },
+        "fit": {
+          "kernel": "alpha_ij * beta * exp(-beta * dt)",
+          "time_unit": "day",
+          "log_likelihood": 4083.179,
+          "horizon_days": 548.0,
+          "mu_per_day": {
+            "상승/유지": 4.256387,
+            "하강": 3.693887
+          },
+          "alpha": {
+            "상승/유지": {
+              "상승/유지": 0.25,
+              "하강": 0.05
+            },
+            "하강": {
+              "상승/유지": 0.05,
+              "하강": 0.25
+            }
+          },
+          "beta_per_day": 0.166667,
+          "half_life_days": 4.16,
+          "branching_row_sums": {
+            "상승/유지": 0.3,
+            "하강": 0.3
+          }
+        }
+      },
+      {
+        "start": "2013-07-01",
+        "end": "2014-12-30",
+        "midpoint": "2014-04-01",
+        "window_days": 548,
+        "event_count": 6474,
+        "event_counts": {
+          "상승/유지": 4064,
+          "하강": 2410
+        },
+        "fit": {
+          "kernel": "alpha_ij * beta * exp(-beta * dt)",
+          "time_unit": "day",
+          "log_likelihood": 5456.363,
+          "horizon_days": 548.0,
+          "mu_per_day": {
+            "상승/유지": 5.562044,
+            "하강": 3.298358
+          },
+          "alpha": {
+            "상승/유지": {
+              "상승/유지": 0.25,
+              "하강": 0.1
+            },
+            "하강": {
+              "상승/유지": 0.025,
+              "하강": 0.25
+            }
+          },
+          "beta_per_day": 0.166667,
+          "half_life_days": 4.16,
+          "branching_row_sums": {
+            "상승/유지": 0.35,
+            "하강": 0.275
+          }
+        }
+      },
+      {
+        "start": "2013-12-30",
+        "end": "2015-06-30",
+        "midpoint": "2014-09-30",
+        "window_days": 548,
+        "event_count": 8245,
+        "event_counts": {
+          "상승/유지": 6019,
+          "하강": 2226
+        },
+        "fit": {
+          "kernel": "alpha_ij * beta * exp(-beta * dt)",
+          "time_unit": "day",
+          "log_likelihood": 9505.92,
+          "horizon_days": 548.0,
+          "mu_per_day": {
+            "상승/유지": 8.237682,
+            "하강": 3.046533
+          },
+          "alpha": {
+            "상승/유지": {
+              "상승/유지": 0.25,
+              "하강": 0.1
+            },
+            "하강": {
+              "상승/유지": 0.025,
+              "하강": 0.2
+            }
+          },
+          "beta_per_day": 0.166667,
+          "half_life_days": 4.16,
+          "branching_row_sums": {
+            "상승/유지": 0.35,
+            "하강": 0.225
+          }
+        }
+      },
+      {
+        "start": "2014-06-30",
+        "end": "2015-12-29",
+        "midpoint": "2015-03-31",
+        "window_days": 548,
+        "event_count": 8599,
+        "event_counts": {
+          "상승/유지": 6731,
+          "하강": 1868
+        },
+        "fit": {
+          "kernel": "alpha_ij * beta * exp(-beta * dt)",
+          "time_unit": "day",
+          "log_likelihood": 10754.683,
+          "horizon_days": 548.0,
+          "mu_per_day": {
+            "상승/유지": 9.212135,
+            "하강": 2.556569
+          },
+          "alpha": {
+            "상승/유지": {
+              "상승/유지": 0.25,
+              "하강": 0.15
+            },
+            "하강": {
+              "상승/유지": 0.025,
+              "하강": 0.2
+            }
+          },
+          "beta_per_day": 0.166667,
+          "half_life_days": 4.16,
+          "branching_row_sums": {
+            "상승/유지": 0.4,
+            "하강": 0.225
+          }
+        }
+      },
+      {
+        "start": "2014-12-29",
+        "end": "2016-06-28",
+        "midpoint": "2015-09-29",
+        "window_days": 548,
+        "event_count": 9119,
+        "event_counts": {
+          "상승/유지": 7390,
+          "하강": 1729
+        },
+        "fit": {
+          "kernel": "alpha_ij * beta * exp(-beta * dt)",
+          "time_unit": "day",
+          "log_likelihood": 12349.046,
+          "horizon_days": 548.0,
+          "mu_per_day": {
+            "상승/유지": 10.114051,
+            "하강": 2.366332
+          },
+          "alpha": {
+            "상승/유지": {
+              "상승/유지": 0.25,
+              "하강": 0.2
+            },
+            "하강": {
+              "상승/유지": 0.05,
+              "하강": 0.1
+            }
+          },
+          "beta_per_day": 0.166667,
+          "half_life_days": 4.16,
+          "branching_row_sums": {
+            "상승/유지": 0.45,
+            "하강": 0.15
+          }
+        }
+      },
+      {
+        "start": "2015-06-29",
+        "end": "2016-12-27",
+        "midpoint": "2016-03-29",
+        "window_days": 548,
+        "event_count": 8217,
+        "event_counts": {
+          "상승/유지": 6851,
+          "하강": 1366
+        },
+        "fit": {
+          "kernel": "alpha_ij * beta * exp(-beta * dt)",
+          "time_unit": "day",
+          "log_likelihood": 10637.754,
+          "horizon_days": 548.0,
+          "mu_per_day": {
+            "상승/유지": 9.376369,
+            "하강": 1.869526
+          },
+          "alpha": {
+            "상승/유지": {
+              "상승/유지": 0.25,
+              "하강": 0.2
+            },
+            "하강": {
+              "상승/유지": 0.025,
+              "하강": 0.175
+            }
+          },
+          "beta_per_day": 0.166667,
+          "half_life_days": 4.16,
+          "branching_row_sums": {
+            "상승/유지": 0.45,
+            "하강": 0.2
+          }
+        }
+      },
+      {
+        "start": "2015-12-28",
+        "end": "2017-06-27",
+        "midpoint": "2016-09-27",
+        "window_days": 548,
+        "event_count": 8711,
+        "event_counts": {
+          "상승/유지": 7247,
+          "하강": 1464
+        },
+        "fit": {
+          "kernel": "alpha_ij * beta * exp(-beta * dt)",
+          "time_unit": "day",
+          "log_likelihood": 11954.125,
+          "horizon_days": 548.0,
+          "mu_per_day": {
+            "상승/유지": 9.918339,
+            "하강": 2.00365
+          },
+          "alpha": {
+            "상승/유지": {
+              "상승/유지": 0.25,
+              "하강": 0.25
+            },
+            "하강": {
+              "상승/유지": 0.025,
+              "하강": 0.2
+            }
+          },
+          "beta_per_day": 0.166667,
+          "half_life_days": 4.16,
+          "branching_row_sums": {
+            "상승/유지": 0.5,
+            "하강": 0.225
+          }
+        }
+      },
+      {
+        "start": "2016-06-27",
+        "end": "2017-12-26",
+        "midpoint": "2017-03-28",
+        "window_days": 548,
+        "event_count": 8717,
+        "event_counts": {
+          "상승/유지": 7591,
+          "하강": 1126
+        },
+        "fit": {
+          "kernel": "alpha_ij * beta * exp(-beta * dt)",
+          "time_unit": "day",
+          "log_likelihood": 12523.927,
+          "horizon_days": 548.0,
+          "mu_per_day": {
+            "상승/유지": 10.389142,
+            "하강": 1.541058
+          },
+          "alpha": {
+            "상승/유지": {
+              "상승/유지": 0.25,
+              "하강": 0.25
+            },
+            "하강": {
+              "상승/유지": 0.025,
+              "하강": 0.175
+            }
+          },
+          "beta_per_day": 0.166667,
+          "half_life_days": 4.16,
+          "branching_row_sums": {
+            "상승/유지": 0.5,
+            "하강": 0.2
+          }
+        }
+      },
+      {
+        "start": "2016-12-26",
+        "end": "2018-06-26",
+        "midpoint": "2017-09-26",
+        "window_days": 548,
+        "event_count": 7733,
+        "event_counts": {
+          "상승/유지": 6806,
+          "하강": 927
+        },
+        "fit": {
+          "kernel": "alpha_ij * beta * exp(-beta * dt)",
+          "time_unit": "day",
+          "log_likelihood": 10606.643,
+          "horizon_days": 548.0,
+          "mu_per_day": {
+            "상승/유지": 9.314781,
+            "하강": 1.0
+          },
+          "alpha": {
+            "상승/유지": {
+              "상승/유지": 0.25,
+              "하강": 0.25
+            },
+            "하강": {
+              "상승/유지": 0.025,
+              "하강": 0.25
+            }
+          },
+          "beta_per_day": 0.166667,
+          "half_life_days": 4.16,
+          "branching_row_sums": {
+            "상승/유지": 0.5,
+            "하강": 0.275
+          }
+        }
+      },
+      {
+        "start": "2017-06-26",
+        "end": "2018-12-25",
+        "midpoint": "2018-03-27",
+        "window_days": 548,
+        "event_count": 6088,
+        "event_counts": {
+          "상승/유지": 5585,
+          "하강": 503
+        },
+        "fit": {
+          "kernel": "alpha_ij * beta * exp(-beta * dt)",
+          "time_unit": "day",
+          "log_likelihood": 7511.846,
+          "horizon_days": 548.0,
+          "mu_per_day": {
+            "상승/유지": 7.643704,
+            "하강": 0.344206
+          },
+          "alpha": {
+            "상승/유지": {
+              "상승/유지": 0.25,
+              "하강": 0.25
+            },
+            "하강": {
+              "상승/유지": 0.05,
+              "하강": 0.15
+            }
+          },
+          "beta_per_day": 0.166667,
+          "half_life_days": 4.16,
+          "branching_row_sums": {
+            "상승/유지": 0.5,
+            "하강": 0.2
+          }
+        }
+      },
+      {
+        "start": "2017-12-25",
+        "end": "2019-06-25",
+        "midpoint": "2018-09-25",
+        "window_days": 548,
+        "event_count": 4245,
+        "event_counts": {
+          "상승/유지": 3785,
+          "하강": 460
+        },
+        "fit": {
+          "kernel": "alpha_ij * beta * exp(-beta * dt)",
+          "time_unit": "day",
+          "log_likelihood": 3596.95,
+          "horizon_days": 548.0,
+          "mu_per_day": {
+            "상승/유지": 5.180201,
+            "하강": 0.629562
+          },
+          "alpha": {
+            "상승/유지": {
+              "상승/유지": 0.25,
+              "하강": 0.25
+            },
+            "하강": {
+              "상승/유지": 0.0,
+              "하강": 0.25
+            }
+          },
+          "beta_per_day": 0.166667,
+          "half_life_days": 4.16,
+          "branching_row_sums": {
+            "상승/유지": 0.5,
+            "하강": 0.25
+          }
+        }
+      },
+      {
+        "start": "2018-06-25",
+        "end": "2019-12-24",
+        "midpoint": "2019-03-26",
+        "window_days": 548,
+        "event_count": 5384,
+        "event_counts": {
+          "상승/유지": 4870,
+          "하강": 514
+        },
+        "fit": {
+          "kernel": "alpha_ij * beta * exp(-beta * dt)",
+          "time_unit": "day",
+          "log_likelihood": 5846.708,
+          "horizon_days": 548.0,
+          "mu_per_day": {
+            "상승/유지": 6.665146,
+            "하강": 0.703467
+          },
+          "alpha": {
+            "상승/유지": {
+              "상승/유지": 0.25,
+              "하강": 0.25
+            },
+            "하강": {
+              "상승/유지": 0.0,
+              "하강": 0.25
+            }
+          },
+          "beta_per_day": 0.166667,
+          "half_life_days": 4.16,
+          "branching_row_sums": {
+            "상승/유지": 0.5,
+            "하강": 0.25
+          }
+        }
+      },
+      {
+        "start": "2018-12-24",
+        "end": "2020-06-23",
+        "midpoint": "2019-09-24",
+        "window_days": 548,
+        "event_count": 5394,
+        "event_counts": {
+          "상승/유지": 4732,
+          "하강": 662
+        },
+        "fit": {
+          "kernel": "alpha_ij * beta * exp(-beta * dt)",
+          "time_unit": "day",
+          "log_likelihood": 5513.059,
+          "horizon_days": 548.0,
+          "mu_per_day": {
+            "상승/유지": 6.476277,
+            "하강": 0.906022
+          },
+          "alpha": {
+            "상승/유지": {
+              "상승/유지": 0.25,
+              "하강": 0.25
+            },
+            "하강": {
+              "상승/유지": 0.0,
+              "하강": 0.25
+            }
+          },
+          "beta_per_day": 0.166667,
+          "half_life_days": 4.16,
+          "branching_row_sums": {
+            "상승/유지": 0.5,
+            "하강": 0.25
+          }
+        }
+      },
+      {
+        "start": "2019-06-24",
+        "end": "2020-12-22",
+        "midpoint": "2020-03-24",
+        "window_days": 548,
+        "event_count": 5830,
+        "event_counts": {
+          "상승/유지": 5258,
+          "하강": 572
+        },
+        "fit": {
+          "kernel": "alpha_ij * beta * exp(-beta * dt)",
+          "time_unit": "day",
+          "log_likelihood": 6492.974,
+          "horizon_days": 548.0,
+          "mu_per_day": {
+            "상승/유지": 7.196168,
+            "하강": 0.782847
+          },
+          "alpha": {
+            "상승/유지": {
+              "상승/유지": 0.25,
+              "하강": 0.25
+            },
+            "하강": {
+              "상승/유지": 0.0,
+              "하강": 0.25
+            }
+          },
+          "beta_per_day": 0.166667,
+          "half_life_days": 4.16,
+          "branching_row_sums": {
+            "상승/유지": 0.5,
+            "하강": 0.25
+          }
+        }
+      },
+      {
+        "start": "2019-12-23",
+        "end": "2021-06-22",
+        "midpoint": "2020-09-22",
+        "window_days": 548,
+        "event_count": 4190,
+        "event_counts": {
+          "상승/유지": 3695,
+          "하강": 495
+        },
+        "fit": {
+          "kernel": "alpha_ij * beta * exp(-beta * dt)",
+          "time_unit": "day",
+          "log_likelihood": 3122.788,
+          "horizon_days": 548.0,
+          "mu_per_day": {
+            "상승/유지": 5.057026,
+            "하강": 0.677464
+          },
+          "alpha": {
+            "상승/유지": {
+              "상승/유지": 0.25,
+              "하강": 0.25
+            },
+            "하강": {
+              "상승/유지": 0.0,
+              "하강": 0.25
+            }
+          },
+          "beta_per_day": 0.166667,
+          "half_life_days": 4.16,
+          "branching_row_sums": {
+            "상승/유지": 0.5,
+            "하강": 0.25
+          }
+        }
+      },
+      {
+        "start": "2020-06-22",
+        "end": "2021-12-21",
+        "midpoint": "2021-03-23",
+        "window_days": 548,
+        "event_count": 3531,
+        "event_counts": {
+          "상승/유지": 3214,
+          "하강": 317
+        },
+        "fit": {
+          "kernel": "alpha_ij * beta * exp(-beta * dt)",
+          "time_unit": "day",
+          "log_likelihood": 2165.365,
+          "horizon_days": 548.0,
+          "mu_per_day": {
+            "상승/유지": 4.398723,
+            "하강": 0.216925
+          },
+          "alpha": {
+            "상승/유지": {
+              "상승/유지": 0.25,
+              "하강": 0.25
+            },
+            "하강": {
+              "상승/유지": 0.05,
+              "하강": 0.175
+            }
+          },
+          "beta_per_day": 0.166667,
+          "half_life_days": 4.16,
+          "branching_row_sums": {
+            "상승/유지": 0.5,
+            "하강": 0.225
+          }
+        }
+      },
+      {
+        "start": "2020-12-21",
+        "end": "2022-06-21",
+        "midpoint": "2021-09-21",
+        "window_days": 548,
+        "event_count": 2332,
+        "event_counts": {
+          "상승/유지": 2100,
+          "하강": 232
+        },
+        "fit": {
+          "kernel": "alpha_ij * beta * exp(-beta * dt)",
+          "time_unit": "day",
+          "log_likelihood": 426.863,
+          "horizon_days": 548.0,
+          "mu_per_day": {
+            "상승/유지": 2.874088,
+            "하강": 0.158759
+          },
+          "alpha": {
+            "상승/유지": {
+              "상승/유지": 0.25,
+              "하강": 0.25
+            },
+            "하강": {
+              "상승/유지": 0.075,
+              "하강": 0.025
+            }
+          },
+          "beta_per_day": 0.166667,
+          "half_life_days": 4.16,
+          "branching_row_sums": {
+            "상승/유지": 0.5,
+            "하강": 0.1
+          }
+        }
+      },
+      {
+        "start": "2021-06-21",
+        "end": "2022-12-20",
+        "midpoint": "2022-03-22",
+        "window_days": 548,
+        "event_count": 1398,
+        "event_counts": {
+          "상승/유지": 1207,
+          "하강": 191
+        },
+        "fit": {
+          "kernel": "alpha_ij * beta * exp(-beta * dt)",
+          "time_unit": "day",
+          "log_likelihood": -526.698,
+          "horizon_days": 548.0,
+          "mu_per_day": {
+            "상승/유지": 1.651916,
+            "하강": 0.261405
+          },
+          "alpha": {
+            "상승/유지": {
+              "상승/유지": 0.25,
+              "하강": 0.1
+            },
+            "하강": {
+              "상승/유지": 0.0,
+              "하강": 0.25
+            }
+          },
+          "beta_per_day": 0.166667,
+          "half_life_days": 4.16,
+          "branching_row_sums": {
+            "상승/유지": 0.35,
+            "하강": 0.25
+          }
+        }
+      },
+      {
+        "start": "2021-12-20",
+        "end": "2023-06-20",
+        "midpoint": "2022-09-20",
+        "window_days": 548,
+        "event_count": 1647,
+        "event_counts": {
+          "상승/유지": 1180,
+          "하강": 467
+        },
+        "fit": {
+          "kernel": "alpha_ij * beta * exp(-beta * dt)",
+          "time_unit": "day",
+          "log_likelihood": -575.854,
+          "horizon_days": 548.0,
+          "mu_per_day": {
+            "상승/유지": 1.614964,
+            "하강": 0.319571
+          },
+          "alpha": {
+            "상승/유지": {
+              "상승/유지": 0.25,
+              "하강": 0.25
+            },
+            "하강": {
+              "상승/유지": 0.15,
+              "하강": 0.25
+            }
+          },
+          "beta_per_day": 0.166667,
+          "half_life_days": 4.16,
+          "branching_row_sums": {
+            "상승/유지": 0.5,
+            "하강": 0.4
+          }
+        }
+      },
+      {
+        "start": "2022-06-20",
+        "end": "2023-12-19",
+        "midpoint": "2023-03-21",
+        "window_days": 548,
+        "event_count": 2156,
+        "event_counts": {
+          "상승/유지": 1516,
+          "하강": 640
+        },
+        "fit": {
+          "kernel": "alpha_ij * beta * exp(-beta * dt)",
+          "time_unit": "day",
+          "log_likelihood": -273.417,
+          "horizon_days": 548.0,
+          "mu_per_day": {
+            "상승/유지": 2.074818,
+            "하강": 0.562044
+          },
+          "alpha": {
+            "상승/유지": {
+              "상승/유지": 0.25,
+              "하강": 0.25
+            },
+            "하강": {
+              "상승/유지": 0.125,
+              "하강": 0.25
+            }
+          },
+          "beta_per_day": 0.166667,
+          "half_life_days": 4.16,
+          "branching_row_sums": {
+            "상승/유지": 0.5,
+            "하강": 0.375
+          }
+        }
+      },
+      {
+        "start": "2022-12-19",
+        "end": "2024-06-18",
+        "midpoint": "2023-09-19",
+        "window_days": 548,
+        "event_count": 3176,
+        "event_counts": {
+          "상승/유지": 2334,
+          "하강": 842
+        },
+        "fit": {
+          "kernel": "alpha_ij * beta * exp(-beta * dt)",
+          "time_unit": "day",
+          "log_likelihood": 702.667,
+          "horizon_days": 548.0,
+          "mu_per_day": {
+            "상승/유지": 3.194343,
+            "하강": 1.0
+          },
+          "alpha": {
+            "상승/유지": {
+              "상승/유지": 0.25,
+              "하강": 0.175
+            },
+            "하강": {
+              "상승/유지": 0.05,
+              "하강": 0.25
+            }
+          },
+          "beta_per_day": 0.166667,
+          "half_life_days": 4.16,
+          "branching_row_sums": {
+            "상승/유지": 0.425,
+            "하강": 0.3
+          }
+        }
+      },
+      {
+        "start": "2023-06-19",
+        "end": "2024-12-17",
+        "midpoint": "2024-03-19",
+        "window_days": 548,
+        "event_count": 4028,
+        "event_counts": {
+          "상승/유지": 3305,
+          "하강": 723
+        },
+        "fit": {
+          "kernel": "alpha_ij * beta * exp(-beta * dt)",
+          "time_unit": "day",
+          "log_likelihood": 2326.775,
+          "horizon_days": 548.0,
+          "mu_per_day": {
+            "상승/유지": 4.523266,
+            "하강": 1.0
+          },
+          "alpha": {
+            "상승/유지": {
+              "상승/유지": 0.25,
+              "하강": 0.25
+            },
+            "하강": {
+              "상승/유지": 0.0,
+              "하강": 0.25
+            }
+          },
+          "beta_per_day": 0.166667,
+          "half_life_days": 4.16,
+          "branching_row_sums": {
+            "상승/유지": 0.5,
+            "하강": 0.25
+          }
+        }
+      },
+      {
+        "start": "2023-12-18",
+        "end": "2025-06-17",
+        "midpoint": "2024-09-17",
+        "window_days": 548,
+        "event_count": 5062,
+        "event_counts": {
+          "상승/유지": 4367,
+          "하강": 695
+        },
+        "fit": {
+          "kernel": "alpha_ij * beta * exp(-beta * dt)",
+          "time_unit": "day",
+          "log_likelihood": 4597.572,
+          "horizon_days": 548.0,
+          "mu_per_day": {
+            "상승/유지": 5.976734,
+            "하강": 0.951186
+          },
+          "alpha": {
+            "상승/유지": {
+              "상승/유지": 0.25,
+              "하강": 0.25
+            },
+            "하강": {
+              "상승/유지": 0.025,
+              "하강": 0.225
+            }
+          },
+          "beta_per_day": 0.166667,
+          "half_life_days": 4.16,
+          "branching_row_sums": {
+            "상승/유지": 0.5,
+            "하강": 0.25
+          }
+        }
+      },
+      {
+        "start": "2024-06-17",
+        "end": "2025-12-16",
+        "midpoint": "2025-03-18",
+        "window_days": 548,
+        "event_count": 5251,
+        "event_counts": {
+          "상승/유지": 4740,
+          "하강": 511
+        },
+        "fit": {
+          "kernel": "alpha_ij * beta * exp(-beta * dt)",
+          "time_unit": "day",
+          "log_likelihood": 5405.946,
+          "horizon_days": 548.0,
+          "mu_per_day": {
+            "상승/유지": 6.487226,
+            "하강": 0.349681
+          },
+          "alpha": {
+            "상승/유지": {
+              "상승/유지": 0.25,
+              "하강": 0.25
+            },
+            "하강": {
+              "상승/유지": 0.05,
+              "하강": 0.25
+            }
+          },
+          "beta_per_day": 0.166667,
+          "half_life_days": 4.16,
+          "branching_row_sums": {
+            "상승/유지": 0.5,
+            "하강": 0.3
+          }
+        }
+      }
+    ]
+  }
 }

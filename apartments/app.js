@@ -952,8 +952,7 @@ function renderHawkesIntensityChart(data) {
   );
 }
 
-function renderMovingWindowChart(data) {
-  const selector = "#hawkes-moving-window-chart";
+function renderMovingWindowChart(data, selector = "#hawkes-moving-window-chart", title = "Moving window alpha estimates") {
   const element = document.querySelector(selector);
   if (!element) return;
 
@@ -1002,7 +1001,7 @@ function renderMovingWindowChart(data) {
     .attr("y", -16)
     .attr("font-weight", 600)
     .attr("fill", "var(--ink)")
-    .text("Moving window alpha estimates");
+    .text(title);
 
   g.append("g")
     .attr("transform", `translate(0,${innerHeight})`)
@@ -1510,6 +1509,11 @@ function renderGangnamRepeatChangeHawkes(data) {
     "#gangnam-repeat-change-hawkes-intensity-chart",
     "Gangnam fitted intensity with pseudo-repeat-sales index",
     { showIndex: true },
+  );
+  renderMovingWindowChart(
+    data,
+    "#gangnam-repeat-change-moving-window-chart",
+    "Gangnam moving window alpha estimates",
   );
 }
 

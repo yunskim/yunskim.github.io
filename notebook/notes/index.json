@@ -7,8 +7,8 @@
       "math",
       "statistics"
     ],
-    "summary": "front matter 옵션으로 노트를 앱처럼 루트와 네비게이션에 노출하는 예시.",
-    "description": "notebook 노트가 promoted app으로 승격되어 프로젝트 네비게이션과 루트 목록에 표시되는 샘플.",
+    "summary": "Hawkes Process, 생존분석을 이해하는 최소한의 수학",
+    "description": "Hawkes Process, 생존분석을 이해하는 최소한의 수학",
     "href": "/notebook/notes/2026-05-02-special-functions/",
     "canonical": "/notebook/notes/2026-05-02-special-functions/",
     "og_image": "",
@@ -186,6 +186,26 @@
     "assets_href": "/notebook/notes/2026-05-02-linear-function/assets/"
   },
   {
+    "title": "Linear Algebra",
+    "slug": "2026-05-02-linear-algebra",
+    "date": "2026-05-02",
+    "tags": [
+      "math"
+    ],
+    "summary": "독립적인 기본 요소들로 모든 것을 표현하는 법",
+    "description": "독립적인 기본 요소들로 모든 것을 표현하는 법",
+    "href": "/notebook/notes/2026-05-02-linear-algebra/",
+    "canonical": "/notebook/notes/2026-05-02-linear-algebra/",
+    "og_image": "",
+    "mathjax": true,
+    "scroll_reveal": false,
+    "promote_app": true,
+    "app_label": "Linear Algebra",
+    "app_summary": "통계를 이해하는데 필요한 linear algebra 관련 노트 모음",
+    "related": [],
+    "assets_href": "/notebook/notes/2026-05-02-linear-algebra/assets/"
+  },
+  {
     "title": "Gamma Distribution",
     "slug": "2026-05-02-gamma-distribution",
     "date": "2026-05-02",
@@ -217,7 +237,7 @@
       "math",
       "statistics"
     ],
-    "summary": "exponential function의 의미를 살펴본다.",
+    "summary": "exponential function는 같은 비율로 증가하고 감소하는 사회/자연 현상을 모델링하고 있다.",
     "description": "exponential function은 같은 비율로 증가하고 감소하는 현상을 설명한다.",
     "href": "/notebook/notes/2026-05-02-exponential-function/",
     "canonical": "/notebook/notes/2026-05-02-exponential-function/",
@@ -226,7 +246,7 @@
     "scroll_reveal": false,
     "promote_app": false,
     "app_label": "Exponential Function",
-    "app_summary": "exponential function의 의미를 살펴본다.",
+    "app_summary": "exponential function는 같은 비율로 증가하고 감소하는 사회/자연 현상을 모델링하고 있다.",
     "related": [
       "2026-05-02-exponential-distribution"
     ],
@@ -277,6 +297,29 @@
       "2026-05-02-mean-and-variance"
     ],
     "assets_href": "/notebook/notes/2026-05-02-covariance/assets/"
+  },
+  {
+    "title": "Circle Functions",
+    "slug": "2026-05-02-circle-functions",
+    "date": "2026-05-02",
+    "tags": [
+      "math",
+      "statistics"
+    ],
+    "summary": "",
+    "description": "",
+    "href": "/notebook/notes/2026-05-02-circle-functions/",
+    "canonical": "/notebook/notes/2026-05-02-circle-functions/",
+    "og_image": "",
+    "mathjax": true,
+    "scroll_reveal": false,
+    "promote_app": false,
+    "app_label": "Circle Functions",
+    "app_summary": "",
+    "related": [
+      "2026-05-02-fourier-analysis"
+    ],
+    "assets_href": "/notebook/notes/2026-05-02-circle-functions/assets/"
   },
   {
     "title": "Chi-Square Function",
