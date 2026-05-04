@@ -230,25 +230,25 @@
     "assets_href": "/notebook/notes/2026-05-02-linear-algebra/assets/"
   },
   {
-    "title": "Implementation of J",
-    "slug": "2026-05-02-implementation-of-j",
+    "title": "J Language",
+    "slug": "2026-05-02-j-language",
     "date": "2026-XX-XX",
     "tags": [
       "math",
       "statistics"
     ],
-    "summary": "J언어 C구현 공부하기",
-    "description": "J언어 C구현 공부하기",
-    "href": "/notebook/notes/2026-05-02-implementation-of-j/",
-    "canonical": "/notebook/notes/2026-05-02-implementation-of-j/",
+    "summary": "J언어 공부하기",
+    "description": "J언어 공부하기",
+    "href": "/notebook/notes/2026-05-02-j-language/",
+    "canonical": "/notebook/notes/2026-05-02-j-language/",
     "og_image": "",
     "mathjax": true,
     "scroll_reveal": false,
     "promote_app": true,
-    "app_label": "Implementation of J",
-    "app_summary": "J언어 C구현 공부하기",
+    "app_label": "J Language",
+    "app_summary": "J언어 공부하기",
     "related": [],
-    "assets_href": "/notebook/notes/2026-05-02-implementation-of-j/assets/"
+    "assets_href": "/notebook/notes/2026-05-02-j-language/assets/"
   },
   {
     "title": "Gamma Distribution",
