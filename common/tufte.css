@@ -253,6 +253,17 @@ img {
     position: relative;
 }
 
+h1 .sidenote,
+h1 .marginnote,
+h2 .sidenote,
+h2 .marginnote,
+h3 .sidenote,
+h3 .marginnote {
+    width: 30%;
+    margin-right: 0;
+    font-style: normal;
+}
+
 .sidenote-number {
     counter-increment: sidenote-counter;
 }

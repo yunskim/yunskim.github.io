@@ -25,5 +25,19 @@
     "tags": [
       "math"
     ]
+  },
+  {
+    "title": "Implementation of J",
+    "label": "Implementation of J",
+    "slug": "2026-05-02-implementation-of-j",
+    "date": "2026-XX-XX",
+    "summary": "J언어 C구현 공부하기",
+    "description": "J언어 C구현 공부하기",
+    "href": "/notebook/notes/2026-05-02-implementation-of-j/",
+    "canonical": "/notebook/notes/2026-05-02-implementation-of-j/",
+    "tags": [
+      "math",
+      "statistics"
+    ]
   }
 ]

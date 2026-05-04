@@ -28,6 +28,7 @@
         <a href="/apartments/">Apartments</a>
         <a href="/notebook/notes/2026-05-02-special-functions/">Special Functions</a>
         <a href="/notebook/notes/2026-05-02-linear-algebra/">Linear Algebra</a>
+        <a href="/notebook/notes/2026-05-02-implementation-of-j/">Implementation of J</a>
         <a href="/notebook/" aria-current="page">Notebook</a>
       </nav>
       <p class="project-path"><a href="/notebook/">Notebook</a> / notes</p>
@@ -100,7 +101,7 @@
              aria-label="exp(x + dx)를 exp(x)와 exp(dx)의 곱으로 비교하는 인터랙티브 다이어그램"></svg>
         <div id="exponential-shift-values" class="exponential-shift-values sans" aria-live="polite"></div>
     </figure>
-    <h3>\(f(dx)\)는 비율 \(dx\)을 입력을 받아 증감 후 값을 구하는 함수</h3>
+    <h3>\(f(dx)\)는 비율 \(dx\)을 입력을 받아 늘어난 값을 구하는 함수</h3>
     <p>
         충분히 작은 \(dx\)에 대해 \(f(x + dx)\)는 \(f(x) \cdot (1 + dx)\)에 근사하는 것을 발견했나?
     </p>
@@ -109,9 +110,13 @@
         \)이다. \(f(dx) \approx (1 + dx) \)는 마치 증감율 \(dx\)을 받아 실제 증감을 계산하는 함수처럼 보인다.
     </p>
     <p>
-        이 방향으로 조금 더 사고를 확장해보자. \(x\)가 \(dx\)가 여러 개 더해진 결과라고 보면: <br>
-        \[f(dx + dx + dx + \ldots) = f(dx) \cdot f(dx) \cdot f(dx) \cdot \ldots = (1 + dx) ^ n. \]
-        <label for="sn-auto-3" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-auto-3" class="margin-toggle"/><span class="sidenote">이 표현을 합과 곱 기호로 적으면:<br>
+
+        이 방향으로 조금 더 사고를 확장해보자. \(f(dx + dx + dx)\)는 단계<label for="sn-auto-3" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-auto-3" class="margin-toggle"/><span class="sidenote">\(x\)를 \((dx + dx)\), \(y\)를 \(dx\)로</span>를 나눠 규칙을 적용할 수 있다. \[f((dx + dx) + dx) = f(dx + dx) \cdot f(dx) = f(dx) \cdot f(dx) \cdot f(dx) \approx f(dx)^3. \] 요약하자면 입력의 sum은 출력의 product로 표현된다.
+    </p>
+    <p>
+        한 번 더 일반화해 \(x\)가 \(dx\)가 여러 개 더해진 결과라고 보면: <br>
+        \[f(dx + dx + dx + \ldots) = f(dx) \cdot f(dx) \cdot f(dx) \cdot \ldots \approx (1 + dx) ^ n. \]
+        <label for="sn-auto-4" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-auto-4" class="margin-toggle"/><span class="sidenote">이 표현을 합과 곱 기호로 적으면:<br>
             \[f\left(\sum_{i=1}^{n} dx\right) = \prod_{i=1}^{n} f(dx) \approx (1 + dx)^{n}.\]
             여기서 \(x = n \cdot dx \)이다.<br>
             \(\sum\)은 addition을 n번 반복, \(\prod\)은 multiplication을 n번 반복하는 표기.</span>
@@ -122,8 +127,11 @@
     </p>
 </section>
 <section>
-    <h2>differentiation</h2>
+    <h2>derivative</h2>
     <h3></h3>
+    <p>
+        참고<label for="sn-auto-5" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-auto-5" class="margin-toggle"/><span class="sidenote">derivative에 더 많은 이야기를 듣고 싶다면 <a href="/notebook/notes/2026-05-02-essence-of-derivative/">Essence of Derivative</a>를 참고하세요.</span>
+    </p>
 </section>
 <section>
     <h2>scope function</h2>
@@ -151,7 +159,7 @@
     <h2>전염병</h2>
     <h3>재생산지수 \(R_0\)은 exponential function으로 이해할 수 있다.</h3>
     <p>
-        감염이 일정한 기간마다 같은 배수로 늘어난다고 단순화하면 확진자 수는 지수함수처럼 움직인다. 아래 그림은 전세계 누적 확진자가 1,000명을 넘은 시점에서 출발해,
+        감염이 일정한 기간마다 같은 배수로 늘어난다고 단순화하면 확진자 수는 지수함수처럼 움직인다. 아래 그림은 전세계 누적 확진자<label for="sn-auto-6" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-auto-6" class="margin-toggle"/><span class="sidenote">자료: <a href="https://github.com/CSSEGISandData/COVID-19/blob/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv">CSSEGISandData</a></span>가 1,000명을 넘은 시점에서 출발해,
         5일마다 증가 배수가 조금 달라질 때 같은 기간 뒤 곡선이 얼마나 크게 벌어지는지 보여준다.
     </p>
     <figure class="fullwidth covid-growth-demo">
