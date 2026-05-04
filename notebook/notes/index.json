@@ -284,7 +284,7 @@
       "math",
       "statistics"
     ],
-    "summary": "exponential function는 같은 비율로 증가하고 감소하는 사회/자연 현상을 모델링하고 있다.",
+    "summary": "exponential function는 같은 비율로 증가하고 감소하는 함수이다.",
     "description": "exponential function은 같은 비율로 증가하고 감소하는 현상을 설명한다.",
     "href": "/notebook/notes/2026-05-02-exponential-function/",
     "canonical": "/notebook/notes/2026-05-02-exponential-function/",
@@ -293,7 +293,7 @@
     "scroll_reveal": false,
     "promote_app": false,
     "app_label": "Exponential Function",
-    "app_summary": "exponential function는 같은 비율로 증가하고 감소하는 사회/자연 현상을 모델링하고 있다.",
+    "app_summary": "exponential function는 같은 비율로 증가하고 감소하는 함수이다.",
     "related": [
       "2026-05-02-exponential-distribution"
     ],

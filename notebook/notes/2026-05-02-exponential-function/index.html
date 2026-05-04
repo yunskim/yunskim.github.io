@@ -32,16 +32,18 @@
       </nav>
       <p class="project-path"><a href="/notebook/">Notebook</a> / notes</p>
       <h1>Exponential Function</h1>
-      <p class="subtitle">exponential function는 같은 비율로 증가하고 감소하는 사회/자연 현상을 모델링하고 있다.</p>
+      <p class="subtitle">exponential function는 같은 비율로 증가하고 감소하는 함수이다.</p>
       <p class="note-meta sans">2026-XX-XX</p>
       <p class="note-tags sans"><a href="/notebook/?tag=math">math</a> <a href="/notebook/?tag=statistics">statistics</a></p>
       <section>
-    <h2>exponential function의 상대변화율은 상수</h2>
-    <h3>같은 비율로 증가하는 </h3>
+    <h2>그려보기</h2>
+    <h3></h3>
     <p>
         지수함수 \(f(x)=e^{cx}\)의 특별한 점은 미분해도 자기 자신의 상수배가 된다는 것이다.
         즉 \(f'(x)=c e^{cx}\)이고, 어떤 지점 \(x=a\)에서의 기울기도 \(c e^{ca}\)이다.
-        그래서 수준 \(f(x)\)는 지점마다 달라지지만 상대 변화율<label for="sn-score-function-wikipedia" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-score-function-wikipedia" class="margin-toggle"/><span class="sidenote">확률 쪽에서는 이런 걸 <a href="https://en.wikipedia.org/wiki/Informant_(statistics)">score function</a>이라고 부른다. 어떤 규칙으로 한 지점에서 상대변화율이 변화하는지 파악하는 것은 확률분포를 이해하는데 도움이 된다.</span>
+        그래서 수준 \(f(x)\)는 지점마다 달라지지만 상대 변화율
+        <label for="sn-score-function-wikipedia" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-score-function-wikipedia" class="margin-toggle"/><span class="sidenote">확률 쪽에서는 이런 걸 <a href="https://en.wikipedia.org/wiki/Informant_(statistics)">score
+            function</a>이라고 부른다. 어떤 규칙으로 한 지점에서 상대변화율이 변화하는지 파악하는 것은 확률분포를 이해하는데 도움이 된다.</span>
         \(\frac{f'(x)}{f(x)}\)는 항상 \(c\)로 일정하다.
     </p>
     <figure class="exponential-demo">
@@ -67,7 +69,67 @@
 </section>
 
 <section>
-    <h2>할인율</h2>
+    <h2>그림으로 이해하기</h2>
+    <h3>\(y\) 대신 \(dx\)</h3>
+    <p>
+        \( f(x + y) = f(x) \cdot f(y) \)을 조금만 변형해보자.
+    </p>
+    <p>x의 증가분 \(dx\)를 \(y\)자리에 넣으면 맥락없는 \( y \)를 넣은 때보다 패턴이 선명하게 보인다.
+        \[ f(x + dx) = f(x) \cdot f(dx). \]
+        이게 무슨 뜻일까? 좌변 \( y \)자리에 \( dx \)가 들어간, \(x\)보다 \(dx\)만큼 증가한 지점의 함수값 \(f(x + dx)\)가 \( f(x) \)와 \( f(dx) \)의
+        multiplication이라는 것이 무슨 뜻인가?
+    </p>
+    <h3>일단 그려보기</h3>
+    <p>
+        무언가 패턴이 있을 것 같은데 답이 입 안에서 맴돌 뿐 입 밖으로 나오지 않는다면 일단 그림
+        <label for="sn-auto-2" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-auto-2" class="margin-toggle"/><span class="sidenote">논의를 단순화하기 위해 \(c = 1 \)로 정한다.</span>
+        을 그려보자. \(x\)와 \(dx\)를 바꿔가며 패턴을 찾아보자.
+    </p>
+    <figure class="fullwidth exponential-shift-demo">
+        <div class="exponential-shift-controls sans">
+            <label>
+                <span>x</span>
+                <input id="exponential-shift-x" type="range" min="-0.5" max="2" step="0.1" value="0.5">
+            </label>
+            <label>
+                <span>dx</span>
+                <input id="exponential-shift-dx" type="range" min="-1.5" max="1.5" step="0.1" value="0.6">
+            </label>
+        </div>
+        <svg id="exponential-shift-chart" role="img"
+             aria-label="exp(x + dx)를 exp(x)와 exp(dx)의 곱으로 비교하는 인터랙티브 다이어그램"></svg>
+        <div id="exponential-shift-values" class="exponential-shift-values sans" aria-live="polite"></div>
+    </figure>
+    <h3>\(f(dx)\)는 비율 \(dx\)을 입력을 받아 증감 후 값을 구하는 함수</h3>
+    <p>
+        충분히 작은 \(dx\)에 대해 \(f(x + dx)\)는 \(f(x) \cdot (1 + dx)\)에 근사하는 것을 발견했나?
+    </p>
+    <p>
+        \(f(x)\)가 10% 증가한 값을 \( f(x) \cdot (1 + 0.1) \)로 구한다. 마찬가지로 \(f(x)\)가 \(dx\)증가했다면 그 값은 \(f(x) \cdot (1 + dx)
+        \)이다. \(f(dx) \approx (1 + dx) \)는 마치 증감율 \(dx\)을 받아 실제 증감을 계산하는 함수처럼 보인다.
+    </p>
+    <p>
+        이 방향으로 조금 더 사고를 확장해보자. \(x\)가 \(dx\)가 여러 개 더해진 결과라고 보면: <br>
+        \[f(dx + dx + dx + \ldots) = f(dx) \cdot f(dx) \cdot f(dx) \cdot \ldots = (1 + dx) ^ n. \]
+        <label for="sn-auto-3" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-auto-3" class="margin-toggle"/><span class="sidenote">이 표현을 합과 곱 기호로 적으면:<br>
+            \[f\left(\sum_{i=1}^{n} dx\right) = \prod_{i=1}^{n} f(dx) \approx (1 + dx)^{n}.\]
+            여기서 \(x = n \cdot dx \)이다. \(\sum\)은 addition을 n번 반복, \(\prod\)은 multiplication을 n번 반복하는 표기.</span>
+    </p>
+    <p>
+        exponential function의 input x를 마치 증감 비율의 합처럼 이해할 수 있다.
+    </p>
+</section>
+<section>
+    <h2>differentiation</h2>
+</section>
+<section>
+    <h2>일반화</h2>
+    <h3>\( c \)가 \(1\)이 아닐 때</h3>
+</section>
+<section>
+    <h2>역함수</h2>
+    <h3>exponential function은 log의 역함수</h3>
+    <h3>input addition -> output multiplication</h3>
 </section>
       
       <section aria-labelledby="related-notes-heading">

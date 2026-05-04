@@ -179,4 +179,184 @@
     derivativeLabel: "f'(x)",
     tangentSpan: () => 0.48,
   });
+
+  function renderShiftDemo() {
+    const chart = d3.select("#exponential-shift-chart");
+    const chartNode = chart.node();
+    const xInput = document.querySelector("#exponential-shift-x");
+    const dxInput = document.querySelector("#exponential-shift-dx");
+    const values = document.querySelector("#exponential-shift-values");
+    if (!chartNode || !xInput || !dxInput || !values) return;
+
+    const shiftWidth = 920;
+    const shiftHeight = 430;
+    const shiftMargin = { top: 28, right: 34, bottom: 58, left: 62 };
+    const shiftInnerWidth = shiftWidth - shiftMargin.left - shiftMargin.right;
+    const shiftInnerHeight = shiftHeight - shiftMargin.top - shiftMargin.bottom;
+    const shiftXDomain = [-2, 3.2];
+    const shiftX = d3.scaleLinear().domain(shiftXDomain).range([0, shiftInnerWidth]);
+    const shiftY = d3.scaleLinear().range([shiftInnerHeight, 0]);
+    const curvePoints = d3.range(shiftXDomain[0], shiftXDomain[1] + 0.001, 0.04)
+      .map((xValue) => ({ x: xValue, y: Math.exp(xValue) }));
+    const line = d3.line()
+      .x((d) => shiftX(d.x))
+      .y((d) => shiftY(d.y));
+
+    chart.attr("viewBox", `0 0 ${shiftWidth} ${shiftHeight}`).selectAll("*").remove();
+
+    const root = chart.append("g")
+      .attr("transform", `translate(${shiftMargin.left},${shiftMargin.top})`);
+
+    chart.append("defs")
+      .append("clipPath")
+      .attr("id", "exponential-shift-clip")
+      .append("rect")
+      .attr("width", shiftInnerWidth)
+      .attr("height", shiftInnerHeight);
+
+    const yGrid = root.append("g")
+      .attr("class", "exponential-grid");
+    root.append("g")
+      .attr("class", "exponential-grid")
+      .attr("transform", `translate(0,${shiftInnerHeight})`)
+      .call(d3.axisBottom(shiftX).ticks(7).tickSize(-shiftInnerHeight).tickFormat(""));
+    root.append("g")
+      .attr("class", "exponential-axis")
+      .attr("transform", `translate(0,${shiftInnerHeight})`)
+      .call(d3.axisBottom(shiftX).ticks(7));
+    const yAxis = root.append("g")
+      .attr("class", "exponential-axis");
+
+    const curve = root.append("path")
+      .datum(curvePoints)
+      .attr("class", "exponential-curve")
+      .attr("clip-path", "url(#exponential-shift-clip)");
+
+    const segment = root.append("line").attr("class", "exponential-shift-segment");
+    const xGuide = root.append("line").attr("class", "exponential-shift-guide");
+    const xDxGuide = root.append("line").attr("class", "exponential-shift-guide");
+    const multiplierGuide = root.append("line").attr("class", "exponential-shift-multiplier");
+    const xPoint = root.append("circle").attr("class", "exponential-point").attr("r", 5);
+    const xDxPoint = root.append("circle").attr("class", "exponential-ratio-point").attr("r", 5);
+    const xValueGuide = root.append("line").attr("class", "exponential-shift-leader");
+    const xDxValueGuide = root.append("line").attr("class", "exponential-shift-leader");
+    const xLabel = root.append("text").attr("class", "exponential-label");
+    const xDxLabel = root.append("text").attr("class", "exponential-label");
+    const xAxisLabel = root.append("text").attr("class", "exponential-shift-axis-label");
+    const xDxAxisLabel = root.append("text").attr("class", "exponential-shift-axis-label");
+
+    root.append("text")
+      .attr("class", "exponential-label")
+      .attr("x", shiftInnerWidth)
+      .attr("y", shiftInnerHeight + 38)
+      .attr("text-anchor", "end")
+      .text("input");
+    root.append("text")
+      .attr("class", "exponential-label")
+      .attr("x", 0)
+      .attr("y", -10)
+      .text("y = exp(input)");
+
+    function format(value) {
+      return d3.format(".4f")(value);
+    }
+
+    function update() {
+      const xValue = Number(xInput.value);
+      const dxValue = Number(dxInput.value);
+      const xDxValue = xValue + dxValue;
+      const expX = Math.exp(xValue);
+      const expDx = Math.exp(dxValue);
+      const expXDx = Math.exp(xDxValue);
+      const linearApprox = expX * (1 + dxValue);
+      const difference = Math.abs(expXDx - expX);
+      const lower = Math.min(expX, expXDx);
+      const upper = Math.max(expX, expXDx);
+      const padding = Math.max(difference * 1.4, upper * 0.035, 0.05);
+      shiftY.domain([Math.max(0, lower - padding), upper + padding]).nice();
+
+      yGrid.call(d3.axisLeft(shiftY).ticks(5).tickSize(-shiftInnerWidth).tickFormat(""));
+      yAxis.call(d3.axisLeft(shiftY).ticks(5));
+      curve.attr("d", line);
+
+      const baseY = shiftInnerHeight;
+      segment
+        .attr("x1", shiftX(xValue))
+        .attr("x2", shiftX(xDxValue))
+        .attr("y1", baseY)
+        .attr("y2", baseY);
+      xGuide
+        .attr("x1", shiftX(xValue))
+        .attr("x2", shiftX(xValue))
+        .attr("y1", shiftY(expX))
+        .attr("y2", baseY);
+      xDxGuide
+        .attr("x1", shiftX(xDxValue))
+        .attr("x2", shiftX(xDxValue))
+        .attr("y1", shiftY(expXDx))
+        .attr("y2", baseY);
+      multiplierGuide
+        .attr("x1", shiftX(xValue))
+        .attr("x2", shiftX(xDxValue))
+        .attr("y1", shiftY(expX))
+        .attr("y2", shiftY(expXDx));
+      xPoint
+        .attr("cx", shiftX(xValue))
+        .attr("cy", shiftY(expX));
+      xDxPoint
+        .attr("cx", shiftX(xDxValue))
+        .attr("cy", shiftY(expXDx));
+      xValueGuide
+        .attr("x1", 0)
+        .attr("y1", shiftY(expX))
+        .attr("x2", shiftX(xValue))
+        .attr("y2", shiftY(expX));
+      xDxValueGuide
+        .attr("x1", 0)
+        .attr("y1", shiftY(expXDx))
+        .attr("x2", shiftX(xDxValue))
+        .attr("y2", shiftY(expXDx));
+      xLabel
+        .attr("x", 8)
+        .attr("y", shiftY(expX) - 6)
+        .text(`f(x) = ${format(expX)}`);
+      xDxLabel
+        .attr("x", 8)
+        .attr("y", shiftY(expXDx) - 6)
+        .text(`f(x + dx) = f(x)f(dx) = ${format(expXDx)} ≈ f(x)(1 + dx) = ${format(linearApprox)}`);
+      xAxisLabel
+        .attr("x", shiftX(xValue))
+        .attr("y", shiftInnerHeight + 28)
+        .attr("text-anchor", "middle")
+        .text(`x = ${format(xValue)}`);
+      xDxAxisLabel
+        .attr("x", shiftX(xDxValue))
+        .attr("y", shiftInnerHeight + 46)
+        .attr("text-anchor", "middle")
+        .text(`x + dx = ${format(xDxValue)}`);
+
+      values.innerHTML = `
+        <div class="exponential-value-card">
+          <strong>x = ${format(xValue)}</strong>
+          <span>exp(x) = ${format(expX)}</span>
+        </div>
+        <div class="exponential-value-card">
+          <strong>dx = ${format(dxValue)}</strong>
+          <span>exp(dx) = ${format(expDx)}</span>
+        </div>
+        <div class="exponential-value-card">
+          <strong>x + dx = ${format(xDxValue)}</strong>
+          <span>exp(x + dx) = ${format(expXDx)}</span>
+          <span>exp(x) * exp(dx) = ${format(expX * expDx)}</span>
+          <span>difference = ${format(difference)}</span>
+        </div>
+      `;
+    }
+
+    xInput.addEventListener("input", update);
+    dxInput.addEventListener("input", update);
+    update();
+  }
+
+  renderShiftDemo();
 })();
