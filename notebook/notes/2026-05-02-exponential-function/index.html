@@ -113,23 +113,58 @@
         \[f(dx + dx + dx + \ldots) = f(dx) \cdot f(dx) \cdot f(dx) \cdot \ldots = (1 + dx) ^ n. \]
         <label for="sn-auto-3" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-auto-3" class="margin-toggle"/><span class="sidenote">이 표현을 합과 곱 기호로 적으면:<br>
             \[f\left(\sum_{i=1}^{n} dx\right) = \prod_{i=1}^{n} f(dx) \approx (1 + dx)^{n}.\]
-            여기서 \(x = n \cdot dx \)이다. \(\sum\)은 addition을 n번 반복, \(\prod\)은 multiplication을 n번 반복하는 표기.</span>
+            여기서 \(x = n \cdot dx \)이다.<br>
+            \(\sum\)은 addition을 n번 반복, \(\prod\)은 multiplication을 n번 반복하는 표기.</span>
     </p>
     <p>
-        exponential function의 input x를 마치 증감 비율의 합처럼 이해할 수 있다.
+        \(x\)를 마치 아주 작은 비율 \(dx\)의 합처럼 볼 수 있고 함수값 \(f(x)\)는 비율 \(dx\)를 적용한 값으로 해석이 가능하다. 입력은 비율들의 addition, 출력은 비율이 적용된 multiplication로 이해할 수 있다.
+
     </p>
 </section>
 <section>
     <h2>differentiation</h2>
+    <h3></h3>
 </section>
 <section>
-    <h2>일반화</h2>
-    <h3>\( c \)가 \(1\)이 아닐 때</h3>
+    <h2>scope function</h2>
+</section>
+<section>
+    <h2>formal definition</h2>
+    <h3>taylor expansion</h3>
 </section>
 <section>
     <h2>역함수</h2>
     <h3>exponential function은 log의 역함수</h3>
     <h3>input addition -> output multiplication</h3>
+</section>
+<section>
+    <h2>일반화</h2>
+    <h3>\( c \)가 \(1\)이 아닐 때</h3>
+    <p>
+        exponential function의 scope function
+    </p>
+</section>
+<section>
+    <h2>discount process</h2>
+</section>
+<section>
+    <h2>전염병</h2>
+    <h3>재생산지수 \(R_0\)은 exponential function으로 이해할 수 있다.</h3>
+    <p>
+        감염이 일정한 기간마다 같은 배수로 늘어난다고 단순화하면 확진자 수는 지수함수처럼 움직인다. 아래 그림은 전세계 누적 확진자가 1,000명을 넘은 시점에서 출발해,
+        5일마다 증가 배수가 조금 달라질 때 같은 기간 뒤 곡선이 얼마나 크게 벌어지는지 보여준다.
+    </p>
+    <figure class="fullwidth covid-growth-demo">
+        <div class="covid-growth-controls sans">
+            <label>
+                <span>5-day growth factor</span>
+                <input id="covid-growth-r" type="range" min="1" max="3.5" step="0.05" value="1.45">
+            </label>
+        </div>
+        <svg id="covid-growth-chart" role="img" aria-label="COVID-19 누적 확진자와 초기 R값에 따른 지수 성장 곡선"></svg>
+        <div id="covid-growth-tooltip" class="covid-growth-tooltip sans" aria-hidden="true"></div>
+        <div id="covid-growth-values" class="covid-growth-values sans" aria-live="polite"></div>
+    </figure>
 </section>
       
       <section aria-labelledby="related-notes-heading">

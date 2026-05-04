@@ -359,4 +359,237 @@
   }
 
   renderShiftDemo();
+
+  function renderCovidGrowthDemo() {
+    const chart = d3.select("#covid-growth-chart");
+    const chartNode = chart.node();
+    const rInput = document.querySelector("#covid-growth-r");
+    const values = document.querySelector("#covid-growth-values");
+    const tooltip = document.querySelector("#covid-growth-tooltip");
+    if (!chartNode || !rInput || !values || !tooltip) return;
+
+    const parseDate = d3.timeParse("%-m/%-d/%y");
+    const width = 920;
+    const height = 500;
+    const margin = { top: 34, right: 92, bottom: 54, left: 74 };
+    const innerWidth = width - margin.left - margin.right;
+    const innerHeight = height - margin.top - margin.bottom;
+    const generationDays = 5;
+    const horizonDays = 70;
+
+    function formatCount(value) {
+      return d3.format(",.0f")(value);
+    }
+
+    function formatR(value) {
+      return d3.format(".2f")(value);
+    }
+
+    d3.csv("./assets/time_series_covid19_confirmed_global.csv").then((rows) => {
+      if (!rows.length) return;
+
+      const dateColumns = rows.columns.slice(4);
+      const totals = dateColumns.map((column) => ({
+        date: parseDate(column),
+        total: d3.sum(rows, (row) => Number(row[column]) || 0),
+      }));
+      const startIndex = totals.findIndex((d) => d.total >= 1000);
+      if (startIndex < 0) return;
+
+      const actual = totals.slice(startIndex, startIndex + horizonDays + 1)
+        .map((d, index) => ({
+          day: index,
+          date: d.date,
+          total: d.total,
+        }));
+      const start = actual[0];
+      const end = actual[actual.length - 1];
+
+      chart.attr("viewBox", `0 0 ${width} ${height}`).selectAll("*").remove();
+
+      const root = chart.append("g")
+        .attr("transform", `translate(${margin.left},${margin.top})`);
+      const x = d3.scaleLinear().domain([0, horizonDays]).range([0, innerWidth]);
+      const y = d3.scaleLinear().range([innerHeight, 0]);
+      const line = d3.line()
+        .x((d) => x(d.day))
+        .y((d) => y(d.total));
+
+      const yGrid = root.append("g").attr("class", "exponential-grid");
+      const yAxis = root.append("g").attr("class", "exponential-axis");
+      root.append("g")
+        .attr("class", "exponential-grid")
+        .attr("transform", `translate(0,${innerHeight})`)
+        .call(d3.axisBottom(x).ticks(7).tickSize(-innerHeight).tickFormat(""));
+      root.append("g")
+        .attr("class", "exponential-axis")
+        .attr("transform", `translate(0,${innerHeight})`)
+        .call(d3.axisBottom(x).ticks(7));
+
+      const actualPath = root.append("path")
+        .datum(actual)
+        .attr("class", "covid-actual-line");
+      const projectionGroup = root.append("g");
+      const labelGroup = root.append("g");
+      const hoverGroup = root.append("g")
+        .attr("class", "covid-hover")
+        .style("display", "none");
+      const hoverLine = hoverGroup.append("line")
+        .attr("class", "covid-hover-line")
+        .attr("y1", 0)
+        .attr("y2", innerHeight);
+      const hoverPoints = hoverGroup.append("g");
+      const hoverOverlay = root.append("rect")
+        .attr("class", "covid-hover-overlay")
+        .attr("width", innerWidth)
+        .attr("height", innerHeight);
+      let currentSeries = [];
+
+      root.append("text")
+        .attr("class", "exponential-label")
+        .attr("x", innerWidth)
+        .attr("y", innerHeight + 38)
+        .attr("text-anchor", "end")
+        .text("days since global confirmed cases passed 1,000");
+      root.append("text")
+        .attr("class", "exponential-label")
+        .attr("x", 0)
+        .attr("y", -12)
+        .text("global cumulative confirmed cases");
+
+      function projectionFor(rValue) {
+        return d3.range(0, horizonDays + 1).map((day) => ({
+          day,
+          total: start.total * Math.pow(rValue, day / generationDays),
+          r: rValue,
+        }));
+      }
+
+      function update() {
+        const selectedR = Number(rInput.value);
+        const scenarios = [
+          { label: `x${formatR(Math.max(1, selectedR - 0.2))}`, r: Math.max(1, selectedR - 0.2), className: "covid-projection-low" },
+          { label: `x${formatR(selectedR)}`, r: selectedR, className: "covid-projection-main" },
+          { label: `x${formatR(Math.min(3.5, selectedR + 0.2))}`, r: Math.min(3.5, selectedR + 0.2), className: "covid-projection-high" },
+        ];
+        const projections = scenarios.map((scenario) => ({
+          ...scenario,
+          points: projectionFor(scenario.r),
+        }));
+        const maxProjected = d3.max(projections, (scenario) => d3.max(scenario.points, (d) => d.total));
+        y.domain([0, Math.max(d3.max(actual, (d) => d.total), maxProjected)]).nice();
+
+        yGrid.call(d3.axisLeft(y).ticks(6).tickSize(-innerWidth).tickFormat(""));
+        yAxis.call(d3.axisLeft(y).ticks(6).tickFormat(d3.format(".2s")));
+        actualPath.attr("d", line);
+
+        projectionGroup.selectAll("path")
+          .data(projections, (d) => d.label)
+          .join("path")
+          .attr("class", (d) => `covid-projection-line ${d.className}`)
+          .attr("d", (d) => line(d.points));
+
+        const labels = [
+          {
+            label: `actual ${formatCount(end.total)}`,
+            day: end.day,
+            total: end.total,
+            className: "covid-actual-label",
+          },
+          ...projections.map((scenario) => ({
+            label: scenario.label,
+            day: horizonDays,
+            total: scenario.points[scenario.points.length - 1].total,
+            className: scenario.className,
+          })),
+        ];
+
+        labelGroup.selectAll("text")
+          .data(labels, (d) => d.label)
+          .join("text")
+          .attr("class", (d) => `exponential-label ${d.className}`)
+          .attr("x", (d) => x(d.day) + 8)
+          .attr("y", (d) => y(d.total) + 4)
+          .text((d) => d.label);
+
+        currentSeries = [
+          { label: "actual", className: "covid-actual-label", points: actual },
+          ...projections,
+        ];
+
+        const selectedProjection = projections[1].points[projections[1].points.length - 1].total;
+        values.innerHTML = `
+          <div class="exponential-value-card">
+            <strong>start</strong>
+            <span>${d3.timeFormat("%Y-%m-%d")(start.date)}</span>
+            <span>${formatCount(start.total)} confirmed</span>
+          </div>
+          <div class="exponential-value-card">
+            <strong>5-day growth factor = x${formatR(selectedR)}</strong>
+            <span>generation interval = ${generationDays} days</span>
+            <span>after ${horizonDays} days: ${formatCount(selectedProjection)}</span>
+          </div>
+          <div class="exponential-value-card">
+            <strong>actual after ${end.day} days</strong>
+            <span>${d3.timeFormat("%Y-%m-%d")(end.date)}</span>
+            <span>${formatCount(end.total)} confirmed</span>
+          </div>
+        `;
+      }
+
+      function updateTooltip(event) {
+        if (!currentSeries.length) return;
+        const [mouseX] = d3.pointer(event, root.node());
+        const day = Math.max(0, Math.min(horizonDays, Math.round(x.invert(mouseX))));
+        const actualDatum = actual[Math.min(day, actual.length - 1)];
+        const rows = currentSeries.map((series) => {
+          const point = series.points[Math.min(day, series.points.length - 1)];
+          return {
+            label: series.label || "actual",
+            className: series.className,
+            point,
+          };
+        });
+
+        hoverGroup.style("display", null);
+        hoverLine
+          .attr("x1", x(day))
+          .attr("x2", x(day));
+        hoverPoints.selectAll("circle")
+          .data(rows, (d) => d.label)
+          .join("circle")
+          .attr("class", (d) => `covid-hover-point ${d.className}`)
+          .attr("cx", (d) => x(d.point.day))
+          .attr("cy", (d) => y(d.point.total))
+          .attr("r", 4);
+
+        tooltip.setAttribute("aria-hidden", "false");
+        tooltip.style.display = "block";
+        tooltip.style.left = `${margin.left + x(day) + 12}px`;
+        tooltip.style.top = `${margin.top + 12}px`;
+        tooltip.innerHTML = `
+          <strong>day ${day}</strong>
+          <span>${d3.timeFormat("%Y-%m-%d")(actualDatum.date)}</span>
+          ${rows.map((row) => `
+            <span>${row.label}: ${formatCount(row.point.total)}</span>
+          `).join("")}
+        `;
+      }
+
+      function hideTooltip() {
+        hoverGroup.style("display", "none");
+        tooltip.setAttribute("aria-hidden", "true");
+        tooltip.style.display = "none";
+      }
+
+      rInput.addEventListener("input", update);
+      hoverOverlay
+        .on("mousemove", updateTooltip)
+        .on("mouseenter", updateTooltip)
+        .on("mouseleave", hideTooltip);
+      update();
+    });
+  }
+
+  renderCovidGrowthDemo();
 })();

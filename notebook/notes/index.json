@@ -179,7 +179,7 @@
     "app_summary": "입력의 곱셈을 출력의 곱셈으로 바꾸는 함수이다.",
     "related": [
       "2026-05-02-power-function",
-      "2026-05-02-log-function",
+      "2026-05-02-linear-function",
       "2026-05-02-exponential-function"
     ],
     "assets_href": "/notebook/notes/2026-05-02-log-function/assets/"
@@ -204,7 +204,7 @@
     "app_summary": "입력의 곱셈을 출력의 곱셈으로 바꾸는 함수이다.",
     "related": [
       "2026-05-02-power-function",
-      "2026-05-02-linear-function",
+      "2026-05-02-log-function",
       "2026-05-02-exponential-function"
     ],
     "assets_href": "/notebook/notes/2026-05-02-linear-function/assets/"
@@ -321,6 +321,26 @@
       "2026-05-02-exponential-function"
     ],
     "assets_href": "/notebook/notes/2026-05-02-exponential-distribution/assets/"
+  },
+  {
+    "title": "Essence of Derivative",
+    "slug": "2026-05-02-essence-of-derivative",
+    "date": "2026-XX-XX",
+    "tags": [
+      "math"
+    ],
+    "summary": "derivative는 linear function을 찾는 과정이다.",
+    "description": "derivative는 linear function을 찾는 과정이다.",
+    "href": "/notebook/notes/2026-05-02-essence-of-derivative/",
+    "canonical": "/notebook/notes/2026-05-02-essence-of-derivative/",
+    "og_image": "",
+    "mathjax": true,
+    "scroll_reveal": false,
+    "promote_app": false,
+    "app_label": "false",
+    "app_summary": "derivative는 linear function을 찾는 과정이다.",
+    "related": [],
+    "assets_href": "/notebook/notes/2026-05-02-essence-of-derivative/assets/"
   },
   {
     "title": "Covariance",
