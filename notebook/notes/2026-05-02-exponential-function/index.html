@@ -133,7 +133,7 @@
 </section>
 <section>
     <h2>derivative</h2>
-    <h3>엄밀한 정의도 동일한 결론을 도출한다.</h3>
+    <h3>\(f(x + y) = f(x) \cdot f(y)\)에서 derivative 유도하기</h3>
     <p>
         \(f(dt) \approx (1 + dx)\)을 가정한 것이 마음에 들지 않는다면 이번에는 formal하게 derivative를 구해보자. 정의대로 쓰면:<br>
         \[ \begin{align} f'(x) &= \displaystyle \lim_{ h \to 0 } \frac{f(x + h) - f(x)}{h} \\\\ &= \lim_{ h \to 0 }
@@ -144,9 +144,12 @@
         여기까지 유도하고 중간 결과에 대해 이야기 해보자. 아직 limit process가 끝나지는 않았지만 많은 정보를 얻을 수 있다.
     <ul>
         <li>\(f'(x)\)는 \(f(x)\)값에 비례한다.</li>
-        <li>\(f'(x)\)는 \(x\)값에 상관없이 \(\displaystyle \lim_{ h \to 0 } \frac{f(h) - 1}{h}\)라는 동일한 factor에 비례한다.</li>
+        <li>\(f'(x)\)는 \(x\)값에 상관없이 \(\displaystyle \lim_{ h \to 0 } \frac{f(h) - 1}{h}\)라는 동일한 factor에 비례한다. 다른 말로 옮겨보면
+            exponential 함수의 모든 값을 \(\displaystyle \lim_{ h \to 0 } \frac{f(h) - 1}{h}\)가 결정한다.
+        </li>
     </ul>
     </p>
+    <h3>\(f(0)\) 구하기</h3>
     <p>
         \(f(x + y) = f(x) \cdot f(y) \)일 때 \(x\), \(y\)에 둘 다 \(0\)를 넣어보자.
         \[\begin{align} f(0) &= f(0 + 0) \\\\ &= f(0) \cdot f(0) \\\\ &= f(0)^2. \end{align}\]
@@ -164,50 +167,36 @@
         \[\begin{align} \displaystyle \lim_{ h \to 0 } \frac{f(h) - 1}{h} &= \displaystyle \lim_{ h \to 0 } \frac{f(h) -
         f(0)}{h - 0} \\\\ &= f'(0). \end{align} \]
     </p>
-    <h3>\(f'(0) = c \)</h3>
+    <h3>최종 derivative</h3>
     <p>
+        두 개의 factor를 다시 정리하면:<br>
+        \[ f'(x) = f(x) \cdot f'(0). \]
 
+        \(f'(0)\)값에 따라 \(f(x)\)의 모든 값이 정해진다. \(f'(0)\)을 함수를 결정하는 일종의 하이퍼 파라미터처럼 다루기로 하자.
     </p>
     <p>
-        참고
-        <label for="sn-auto-5" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-auto-5" class="margin-toggle"/><span class="sidenote">derivative에 더 많은 이야기를 듣고 싶다면 <a href="/notebook/notes/2026-05-02-essence-of-derivative/">Essence of Derivative</a>를 참고하세요.</span>
-    </p>
-</section>
-<section>
-    <h2>scope function</h2>
-</section>
-<section>
-    <h2>formal definition</h2>
-    <h3>taylor expansion</h3>
-</section>
-<section>
-    <h2>역함수</h2>
-    <h3>exponential function은 log의 역함수</h3>
-    <h3>input addition -> output multiplication</h3>
-</section>
-<section>
-    <h2>일반화</h2>
-    <h3>\( c \)가 \(1\)이 아닐 때</h3>
-    <p>
-
-    </p>
-</section>
-<section>
-    <h2>discount process</h2>
-</section>
-<section>
-    <h2>complex domain</h2>
-    <h3>exponential function은 complex number에서도 정의된다.</h3>
-    <p>
-        실수를 염두하고 설명을 했지만 사실 exponential function은 complex number에 대해 잘 정의될 뿐만 아니라 complex number domain이 쓸모가 많은 정도에서 그치지 않고 필수적인 기본 함수이다.
+        앞으로 \(f'(0) = c\)로 표기하기로 한다. 보통 상수를 함수 앞에 쓴다.
     </p>
     <p>
-        여기에 대한 자세한 설명은 <a href="/notebook/notes/2026-05-02-circle-functions/">Circle Functions</a>에서 다루기로 한다.
+        마지막으로 정리하면:<br>
+        \[ f'(x) = c \cdot f(x). \]
+    </p>
+    <p>
+        \(f(x)\)는 \(f(x)\) 자신에 비례해 증가하고 감소하며 상수 \(c\)로 함수의 모든 값을 결정할 수 있다는 결론이다. 특히 \(c = 1\)인 경우를
+        \(e^x\)로 표기하며 exponential function이라고 칭한다.
+    </p>
+    <p>
+        \(e^x\)는 결국 derivative가 자기 자신인 함수이다. 값이 얼마가 되었든 자신의 값에 비례해 증가
+        <label for="sn-auto-5" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-auto-5" class="margin-toggle"/><span class="sidenote">\(x\)가 음수라면 감소</span>
+        하는 함수이다.
     </p>
 </section>
 <section>
-    <h2>전염병</h2>
-    <h3>재생산지수 \(R_0\)은 exponential function으로 이해할 수 있다.</h3>
+    <h2>exponential function의 예</h2>
+    <h3>이자율</h3>
+    <h3>할인율</h3>
+    <h3>반감기</h3>
+    <h3>전염병 재생산지수: \(R_0\)</h3>
     <p>
         감염이 일정한 기간마다 같은 배수로 늘어난다고 단순화하면 확진자 수는 지수함수처럼 움직인다. 아래 그림은 전세계 누적 확진자
         <label for="sn-auto-6" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-auto-6" class="margin-toggle"/><span class="sidenote">자료: <a
@@ -226,6 +215,51 @@
         <div id="covid-growth-tooltip" class="covid-growth-tooltip sans" aria-hidden="true"></div>
         <div id="covid-growth-values" class="covid-growth-values sans" aria-live="polite"></div>
     </figure>
+    <h3>피케티: 자본수익률(r)과 경제성장률(g)</h3>
+</section>
+<section>
+    <h2>일반화</h2>
+    <h3>\( c \)가 \(1\)이 아닐 때</h3>
+    <p>
+
+    </p>
+</section>
+<section>
+
+</section>
+<p>
+    참고
+    <label for="sn-auto-7" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-auto-7" class="margin-toggle"/><span class="sidenote">derivative에 더 많은 이야기를 듣고 싶다면 <a href="/notebook/notes/2026-05-02-essence-of-derivative/">Essence of Derivative</a>를 참고하세요.</span>
+</p>
+<section>
+    <h2>scope function</h2>
+</section>
+<section>
+    <h2>formal definition</h2>
+    <h3>taylor expansion</h3>
+</section>
+<section>
+    <h2>역함수</h2>
+    <h3>exponential function은 log의 역함수</h3>
+    <h3>input addition -> output multiplication</h3>
+</section>
+<section>
+    <h2>discount process</h2>
+</section>
+<section>
+    <h2>complex domain</h2>
+    <h3>exponential function은 complex number에서도 정의된다.</h3>
+    <p>
+        실수를 염두하고 설명을 했지만 사실 exponential function은 complex number에 대해 잘 정의될 뿐만 아니라 complex number domain이 쓸모가 많은 정도에서 그치지
+        않고 필수적인 기본 함수이다.
+    </p>
+    <p>
+        여기에 대한 자세한 설명은 <a href="/notebook/notes/2026-05-02-circle-functions/">Circle Functions</a>에서 다루기로 한다.
+    </p>
+</section>
+<section>
+    <h2>전염병</h2>
+    <h3>재생산지수 \(R_0\)은 exponential function으로 이해할 수 있다.</h3>
 </section>
       
       <section aria-labelledby="related-notes-heading">
