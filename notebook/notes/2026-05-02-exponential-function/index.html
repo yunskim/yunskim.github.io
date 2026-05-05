@@ -172,7 +172,7 @@
         두 개의 factor를 다시 정리하면:<br>
         \[ f'(x) = f(x) \cdot f'(0). \]
 
-        \(f'(0)\)값에 따라 \(f(x)\)의 모든 값이 정해진다. \(f'(0)\)을 함수를 결정하는 일종의 하이퍼 파라미터처럼 다루기로 하자.
+        \(f'(0)\)값에 따라 \(f(x)\)의 모든 값<label for="sn-auto-5" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-auto-5" class="margin-toggle"/><span class="sidenote">\(f(0) = 1\)은 이미 알고있다.</span>이 정해진다. \(f'(0)\)을 함수를 결정하는 일종의 하이퍼 파라미터처럼 다루기로 하자.
     </p>
     <p>
         앞으로 \(f'(0) = c\)로 표기하기로 한다. 보통 상수를 함수 앞에 쓴다.
@@ -183,18 +183,18 @@
     </p>
     <p>
         \(f(x)\)는 \(f(x)\) 자신에 비례해 증가하고 감소하며 상수 \(c\)로 함수의 모든 값을 결정할 수 있다는 결론이다. 특히 \(c = 1\)인 경우를
-        \(e^x\)로 표기하며 <span class="newthought">exponential function</span>이라고 칭한다.
+        \(\displaystyle e^x\)로 표기하며 <span class="newthought">exponential function</span>이라고 칭한다.
     </p>
     <p>
-        \(e^x\)는 결국 derivative가 자기 자신인 함수이다. 값이 얼마가 되었든 자신의 값에 비례해 증가
-        <label for="sn-auto-5" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-auto-5" class="margin-toggle"/><span class="sidenote">\(x\)가 음수라면 감소</span>
+        \(\displaystyle e^x\)는 결국 derivative가 자기 자신인 함수이다. 값이 얼마가 되었든 자신의 값에 비례해 증가
+        <label for="sn-auto-6" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-auto-6" class="margin-toggle"/><span class="sidenote">\(x\)가 음수라면 감소</span>
         하는 함수이다.
     </p>
 </section>
 <section>
     <h2>exponential function의 예</h2>
     <p>
-        값에 상관없이 항상 같은 비율로 증가하거나 감소한다는 말이 생소하다고? 그럴 리가 없다. 왜냐면 우리는 이미 일상에서 이 개념을 매일 다루고 있다. 수학 시간에 나오는 개념이라서 머리가 안 돌아갈 뿐이다.
+        값에 상관없이 항상 같은 비율로 증가하거나 감소한다는 말이 생소하다고? 그럴 리가 없다. 왜냐면 우리는 이미 일상에서 이 개념을 매일 다루고 있다. 수학이라는 말에 잠깐 놀라 이미 알고 있는 걸 떠올리지 못하는 것 뿐이다.
     </p>
     <p>
         당신은 은행에 예금 계좌를 열었다. 1만원이 있든 100만원이 있든 똑같은 이자율이 적용되기를 기대한다. 실제 받는 이자액은 내가 예치한 금액에 따라 다르지만 같은 이자율이 적용되기를 기대한다. 적금만기가 되어 다시 그 돈을 넣더라도 똑같은 이자율이 적용될 거라 생각한다.
@@ -230,7 +230,7 @@
 
     <h3>카페인 대사</h3>
     <p>
-        카페인은 몸 안에서 일정한 양이 빠지는 것이 아니라 일정한 비율<label for="sn-auto-6" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-auto-6" class="margin-toggle"/><span class="sidenote">출처:<br><a href=" https://www.efsa.europa.eu/en/efsajournal/pub/3574">EFSA, caffeine and increased alertness</a>, <a href="https://archive.cdc.gov/www_cdc_gov/niosh/emres/longhourstraining/caffeine.html">CDC/NIOSH, Caffeine & Long Work Hours</a></span>로 줄어든다. 반감기를 5시간으로 단순화하면 150mg의 카페인은 5시간 뒤 75mg, 10시간 뒤 37.5mg이 된다.
+        카페인은 몸 안에서 일정한 양이 빠지는 것이 아니라 일정한 비율<label for="sn-auto-7" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-auto-7" class="margin-toggle"/><span class="sidenote">자료:<br><a href=" https://www.efsa.europa.eu/en/efsajournal/pub/3574">EFSA, caffeine and increased alertness</a>, <a href="https://archive.cdc.gov/www_cdc_gov/niosh/emres/longhourstraining/caffeine.html">CDC/NIOSH, Caffeine & Long Work Hours</a></span>로 줄어든다. 반감기를 5시간으로 단순화하면 150mg의 카페인은 5시간 뒤 75mg, 10시간 뒤 37.5mg이 된다.
     </p>
     <figure class="fullwidth caffeine-decay-demo">
         <div class="caffeine-decay-controls sans">
@@ -253,7 +253,7 @@
     <h3>전염병 재생산지수: \(R_0\)</h3>
     <p>
         감염이 일정한 기간마다 같은 배수로 늘어난다고 단순화하면 확진자 수는 지수함수처럼 움직인다. 아래 그림은 전세계 누적 확진자
-        <label for="sn-auto-7" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-auto-7" class="margin-toggle"/><span class="sidenote">자료: <a
+        <label for="sn-auto-8" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-auto-8" class="margin-toggle"/><span class="sidenote">자료: <a
                 href="https://github.com/CSSEGISandData/COVID-19/blob/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv">CSSEGISandData</a></span>
         가 1,000명을 넘은 시점에서 출발해,
         5일마다 증가 배수가 조금 달라질 때 같은 기간 뒤 곡선이 얼마나 크게 벌어지는지 보여준다.
@@ -304,7 +304,7 @@
 </section>
 <p>
     참고
-    <label for="sn-auto-8" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-auto-8" class="margin-toggle"/><span class="sidenote">derivative에 더 많은 이야기를 듣고 싶다면 <a href="/notebook/notes/2026-05-02-essence-of-derivative/">Essence of Derivative</a>를 참고하세요.</span>
+    <label for="sn-auto-9" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-auto-9" class="margin-toggle"/><span class="sidenote">derivative에 더 많은 이야기를 듣고 싶다면 <a href="/notebook/notes/2026-05-02-essence-of-derivative/">Essence of Derivative</a>를 참고하세요.</span>
 </p>
 <section>
     <h2>scope function</h2>
@@ -331,10 +331,6 @@
     <p>
         여기에 대한 자세한 설명은 <a href="/notebook/notes/2026-05-02-circle-functions/">Circle Functions</a>에서 다루기로 한다.
     </p>
-</section>
-<section>
-    <h2>전염병</h2>
-    <h3>재생산지수 \(R_0\)은 exponential function으로 이해할 수 있다.</h3>
 </section>
       
       <section aria-labelledby="related-notes-heading">
