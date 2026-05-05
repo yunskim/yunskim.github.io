@@ -251,6 +251,29 @@
     "assets_href": "/notebook/notes/2026-05-02-j-language/assets/"
   },
   {
+    "title": "Geometric Meaning of Complex Operations",
+    "slug": "2026-05-02-geometric-meaning-of-complex-operations",
+    "date": "2026-XX-XX",
+    "tags": [
+      "math",
+      "statistics"
+    ],
+    "summary": "addition은 평행이동, multiplication은 회전 + 크기 변화",
+    "description": "addition은 평행이동, multiplication은 회전 + 크기 변화",
+    "href": "/notebook/notes/2026-05-02-geometric-meaning-of-complex-operations/",
+    "canonical": "/notebook/notes/2026-05-02-geometric-meaning-of-complex-operations/",
+    "og_image": "",
+    "mathjax": true,
+    "scroll_reveal": false,
+    "promote_app": false,
+    "app_label": "Geometric Meaning of Complex Operations",
+    "app_summary": "addition은 평행이동, multiplication은 회전 + 크기 변화",
+    "related": [
+      "2026-05-02-circle-functions"
+    ],
+    "assets_href": "/notebook/notes/2026-05-02-geometric-meaning-of-complex-operations/assets/"
+  },
+  {
     "title": "Gamma Distribution",
     "slug": "2026-05-02-gamma-distribution",
     "date": "2026-XX-XX",
