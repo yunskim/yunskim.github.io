@@ -360,6 +360,377 @@
 
   renderShiftDemo();
 
+  function renderSalaryGrowthDemo() {
+    const chart = d3.select("#salary-growth-chart");
+    const chartNode = chart.node();
+    const entryInput = document.querySelector("#salary-entry");
+    const seniorInput = document.querySelector("#salary-senior");
+    const rateInput = document.querySelector("#salary-rate");
+    const values = document.querySelector("#salary-growth-values");
+    if (!chartNode || !entryInput || !seniorInput || !rateInput || !values) return;
+
+    const width = 920;
+    const height = 430;
+    const margin = { top: 34, right: 46, bottom: 62, left: 72 };
+    const innerWidth = width - margin.left - margin.right;
+    const innerHeight = height - margin.top - margin.bottom;
+    const x = d3.scaleBand().padding(0.28).range([0, innerWidth]);
+    const y = d3.scaleLinear().range([innerHeight, 0]);
+
+    chart.attr("viewBox", `0 0 ${width} ${height}`).selectAll("*").remove();
+    const root = chart.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
+    const yGrid = root.append("g").attr("class", "exponential-grid");
+    const xAxis = root.append("g")
+      .attr("class", "exponential-axis")
+      .attr("transform", `translate(0,${innerHeight})`);
+    const yAxis = root.append("g").attr("class", "exponential-axis");
+    const baseLine = root.append("line").attr("class", "salary-base-line");
+    const baseLabel = root.append("text").attr("class", "exponential-label salary-base-label");
+
+    root.append("text")
+      .attr("class", "exponential-label")
+      .attr("x", 0)
+      .attr("y", -12)
+      .text("monthly salary after raise");
+
+    function formatMoney(value) {
+      return d3.format(",.0f")(value);
+    }
+
+    function update() {
+      const entrySalary = Number(entryInput.value) || 0;
+      const seniorSalary = Number(seniorInput.value) || 0;
+      const rate = (Number(rateInput.value) || 0) / 100;
+      const comparison = [
+        {
+          label: "신입",
+          base: entrySalary,
+          growth: entrySalary * rate,
+          finalValue: entrySalary * (1 + rate),
+        },
+        {
+          label: "고위직",
+          base: seniorSalary,
+          growth: seniorSalary * rate,
+          finalValue: seniorSalary * (1 + rate),
+        },
+      ];
+      const difference = comparison[1].growth - comparison[0].growth;
+
+      x.domain(comparison.map((d) => d.label));
+      y.domain([0, d3.max(comparison, (d) => d.finalValue)]).nice();
+      yGrid.call(d3.axisLeft(y).ticks(5).tickSize(-innerWidth).tickFormat(""));
+      yAxis.call(d3.axisLeft(y).ticks(5).tickFormat(d3.format(".2s")));
+      xAxis.call(d3.axisBottom(x));
+
+      root.selectAll(".salary-base-bar")
+        .data(comparison, (d) => d.label)
+        .join("rect")
+        .attr("class", "salary-base-bar")
+        .attr("x", (d) => x(d.label))
+        .attr("y", (d) => y(d.base))
+        .attr("width", x.bandwidth())
+        .attr("height", (d) => innerHeight - y(d.base));
+
+      root.selectAll(".salary-growth-bar")
+        .data(comparison, (d) => d.label)
+        .join("rect")
+        .attr("class", "salary-growth-bar")
+        .attr("x", (d) => x(d.label))
+        .attr("y", (d) => y(d.finalValue))
+        .attr("width", x.bandwidth())
+        .attr("height", (d) => y(d.base) - y(d.finalValue));
+
+      root.selectAll(".salary-growth-label")
+        .data(comparison, (d) => d.label)
+        .join("text")
+        .attr("class", "exponential-label salary-growth-label")
+        .attr("x", (d) => x(d.label) + x.bandwidth() / 2)
+        .attr("y", (d) => y(d.finalValue) - 8)
+        .attr("text-anchor", "middle")
+        .text((d) => `증가액 ${formatMoney(d.growth)}`);
+
+      baseLine
+        .attr("x1", 0)
+        .attr("x2", innerWidth)
+        .attr("y1", y(entrySalary))
+        .attr("y2", y(entrySalary));
+      baseLabel
+        .attr("x", innerWidth)
+        .attr("y", y(entrySalary) - 8)
+        .attr("text-anchor", "end")
+        .text(`신입 기준 월급: ${formatMoney(entrySalary)}`);
+
+      values.innerHTML = `
+        <div class="exponential-value-card">
+          <strong>신입</strong>
+          <span>인상 후 월급 = ${formatMoney(comparison[0].finalValue)}</span>
+          <span>증가액 = ${formatMoney(comparison[0].growth)}</span>
+        </div>
+        <div class="exponential-value-card">
+          <strong>고위직</strong>
+          <span>인상 후 월급 = ${formatMoney(comparison[1].finalValue)}</span>
+          <span>증가액 = ${formatMoney(comparison[1].growth)}</span>
+        </div>
+        <div class="exponential-value-card">
+          <strong>증가액 차이</strong>
+          <span>${formatMoney(difference)}</span>
+        </div>
+      `;
+    }
+
+    entryInput.addEventListener("input", update);
+    seniorInput.addEventListener("input", update);
+    rateInput.addEventListener("input", update);
+
+    update();
+  }
+
+  renderSalaryGrowthDemo();
+
+  function renderCaffeineDecayDemo() {
+    const chart = d3.select("#caffeine-decay-chart");
+    const chartNode = chart.node();
+    const initialInput = document.querySelector("#caffeine-initial");
+    const halfLifeInput = document.querySelector("#caffeine-half-life");
+    const thresholdInput = document.querySelector("#caffeine-threshold");
+    const values = document.querySelector("#caffeine-decay-values");
+    if (!chartNode || !initialInput || !halfLifeInput || !thresholdInput || !values) return;
+
+    const width = 920;
+    const height = 430;
+    const margin = { top: 34, right: 46, bottom: 58, left: 66 };
+    const innerWidth = width - margin.left - margin.right;
+    const innerHeight = height - margin.top - margin.bottom;
+    const x = d3.scaleLinear().domain([0, 24]).range([0, innerWidth]);
+    const y = d3.scaleLinear().range([innerHeight, 0]);
+    const line = d3.line()
+      .x((d) => x(d.hour))
+      .y((d) => y(d.amount));
+
+    chart.attr("viewBox", `0 0 ${width} ${height}`).selectAll("*").remove();
+    const root = chart.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
+    const yGrid = root.append("g").attr("class", "exponential-grid");
+    const xGrid = root.append("g")
+      .attr("class", "exponential-grid")
+      .attr("transform", `translate(0,${innerHeight})`);
+    const xAxis = root.append("g")
+      .attr("class", "exponential-axis")
+      .attr("transform", `translate(0,${innerHeight})`);
+    const yAxis = root.append("g").attr("class", "exponential-axis");
+    const curve = root.append("path").attr("class", "caffeine-decay-line");
+    const thresholdLine = root.append("line").attr("class", "caffeine-threshold-line");
+    const thresholdLabel = root.append("text").attr("class", "exponential-label caffeine-threshold-label");
+    const crossingLine = root.append("line").attr("class", "caffeine-crossing-line");
+    const crossingPoint = root.append("circle").attr("class", "caffeine-crossing-point").attr("r", 4.5);
+    const crossingLabel = root.append("text").attr("class", "exponential-label");
+
+    root.append("text")
+      .attr("class", "exponential-label")
+      .attr("x", innerWidth)
+      .attr("y", innerHeight + 38)
+      .attr("text-anchor", "end")
+      .text("hours after caffeine intake");
+    root.append("text")
+      .attr("class", "exponential-label")
+      .attr("x", 0)
+      .attr("y", -12)
+      .text("remaining caffeine (mg)");
+
+    function format(value) {
+      return d3.format(".1f")(value);
+    }
+
+    function amountAt(hour, initial, halfLife) {
+      return initial * Math.pow(0.5, hour / halfLife);
+    }
+
+    function update() {
+      const initial = Number(initialInput.value) || 0;
+      const halfLife = Number(halfLifeInput.value) || 5;
+      const threshold = Number(thresholdInput.value) || 0;
+      const points = d3.range(0, 24.001, 0.25).map((hour) => ({
+        hour,
+        amount: amountAt(hour, initial, halfLife),
+      }));
+      const crossingHour = threshold > 0 && threshold < initial
+        ? halfLife * Math.log(threshold / initial) / Math.log(0.5)
+        : null;
+
+      y.domain([0, Math.max(initial, threshold)]).nice();
+      yGrid.call(d3.axisLeft(y).ticks(5).tickSize(-innerWidth).tickFormat(""));
+      xGrid.call(d3.axisBottom(x).ticks(8).tickSize(-innerHeight).tickFormat(""));
+      xAxis.call(d3.axisBottom(x).ticks(8));
+      yAxis.call(d3.axisLeft(y).ticks(5));
+      curve.datum(points).attr("d", line);
+
+      thresholdLine
+        .attr("x1", 0)
+        .attr("x2", innerWidth)
+        .attr("y1", y(threshold))
+        .attr("y2", y(threshold));
+      thresholdLabel
+        .attr("x", innerWidth)
+        .attr("y", y(threshold) - 8)
+        .attr("text-anchor", "end")
+        .text(`effect threshold: ${format(threshold)}mg`);
+
+      if (crossingHour !== null && crossingHour <= 24) {
+        crossingLine.style("display", null)
+          .attr("x1", x(crossingHour))
+          .attr("x2", x(crossingHour))
+          .attr("y1", y(threshold))
+          .attr("y2", innerHeight);
+        crossingPoint.style("display", null)
+          .attr("cx", x(crossingHour))
+          .attr("cy", y(threshold));
+        crossingLabel.style("display", null)
+          .attr("x", x(crossingHour) + 8)
+          .attr("y", y(threshold) + 18)
+          .text(`${format(crossingHour)} hours`);
+      } else {
+        crossingLine.style("display", "none");
+        crossingPoint.style("display", "none");
+        crossingLabel.style("display", "none");
+      }
+
+      values.innerHTML = `
+        <div class="exponential-value-card">
+          <strong>0 hours</strong>
+          <span>${format(initial)}mg</span>
+        </div>
+        <div class="exponential-value-card">
+          <strong>${format(halfLife)} hours</strong>
+          <span>${format(amountAt(halfLife, initial, halfLife))}mg</span>
+        </div>
+        <div class="exponential-value-card">
+          <strong>threshold</strong>
+          <span>${crossingHour !== null ? `${format(crossingHour)} hours` : "not below initial dose"}</span>
+        </div>
+      `;
+    }
+
+    initialInput.addEventListener("input", update);
+    halfLifeInput.addEventListener("input", update);
+    thresholdInput.addEventListener("input", update);
+    update();
+  }
+
+  renderCaffeineDecayDemo();
+
+  function renderPikettyGrowthDemo() {
+    const chart = d3.select("#piketty-growth-chart");
+    const chartNode = chart.node();
+    const rInput = document.querySelector("#piketty-r");
+    const gInput = document.querySelector("#piketty-g");
+    const yearsInput = document.querySelector("#piketty-years");
+    const values = document.querySelector("#piketty-growth-values");
+    if (!chartNode || !rInput || !gInput || !yearsInput || !values) return;
+
+    const width = 920;
+    const height = 460;
+    const margin = { top: 34, right: 96, bottom: 58, left: 66 };
+    const innerWidth = width - margin.left - margin.right;
+    const innerHeight = height - margin.top - margin.bottom;
+    const x = d3.scaleLinear().range([0, innerWidth]);
+    const y = d3.scaleLinear().range([innerHeight, 0]);
+    const line = d3.line()
+      .x((d) => x(d.year))
+      .y((d) => y(d.value));
+
+    chart.attr("viewBox", `0 0 ${width} ${height}`).selectAll("*").remove();
+    const root = chart.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
+    const yGrid = root.append("g").attr("class", "exponential-grid");
+    const xGrid = root.append("g")
+      .attr("class", "exponential-grid")
+      .attr("transform", `translate(0,${innerHeight})`);
+    const xAxis = root.append("g")
+      .attr("class", "exponential-axis")
+      .attr("transform", `translate(0,${innerHeight})`);
+    const yAxis = root.append("g").attr("class", "exponential-axis");
+    const capitalPath = root.append("path").attr("class", "piketty-capital-line");
+    const economyPath = root.append("path").attr("class", "piketty-economy-line");
+    const capitalLabel = root.append("text").attr("class", "exponential-label piketty-capital-label");
+    const economyLabel = root.append("text").attr("class", "exponential-label piketty-economy-label");
+
+    root.append("text")
+      .attr("class", "exponential-label")
+      .attr("x", innerWidth)
+      .attr("y", innerHeight + 38)
+      .attr("text-anchor", "end")
+      .text("years");
+    root.append("text")
+      .attr("class", "exponential-label")
+      .attr("x", 0)
+      .attr("y", -12)
+      .text("index, start = 100");
+
+    function formatIndex(value) {
+      return d3.format(",.1f")(value);
+    }
+
+    function formatRate(value) {
+      return d3.format(".1f")(value);
+    }
+
+    function update() {
+      const r = (Number(rInput.value) || 0) / 100;
+      const g = (Number(gInput.value) || 0) / 100;
+      const years = Math.max(10, Math.min(100, Math.round(Number(yearsInput.value) || 10)));
+      const capital = d3.range(0, years + 1).map((year) => ({
+        year,
+        value: 100 * Math.pow(1 + r, year),
+      }));
+      const economy = d3.range(0, years + 1).map((year) => ({
+        year,
+        value: 100 * Math.pow(1 + g, year),
+      }));
+      const capitalEnd = capital[capital.length - 1];
+      const economyEnd = economy[economy.length - 1];
+      const ratio = capitalEnd.value / economyEnd.value;
+
+      x.domain([0, years]);
+      y.domain([0, Math.max(capitalEnd.value, economyEnd.value)]).nice();
+      yGrid.call(d3.axisLeft(y).ticks(5).tickSize(-innerWidth).tickFormat(""));
+      xGrid.call(d3.axisBottom(x).ticks(8).tickSize(-innerHeight).tickFormat(""));
+      xAxis.call(d3.axisBottom(x).ticks(8));
+      yAxis.call(d3.axisLeft(y).ticks(5));
+
+      capitalPath.datum(capital).attr("d", line);
+      economyPath.datum(economy).attr("d", line);
+      capitalLabel
+        .attr("x", innerWidth + 8)
+        .attr("y", y(capitalEnd.value) + 4)
+        .text(`capital r=${formatRate(r * 100)}%`);
+      economyLabel
+        .attr("x", innerWidth + 8)
+        .attr("y", y(economyEnd.value) + 4)
+        .text(`economy g=${formatRate(g * 100)}%`);
+
+      values.innerHTML = `
+        <div class="exponential-value-card">
+          <strong>capital</strong>
+          <span>100(1+r)^${years} = ${formatIndex(capitalEnd.value)}</span>
+        </div>
+        <div class="exponential-value-card">
+          <strong>economy</strong>
+          <span>100(1+g)^${years} = ${formatIndex(economyEnd.value)}</span>
+        </div>
+        <div class="exponential-value-card">
+          <strong>capital / economy</strong>
+          <span>${d3.format(".2f")(ratio)}x</span>
+        </div>
+      `;
+    }
+
+    rInput.addEventListener("input", update);
+    gInput.addEventListener("input", update);
+    yearsInput.addEventListener("input", update);
+    update();
+  }
+
+  renderPikettyGrowthDemo();
+
   function renderCovidGrowthDemo() {
     const chart = d3.select("#covid-growth-chart");
     const chartNode = chart.node();

@@ -145,7 +145,7 @@
     <ul>
         <li>\(f'(x)\)는 \(f(x)\)값에 비례한다.</li>
         <li>\(f'(x)\)는 \(x\)값에 상관없이 \(\displaystyle \lim_{ h \to 0 } \frac{f(h) - 1}{h}\)라는 동일한 factor에 비례한다. 다른 말로 옮겨보면
-            exponential 함수의 모든 값을 \(\displaystyle \lim_{ h \to 0 } \frac{f(h) - 1}{h}\)가 결정한다.
+            함수의 모든 값을 \(\displaystyle \lim_{ h \to 0 } \frac{f(h) - 1}{h}\)가 결정한다.
         </li>
     </ul>
     </p>
@@ -183,7 +183,7 @@
     </p>
     <p>
         \(f(x)\)는 \(f(x)\) 자신에 비례해 증가하고 감소하며 상수 \(c\)로 함수의 모든 값을 결정할 수 있다는 결론이다. 특히 \(c = 1\)인 경우를
-        \(e^x\)로 표기하며 exponential function이라고 칭한다.
+        \(e^x\)로 표기하며 <span class="newthought">exponential function</span>이라고 칭한다.
     </p>
     <p>
         \(e^x\)는 결국 derivative가 자기 자신인 함수이다. 값이 얼마가 되었든 자신의 값에 비례해 증가
@@ -193,13 +193,67 @@
 </section>
 <section>
     <h2>exponential function의 예</h2>
-    <h3>이자율</h3>
-    <h3>할인율</h3>
-    <h3>반감기</h3>
+    <p>
+        값에 상관없이 항상 같은 비율로 증가하거나 감소한다는 말이 생소하다고? 그럴 리가 없다. 왜냐면 우리는 이미 일상에서 이 개념을 매일 다루고 있다. 수학 시간에 나오는 개념이라서 머리가 안 돌아갈 뿐이다.
+    </p>
+    <p>
+        당신은 은행에 예금 계좌를 열었다. 1만원이 있든 100만원이 있든 똑같은 이자율이 적용되기를 기대한다. 실제 받는 이자액은 내가 예치한 금액에 따라 다르지만 같은 이자율이 적용되기를 기대한다. 적금만기가 되어 다시 그 돈을 넣더라도 똑같은 이자율이 적용될 거라 생각한다.
+    </p>
+    <p>
+        같은 비율로 무엇이 증가한다는 규칙은 일상에 너무나 흔해서 두 번 생각을 하지 않을 법한 것으로 받아들인다면 exponential function도 자연스럽게 받아들일 수 있다. exponential function은 같은 비율로 증가하는 현상을 수학적으로 간결하게 표현한 것 뿐이다. 늘 이야기하지만 우리는 수학을 이미 많이 알고 있다.
+    </p>
+    <h3>월급 인상율</h3>
+    <p>
+        같은 비율로 증가한다는 개념을 이해하는데 약간의 주의가 필요하다. 같은 비율로 증가한다는 사실의 함의를 조금 더 생각해보자.
+    </p>
+    <figure class="fullwidth salary-growth-demo">
+        <div class="salary-growth-controls sans">
+            <label>
+                <span>신입 월급</span>
+                <input id="salary-entry" type="number" min="1000000" max="10000000" step="100000" value="2000000">
+            </label>
+            <label>
+                <span>고위직 월급</span>
+                <input id="salary-senior" type="number" min="1000000" max="30000000" step="100000" value="6000000">
+            </label>
+            <label>
+                <span>임금 상승률 (%)</span>
+                <input id="salary-rate" type="number" min="0" max="30" step="0.1" value="5">
+            </label>
+        </div>
+        <svg id="salary-growth-chart" role="img" aria-label="같은 임금 상승률에서 기준 월급에 따라 증가액이 달라지는 차트"></svg>
+        <div id="salary-growth-values" class="salary-growth-values sans" aria-live="polite"></div>
+    </figure>
+    <p>
+        같은 비율로 오른다는 말은 같은 금액이 오른다는 뜻이 아니다. 이미 큰 값을 가진 경우 같은 비율에서도 더 큰 절대 증가액을 얻는다. 비율이 동일할 뿐 실제 증감액은 초기값에 따라 큰 차이가 난다.
+    </p>
+
+    <h3>카페인 대사</h3>
+    <p>
+        카페인은 몸 안에서 일정한 양이 빠지는 것이 아니라 일정한 비율<label for="sn-auto-6" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-auto-6" class="margin-toggle"/><span class="sidenote">출처:<br><a href=" https://www.efsa.europa.eu/en/efsajournal/pub/3574">EFSA, caffeine and increased alertness</a>, <a href="https://archive.cdc.gov/www_cdc_gov/niosh/emres/longhourstraining/caffeine.html">CDC/NIOSH, Caffeine & Long Work Hours</a></span>로 줄어든다. 반감기를 5시간으로 단순화하면 150mg의 카페인은 5시간 뒤 75mg, 10시간 뒤 37.5mg이 된다.
+    </p>
+    <figure class="fullwidth caffeine-decay-demo">
+        <div class="caffeine-decay-controls sans">
+            <label>
+                <span>초기 카페인 (mg)</span>
+                <input id="caffeine-initial" type="number" min="25" max="400" step="25" value="150">
+            </label>
+            <label>
+                <span>반감기 (hours)</span>
+                <input id="caffeine-half-life" type="number" min="2" max="12" step="0.5" value="5">
+            </label>
+            <label>
+                <span>효과 기준량 (mg)</span>
+                <input id="caffeine-threshold" type="number" min="10" max="200" step="5" value="75">
+            </label>
+        </div>
+        <svg id="caffeine-decay-chart" role="img" aria-label="카페인 반감기에 따른 체내 잔여량 감소 차트"></svg>
+        <div id="caffeine-decay-values" class="caffeine-decay-values sans" aria-live="polite"></div>
+    </figure>
     <h3>전염병 재생산지수: \(R_0\)</h3>
     <p>
         감염이 일정한 기간마다 같은 배수로 늘어난다고 단순화하면 확진자 수는 지수함수처럼 움직인다. 아래 그림은 전세계 누적 확진자
-        <label for="sn-auto-6" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-auto-6" class="margin-toggle"/><span class="sidenote">자료: <a
+        <label for="sn-auto-7" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-auto-7" class="margin-toggle"/><span class="sidenote">자료: <a
                 href="https://github.com/CSSEGISandData/COVID-19/blob/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv">CSSEGISandData</a></span>
         가 1,000명을 넘은 시점에서 출발해,
         5일마다 증가 배수가 조금 달라질 때 같은 기간 뒤 곡선이 얼마나 크게 벌어지는지 보여준다.
@@ -216,6 +270,27 @@
         <div id="covid-growth-values" class="covid-growth-values sans" aria-live="polite"></div>
     </figure>
     <h3>피케티: 자본수익률(r)과 경제성장률(g)</h3>
+    <p>
+        피케티의 \(r > g\) 논의를 단순화하면 자본은 \(r\)의 비율로, 경제 전체는 \(g\)의 비율로 성장한다고 볼 수 있다. 작은 비율 차이도 오랜 시간이 지나면 큰 격차로 벌어진다.
+    </p>
+    <figure class="fullwidth piketty-growth-demo">
+        <div class="piketty-growth-controls sans">
+            <label>
+                <span>자본수익률 r (%)</span>
+                <input id="piketty-r" type="number" min="0" max="12" step="0.1" value="5">
+            </label>
+            <label>
+                <span>경제성장률 g (%)</span>
+                <input id="piketty-g" type="number" min="0" max="8" step="0.1" value="2">
+            </label>
+            <label>
+                <span>기간 (years)</span>
+                <input id="piketty-years" type="number" min="10" max="100" step="5" value="50">
+            </label>
+        </div>
+        <svg id="piketty-growth-chart" role="img" aria-label="자본수익률과 경제성장률 차이에 따른 장기 성장 격차 차트"></svg>
+        <div id="piketty-growth-values" class="piketty-growth-values sans" aria-live="polite"></div>
+    </figure>
 </section>
 <section>
     <h2>일반화</h2>
@@ -229,7 +304,7 @@
 </section>
 <p>
     참고
-    <label for="sn-auto-7" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-auto-7" class="margin-toggle"/><span class="sidenote">derivative에 더 많은 이야기를 듣고 싶다면 <a href="/notebook/notes/2026-05-02-essence-of-derivative/">Essence of Derivative</a>를 참고하세요.</span>
+    <label for="sn-auto-8" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-auto-8" class="margin-toggle"/><span class="sidenote">derivative에 더 많은 이야기를 듣고 싶다면 <a href="/notebook/notes/2026-05-02-essence-of-derivative/">Essence of Derivative</a>를 참고하세요.</span>
 </p>
 <section>
     <h2>scope function</h2>
