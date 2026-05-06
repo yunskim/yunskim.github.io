@@ -135,7 +135,7 @@
     <h2>derivative</h2>
     <h3>\(f(x + y) = f(x) \cdot f(y)\)에서 derivative 유도하기</h3>
     <p>
-        \(f(dt) \approx (1 + dx)\)을 가정한 것이 마음에 들지 않는다면 이번에는 formal하게 derivative를 구해보자. 정의대로 쓰면:<br>
+        \(f(dx) \approx (1 + dx)\)을 가정한 것이 마음에 들지 않는다면 이번에는 formal하게 derivative를 구해보자. 정의대로 쓰면:<br>
         \[ \begin{align} f'(x) &= \displaystyle \lim_{ h \to 0 } \frac{f(x + h) - f(x)}{h} \\\\ &= \lim_{ h \to 0 }
         \frac{f(x)f(h) - f(x)}{h} \\\\ &= \lim_{ h \to 0 } f(x) \cdot \frac{f(h) - 1}{h} \\\\ &= f(x) \cdot \lim_{ h \to
         0 } \frac{f(h) - 1}{h}. \end{align} \]
@@ -172,7 +172,9 @@
         두 개의 factor를 다시 정리하면:<br>
         \[ f'(x) = f(x) \cdot f'(0). \]
 
-        \(f'(0)\)값에 따라 \(f(x)\)의 모든 값<label for="sn-auto-5" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-auto-5" class="margin-toggle"/><span class="sidenote">\(f(0) = 1\)은 이미 알고있다.</span>이 정해진다. \(f'(0)\)을 함수를 결정하는 일종의 하이퍼 파라미터처럼 다루기로 하자.
+        \(f'(0)\)값에 따라 \(f(x)\)의 모든 값
+        <label for="sn-auto-5" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-auto-5" class="margin-toggle"/><span class="sidenote">\(f(0) = 1\)은 이미 알고있다.</span>
+        이 정해진다. \(f'(0)\)을 함수를 결정하는 일종의 하이퍼 파라미터처럼 다루기로 하자.
     </p>
     <p>
         앞으로 \(f'(0) = c\)로 표기하기로 한다. 보통 상수를 함수 앞에 쓴다.
@@ -194,24 +196,25 @@
 <section>
     <h2>\(f'(x) = c \cdot f(x) \)의 의미</h2>
     <h3>같은 비율로 증가하려면 현재의 함수값을 알아야 한다.</h3>
-</section>
-<section>
-    <h2>\(f(dt) \approx (1 + dx)\)의 의미</h2>
-</section>
-<section>
-    <h2>exponential function의 예</h2>
     <p>
-        값에 상관없이 항상 같은 비율로 증가하거나 감소한다는 말이 생소하다고? 그럴 리가 없다. 왜냐면 우리는 이미 일상에서 이 개념을 매일 다루고 있다. 수학이라는 말에 잠깐 놀라 이미 알고 있는 걸 떠올리지 못하는 것 뿐이다.
+        \(f’(x)\)는 x지점 근처의 x의 증감에 대해 \(f(x)\)가 얼마나 변화하는지 변화량을 알려주는 함수이다. \(x\)의 충분히 작은 증감 \(dx\)에 대해 \(f(x)\)의 값이 얼마나
+        바뀌는지 알려준다.
     </p>
     <p>
-        당신은 은행에 예금 계좌를 열었다. 1만원이 있든 100만원이 있든 똑같은 이자율이 적용되기를 기대한다. 실제 받는 이자액은 내가 예치한 금액에 따라 다르지만 같은 이자율이 적용되기를 기대한다. 적금만기가 되어 다시 그 돈을 넣더라도 똑같은 이자율이 적용될 거라 생각한다.
+        \(f’(x)\)는 증감하는 비율이 아니라 증감하는 값을 가리킨다. 따라서 값에 상관없이 같은 비율로 증감하는 모델을 만드려고 하면 지금 값을 알아야 할 필요가 있다.
     </p>
     <p>
-        같은 비율로 무엇이 증가한다는 규칙은 일상에 너무나 흔해서 두 번 생각을 하지 않을 법한 것으로 받아들인다면 exponential function도 자연스럽게 받아들일 수 있다. exponential function은 같은 비율로 증가하는 현상을 수학적으로 간결하게 표현한 것 뿐이다. 늘 이야기하지만 우리는 수학을 이미 많이 알고 있다.
+        예를 들어보자. 당신은 은행에 예금 계좌를 열었다. 이자율이 10%라고 하다. 1만원을 예치했다면 이자액 다시 말해 원금에 더한 증가액은 1만원의 10%인 1천원이다. 이제 여유가 되어 100만원을
+        예치한다고 하자. 이 경우 이자액은
+        100만원의 10%인 10만원이다. 같은 비율로 증가하지만 증가하는 값을 구하려면 현재 예치한 금액을 알아야 한다.
     </p>
-    <h3>월급 인상율</h3>
     <p>
-        같은 비율로 증가한다는 개념을 이해하는데 약간의 주의가 필요하다. 같은 비율로 증가한다는 사실의 함의를 조금 더 생각해보자.
+        큰 값은 큰 값에 비례해, 작은 값은 작은 값에 비례해 증가하고 감소하는 모델의
+        derivative가 f(x)를 factor로 가져야 하는 이유이다.
+    </p>
+    <h3>월급 인상율: 값이 크면 증가분도 크다</h3>
+    <p>
+        같은 비율로 증가하는 모델의 의미를 예를 들어 생각해보자.
     </p>
     <figure class="fullwidth salary-growth-demo">
         <div class="salary-growth-controls sans">
@@ -234,10 +237,16 @@
     <p>
         같은 비율로 오른다는 말은 같은 금액이 오른다는 뜻이 아니다. 이미 큰 값을 가진 경우 같은 비율에서도 더 큰 절대 증가액을 얻는다. 비율이 동일할 뿐 실제 증감액은 초기값에 따라 큰 차이가 난다.
     </p>
-
-    <h3>카페인 대사</h3>
+    <h3>카페인 대사: 값이 작으면 감소도 조금만</h3>
     <p>
-        카페인은 몸 안에서 일정한 양이 빠지는 것이 아니라 일정한 비율<label for="sn-auto-7" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-auto-7" class="margin-toggle"/><span class="sidenote">자료:<br><a href=" https://www.efsa.europa.eu/en/efsajournal/pub/3574">EFSA, caffeine and increased alertness</a>, <a href="https://archive.cdc.gov/www_cdc_gov/niosh/emres/longhourstraining/caffeine.html">CDC/NIOSH, Caffeine & Long Work Hours</a></span>로 줄어든다. 반감기를 5시간으로 단순화하면 150mg의 카페인은 5시간 뒤 75mg, 10시간 뒤 37.5mg이 된다.
+        카페인은 몸 안에서 일정한 양이 빠지는 것이 아니라 일정한 비율
+        <label for="sn-auto-7" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-auto-7" class="margin-toggle"/><span class="sidenote">자료:<br><a href=" https://www.efsa.europa.eu/en/efsajournal/pub/3574">EFSA, caffeine and increased
+            alertness</a>, <a href="https://archive.cdc.gov/www_cdc_gov/niosh/emres/longhourstraining/caffeine.html">CDC/NIOSH,
+            Caffeine & Long Work Hours</a></span>
+        로 줄어든다. 반감기를 5시간으로 단순화하면 150mg의 카페인은 5시간 뒤 75mg, 10시간 뒤 37.5mg이 된다.
+    </p>
+    <p>
+        체내 카페인이 완전히 사라지기까지 오랜 시간이 걸린다. 같은 비율로 줄어든다면 시간이 지날수록 카페인이 분해되는 양은 줄어든다. 분해되는 비율은 일정하다.
     </p>
     <figure class="fullwidth caffeine-decay-demo">
         <div class="caffeine-decay-controls sans">
@@ -257,6 +266,12 @@
         <svg id="caffeine-decay-chart" role="img" aria-label="카페인 반감기에 따른 체내 잔여량 감소 차트"></svg>
         <div id="caffeine-decay-values" class="caffeine-decay-values sans" aria-live="polite"></div>
     </figure>
+</section>
+<section>
+    <h2>\(f(dt) \approx (1 + dx)\)의 의미</h2>
+</section>
+<section>
+    <h2>exponential function의 예</h2>
     <h3>전염병 재생산지수: \(R_0\)</h3>
     <p>
         감염이 일정한 기간마다 같은 배수로 늘어난다고 단순화하면 확진자 수는 지수함수처럼 움직인다. 아래 그림은 전세계 누적 확진자
