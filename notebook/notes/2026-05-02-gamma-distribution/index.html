@@ -72,9 +72,13 @@
     </article>
     <script>
       window.MathJax = {
+        loader: {
+          load: ["[tex]/physics"]
+        },
         tex: {
           inlineMath: [["\\(", "\\)"]],
-          displayMath: [["\\[", "\\]"]]
+          displayMath: [["\\[", "\\]"]],
+          packages: {"[+]": ["physics"]}
         },
         svg: {
           fontCache: "global"

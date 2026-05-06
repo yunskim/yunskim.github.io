@@ -37,15 +37,30 @@
       <p class="note-meta sans">2026-XX-XX</p>
       <p class="note-tags sans"><a href="/notebook/?tag=math">math</a> <a href="/notebook/?tag=statistics">statistics</a></p>
       <section>
-    <h2>J언어</h2>
+    <h2>주요 개념</h2>
+    <ul>
+        <li>실행 환경 만들기</li>
+            <ul>
+                <li>interpreter</li>
+                <li>t</li>
+            </ul>
+        <li>tokening: 텍스트를 문법에 맞게 쪼개기</li>
+        <li>텍스트 A로 바꾸기</li>
+        <li>enqueuing: 텍스트를 vocabulary로 바꾸기</li>
+        <li>parsing: stack에 옮겨 reducing하기</li>
+    </ul>
 </section>
       
     </article>
     <script>
       window.MathJax = {
+        loader: {
+          load: ["[tex]/physics"]
+        },
         tex: {
           inlineMath: [["\\(", "\\)"]],
-          displayMath: [["\\[", "\\]"]]
+          displayMath: [["\\[", "\\]"]],
+          packages: {"[+]": ["physics"]}
         },
         svg: {
           fontCache: "global"

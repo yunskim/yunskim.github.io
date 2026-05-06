@@ -58,6 +58,7 @@ function renderNotes(notes) {
   list.innerHTML = notes.map((note) => `
     <li>
       <a href="${escapeHtml(note.href)}">${escapeHtml(note.title)}</a>
+      ${note.publish === false ? '<strong class="note-draft-badge">Draft</strong>' : ""}
       <span>${escapeHtml(note.date)}</span>
       <small>${escapeHtml(note.summary)}</small>
       ${(note.tags || []).length ? `<div class="note-list-tags">${note.tags.map((tag) => `
