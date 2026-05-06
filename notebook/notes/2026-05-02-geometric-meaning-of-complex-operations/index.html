@@ -147,6 +147,24 @@
     </div>
     <div id="phyllotaxis-values" class="phyllotaxis-values sans"></div>
     <p>
+        같은 배열은 Python에서도 복소수 배열 하나로 바로 그릴 수 있다.
+    </p>
+    <pre><code>import numpy as np
+import matplotlib.pyplot as plt
+
+n = np.arange(1, 800)
+golden_angle = np.pi * (3 - np.sqrt(5))
+
+r = np.sqrt(n)
+theta = n * golden_angle
+z = r * np.exp(1j * theta)
+
+plt.figure(figsize=(6, 6))
+plt.scatter(z.real, z.imag, s=10, c=n, cmap="viridis")
+plt.axis("equal")
+plt.axis("off")
+plt.show()</code></pre>
+    <p>
         \(f(\theta)=e^{i\theta}\)라고 두면 \(f'(\theta)=i f(\theta)\)이다.
         여기서 \(f'(\theta)\)는 점 \(f(\theta)\)가 움직이는 순간적인 방향이다.
         복소수에 \(i\)를 곱하는 것은 평면에서 90도 회전시키는 일이므로,
