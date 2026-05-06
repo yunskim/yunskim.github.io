@@ -34,7 +34,14 @@
   height: 460px;
 }
 
-.covid-growth-demo {
+.moore-law-demo svg {
+  display: block;
+  width: 100%;
+  height: 500px;
+}
+
+.covid-growth-demo,
+.moore-law-demo {
   position: relative;
 }
 
@@ -49,6 +56,22 @@
 .covid-growth-controls {
   width: 55%;
   margin: 0.5rem 0 1rem;
+}
+
+.moore-law-controls {
+  display: grid;
+  grid-template-columns: minmax(14rem, 1fr) max-content;
+  align-items: end;
+  gap: 1rem;
+  width: 70%;
+  margin: 0.5rem 0 1rem;
+}
+
+.moore-law-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 2rem;
 }
 
 .salary-growth-controls,
@@ -70,6 +93,8 @@
 .exponential-shift-controls span,
 .covid-growth-controls label,
 .covid-growth-controls span,
+.moore-law-controls label,
+.moore-law-controls span,
 .salary-growth-controls label,
 .salary-growth-controls span,
 .caffeine-decay-controls label,
@@ -79,8 +104,13 @@
   display: block;
 }
 
+.moore-law-controls .moore-law-checkbox {
+  display: flex;
+}
+
 .exponential-shift-controls span,
 .covid-growth-controls span,
+.moore-law-controls span,
 .salary-growth-controls span,
 .caffeine-decay-controls span,
 .piketty-growth-controls span {
@@ -91,6 +121,7 @@
 
 .exponential-shift-controls input,
 .covid-growth-controls input,
+.moore-law-controls input[type="range"],
 .salary-growth-controls input,
 .caffeine-decay-controls input,
 .piketty-growth-controls input {
@@ -210,6 +241,52 @@
 }
 
 .piketty-economy-label {
+  fill: var(--ink);
+}
+
+.moore-model-line,
+.moore-actual-line {
+  fill: none;
+  stroke-width: 2.4;
+}
+
+.moore-model-line {
+  stroke: var(--accent);
+  stroke-dasharray: 6 5;
+}
+
+.moore-actual-line {
+  stroke: var(--ink);
+}
+
+.moore-actual-point {
+  fill: var(--paper);
+  stroke: var(--ink);
+  stroke-width: 1.8;
+}
+
+.moore-model-point {
+  fill: var(--paper);
+  stroke: var(--accent);
+  stroke-width: 1.8;
+}
+
+.moore-hover-overlay {
+  fill: transparent;
+  pointer-events: all;
+}
+
+.moore-hover-line {
+  stroke: var(--muted);
+  stroke-width: 1;
+  stroke-dasharray: 3 4;
+}
+
+.moore-model-label {
+  fill: var(--accent);
+}
+
+.moore-actual-label {
   fill: var(--ink);
 }
 
@@ -337,7 +414,8 @@ circle.covid-projection-high {
 
 .salary-growth-values,
 .caffeine-decay-values,
-.piketty-growth-values {
+.piketty-growth-values,
+.moore-law-values {
   display: grid;
   grid-template-columns: repeat(3, minmax(9rem, 1fr));
   gap: 0.75rem;
@@ -345,7 +423,8 @@ circle.covid-projection-high {
   margin: 1rem 0 0;
 }
 
-.covid-growth-tooltip {
+.covid-growth-tooltip,
+.moore-law-tooltip {
   position: absolute;
   display: none;
   min-width: 11rem;
@@ -361,11 +440,14 @@ circle.covid-projection-high {
 }
 
 .covid-growth-tooltip strong,
-.covid-growth-tooltip span {
+.covid-growth-tooltip span,
+.moore-law-tooltip strong,
+.moore-law-tooltip span {
   display: block;
 }
 
-.covid-growth-tooltip span {
+.covid-growth-tooltip span,
+.moore-law-tooltip span {
   color: var(--muted);
 }
 
@@ -409,11 +491,17 @@ circle.covid-projection-high {
     height: 420px;
   }
 
+  .moore-law-demo svg {
+    height: 430px;
+  }
+
   .exponential-values,
   .exponential-shift-controls,
   .exponential-shift-values,
   .covid-growth-controls,
   .covid-growth-values,
+  .moore-law-controls,
+  .moore-law-values,
   .salary-growth-controls,
   .salary-growth-values,
   .caffeine-decay-controls,
@@ -426,6 +514,8 @@ circle.covid-projection-high {
   .exponential-shift-controls,
   .exponential-shift-values,
   .covid-growth-values,
+  .moore-law-controls,
+  .moore-law-values,
   .salary-growth-controls,
   .salary-growth-values,
   .caffeine-decay-controls,

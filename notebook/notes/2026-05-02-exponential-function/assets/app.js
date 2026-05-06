@@ -731,6 +731,233 @@
 
   renderPikettyGrowthDemo();
 
+  function renderMooreLawDemo() {
+    const chart = d3.select("#moore-law-chart");
+    const chartNode = chart.node();
+    const doublingInput = document.querySelector("#moore-doubling");
+    const logInput = document.querySelector("#moore-log-scale");
+    const values = document.querySelector("#moore-law-values");
+    const tooltip = document.querySelector("#moore-law-tooltip");
+    if (!chartNode || !doublingInput || !logInput || !values || !tooltip) return;
+
+    const transistorData = [
+      { year: 1971, actual: 2308.2417 },
+      { year: 1972, actual: 3554.5222 },
+      { year: 1974, actual: 6097.5625 },
+      { year: 1979, actual: 29163.777 },
+      { year: 1982, actual: 135772.72 },
+      { year: 1985, actual: 273841.94 },
+      { year: 1986, actual: 273841.94 },
+      { year: 1988, actual: 273841.94 },
+      { year: 1989, actual: 1207900.8 },
+      { year: 1990, actual: 1207900.8 },
+      { year: 1992, actual: 3105900.2 },
+      { year: 1993, actual: 3105900.2 },
+      { year: 1994, actual: 3105900.2 },
+      { year: 1995, actual: 9646616 },
+      { year: 1996, actual: 9646616 },
+      { year: 1997, actual: 9646616 },
+      { year: 1998, actual: 15261378 },
+      { year: 1999, actual: 21673922 },
+      { year: 2000, actual: 37180264 },
+      { year: 2001, actual: 42550656 },
+      { year: 2002, actual: 220673400 },
+      { year: 2003, actual: 220673400 },
+      { year: 2004, actual: 273842000 },
+      { year: 2005, actual: 305052770 },
+      { year: 2006, actual: 582941600 },
+      { year: 2007, actual: 805842200 },
+      { year: 2008, actual: 805842200 },
+      { year: 2009, actual: 2308241400 },
+      { year: 2010, actual: 2308241400 },
+      { year: 2011, actual: 2600000000 },
+      { year: 2012, actual: 2600000000 },
+      { year: 2013, actual: 5000000000 },
+      { year: 2014, actual: 5700000000 },
+      { year: 2016, actual: 8000000000 },
+      { year: 2017, actual: 19200000000 },
+      { year: 2018, actual: 21100000000 },
+      { year: 2019, actual: 39500000000 },
+      { year: 2020, actual: 39500000000 },
+      { year: 2021, actual: 58200000000 },
+    ];
+    const baseYear = 1971;
+    const baseTransistors = transistorData[0].actual;
+    const lastActual = transistorData[transistorData.length - 1];
+    const actualDoubling = (lastActual.year - baseYear) / Math.log2(lastActual.actual / baseTransistors);
+    const width = 920;
+    const height = 500;
+    const margin = { top: 34, right: 112, bottom: 58, left: 80 };
+    const innerWidth = width - margin.left - margin.right;
+    const innerHeight = height - margin.top - margin.bottom;
+    const x = d3.scaleLinear().domain([1971, 2021]).range([0, innerWidth]);
+    const line = d3.line()
+      .x((d) => x(d.year))
+      .y((d) => yScale(d.value));
+    let yScale = d3.scaleLog();
+    let combined = [];
+
+    chart.attr("viewBox", `0 0 ${width} ${height}`).selectAll("*").remove();
+    const root = chart.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
+    const yGrid = root.append("g").attr("class", "exponential-grid");
+    const xGrid = root.append("g")
+      .attr("class", "exponential-grid")
+      .attr("transform", `translate(0,${innerHeight})`);
+    const xAxis = root.append("g")
+      .attr("class", "exponential-axis")
+      .attr("transform", `translate(0,${innerHeight})`);
+    const yAxis = root.append("g").attr("class", "exponential-axis");
+    const actualPath = root.append("path").attr("class", "moore-actual-line");
+    const modelPath = root.append("path").attr("class", "moore-model-line");
+    const hoverLine = root.append("line").attr("class", "moore-hover-line").style("display", "none");
+    const actualHover = root.append("circle").attr("class", "moore-actual-point").attr("r", 5).style("display", "none");
+    const modelHover = root.append("circle").attr("class", "moore-model-point").attr("r", 5).style("display", "none");
+
+    root.append("rect")
+      .attr("class", "moore-hover-overlay")
+      .attr("width", innerWidth)
+      .attr("height", innerHeight)
+      .on("mousemove", onHover)
+      .on("mouseleave", clearHover);
+
+    root.append("text")
+      .attr("class", "exponential-label")
+      .attr("x", innerWidth)
+      .attr("y", innerHeight + 38)
+      .attr("text-anchor", "end")
+      .text("year");
+    root.append("text")
+      .attr("class", "exponential-label")
+      .attr("x", 0)
+      .attr("y", -12)
+      .text("transistors per microprocessor");
+    const actualLabel = root.append("text").attr("class", "exponential-label moore-actual-label");
+    const modelLabel = root.append("text").attr("class", "exponential-label moore-model-label");
+
+    function formatCount(value) {
+      if (value >= 1e9) return `${d3.format(".1f")(value / 1e9)}B`;
+      if (value >= 1e6) return `${d3.format(".1f")(value / 1e6)}M`;
+      if (value >= 1e3) return `${d3.format(".1f")(value / 1e3)}K`;
+      return d3.format(",.0f")(value);
+    }
+
+    function formatLong(value) {
+      return d3.format(",.0f")(value);
+    }
+
+    function modelAt(year, doublingYears) {
+      return baseTransistors * Math.pow(2, (year - baseYear) / doublingYears);
+    }
+
+    function update() {
+      const doublingYears = Number(doublingInput.value) || 2;
+      const useLog = logInput.checked;
+      const model = d3.range(1971, 2022).map((year) => ({
+        year,
+        value: modelAt(year, doublingYears),
+      }));
+      const actual = transistorData.map((d) => ({ year: d.year, value: d.actual }));
+      const maxValue = d3.max([...actual, ...model], (d) => d.value);
+      yScale = useLog
+        ? d3.scaleLog().domain([1000, maxValue]).range([innerHeight, 0]).nice()
+        : d3.scaleLinear().domain([0, maxValue]).range([innerHeight, 0]).nice();
+      combined = transistorData.map((d) => ({
+        year: d.year,
+        actual: d.actual,
+        model: modelAt(d.year, doublingYears),
+      }));
+
+      const yAxisGenerator = useLog
+        ? d3.axisLeft(yScale).ticks(6, "~s")
+        : d3.axisLeft(yScale).ticks(6).tickFormat(d3.format(".2s"));
+      yGrid.call(yAxisGenerator.tickSize(-innerWidth).tickFormat(""));
+      xGrid.call(d3.axisBottom(x).ticks(8).tickSize(-innerHeight).tickFormat(""));
+      xAxis.call(d3.axisBottom(x).ticks(8).tickFormat(d3.format("d")));
+      yAxis.call(yAxisGenerator);
+
+      actualPath.datum(actual).attr("d", line);
+      modelPath.datum(model).attr("d", line);
+
+      root.selectAll(".moore-actual-sample")
+        .data(actual, (d) => d.year)
+        .join("circle")
+        .attr("class", "moore-actual-point moore-actual-sample")
+        .attr("cx", (d) => x(d.year))
+        .attr("cy", (d) => yScale(d.value))
+        .attr("r", 3.5);
+
+      actualLabel
+        .attr("x", innerWidth + 8)
+        .attr("y", yScale(lastActual.actual) + 4)
+        .text("actual");
+      modelLabel
+        .attr("x", innerWidth + 8)
+        .attr("y", yScale(modelAt(2021, doublingYears)) + 4)
+        .text(`model: doubles every ${d3.format(".2f")(doublingYears)}y`);
+
+      values.innerHTML = `
+        <div class="exponential-value-card">
+          <strong>model</strong>
+          <span>2021 = ${formatLong(modelAt(2021, doublingYears))}</span>
+          <span>doubling time = ${d3.format(".2f")(doublingYears)} years</span>
+        </div>
+        <div class="exponential-value-card">
+          <strong>actual</strong>
+          <span>2021 = ${formatLong(lastActual.actual)}</span>
+          <span>1971-2021 average doubling = ${d3.format(".2f")(actualDoubling)} years</span>
+        </div>
+        <div class="exponential-value-card">
+          <strong>ratio</strong>
+          <span>actual / model in 2021 = ${d3.format(".2f")(lastActual.actual / modelAt(2021, doublingYears))}x</span>
+        </div>
+      `;
+      clearHover();
+    }
+
+    function onHover(event) {
+      if (!combined.length) return;
+      const [mouseX] = d3.pointer(event, this);
+      const year = x.invert(mouseX);
+      const nearest = d3.least(combined, (d) => Math.abs(d.year - year));
+      if (!nearest) return;
+      hoverLine.style("display", null)
+        .attr("x1", x(nearest.year))
+        .attr("x2", x(nearest.year))
+        .attr("y1", 0)
+        .attr("y2", innerHeight);
+      actualHover.style("display", null)
+        .attr("cx", x(nearest.year))
+        .attr("cy", yScale(nearest.actual));
+      modelHover.style("display", null)
+        .attr("cx", x(nearest.year))
+        .attr("cy", yScale(nearest.model));
+      const figureRect = chartNode.closest("figure").getBoundingClientRect();
+      const chartRect = chartNode.getBoundingClientRect();
+      tooltip.style.display = "block";
+      tooltip.style.left = `${chartRect.left - figureRect.left + margin.left + x(nearest.year) + 12}px`;
+      tooltip.style.top = `${chartRect.top - figureRect.top + margin.top + Math.min(yScale(nearest.actual), yScale(nearest.model)) + 12}px`;
+      tooltip.innerHTML = `
+        <strong>${nearest.year}</strong>
+        <span>actual: ${formatLong(nearest.actual)}</span>
+        <span>model: ${formatLong(nearest.model)}</span>
+        <span>actual/model: ${d3.format(".2f")(nearest.actual / nearest.model)}x</span>
+      `;
+    }
+
+    function clearHover() {
+      hoverLine.style("display", "none");
+      actualHover.style("display", "none");
+      modelHover.style("display", "none");
+      tooltip.style.display = "none";
+    }
+
+    doublingInput.addEventListener("input", update);
+    logInput.addEventListener("change", update);
+    update();
+  }
+
+  renderMooreLawDemo();
+
   function renderCovidGrowthDemo() {
     const chart = d3.select("#covid-growth-chart");
     const chartNode = chart.node();
