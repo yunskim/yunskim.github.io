@@ -963,4 +963,369 @@
   }
 
   renderCovidGrowthDemo();
+
+  function renderComplexRotationDemo() {
+    const chart = d3.select("#complex-rotation-chart");
+    const chartNode = chart.node();
+    const thetaInput = document.querySelector("#complex-rotation-theta");
+    const dthetaInput = document.querySelector("#complex-rotation-dtheta");
+    const playButton = document.querySelector("#complex-rotation-play");
+    const values = document.querySelector("#complex-rotation-values");
+    if (!chartNode || !thetaInput || !dthetaInput || !playButton || !values) return;
+
+    const width = 760;
+    const height = 560;
+    const margin = { top: 34, right: 42, bottom: 44, left: 42 };
+    const innerWidth = width - margin.left - margin.right;
+    const innerHeight = height - margin.top - margin.bottom;
+    const centerX = innerWidth / 2;
+    const centerY = innerHeight / 2;
+    const radius = Math.min(innerWidth, innerHeight) * 0.36;
+    let frameId = null;
+    let playStart = null;
+
+    chart.attr("viewBox", `0 0 ${width} ${height}`).selectAll("*").remove();
+    const root = chart.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
+    const defs = chart.append("defs");
+    defs.append("marker")
+      .attr("id", "complex-rotation-arrow")
+      .attr("viewBox", "0 -5 10 10")
+      .attr("refX", 9)
+      .attr("refY", 0)
+      .attr("markerWidth", 7)
+      .attr("markerHeight", 7)
+      .attr("orient", "auto")
+      .append("path")
+      .attr("d", "M0,-5L10,0L0,5")
+      .attr("class", "complex-rotation-arrow-head");
+
+    root.append("circle")
+      .attr("class", "complex-rotation-unit-circle")
+      .attr("cx", centerX)
+      .attr("cy", centerY)
+      .attr("r", radius);
+    root.append("line")
+      .attr("class", "complex-rotation-axis")
+      .attr("x1", centerX - radius - 32)
+      .attr("x2", centerX + radius + 32)
+      .attr("y1", centerY)
+      .attr("y2", centerY);
+    root.append("line")
+      .attr("class", "complex-rotation-axis")
+      .attr("x1", centerX)
+      .attr("x2", centerX)
+      .attr("y1", centerY + radius + 32)
+      .attr("y2", centerY - radius - 32);
+    root.append("text")
+      .attr("class", "complex-rotation-label")
+      .attr("x", centerX + radius + 18)
+      .attr("y", centerY - 8)
+      .text("1");
+    root.append("text")
+      .attr("class", "complex-rotation-label")
+      .attr("x", centerX + 8)
+      .attr("y", centerY - radius - 14)
+      .text("i");
+
+    const radiusLine = root.append("line").attr("class", "complex-rotation-radius");
+    const tangentArrow = root.append("line")
+      .attr("class", "complex-rotation-tangent")
+      .attr("marker-end", "url(#complex-rotation-arrow)");
+    const stepArrow = root.append("line")
+      .attr("class", "complex-rotation-step")
+      .attr("marker-end", "url(#complex-rotation-arrow)");
+    const arcPath = root.append("path").attr("class", "complex-rotation-arc");
+    const actualPoint = root.append("circle").attr("class", "complex-rotation-actual").attr("r", 5.5);
+    const nextPoint = root.append("circle").attr("class", "complex-rotation-next").attr("r", 5);
+    const approxPoint = root.append("circle").attr("class", "complex-rotation-approx").attr("r", 5);
+    const labelGroup = root.append("g");
+
+    function point(theta) {
+      return {
+        re: Math.cos(theta),
+        im: Math.sin(theta),
+        x: centerX + radius * Math.cos(theta),
+        y: centerY - radius * Math.sin(theta),
+      };
+    }
+
+    function screenPoint(re, im) {
+      return {
+        x: centerX + radius * re,
+        y: centerY - radius * im,
+      };
+    }
+
+    function arc(theta, dtheta) {
+      const start = point(theta);
+      const end = point(theta + dtheta);
+      const largeArc = Math.abs(dtheta) > Math.PI ? 1 : 0;
+      const sweep = dtheta >= 0 ? 0 : 1;
+      return `M${start.x},${start.y}A${radius},${radius} 0 ${largeArc},${sweep} ${end.x},${end.y}`;
+    }
+
+    function format(value) {
+      return d3.format(".3f")(value);
+    }
+
+    function update(theta = Number(thetaInput.value)) {
+      const dtheta = Number(dthetaInput.value);
+      const current = point(theta);
+      const derivative = { re: -Math.sin(theta), im: Math.cos(theta) };
+      const actualNext = point(theta + dtheta);
+      const approx = screenPoint(current.re + derivative.re * dtheta, current.im + derivative.im * dtheta);
+      const tangentEnd = screenPoint(current.re + derivative.re * 0.55, current.im + derivative.im * 0.55);
+
+      radiusLine
+        .attr("x1", centerX)
+        .attr("y1", centerY)
+        .attr("x2", current.x)
+        .attr("y2", current.y);
+      tangentArrow
+        .attr("x1", current.x)
+        .attr("y1", current.y)
+        .attr("x2", tangentEnd.x)
+        .attr("y2", tangentEnd.y);
+      stepArrow
+        .attr("x1", current.x)
+        .attr("y1", current.y)
+        .attr("x2", approx.x)
+        .attr("y2", approx.y);
+      arcPath.attr("d", arc(theta, dtheta));
+      actualPoint.attr("cx", current.x).attr("cy", current.y);
+      nextPoint.attr("cx", actualNext.x).attr("cy", actualNext.y);
+      approxPoint.attr("cx", approx.x).attr("cy", approx.y);
+
+      const labels = [
+        { label: "f(θ)", x: current.x + 10, y: current.y - 10, className: "complex-rotation-label" },
+        { label: "f(θ + dθ)", x: actualNext.x + 10, y: actualNext.y + 16, className: "complex-rotation-next-label" },
+        { label: "linear approx", x: approx.x + 10, y: approx.y - 10, className: "complex-rotation-approx-label" },
+        {
+          label: "i f(θ)",
+          x: tangentEnd.x + derivative.re * 24 + 10,
+          y: tangentEnd.y - derivative.im * 24 - 10,
+          className: "complex-rotation-tangent-label",
+        },
+      ];
+      const labelItems = labelGroup.selectAll("g")
+        .data(labels, (d) => d.label)
+        .join((enter) => {
+          const item = enter.append("g");
+          item.append("rect").attr("class", "complex-rotation-label-bg");
+          item.append("text").attr("class", (d) => `complex-rotation-label ${d.className}`);
+          return item;
+        });
+
+      labelItems
+        .attr("transform", (d) => `translate(${d.x},${d.y})`);
+      labelItems.select("text")
+        .text((d) => d.label);
+      labelItems.each(function () {
+        const item = d3.select(this);
+        const textNode = item.select("text").node();
+        if (!textNode) return;
+        const box = textNode.getBBox();
+        item.select("rect")
+          .attr("x", box.x - 5)
+          .attr("y", box.y - 3)
+          .attr("width", box.width + 10)
+          .attr("height", box.height + 6);
+      });
+
+      values.innerHTML = `
+        <div class="exponential-value-card">
+          <strong>current point</strong>
+          <span>f(θ) = ${format(current.re)} + ${format(current.im)}i</span>
+          <span>θ = ${format(theta)} rad</span>
+        </div>
+        <div class="exponential-value-card">
+          <strong>derivative</strong>
+          <span>f'(θ) = i f(θ)</span>
+          <span>= ${format(derivative.re)} + ${format(derivative.im)}i</span>
+        </div>
+        <div class="exponential-value-card">
+          <strong>small step</strong>
+          <span>dθ = ${format(dtheta)}</span>
+          <span>f(θ) + f'(θ)dθ</span>
+        </div>
+      `;
+    }
+
+    function stop() {
+      if (frameId !== null) {
+        cancelAnimationFrame(frameId);
+        frameId = null;
+      }
+      playStart = null;
+    }
+
+    function play(timestamp) {
+      if (playStart === null) playStart = timestamp;
+      const elapsed = (timestamp - playStart) / 1000;
+      const theta = (Number(thetaInput.value) + elapsed * 0.85) % (Math.PI * 2);
+      update(theta);
+      frameId = requestAnimationFrame(play);
+    }
+
+    thetaInput.addEventListener("input", () => {
+      stop();
+      update();
+    });
+    dthetaInput.addEventListener("input", () => update());
+    playButton.addEventListener("click", () => {
+      if (frameId !== null) {
+        stop();
+        update();
+        return;
+      }
+      frameId = requestAnimationFrame(play);
+    });
+    update();
+  }
+
+  renderComplexRotationDemo();
+
+  function renderPhyllotaxisDemo() {
+    const chart = d3.select("#phyllotaxis-chart");
+    const chartNode = chart.node();
+    const angleInput = document.querySelector("#phyllotaxis-angle");
+    const countInput = document.querySelector("#phyllotaxis-count");
+    const replayButton = document.querySelector("#phyllotaxis-replay");
+    const values = document.querySelector("#phyllotaxis-values");
+    if (!chartNode || !angleInput || !countInput || !replayButton || !values) return;
+
+    const width = 720;
+    const height = 720;
+    const centerX = width / 2;
+    const centerY = height / 2;
+    const maxRadius = 318;
+    const seedRadius = 4.2;
+    const goldenAngle = 180 * (3 - Math.sqrt(5));
+    let frameId = null;
+    let currentStep = 0;
+
+    chart.attr("viewBox", `0 0 ${width} ${height}`).selectAll("*").remove();
+    const root = chart.append("g");
+    root.append("circle")
+      .attr("class", "phyllotaxis-boundary")
+      .attr("cx", centerX)
+      .attr("cy", centerY)
+      .attr("r", maxRadius + 16);
+    const seedLayer = root.append("g").attr("class", "phyllotaxis-seeds");
+    const radialLine = root.append("line").attr("class", "phyllotaxis-radius-line");
+    const activeSeed = root.append("circle")
+      .attr("class", "phyllotaxis-active-seed")
+      .attr("r", seedRadius + 2);
+    const angleLabel = root.append("text")
+      .attr("class", "phyllotaxis-label")
+      .attr("x", 28)
+      .attr("y", 34);
+
+    function seedData(angleDegrees, count) {
+      const angleRadians = angleDegrees * Math.PI / 180;
+      const scale = maxRadius / Math.sqrt(count);
+      return d3.range(count).map((index) => {
+        const radius = scale * Math.sqrt(index + 0.5);
+        const theta = index * angleRadians;
+        return {
+          index,
+          radius,
+          theta,
+          x: centerX + radius * Math.cos(theta),
+          y: centerY + radius * Math.sin(theta),
+        };
+      });
+    }
+
+    function updateValues(angleDegrees, count) {
+      values.innerHTML = `
+        <div class="exponential-value-card">
+          <strong>rotation</strong>
+          <span>θ = ${d3.format(".1f")(angleDegrees)} degrees</span>
+          <span>golden angle = ${d3.format(".3f")(goldenAngle)} degrees</span>
+        </div>
+        <div class="exponential-value-card">
+          <strong>position rule</strong>
+          <span>z_n = c sqrt(n) e^(i n θ)</span>
+          <span>each seed is one more complex rotation</span>
+        </div>
+        <div class="exponential-value-card">
+          <strong>seeds</strong>
+          <span>${count} points</span>
+        </div>
+      `;
+    }
+
+    function drawFrame(points, step) {
+      const visible = points.slice(0, step);
+      seedLayer.selectAll("circle")
+        .data(visible, (d) => d.index)
+        .join(
+          (enter) => enter.append("circle")
+            .attr("class", "phyllotaxis-seed")
+            .attr("cx", centerX)
+            .attr("cy", centerY)
+            .attr("r", 0)
+            .call((selection) => selection.transition()
+              .duration(220)
+              .attr("cx", (d) => d.x)
+              .attr("cy", (d) => d.y)
+              .attr("r", seedRadius)),
+          (update) => update
+            .attr("cx", (d) => d.x)
+            .attr("cy", (d) => d.y)
+            .attr("r", seedRadius),
+          (exit) => exit.remove(),
+        )
+        .attr("fill", (d) => d3.interpolateYlGnBu(0.18 + 0.68 * d.index / points.length));
+
+      const latest = points[Math.max(0, Math.min(step - 1, points.length - 1))];
+      radialLine
+        .attr("x1", centerX)
+        .attr("y1", centerY)
+        .attr("x2", latest.x)
+        .attr("y2", latest.y);
+      activeSeed
+        .attr("cx", latest.x)
+        .attr("cy", latest.y);
+      angleLabel.text(`n = ${latest.index + 1}, angle = ${d3.format(".1f")(Number(angleInput.value))} degrees`);
+    }
+
+    function stopAnimation() {
+      if (frameId !== null) {
+        cancelAnimationFrame(frameId);
+        frameId = null;
+      }
+    }
+
+    function startAnimation() {
+      stopAnimation();
+      seedLayer.selectAll("circle").remove();
+      const angleDegrees = Number(angleInput.value);
+      const count = Number(countInput.value);
+      const points = seedData(angleDegrees, count);
+      currentStep = 1;
+      updateValues(angleDegrees, count);
+
+      function tick() {
+        drawFrame(points, currentStep);
+        currentStep = Math.min(points.length, currentStep + 2);
+        if (currentStep < points.length) {
+          frameId = requestAnimationFrame(tick);
+        } else {
+          drawFrame(points, points.length);
+          frameId = null;
+        }
+      }
+
+      tick();
+    }
+
+    angleInput.addEventListener("input", startAnimation);
+    countInput.addEventListener("input", startAnimation);
+    replayButton.addEventListener("click", startAnimation);
+    startAnimation();
+  }
+
+  renderPhyllotaxisDemo();
 })();

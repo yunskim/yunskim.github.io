@@ -53,6 +53,80 @@
 </section>
 <section>
     <h2>\(e^{i \theta}\)의 기하학적 의미</h2>
+    <p>
+        \(f(\theta)=e^{i\theta}\)라고 두면 \(f'(\theta)=i f(\theta)\)이다.
+        여기서 \(f'(\theta)\)는 점 \(f(\theta)\)가 움직이는 순간적인 방향이다.
+        복소수에 \(i\)를 곱하는 것은 평면에서 90도 회전시키는 일이므로,
+        \(f'(\theta)=i f(\theta)\)라는 식은 속도 벡터가 항상 현재 위치에
+        수직이라는 뜻이다.
+    </p>
+    <p>
+        아래 그림에서 검은 점은 \(f(\theta)\), 초록 화살표는 접선 방향
+        \(f'(\theta)=i f(\theta)\)이다. 작은 \(d\theta\)에 대해서는
+        \[
+        f(\theta+d\theta) \approx f(\theta) + f'(\theta)d\theta
+        \]
+        로 근사된다.
+    </p>
+    <div class="complex-rotation-demo">
+        <svg id="complex-rotation-chart" role="img" aria-label="e의 i 세타 제곱이 접선 방향으로 회전하는 선형 근사"></svg>
+    </div>
+    <div class="complex-rotation-controls sans">
+        <label>
+            <span>θ</span>
+            <input id="complex-rotation-theta" type="range" min="0" max="6.283185307" step="0.01" value="0.8">
+        </label>
+        <label>
+            <span>dθ</span>
+            <input id="complex-rotation-dtheta" type="range" min="0.02" max="0.8" step="0.01" value="0.35">
+        </label>
+        <button id="complex-rotation-play" type="button">Play</button>
+    </div>
+    <div id="complex-rotation-values" class="complex-rotation-values sans"></div>
+    <p>
+        \(e^{i\theta}\)를 곱한다는 것은 평면 위의 점을 원점 기준으로 \(\theta\)만큼
+        회전시키는 일이다. 이 회전을 조금씩 반복하면서 반지름을 천천히 키우면
+        해바라기 씨앗처럼 서로 겹치지 않는 나선 배열이 나타난다.
+    </p>
+    <p>
+        아래 애니메이션은 \(n\)번째 씨앗을
+        \[
+        z_n = c\sqrt{n}\,e^{in\theta}
+        \]
+        위치에 찍는다. 기본값인 황금각은 원을 유리수 비율로 반복하지 않기 때문에
+        씨앗들이 특정 방향에만 쌓이지 않고 고르게 퍼진다.
+    </p>
+    <div class="phyllotaxis-demo">
+        <svg id="phyllotaxis-chart" role="img" aria-label="황금각으로 찍히는 해바라기 씨앗 배열 애니메이션"></svg>
+    </div>
+    <div class="phyllotaxis-controls sans">
+        <label>
+            <span>angle</span>
+            <input id="phyllotaxis-angle" type="range" min="120" max="180" step="0.1" value="137.5">
+        </label>
+        <label>
+            <span>seeds</span>
+            <input id="phyllotaxis-count" type="range" min="120" max="900" step="10" value="520">
+        </label>
+        <button id="phyllotaxis-replay" type="button">Replay</button>
+    </div>
+    <div id="phyllotaxis-values" class="phyllotaxis-values sans"></div>
+    <p>
+        \(f(\theta)=e^{i\theta}\)라고 두면 \(f'(\theta)=i f(\theta)\)이다.
+        여기서 \(f'(\theta)\)는 점 \(f(\theta)\)가 움직이는 순간적인 방향이다.
+        복소수에 \(i\)를 곱하는 것은 평면에서 90도 회전시키는 일이므로,
+        \(f'(\theta)=i f(\theta)\)라는 식은 점의 속도가 항상 현재 위치에 수직인
+        방향을 향한다는 뜻이다.
+    </p>
+    <p>
+        따라서 \(e^{i\theta}\)는 원점에서 멀어지거나 가까워지지 않고,
+        반지름 1인 원 위를 따라 움직인다. \(f(0)=1\)에서 출발하고 속도의 크기가
+        1이므로, \(\theta\)가 증가한 만큼 원 위에서 같은 라디안 각도만큼 회전한다.
+        그래서 \(e^{i\theta}\)는 복소평면에서 \(\theta\)만큼의 회전을 나타낸다.
+    </p>
+    <p>
+       \(f(\theta)=e^{i\theta}\)는 exponential function의 일반해 \(e^{c \cdot x}\)와 다를 바가 없다. \(c\)값이 complex number \(i\)라는 점, 각도라는 뜻에서 \(x\)대신 \(\theta\)를 사용했다는 것 외에 특별할 이유가 없다.
+    </p>
 </section>
 <section>
     <h2>다른 함수와 통합하기</h2>

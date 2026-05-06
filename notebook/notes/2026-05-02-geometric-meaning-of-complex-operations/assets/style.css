@@ -34,6 +34,22 @@
   height: 460px;
 }
 
+.complex-rotation-demo svg {
+  display: block;
+  width: 70%;
+  max-width: 760px;
+  height: auto;
+  aspect-ratio: 19 / 14;
+}
+
+.phyllotaxis-demo svg {
+  display: block;
+  width: 70%;
+  max-width: 720px;
+  height: auto;
+  aspect-ratio: 1;
+}
+
 .covid-growth-demo {
   position: relative;
 }
@@ -66,6 +82,24 @@
   margin: 0.5rem 0 1rem;
 }
 
+.phyllotaxis-controls {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(10rem, 1fr)) auto;
+  align-items: end;
+  gap: 0.75rem;
+  width: 70%;
+  margin: 0.75rem 0 1rem;
+}
+
+.complex-rotation-controls {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(10rem, 1fr)) auto;
+  align-items: end;
+  gap: 0.75rem;
+  width: 70%;
+  margin: 0.75rem 0 1rem;
+}
+
 .exponential-shift-controls label,
 .exponential-shift-controls span,
 .covid-growth-controls label,
@@ -75,7 +109,11 @@
 .caffeine-decay-controls label,
 .caffeine-decay-controls span,
 .piketty-growth-controls label,
-.piketty-growth-controls span {
+.piketty-growth-controls span,
+.complex-rotation-controls label,
+.complex-rotation-controls span,
+.phyllotaxis-controls label,
+.phyllotaxis-controls span {
   display: block;
 }
 
@@ -83,7 +121,9 @@
 .covid-growth-controls span,
 .salary-growth-controls span,
 .caffeine-decay-controls span,
-.piketty-growth-controls span {
+.piketty-growth-controls span,
+.complex-rotation-controls span,
+.phyllotaxis-controls span {
   color: var(--muted);
   font-size: 0.85rem;
   margin-bottom: 0.25rem;
@@ -93,9 +133,17 @@
 .covid-growth-controls input,
 .salary-growth-controls input,
 .caffeine-decay-controls input,
-.piketty-growth-controls input {
+.piketty-growth-controls input,
+.complex-rotation-controls input,
+.phyllotaxis-controls input {
   width: 100%;
   box-sizing: border-box;
+}
+
+.complex-rotation-controls button,
+.phyllotaxis-controls button {
+  min-height: 2rem;
+  padding: 0.25rem 0.75rem;
 }
 
 .exponential-curve,
@@ -213,6 +261,105 @@
   fill: var(--ink);
 }
 
+.complex-rotation-unit-circle {
+  fill: color-mix(in srgb, var(--panel) 68%, var(--paper));
+  stroke: var(--rule);
+  stroke-width: 1.4;
+}
+
+.complex-rotation-axis {
+  stroke: var(--rule);
+  stroke-width: 1;
+}
+
+.complex-rotation-radius {
+  stroke: var(--ink);
+  stroke-width: 1.8;
+}
+
+.complex-rotation-tangent,
+.complex-rotation-step {
+  stroke-width: 2.2;
+  stroke-linecap: round;
+}
+
+.complex-rotation-tangent {
+  stroke: var(--accent);
+}
+
+.complex-rotation-step {
+  stroke: #8a4f3d;
+}
+
+.complex-rotation-arrow-head {
+  fill: currentColor;
+  color: var(--accent);
+}
+
+.complex-rotation-arc {
+  fill: none;
+  stroke: color-mix(in srgb, var(--accent) 56%, var(--ink));
+  stroke-width: 2;
+  stroke-dasharray: 4 4;
+}
+
+.complex-rotation-actual {
+  fill: var(--ink);
+}
+
+.complex-rotation-next {
+  fill: var(--paper);
+  stroke: var(--accent);
+  stroke-width: 2;
+}
+
+.complex-rotation-approx {
+  fill: var(--paper);
+  stroke: #8a4f3d;
+  stroke-width: 2;
+}
+
+.complex-rotation-next-label {
+  fill: var(--accent);
+}
+
+.complex-rotation-approx-label {
+  fill: #8a4f3d;
+}
+
+.complex-rotation-tangent-label {
+  fill: var(--accent);
+}
+
+.complex-rotation-label-bg {
+  fill: color-mix(in srgb, var(--paper) 92%, transparent);
+  stroke: color-mix(in srgb, var(--rule) 68%, transparent);
+  stroke-width: 0.8;
+}
+
+.phyllotaxis-boundary {
+  fill: color-mix(in srgb, var(--panel) 75%, var(--paper));
+  stroke: var(--rule);
+  stroke-width: 1.2;
+}
+
+.phyllotaxis-seed {
+  stroke: color-mix(in srgb, var(--ink) 28%, transparent);
+  stroke-width: 0.55;
+}
+
+.phyllotaxis-radius-line {
+  stroke: var(--accent);
+  stroke-width: 1.2;
+  stroke-dasharray: 4 5;
+}
+
+.phyllotaxis-active-seed {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+}
+
 .covid-actual-line {
   stroke: var(--ink);
 }
@@ -305,7 +452,9 @@ circle.covid-projection-high {
 }
 
 .exponential-axis text,
-.exponential-label {
+.exponential-label,
+.complex-rotation-label,
+.phyllotaxis-label {
   fill: var(--muted);
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Noto Sans KR", sans-serif;
   font-size: 12px;
@@ -337,7 +486,9 @@ circle.covid-projection-high {
 
 .salary-growth-values,
 .caffeine-decay-values,
-.piketty-growth-values {
+.piketty-growth-values,
+.complex-rotation-values,
+.phyllotaxis-values {
   display: grid;
   grid-template-columns: repeat(3, minmax(9rem, 1fr));
   gap: 0.75rem;
@@ -409,6 +560,14 @@ circle.covid-projection-high {
     height: 420px;
   }
 
+  .complex-rotation-demo svg {
+    width: 100%;
+  }
+
+  .phyllotaxis-demo svg {
+    width: 100%;
+  }
+
   .exponential-values,
   .exponential-shift-controls,
   .exponential-shift-values,
@@ -419,7 +578,11 @@ circle.covid-projection-high {
   .caffeine-decay-controls,
   .caffeine-decay-values,
   .piketty-growth-controls,
-  .piketty-growth-values {
+  .piketty-growth-values,
+  .complex-rotation-controls,
+  .complex-rotation-values,
+  .phyllotaxis-controls,
+  .phyllotaxis-values {
     width: 100%;
   }
 
@@ -431,7 +594,11 @@ circle.covid-projection-high {
   .caffeine-decay-controls,
   .caffeine-decay-values,
   .piketty-growth-controls,
-  .piketty-growth-values {
+  .piketty-growth-values,
+  .complex-rotation-controls,
+  .complex-rotation-values,
+  .phyllotaxis-controls,
+  .phyllotaxis-values {
     grid-template-columns: 1fr;
   }
 }
