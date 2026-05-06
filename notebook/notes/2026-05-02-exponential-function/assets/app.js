@@ -628,8 +628,8 @@
     if (!chartNode || !rInput || !gInput || !yearsInput || !values) return;
 
     const width = 920;
-    const height = 460;
-    const margin = { top: 34, right: 96, bottom: 58, left: 66 };
+    const height = 500;
+    const margin = { top: 34, right: 96, bottom: 86, left: 66 };
     const innerWidth = width - margin.left - margin.right;
     const innerHeight = height - margin.top - margin.bottom;
     const x = d3.scaleLinear().range([0, innerWidth]);
@@ -957,6 +957,205 @@
   }
 
   renderMooreLawDemo();
+
+  function renderTaylorExpansionDemo() {
+    const chart = d3.select("#taylor-expansion-chart");
+    const chartNode = chart.node();
+    const termsInput = document.querySelector("#taylor-terms");
+    const playButton = document.querySelector("#taylor-play");
+    const values = document.querySelector("#taylor-expansion-values");
+    if (!chartNode || !termsInput || !playButton || !values) return;
+
+    const width = 920;
+    const height = 460;
+    const margin = { top: 34, right: 96, bottom: 58, left: 66 };
+    const innerWidth = width - margin.left - margin.right;
+    const innerHeight = height - margin.top - margin.bottom;
+    const xDomain = [-2.5, 2.2];
+    const yDomain = [-1.5, 8.5];
+    const x = d3.scaleLinear().domain(xDomain).range([0, innerWidth]);
+    const y = d3.scaleLinear().domain(yDomain).range([innerHeight, 0]);
+    const curveX = d3.range(xDomain[0], xDomain[1] + 0.001, 0.025);
+    const expPoints = curveX.map((xValue) => ({ x: xValue, y: Math.exp(xValue) }));
+    const line = d3.line()
+      .x((d) => x(d.x))
+      .y((d) => y(Math.max(yDomain[0], Math.min(yDomain[1], d.y))));
+    const termLabels = ["1", "x", "x^2/2!", "x^3/3!", "x^4/4!", "x^5/5!", "x^6/6!", "x^7/7!", "x^8/8!", "x^9/9!", "x^10/10!"];
+    let timer = null;
+    let isPlaying = true;
+
+    chart.attr("viewBox", `0 0 ${width} ${height}`).selectAll("*").remove();
+    const root = chart.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
+    chart.append("defs")
+      .append("clipPath")
+      .attr("id", "taylor-expansion-clip")
+      .append("rect")
+      .attr("width", innerWidth)
+      .attr("height", innerHeight);
+
+    root.append("g")
+      .attr("class", "exponential-grid")
+      .call(d3.axisLeft(y).ticks(6).tickSize(-innerWidth).tickFormat(""));
+    root.append("g")
+      .attr("class", "exponential-grid")
+      .attr("transform", `translate(0,${innerHeight})`)
+      .call(d3.axisBottom(x).ticks(8).tickSize(-innerHeight).tickFormat(""));
+    root.append("g")
+      .attr("class", "exponential-axis")
+      .attr("transform", `translate(0,${innerHeight})`)
+      .call(d3.axisBottom(x).ticks(8));
+    root.append("g")
+      .attr("class", "exponential-axis")
+      .call(d3.axisLeft(y).ticks(6));
+    root.append("line")
+      .attr("class", "taylor-anchor-line")
+      .attr("x1", x(0))
+      .attr("x2", x(0))
+      .attr("y1", 0)
+      .attr("y2", innerHeight);
+    root.append("line")
+      .attr("class", "taylor-anchor-line")
+      .attr("x1", 0)
+      .attr("x2", innerWidth)
+      .attr("y1", y(1))
+      .attr("y2", y(1));
+
+    const expPath = root.append("path")
+      .datum(expPoints)
+      .attr("class", "taylor-exp-line")
+      .attr("clip-path", "url(#taylor-expansion-clip)")
+      .attr("d", line);
+    const polynomialPath = root.append("path")
+      .attr("class", "taylor-polynomial-line")
+      .attr("clip-path", "url(#taylor-expansion-clip)");
+    const termGroup = root.append("g").attr("transform", `translate(0,${innerHeight + 26})`);
+    const expLabel = root.append("text").attr("class", "exponential-label taylor-exp-label");
+    const polynomialLabel = root.append("text").attr("class", "exponential-label taylor-polynomial-label");
+
+    root.append("text")
+      .attr("class", "exponential-label")
+      .attr("x", innerWidth)
+      .attr("y", innerHeight + 38)
+      .attr("text-anchor", "end")
+      .text("x");
+    root.append("text")
+      .attr("class", "exponential-label")
+      .attr("x", 0)
+      .attr("y", -12)
+      .text("y");
+
+    function factorial(n) {
+      let result = 1;
+      for (let i = 2; i <= n; i += 1) result *= i;
+      return result;
+    }
+
+    function taylorAt(xValue, degree) {
+      let sum = 0;
+      for (let n = 0; n <= degree; n += 1) {
+        sum += Math.pow(xValue, n) / factorial(n);
+      }
+      return sum;
+    }
+
+    function polynomialPoints(degree) {
+      return curveX.map((xValue) => ({ x: xValue, y: taylorAt(xValue, degree) }));
+    }
+
+    function format(value) {
+      return d3.format(".5f")(value);
+    }
+
+    function update() {
+      const degree = Number(termsInput.value);
+      const polynomial = polynomialPoints(degree);
+      polynomialPath
+        .datum(polynomial)
+        .transition()
+        .duration(260)
+        .attr("d", line);
+
+      const expAtOne = Math.exp(1);
+      const approxAtOne = taylorAt(1, degree);
+      const errorAtOne = Math.abs(expAtOne - approxAtOne);
+      const expEnd = expPoints[expPoints.length - 1];
+      const polynomialEnd = polynomial[polynomial.length - 1];
+
+      expLabel
+        .attr("x", innerWidth + 8)
+        .attr("y", y(expEnd.y) + 4)
+        .text("e^x");
+      polynomialLabel
+        .attr("x", innerWidth + 8)
+        .attr("y", y(Math.max(yDomain[0], Math.min(yDomain[1], polynomialEnd.y))) + 4)
+        .text(`P_${degree}(x)`);
+
+      termGroup.selectAll("rect")
+        .data(termLabels, (_, index) => index)
+        .join("rect")
+        .attr("class", (_, index) => index <= degree ? "taylor-term-bar" : "taylor-term-bar-muted")
+        .attr("x", (_, index) => index * 36)
+        .attr("y", -12)
+        .attr("width", 26)
+        .attr("height", 7);
+      termGroup.selectAll("text")
+        .data(termLabels, (_, index) => index)
+        .join("text")
+        .attr("class", "exponential-label")
+        .attr("x", (_, index) => index * 36 + 13)
+        .attr("y", 12)
+        .attr("text-anchor", "middle")
+        .text((_, index) => index);
+
+      values.innerHTML = `
+        <div class="exponential-value-card">
+          <strong>P_${degree}(x)</strong>
+          <span>${termLabels.slice(0, degree + 1).join(" + ")}</span>
+        </div>
+        <div class="exponential-value-card">
+          <strong>at x = 1</strong>
+          <span>P_${degree}(1) = ${format(approxAtOne)}</span>
+          <span>e = ${format(expAtOne)}</span>
+        </div>
+        <div class="exponential-value-card">
+          <strong>absolute error</strong>
+          <span>${format(errorAtOne)}</span>
+        </div>
+      `;
+    }
+
+    function start() {
+      if (timer) return;
+      isPlaying = true;
+      playButton.textContent = "pause";
+      timer = window.setInterval(() => {
+        const next = (Number(termsInput.value) + 1) % 11;
+        termsInput.value = String(next);
+        update();
+      }, 900);
+    }
+
+    function stop() {
+      isPlaying = false;
+      playButton.textContent = "play";
+      window.clearInterval(timer);
+      timer = null;
+    }
+
+    termsInput.addEventListener("input", () => {
+      stop();
+      update();
+    });
+    playButton.addEventListener("click", () => {
+      if (isPlaying) stop();
+      else start();
+    });
+    expPath.attr("d", line);
+    update();
+    start();
+  }
+
+  renderTaylorExpansionDemo();
 
   function renderCovidGrowthDemo() {
     const chart = d3.select("#covid-growth-chart");

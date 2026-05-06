@@ -40,6 +40,12 @@
   height: 500px;
 }
 
+.taylor-expansion-demo svg {
+  display: block;
+  width: 100%;
+  height: 500px;
+}
+
 .covid-growth-demo,
 .moore-law-demo {
   position: relative;
@@ -74,6 +80,19 @@
   min-height: 2rem;
 }
 
+.taylor-expansion-controls {
+  display: grid;
+  grid-template-columns: max-content minmax(14rem, 1fr);
+  align-items: end;
+  gap: 1rem;
+  width: 70%;
+  margin: 0.5rem 0 1rem;
+}
+
+.taylor-expansion-controls button {
+  min-height: 2rem;
+}
+
 .salary-growth-controls,
 .caffeine-decay-controls,
 .piketty-growth-controls {
@@ -95,6 +114,8 @@
 .covid-growth-controls span,
 .moore-law-controls label,
 .moore-law-controls span,
+.taylor-expansion-controls label,
+.taylor-expansion-controls span,
 .salary-growth-controls label,
 .salary-growth-controls span,
 .caffeine-decay-controls label,
@@ -111,6 +132,7 @@
 .exponential-shift-controls span,
 .covid-growth-controls span,
 .moore-law-controls span,
+.taylor-expansion-controls span,
 .salary-growth-controls span,
 .caffeine-decay-controls span,
 .piketty-growth-controls span {
@@ -122,6 +144,7 @@
 .exponential-shift-controls input,
 .covid-growth-controls input,
 .moore-law-controls input[type="range"],
+.taylor-expansion-controls input,
 .salary-growth-controls input,
 .caffeine-decay-controls input,
 .piketty-growth-controls input {
@@ -290,6 +313,46 @@
   fill: var(--ink);
 }
 
+.taylor-exp-line,
+.taylor-polynomial-line {
+  fill: none;
+  stroke-width: 2.4;
+}
+
+.taylor-exp-line {
+  stroke: var(--ink);
+}
+
+.taylor-polynomial-line {
+  stroke: var(--accent);
+}
+
+.taylor-anchor-line {
+  stroke: var(--muted);
+  stroke-dasharray: 4 4;
+  stroke-width: 1.2;
+}
+
+.taylor-term-bar {
+  fill: color-mix(in srgb, var(--accent) 54%, var(--paper));
+  stroke: var(--accent);
+  stroke-width: 1;
+}
+
+.taylor-term-bar-muted {
+  fill: color-mix(in srgb, var(--muted) 18%, var(--paper));
+  stroke: var(--rule);
+  stroke-width: 1;
+}
+
+.taylor-exp-label {
+  fill: var(--ink);
+}
+
+.taylor-polynomial-label {
+  fill: var(--accent);
+}
+
 .covid-actual-line {
   stroke: var(--ink);
 }
@@ -415,7 +478,8 @@ circle.covid-projection-high {
 .salary-growth-values,
 .caffeine-decay-values,
 .piketty-growth-values,
-.moore-law-values {
+.moore-law-values,
+.taylor-expansion-values {
   display: grid;
   grid-template-columns: repeat(3, minmax(9rem, 1fr));
   gap: 0.75rem;
@@ -495,6 +559,10 @@ circle.covid-projection-high {
     height: 430px;
   }
 
+  .taylor-expansion-demo svg {
+    height: 460px;
+  }
+
   .exponential-values,
   .exponential-shift-controls,
   .exponential-shift-values,
@@ -502,6 +570,8 @@ circle.covid-projection-high {
   .covid-growth-values,
   .moore-law-controls,
   .moore-law-values,
+  .taylor-expansion-controls,
+  .taylor-expansion-values,
   .salary-growth-controls,
   .salary-growth-values,
   .caffeine-decay-controls,
@@ -516,6 +586,8 @@ circle.covid-projection-high {
   .covid-growth-values,
   .moore-law-controls,
   .moore-law-values,
+  .taylor-expansion-controls,
+  .taylor-expansion-values,
   .salary-growth-controls,
   .salary-growth-values,
   .caffeine-decay-controls,

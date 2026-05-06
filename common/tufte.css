@@ -186,6 +186,23 @@ section > table {
     width: 55%;
 }
 
+table {
+    border-collapse: collapse;
+}
+
+th,
+td {
+    text-align: left;
+    vertical-align: top;
+    padding-right: 1.5em;
+}
+
+th.numeric,
+td.numeric {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}
+
 /* 50 + 5 == 55, to be the same width as paragraph */
 section > dl,
 section > ol,
