@@ -336,9 +336,11 @@
     const chartNode = chart.node();
     const angleInput = document.querySelector("#phyllotaxis-angle");
     const countInput = document.querySelector("#phyllotaxis-count");
+    const hoverModeInput = document.querySelector("#phyllotaxis-mode-hover");
+    const pathModeInput = document.querySelector("#phyllotaxis-mode-path");
     const replayButton = document.querySelector("#phyllotaxis-replay");
     const values = document.querySelector("#phyllotaxis-values");
-    if (!chartNode || !angleInput || !countInput || !replayButton || !values) return;
+    if (!chartNode || !angleInput || !countInput || !hoverModeInput || !pathModeInput || !replayButton || !values) return;
 
     const width = 720;
     const height = 720;
@@ -358,6 +360,13 @@
       .attr("cx", centerX)
       .attr("cy", centerY)
       .attr("r", maxRadius + 16);
+    const pathLayer = root.append("g").attr("class", "phyllotaxis-path-layer");
+    const pathGuide = pathLayer.append("polyline")
+      .attr("class", "phyllotaxis-path-guide")
+      .style("display", "none");
+    const pathLabelLayer = root.append("g")
+      .attr("class", "phyllotaxis-path-labels")
+      .style("display", "none");
     const seedLayer = root.append("g").attr("class", "phyllotaxis-seeds");
     const radialLine = root.append("line").attr("class", "phyllotaxis-radius-line");
     const activeSeed = root.append("circle")
@@ -449,6 +458,7 @@
     }
 
     function updateValues(angleDegrees, count) {
+      const scale = maxRadius / Math.sqrt(count);
       values.innerHTML = `
         <div class="exponential-value-card">
           <strong>rotation</strong>
@@ -457,14 +467,50 @@
         </div>
         <div class="exponential-value-card">
           <strong>position rule</strong>
-          <span>z_n = c sqrt(n) e^(i n θ)</span>
-          <span>each seed is one more complex rotation</span>
+          <span>z_n = c sqrt(n + 0.5) e^(i n θ)</span>
+          <span>c = ${format(scale)} px</span>
+        </div>
+        <div class="exponential-value-card">
+          <strong>scale algorithm</strong>
+          <span>c = maxRadius / sqrt(seeds)</span>
+          <span>${maxRadius} / sqrt(${count}) = ${format(scale)}</span>
         </div>
         <div class="exponential-value-card">
           <strong>seeds</strong>
           <span>${count} points</span>
+          <span>outer radius stays near ${maxRadius}px</span>
         </div>
       `;
+    }
+
+    function renderPathOverlay(visible) {
+      if (!pathModeInput.checked) {
+        pathGuide.style("display", "none");
+        pathLabelLayer.style("display", "none");
+        pathLabelLayer.selectAll("text").remove();
+        return;
+      }
+
+      pathGuide
+        .attr("points", visible.map((point) => `${point.x},${point.y}`).join(" "))
+        .style("display", null);
+
+      pathLabelLayer
+        .style("display", null)
+        .selectAll("text")
+        .data(visible, (d) => d.index)
+        .join(
+          (enter) => enter.append("text")
+            .attr("class", "phyllotaxis-path-label")
+            .attr("x", (d) => d.x + 5)
+            .attr("y", (d) => d.y - 5)
+            .text((d) => d.index + 1),
+          (update) => update
+            .attr("x", (d) => d.x + 5)
+            .attr("y", (d) => d.y - 5)
+            .text((d) => d.index + 1),
+          (exit) => exit.remove(),
+        );
     }
 
     function drawFrame(points, step) {
@@ -507,6 +553,8 @@
           hideTooltip();
         }
       }
+
+      renderPathOverlay(visible);
 
       const latest = points[Math.max(0, Math.min(step - 1, points.length - 1))];
       radialLine
@@ -553,6 +601,13 @@
 
     angleInput.addEventListener("input", startAnimation);
     countInput.addEventListener("input", startAnimation);
+    hoverModeInput.addEventListener("change", () => {
+      if (hoverModeInput.checked) renderPathOverlay([]);
+    });
+    pathModeInput.addEventListener("change", () => {
+      const visible = seedLayer.selectAll("circle").data();
+      renderPathOverlay(visible);
+    });
     replayButton.addEventListener("click", startAnimation);
     startAnimation();
   }

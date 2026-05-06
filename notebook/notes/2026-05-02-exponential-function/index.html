@@ -240,7 +240,14 @@
     </figure>
 </section>
 <section>
-    <h2>\(f(x + dx) \approx f(x) \cdot (1 + dx)\)의 의미</h2>
+    <h2>\(f(x + dx) \approx f(x) \cdot (1 + c \cdot dx)\)의 의미</h2>
+    <h3></h3>
+    <p>
+        \(f'(x) = c \cdot f(x)\)는 증가분을 근사한다. 다음 단계의 함수값을 알고 싶으면 현재 함수값 \(f(x)\)에 증가분에 더해야 한다. 이 관계를 유도해보면: <br>
+        \[\begin{align}  f(x) \cdot f(dx) &= f(x + dx) \label{first} \tag{1} \\\\ &\approx f(x) + f’(x)dx \\\\ &= f(x) + c \cdot f(x) dx \\\\ &= f(x)(1 + c * dx) \label{last} \tag{2} \end{align}\]
+
+        \(\ref{first}\)와 \(\ref{last}\)에 의해 충분히 작은 \(dx\)에 대해 \(f(dx) \approx (1 + c \cdot dx) \)이다. \(c \cdot dx\)가 증가율 역할을 한다.
+    </p>
 </section>
 <section>
     <h2>exponential function의 예</h2>
@@ -300,13 +307,21 @@
         임의의 \(x\)에 대해 \(e^{c \cdot x} = 2^x\)로 표현할 수 있고, 계산을 편하게 하기 위해 \(x = 1\)을 넣어보자. \(e^c = 2\)라는 관계가 나오고 양변에
         \(log\)를 잡으면 \(c = \log2\)라는 답이 나온다.
     </p>
+    <p>
+        매 순간 \(log2 \approx 0.693\) 비율로 증가하면 1 단위 시간 후 그 누적이 정확히 2배가 된다. 시간이 지날수록 증가값이 커지는 모습을 보이므로 단위 시간 당 증가율 2보다 작은
+        상대변화율 \(log2\)을 \(c\)값으로 가진다.
+    </p>
     <h3>\(10^x\)도 exponential function</h3>
     <p>
         \(10^{x + y} = 10^x \cdot 10^y \)이 성립한다. 동일한 방법으로 \(c = \log10\)을 구할 수 있다.
     </p>
     <h3>\(e\)는 실수</h3>
     <p>
-        \(2^x\)의 2, \(10^x\)의 10과 마찬가지로 \(e^x\)의 \(e\)또한 특별할 것 없는 실수이다. \(f(x)=e^{c \cdot x}\)에서 \(c = 1\)을 만족시키는 실수를 기호로 표현할 뿐, 2보다 덜 할 것도 없고 10보다 못할 것도 없는 실수<label for="sn-auto-8" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-auto-8" class="margin-toggle"/><span class="sidenote">비율 c = 1에 대응하는 실수라는 점에 대해서는. 실제로 여러가지 <a href="https://en.wikipedia.org/wiki/E_(mathematical_constant)">성질</a>이 있지만 그걸 아는 사람이 이 글을 읽고 있을 리가 없잖아요.</span>에 불과하다.
+        \(2^x\)의 2, \(10^x\)의 10과 마찬가지로 \(e^x\)의 \(e\)또한 특별할 것 없는 실수이다. \(f(x)=e^{c \cdot x}\)에서 \(c = 1\)을 만족시키는 실수를
+        기호로 표현할 뿐, 2보다 덜 할 것도 없고 10보다 못할 것도 없는 실수
+        <label for="sn-auto-8" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-auto-8" class="margin-toggle"/><span class="sidenote">비율 c = 1에 대응하는 실수라는 점에 대해서는. 실제로 여러가지 <a
+                href="https://en.wikipedia.org/wiki/E_(mathematical_constant)">성질</a>이 있지만 그걸 아는 사람이 이 글을 읽고 있을 리가 없잖아요.</span>
+        에 불과하다.
     </p>
     <p>
         \(e\)는 2.7187...으로 무리수이다.
@@ -326,7 +341,7 @@
         지수함수 \(f(x)=e^{cx}\)의 특별한 점은 미분해도 자기 자신의 상수배가 된다는 것이다.
         즉 \(f'(x)=c \cdot e^{cx}\)이고, 어떤 지점 \(x=a\)에서의 기울기도 \(c \cdot e^{ca}\)이다.
         그래서 수준 \(f(x)\)는 지점마다 달라지지만 상대 변화율
-        \(\frac{f'(x)}{f(x)}\)는 항상 \(c\)로 일정하다. 거꾸로 score function이 상수 \(c\)인 함수를 exponential function으로 볼 수 있다.
+        \(\frac{f'(x)}{f(x)}\)는 항상 \(c\)로 일정하다. 거꾸로 상대 변화율이 상수 \(c\)인 함수를 exponential function으로 볼 수 있다.
     </p>
     <p>
         함수의 상대변화율을 score function

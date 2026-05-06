@@ -87,7 +87,8 @@
     <h2>\(i^2 = -1\)의 기하학적 의미</h2>
 </section>
 <section>
-    <h2>\(e^{i \theta}\)의 기하학적 의미</h2>
+    <h2>회전</h2>
+    <h3>\(e^{i \theta}\)은 원점을 중심을 회전시킨다.</h3>
     <p>
         \(f(\theta)=e^{i\theta}\)라고 두면 \(f'(\theta)=i f(\theta)\)이다.
         여기서 \(f'(\theta)\)는 점 \(f(\theta)\)가 움직이는 순간적인 방향이다.
@@ -118,9 +119,19 @@
         <button id="complex-rotation-play" type="button">Play</button>
     </div>
     <div id="complex-rotation-values" class="complex-rotation-values sans"></div>
+
+    <h3>잎차례(phyllotaxis): 식물의 줄기에 잎이 달리는 순서</h3>
+    <p>
+        complex number가 평면 위의 점이며 multiplication을 회전 + 크기 변화로 이해한다면 간단한 multiplication 규칙을 적용해 흥미로운 패턴을 만들 수 있다.
+    </p>
     <p>
         \(e^{i\theta}\)를 곱한다는 것은 평면 위의 점을 원점 기준으로 \(\theta\)만큼
-        회전시키는 일이다. 이 회전을 조금씩 반복하면서 반지름을 천천히 키우면
+        회전시키는 일이다. 시작점의 complex number에 \(e^{i\theta}\)을 조금씩 반복해 곱하면 원점을 중심으로 회전하는 complex number를 얻게 된다. 단순히 연산을 반복하기만 하면 된다. 회전(=곱하면서)하면서 이전 complex number와 겹치지 않게 반지름(\(\sqrt n \) )을 천천히 키우면
+        해바라기 씨앗처럼 서로 겹치지 않는 나선 배열이 나타난다.
+    </p>
+    <p>
+        \(c\)는 그림 전체가 <code>canvas</code>에 들어오도록 <code>scale factor</code>이다. 더 많은 \(n\) 포인트를 그리더라도 화면에 모두 들어오도록 조절한다.
+        회전시키는 일이다. 시작점의 complex number에 \(e^{i\theta}\)을 조금씩 반복해 곱하면 원점을 중심으로 회전하는 complex number를 얻게 된다. 단순히 연산을 반복하기만 하면 된다. 회전(=곱하면서)하면서 이전 complex number와 겹치지 않게 반지름(\(\sqrt n \) )을 천천히 키우면
         해바라기 씨앗처럼 서로 겹치지 않는 나선 배열이 나타난다.
     </p>
     <p>
@@ -128,8 +139,7 @@
         \[
         z_n = c\sqrt{n}\,e^{in\theta}
         \]
-        위치에 찍는다. 기본값인 황금각은 원을 유리수 비율로 반복하지 않기 때문에
-        씨앗들이 특정 방향에만 쌓이지 않고 고르게 퍼진다.
+        위치에 찍는다. 기본값인 황금각은 유리수로 표현하기 어려워 씨앗들이 특정 방향에만 쌓이지 않고 고르게 퍼진다.
     </p>
     <div class="phyllotaxis-demo">
         <svg id="phyllotaxis-chart" role="img" aria-label="황금각으로 찍히는 해바라기 씨앗 배열 애니메이션"></svg>
@@ -143,6 +153,11 @@
             <span>seeds</span>
             <input id="phyllotaxis-count" type="range" min="120" max="900" step="10" value="520">
         </label>
+        <fieldset class="phyllotaxis-mode">
+            <legend>overlay</legend>
+            <label><input id="phyllotaxis-mode-hover" type="radio" name="phyllotaxis-mode" value="hover" checked> Hover</label>
+            <label><input id="phyllotaxis-mode-path" type="radio" name="phyllotaxis-mode" value="path"> Path</label>
+        </fieldset>
         <button id="phyllotaxis-replay" type="button">Replay</button>
     </div>
     <div id="phyllotaxis-values" class="phyllotaxis-values sans"></div>
@@ -164,6 +179,18 @@ plt.scatter(z.real, z.imag, s=10, c=n, cmap="viridis")
 plt.axis("equal")
 plt.axis("off")
 plt.show()</code></pre>
+    <p>
+        J언어로도 같은 내용을 재작성했다.
+    </p>
+    <pre><code>require 'plot'
+
+golden_angle =: 1p1 * (3 - %: 5)
+n =: i. 800
+r =: %: n
+theta =: n * golden_angle
+z =: r * ^ j. theta
+
+('aspect 1; type dot; pensize 4') plot z</code></pre>
     <p>
         \(f(\theta)=e^{i\theta}\)라고 두면 \(f'(\theta)=i f(\theta)\)이다.
         여기서 \(f'(\theta)\)는 점 \(f(\theta)\)가 움직이는 순간적인 방향이다.
