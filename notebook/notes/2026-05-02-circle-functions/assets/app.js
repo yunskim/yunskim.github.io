@@ -381,7 +381,7 @@
       resultLabel
         .attr("x", planeResult.x + 10)
         .attr("y", planeResult.y - 10)
-        .text(kind === "cos" ? `cos theta = ${numberFormat(finalValue)}` : `sin theta = ${numberFormat(finalValue)}`);
+        .text(planeResult.label);
 
       numeratorLine
         .attr("x1", isSin ? result.x + result.width / 2 - 70 : twoScale(0))
