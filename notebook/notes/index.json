@@ -95,6 +95,33 @@
     "assets_href": "/notebook/notes/2026-05-02-poisson-distribution/assets/"
   },
   {
+    "title": "사진 노출 — 세 함수가 한 시스템에서 만나기",
+    "slug": "2026-05-02-photographic-exposure",
+    "date": "2026-XX-XX",
+    "tags": [
+      "math",
+      "applications"
+    ],
+    "summary": "linear, power, log function이 사진의 노출 시스템에서 어떻게 통합되는가",
+    "description": "linear, power, log function이 사진의 노출 시스템에서 어떻게 통합되는가",
+    "href": "/notebook/notes/2026-05-02-photographic-exposure/",
+    "canonical": "/notebook/notes/2026-05-02-photographic-exposure/",
+    "og_image": "",
+    "mathjax": true,
+    "scroll_reveal": false,
+    "publish": true,
+    "promote_app": false,
+    "app_label": "사진 노출 — 세 함수가 한 시스템에서 만나기",
+    "app_summary": "linear, power, log function이 사진의 노출 시스템에서 어떻게 통합되는가",
+    "related": [
+      "2026-05-02-exponential-function",
+      "2026-05-02-log-function",
+      "2026-05-02-power-function",
+      "2026-05-02-linear-function"
+    ],
+    "assets_href": "/notebook/notes/2026-05-02-photographic-exposure/assets/"
+  },
+  {
     "title": "Normal Distribution",
     "slug": "2026-05-02-normal-distribution",
     "date": "2026-XX-XX",

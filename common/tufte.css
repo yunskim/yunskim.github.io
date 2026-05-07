@@ -357,6 +357,26 @@ pre > code {
     display: block;
 }
 
+pre {
+    position: relative;
+}
+
+.copy-code-button {
+    display: block;
+    margin-left: 2.5%;
+    margin-bottom: 0.35rem;
+    padding: 0.2rem 0.45rem;
+    border: 1px solid #ccc;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.copy-code-button:hover {
+    background: rgba(0, 0, 0, 0.04);
+}
+
 pre.fullwidth > code {
     width: 90%;
 }

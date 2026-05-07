@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>사진 노출 — 세 함수가 한 시스템에서 만나기</title>
+    <meta name="description" content="linear, power, log function이 사진의 노출 시스템에서 어떻게 통합되는가">
+    <link rel="canonical" href="https://yunskim.github.io/notebook/notes/2026-05-02-photographic-exposure/">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="사진 노출 — 세 함수가 한 시스템에서 만나기">
+    <meta property="og:description" content="linear, power, log function이 사진의 노출 시스템에서 어떻게 통합되는가">
+    <meta property="og:url" content="https://yunskim.github.io/notebook/notes/2026-05-02-photographic-exposure/">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="/common/tufte.css">
+    <link rel="stylesheet" href="/common/site.css">
+    <link rel="stylesheet" href="/notebook/styles.css">
+    <link rel="stylesheet" href="/notebook/notes/2026-05-02-photographic-exposure/assets/style.css">
+
+    <script defer src="/common/tufte.js"></script>
+    <script defer src="/notebook/promoted-notes.js"></script>
+  </head>
+  <body>
+    <article class="math-note">
+      <nav class="site-nav" aria-label="사이트 네비게이션">
+        <a href="/">Home</a>
+        <a href="/boxoffice/">Boxoffice</a>
+        <a href="/starbucks/">Starbucks</a>
+        <a href="/zipcodes/">Zipcodes</a>
+        <a href="/apartments/">Apartments</a>
+        <a href="/notebook/notes/2026-05-02-special-functions/">Special Functions</a>
+        <a href="/notebook/notes/2026-05-02-linear-algebra/">Linear Algebra</a>
+        <a href="/notebook/notes/2026-05-02-j-language/">J Language</a>
+        <a href="/notebook/" aria-current="page">Notebook</a>
+      </nav>
+      <p class="project-path"><a href="/notebook/">Notebook</a> / notes</p>
+      <h1>사진 노출 — 세 함수가 한 시스템에서 만나기</h1>
+      <p class="subtitle">linear, power, log function이 사진의 노출 시스템에서 어떻게 통합되는가</p>
+      <p class="note-meta sans">2026-XX-XX</p>
+      <p class="note-tags sans"><a href="/notebook/?tag=math">math</a> <a href="/notebook/?tag=applications">applications</a></p>
+      <section>
+    <h2>도입</h2>
+    <p>
+        사진을 한 번이라도 다뤄본 사람이라면 카메라의 세 가지 설정 - 셔터 속도, 조리개, ISO -
+        를 들어봤을 것이다. 이 세 가지가 합쳐져서 사진의 밝기가 결정된다는 것도 알 것이다.
+        그런데 왜 조리개의 f-number는 헷갈리는지, 왜 사진가들이 'stop'이라는 이상한 단위를
+        사용하는지는 잘 안 알려져 있다.
+    </p>
+    <p>
+        사실 사진의 노출은 격자의 세 함수 - linear, power, log - 가 한 시스템에서 통합되어
+        작동하는 흥미로운 예이다. 함수의 이름을 모르고 사진을 찍어도 사진은 잘 찍히지만,
+        그 이름을 알면 카메라의 설정이 왜 그렇게 되어 있는지가 보인다.
+    </p>
+</section>
+
+<section>
+    <h2>세 가지 변수</h2>
+    <p>
+        사진의 밝기를 결정하는 세 가지 변수:
+    </p>
+    <ul>
+        <li><strong>셔터 속도</strong>: 빛이 들어오는 시간. 1/100초, 1/50초 같은 단위.</li>
+        <li><strong>조리개</strong>: 빛이 들어오는 구멍의 크기. f/2, f/2.8, f/4 같은 f-number로 표시.</li>
+        <li><strong>ISO</strong>: 센서의 빛 감도. 100, 200, 400 같은 숫자.</li>
+    </ul>
+    <p>
+        각 변수가 빛의 양과 어떤 관계인지 하나씩 보자.
+    </p>
+</section>
+
+<section>
+    <h2>노출 설정 실험</h2>
+    <p>
+        기준 노출을 ISO 100, f/4, 1/125초로 두고 세 설정을 직접 바꿔보자. 아래 막대는 각 설정이
+        기준보다 몇 stop 밝게 또는 어둡게 만드는지 보여준다. 오른쪽의 총합이 0이면 기준과 같은 밝기,
+        +1이면 두 배 밝기, -1이면 절반 밝기다.
+    </p>
+    <figure class="fullwidth exposure-demo">
+        <div class="exposure-controls sans">
+            <label>
+                <span>셔터 속도 <output id="exposure-shutter-label"></output></span>
+                <input id="exposure-shutter" type="range" aria-label="셔터 속도">
+            </label>
+            <label>
+                <span>조리개 <output id="exposure-aperture-label"></output></span>
+                <input id="exposure-aperture" type="range" aria-label="조리개">
+            </label>
+            <label>
+                <span>ISO <output id="exposure-iso-label"></output></span>
+                <input id="exposure-iso" type="range" aria-label="ISO">
+            </label>
+        </div>
+        <svg id="exposure-chart" role="img" aria-label="셔터 속도, 조리개, ISO 설정에 따른 노출 변화"></svg>
+        <div id="exposure-values" class="exposure-values sans" aria-live="polite"></div>
+    </figure>
+</section>
+
+<section>
+    <h2>셔터 속도: linear</h2>
+    <p>
+        셔터를 두 배 오래 열면 빛이 두 배 들어온다. 가장 단순한 관계.
+    </p>
+    <ul>
+        <li>1/100초 → 1/50초: 시간 두 배, 빛 두 배.</li>
+        <li>1/100초 → 1/25초: 시간 네 배, 빛 네 배.</li>
+        <li>1/100초 → 1/200초: 시간 절반, 빛 절반.</li>
+    </ul>
+    <p>
+        셔터 속도와 들어오는 빛이 정비례. 격자에서 본 linear function이다.
+    </p>
+</section>
+
+<section>
+    <h2>조리개: power (제곱)</h2>
+    <p>
+        조리개는 약간 헷갈린다. f-number가 두 배가 되면 빛이 두 배일 것 같지만,
+        실제로는 1/4로 줄어든다.
+    </p>
+    <ul>
+        <li>f/2 → f/4: f-number가 두 배. 빛은 1/4.</li>
+        <li>f/2 → f/2.8: f-number가 √2배 (약 1.41배). 빛은 1/2.</li>
+    </ul>
+    <p>
+        왜 이렇게 되나? 조리개는 빛이 통과하는 원형 구멍이고, 들어오는 빛은 그 구멍의
+        <em>면적</em>에 비례한다. 그런데 f-number는 구멍의 <em>지름</em>과 관련된다
+        <label for="sn-auto-1" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-auto-1" class="margin-toggle"/><span class="sidenote">정확히는 f-number = (렌즈 초점거리) / (조리개 지름). f-number가 클수록 조리개가 작다.</span>.
+        지름이 두 배면 면적은 네 배. 그래서 f-number가 두 배 (지름이 절반) 면 면적은 1/4
+        (빛도 1/4).
+    </p>
+    <p>
+        면적과 길이의 관계가 power function이다. 격자에서 본 \(f(x) = x^2\)의 그 함수.
+        조리개의 헷갈림이 사실 power function의 자연스러운 결과다.
+    </p>
+</section>
+
+<section>
+    <h2>ISO: linear</h2>
+    <p>
+        ISO는 다시 단순해진다. ISO가 두 배면 센서가 두 배 민감해진다. 같은 양의 빛이라도
+        두 배 밝게 기록.
+    </p>
+    <ul>
+        <li>ISO 100 → ISO 200: 감도 두 배.</li>
+        <li>ISO 100 → ISO 400: 감도 네 배.</li>
+    </ul>
+    <p>
+        ISO 값과 기록되는 밝기가 정비례. 다시 linear function.
+    </p>
+</section>
+
+<section>
+    <h2>'Stop'이라는 단위: log</h2>
+    <p>
+        세 변수가 다른 함수 형태이지만, 사진가들은 이걸 한 단위로 다룬다. 그게 'stop'이다.
+        1 stop은 빛의 양이 두 배 (또는 절반).
+    </p>
+    <ul>
+        <li>셔터 1/100 → 1/50: <strong>+1 stop</strong> (빛 두 배)</li>
+        <li>조리개 f/2.8 → f/2: <strong>+1 stop</strong> (빛 두 배)</li>
+        <li>ISO 100 → 200: <strong>+1 stop</strong> (빛 두 배)</li>
+    </ul>
+    <p>
+        세 변수가 다른 형태로 빛을 조절하는데, '두 배'라는 같은 단위 (stop) 로 비교 가능.
+        1 stop = 빛이 두 배라는 정의가 정확히 밑 2의 로그다. \(1 \text{ stop} = \log_2(\text{빛의 비율})\).
+    </p>
+    <p>
+        Stop이 log 스케일이라는 사실이 사진가의 일상을 단순하게 만든다. 빛이 두 배 필요하면
+        어느 변수든 1 stop 올리면 된다. 두 배 곱하기가 1 더하기로 바뀌는 것이 log의 정신이다.
+    </p>
+</section>
+
+<section>
+    <h2>세 함수의 통합</h2>
+    <p>
+        사진 한 장의 밝기는 세 변수의 곱으로 결정된다:
+    </p>
+    <p>
+        \[ \text{빛} \propto \text{셔터} \times \frac{1}{\text{f-number}^2} \times \text{ISO} \]
+    </p>
+    <p>
+        곱셈으로 결합된 세 변수. 양변에 log를 취하면:
+    </p>
+    <p>
+        \[ \log(\text{빛}) = \log(\text{셔터}) - 2\log(\text{f-number}) + \log(\text{ISO}) + (\text{상수}) \]
+    </p>
+    <p>
+        곱셈이 덧셈으로 바뀐다. 그리고 각 항이 stop 단위로 옮겨진다. 사진가가 'stop으로 더하고
+        빼기'를 할 수 있는 이유가 정확히 이것이다. 곱셈으로 결합된 시스템을 log를 통해
+        덧셈으로 옮기는 작업.
+    </p>
+    <p>
+        격자의 세 함수가 사진 노출에서 만난다. Linear (셔터, ISO), Power (조리개), Log (stop).
+        세 함수가 분리된 게 아니라 한 시스템 안에서 통합되어 작동한다.
+    </p>
+</section>
+
+<section>
+    <h2>실용에서의 의미</h2>
+    <p>
+        사진가가 노출을 조정할 때 다음 세 옵션이 모두 같은 결과를 만든다:
+    </p>
+    <ul>
+        <li>셔터를 두 배 오래 열기 (+1 stop)</li>
+        <li>조리개를 한 단계 열기 (예: f/2.8 → f/2, +1 stop)</li>
+        <li>ISO를 두 배 올리기 (예: 100 → 200, +1 stop)</li>
+    </ul>
+    <p>
+        세 옵션 모두 빛이 두 배 늘어난다. 다만 부수 효과가 다르다. 셔터를 늘리면 움직이는
+        피사체가 흔들리고, 조리개를 열면 심도 (초점이 맞는 범위) 가 얕아지고, ISO를 올리면
+        노이즈가 늘어난다.
+    </p>
+    <p>
+        같은 결과를 다른 길로 얻을 수 있다는 사실이 사진의 창의성의 출발점이다. 어두운 풍경을
+        흔들림 없이 찍고 싶으면 셔터 대신 조리개를 열거나 ISO를 올린다. 인물의 배경을 흐리게
+        하고 싶으면 조리개를 열고 다른 변수로 보정한다. 같은 빛의 양을 다른 조합으로 만드는
+        작업.
+    </p>
+</section>
+
+<section>
+    <h2>마치며</h2>
+    <p>
+        사진을 잘 찍기 위해 함수의 이름을 알 필요는 없다. 카메라가 알아서 stop으로 계산해준다.
+        다만 'f-number가 왜 헷갈리는지', '왜 stop이라는 이상한 단위를 쓰는지'의 답은 격자의 세
+        함수에 있다. Linear가 시간을 다루고, Power가 면적을 다루고, Log가 곱셈을 덧셈으로 바꿔준다.
+    </p>
+    <p>
+        일상의 도구가 격자의 함수들의 통합으로 만들어졌다는 사실이 흥미롭다. 우리가 매일 사용하는
+        도구들이 사실 같은 수학 framework의 다른 응용일 수 있다.
+    </p>
+</section>
+      
+      <section aria-labelledby="related-notes-heading">
+        <h2 id="related-notes-heading">관련 노트</h2>
+        <ol class="related-notes sans">
+          <li><a href="/notebook/notes/2026-05-02-exponential-function/">Exponential Function</a></li>
+          <li><a href="/notebook/notes/2026-05-02-log-function/">Log Function</a></li>
+          <li><a href="/notebook/notes/2026-05-02-power-function/">Power Function</a></li>
+          <li><a href="/notebook/notes/2026-05-02-linear-function/">Linear Function</a></li>
+        </ol>
+      </section>
+    </article>
+    <script>
+      window.MathJax = {
+        loader: {
+          load: ["[tex]/physics"]
+        },
+        tex: {
+          inlineMath: [["\\(", "\\)"]],
+          displayMath: [["\\[", "\\]"]],
+          packages: {"[+]": ["physics"]}
+        },
+        svg: {
+          fontCache: "global"
+        }
+      };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="/notebook/notes/2026-05-02-photographic-exposure/assets/app.js"></script>
+  </body>
+</html>
