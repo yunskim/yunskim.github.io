@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="/common/tufte.css">
     <link rel="stylesheet" href="/common/site.css">
     <link rel="stylesheet" href="/notebook/styles.css">
-    <link rel="stylesheet" href="./assets/style.css">
+    <link rel="stylesheet" href="/notebook/notes/2026-05-02-circle-functions/assets/style.css">
 
     <script defer src="/common/tufte.js"></script>
     <script defer src="/notebook/promoted-notes.js"></script>
@@ -38,6 +38,11 @@
       <p class="note-meta sans">2026-XX-XX</p>
       <p class="note-tags sans"><a href="/notebook/?tag=math">math</a> <a href="/notebook/?tag=statistics">statistics</a></p>
       <section>
+    <h2>먼저 읽어야 할 글</h2>
+    <h3>Geometric Meaning of Complex Operations</h3>
+</section>
+
+<section>
     <h2>연산을 그림으로 표현하기</h2>
     <h3>addition은 평행이동</h3>
     <h3>multiplication은 크기 변환 & 회전</h3>
@@ -54,9 +59,49 @@
 </section>
 <section>
     <h2>\(cos(x)\)</h2>
+    <p>
+        Euler formula \(e^{i\theta} = \cos\theta + i\sin\theta\)에서 켤레인
+        \(e^{-i\theta} = \cos\theta - i\sin\theta\)를 더하면 허수부가 사라진다.
+    </p>
+    <p>
+        \[
+            \cos\theta = \frac{e^{i\theta} + e^{-i\theta}}{2}
+        \]
+    </p>
+    <figure class="fullwidth circle-euler-demo">
+        <div class="circle-controls sans">
+            <button id="cos-euler-toggle" type="button">pause</button>
+            <label>
+                <span>theta</span>
+                <input id="cos-euler-theta" type="range" min="0" max="6.283185307179586" step="0.001" value="0">
+            </label>
+        </div>
+        <svg id="cos-euler-chart" role="img" aria-label="cos theta equals the average of e to the i theta and e to the negative i theta"></svg>
+        <div id="cos-euler-values" class="circle-values sans" aria-live="polite"></div>
+    </figure>
 </section>
 <section>
     <h2>\(sin(x)\)</h2>
+    <p>
+        이번에는 \(e^{i\theta}\)에서 \(e^{-i\theta}\)를 빼면 실수부가 사라지고 허수부만 남는다.
+        남은 \(2i\sin\theta\)를 \(2i\)로 나누면 \(\sin\theta\)가 된다.
+    </p>
+    <p>
+        \[
+            \sin\theta = \frac{e^{i\theta} - e^{-i\theta}}{2i}
+        \]
+    </p>
+    <figure class="fullwidth circle-euler-demo">
+        <div class="circle-controls sans">
+            <button id="sin-euler-toggle" type="button">pause</button>
+            <label>
+                <span>theta</span>
+                <input id="sin-euler-theta" type="range" min="0" max="6.283185307179586" step="0.001" value="0">
+            </label>
+        </div>
+        <svg id="sin-euler-chart" role="img" aria-label="sin theta equals e to the i theta minus e to the negative i theta divided by two i"></svg>
+        <div id="sin-euler-values" class="circle-values sans" aria-live="polite"></div>
+    </figure>
 </section>
       
     </article>
@@ -77,6 +122,6 @@
     </script>
     <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
-    <script src="./assets/app.js"></script>
+    <script src="/notebook/notes/2026-05-02-circle-functions/assets/app.js"></script>
   </body>
 </html>
