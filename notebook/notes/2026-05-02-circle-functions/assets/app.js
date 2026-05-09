@@ -447,6 +447,335 @@
     requestAnimationFrame(animate);
   }
 
+  function renderComplexHelixDemo() {
+    const container = document.querySelector("#complex-helix-scene");
+    const thetaInput = document.querySelector("#complex-helix-theta");
+    const toggle = document.querySelector("#complex-helix-toggle");
+    const values = document.querySelector("#complex-helix-values");
+    const viewButtons = Array.from(document.querySelectorAll(".circle-view-buttons [data-view]"));
+    if (!container || !thetaInput || !toggle || !values || !window.THREE) return;
+
+    const three = window.THREE;
+    const thetaMax = Math.PI * 6;
+    const xScale = 0.52;
+    const xMax = thetaMax * xScale;
+    const xMid = xMax / 2;
+    const numberFormat = d3.format("+.3f");
+    const thetaFormat = d3.format(".3f");
+    let theta = Number(thetaInput.value);
+    let playing = true;
+    let lastTime = null;
+    let viewMode = "auto";
+    let cameraTransition = null;
+
+    const scene = new three.Scene();
+    scene.background = new three.Color(0xfffff8);
+
+    const camera = new three.OrthographicCamera(-10, 10, 4, -4, 0.1, 1000);
+    const renderer = new three.WebGLRenderer({ antialias: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    container.appendChild(renderer.domElement);
+
+    const world = new three.Group();
+    scene.add(world);
+    scene.add(new three.AmbientLight(0xffffff, 0.38));
+    const keyLight = new three.DirectionalLight(0xffffff, 1.08);
+    keyLight.position.set(xMid - 3, 6.5, 8.5);
+    scene.add(keyLight);
+    const fillLight = new three.DirectionalLight(0xf3ead8, 0.28);
+    fillLight.position.set(xMid + 6, -4, -5);
+    scene.add(fillLight);
+    const rimLight = new three.DirectionalLight(0xd8f0ff, 0.62);
+    rimLight.position.set(xMid + 2, 2, -8);
+    scene.add(rimLight);
+
+    const colors = {
+      axis: 0xb8b0a4,
+      grid: 0xd8d1c6,
+      real: 0x2f6f68,
+      imaginary: 0x8a6f3d,
+      point: 0xc7472f,
+    };
+
+    function makeLine(points, color, opacity = 1) {
+      const geometry = new three.BufferGeometry().setFromPoints(points);
+      const material = new three.LineBasicMaterial({
+        color,
+        transparent: opacity < 1,
+        opacity,
+      });
+      return new three.Line(geometry, material);
+    }
+
+    function makeTrailGeometry(points, radius) {
+      const curve = new three.CatmullRomCurve3(points);
+      const tubularSegments = Math.max(16, points.length * 2);
+      const radialSegments = 20;
+      const geometry = new three.TubeGeometry(curve, tubularSegments, radius, radialSegments, false);
+      const colorAttribute = [];
+      const startColor = new three.Color(0x2b6f9c);
+      const endColor = new three.Color(0x162f52);
+      for (let i = 0; i <= tubularSegments; i += 1) {
+        const color = startColor.clone().lerp(endColor, i / tubularSegments);
+        for (let j = 0; j <= radialSegments; j += 1) {
+          colorAttribute.push(color.r, color.g, color.b);
+        }
+      }
+      geometry.setAttribute("color", new three.Float32BufferAttribute(colorAttribute, 3));
+      return geometry;
+    }
+
+    function makeLabel(text, position, color = "#736b60", scale = [1.9, 0.54]) {
+      const canvas = document.createElement("canvas");
+      canvas.width = 256;
+      canvas.height = 72;
+      const context = canvas.getContext("2d");
+      context.clearRect(0, 0, canvas.width, canvas.height);
+      context.font = "600 28px Gill Sans, Calibri, Noto Sans KR, sans-serif";
+      context.fillStyle = color;
+      context.textAlign = "center";
+      context.textBaseline = "middle";
+      context.fillText(text, canvas.width / 2, canvas.height / 2);
+      const texture = new three.CanvasTexture(canvas);
+      const material = new three.SpriteMaterial({ map: texture, transparent: true });
+      const sprite = new three.Sprite(material);
+      sprite.position.copy(position);
+      sprite.scale.set(scale[0], scale[1], 1);
+      return sprite;
+    }
+
+    const helixMaterial = new three.MeshStandardMaterial({
+      vertexColors: true,
+      roughness: 0.34,
+      metalness: 0.12,
+    });
+    const trailMesh = new three.Mesh(new three.BufferGeometry(), helixMaterial);
+    const trailHighlight = makeLine([new three.Vector3(), new three.Vector3()], 0xf3ead8, 0.72);
+    world.add(trailMesh, trailHighlight);
+
+    world.add(makeLine([new three.Vector3(0, 0, 0), new three.Vector3(xMax, 0, 0)], colors.axis));
+    world.add(makeLine([new three.Vector3(0, -1.25, 0), new three.Vector3(0, 1.25, 0)], colors.real));
+    world.add(makeLine([new three.Vector3(0, 0, -1.25), new three.Vector3(0, 0, 1.25)], colors.imaginary));
+
+    for (let t = 0; t <= thetaMax + 0.001; t += Math.PI) {
+      const xPosition = t * xScale;
+      world.add(makeLine([new three.Vector3(xPosition, -1.1, 0), new three.Vector3(xPosition, 1.1, 0)], colors.grid, 0.65));
+      world.add(makeLine([new three.Vector3(xPosition, 0, -1.1), new three.Vector3(xPosition, 0, 1.1)], colors.grid, 0.65));
+    }
+    [-1, 1].forEach((v) => {
+      world.add(makeLine([new three.Vector3(0, v, 0), new three.Vector3(xMax, v, 0)], colors.grid, 0.5));
+      world.add(makeLine([new three.Vector3(0, 0, v), new three.Vector3(xMax, 0, v)], colors.grid, 0.5));
+    });
+
+    world.add(makeLabel("theta", new three.Vector3(xMax + 0.65, -0.08, 0)));
+    const realAxisLabel = makeLabel("real axis", new three.Vector3(0, 1.05, -0.46), "#2f6f68");
+    const imaginaryAxisLabel = makeLabel("imaginary axis", new three.Vector3(0, -0.34, 1.16), "#8a6f3d");
+    const cosViewLabel = makeLabel("cos(theta)", new three.Vector3(xMid, -1.62, 0), "#2f6f68", [2.1, 0.58]);
+    const sinViewLabel = makeLabel("sin(theta)", new three.Vector3(xMid, 0, -1.62), "#8a6f3d", [2.1, 0.58]);
+    world.add(realAxisLabel, imaginaryAxisLabel, cosViewLabel, sinViewLabel);
+
+    const pointGeometry = new three.SphereGeometry(0.13, 24, 16);
+    const activePoint = new three.Mesh(pointGeometry, new three.MeshStandardMaterial({
+      color: colors.point,
+      roughness: 0.35,
+      metalness: 0.08,
+    }));
+    world.add(activePoint);
+
+    function pointForTheta(angle) {
+      return new three.Vector3(angle * xScale, Math.cos(angle), Math.sin(angle));
+    }
+
+    function updateTrailGeometry(currentTheta) {
+      const visibleTheta = Math.max(0.035, currentTheta);
+      const segmentCount = Math.max(4, Math.ceil(visibleTheta / thetaMax * 360));
+      const trailPoints = [];
+      for (let i = 0; i <= segmentCount; i += 1) {
+        const t = visibleTheta * i / segmentCount;
+        trailPoints.push(pointForTheta(t));
+      }
+      trailMesh.geometry.dispose();
+      trailMesh.geometry = makeTrailGeometry(trailPoints, 0.056);
+      const highlightPoints = trailPoints.map((point) => point.clone().add(new three.Vector3(0.018, 0.038, 0.03)));
+      trailHighlight.geometry.dispose();
+      trailHighlight.geometry = new three.BufferGeometry().setFromPoints(highlightPoints);
+    }
+
+    function resize() {
+      const rect = container.getBoundingClientRect();
+      const widthPx = Math.max(320, Math.floor(rect.width));
+      const heightPx = Math.max(300, Math.floor(rect.height));
+      renderer.setSize(widthPx, heightPx, false);
+      const aspect = widthPx / heightPx;
+      const neededWidth = xMax + 1.5;
+      const fittedHeight = neededWidth / aspect;
+      const isOverview = viewMode === "auto" || viewMode === "space";
+      const viewHeight = isOverview
+        ? Math.max(7.8, fittedHeight * 1.28)
+        : Math.max(3.4, fittedHeight);
+      const viewWidth = viewHeight * aspect;
+      camera.left = -viewWidth / 2;
+      camera.right = viewWidth / 2;
+      camera.top = viewHeight / 2;
+      camera.bottom = -viewHeight / 2;
+      camera.updateProjectionMatrix();
+    }
+
+    function cameraPose(mode) {
+      if (mode === "cos") {
+        return {
+          position: new three.Vector3(xMid, 0, 24),
+          up: new three.Vector3(0, 1, 0),
+        };
+      }
+      if (mode === "sin") {
+        return {
+          position: new three.Vector3(xMid, -24, 0),
+          up: new three.Vector3(0, 0, 1),
+        };
+      }
+      return {
+        position: new three.Vector3(xMid + 7.6, 6.8, 6.2),
+        up: new three.Vector3(0, 1, 0),
+      };
+    }
+
+    function currentCameraPose() {
+      return {
+        position: camera.position.clone(),
+        up: camera.up.clone(),
+      };
+    }
+
+    function mixPose(from, to, progress) {
+      const eased = progress * progress * (3 - 2 * progress);
+      return {
+        position: from.position.clone().lerp(to.position, eased),
+        up: from.up.clone().lerp(to.up, eased).normalize(),
+      };
+    }
+
+    function autoCameraPose(timestamp) {
+      const cycle = 21000;
+      const phase = (timestamp % cycle) / cycle;
+      const space = cameraPose("space");
+      const real = cameraPose("cos");
+      const imaginary = cameraPose("sin");
+
+      if (phase < 0.22) return space;
+      if (phase < 0.38) return mixPose(space, real, (phase - 0.22) / 0.16);
+      if (phase < 0.50) return real;
+      if (phase < 0.62) return mixPose(real, space, (phase - 0.50) / 0.12);
+      if (phase < 0.80) return mixPose(space, imaginary, (phase - 0.62) / 0.18);
+      if (phase < 0.92) return imaginary;
+      return mixPose(imaginary, space, (phase - 0.92) / 0.08);
+    }
+
+    function autoViewPhase(timestamp) {
+      const phase = (timestamp % 21000) / 21000;
+      if (phase >= 0.30 && phase < 0.62) return "cos";
+      if (phase >= 0.70 && phase < 0.92) return "sin";
+      return "space";
+    }
+
+    function updateAxisLabels(activeView) {
+      realAxisLabel.visible = activeView !== "sin";
+      imaginaryAxisLabel.visible = activeView !== "cos";
+      cosViewLabel.visible = activeView === "cos";
+      sinViewLabel.visible = activeView === "sin";
+      trailHighlight.visible = activeView === "space";
+    }
+
+    function applyCameraPose(pose) {
+      camera.position.copy(pose.position);
+      camera.up.copy(pose.up);
+      camera.lookAt(xMid, 0, 0);
+    }
+
+    function setCamera(timestamp) {
+      if (viewMode === "auto") {
+        applyCameraPose(autoCameraPose(timestamp));
+        updateAxisLabels(autoViewPhase(timestamp));
+        return;
+      }
+      if (cameraTransition) {
+        const progress = Math.min(1, (timestamp - cameraTransition.start) / 950);
+        applyCameraPose(mixPose(cameraTransition.from, cameraTransition.to, progress));
+        if (progress >= 1) cameraTransition = null;
+        updateAxisLabels(progress >= 0.72 ? viewMode : "space");
+        return;
+      }
+      applyCameraPose(cameraPose(viewMode));
+      updateAxisLabels(viewMode);
+    }
+
+    function update(nextTheta, fromInput = false) {
+      theta = ((nextTheta % thetaMax) + thetaMax) % thetaMax;
+      if (!fromInput) thetaInput.value = theta.toFixed(3);
+
+      const re = Math.cos(theta);
+      const im = Math.sin(theta);
+      activePoint.position.copy(pointForTheta(theta));
+      updateTrailGeometry(theta);
+
+      values.innerHTML = `
+        <div class="exponential-value-card">
+          <strong>theta</strong>
+          <span>${thetaFormat(theta)} rad</span>
+          <span>${thetaFormat(theta * 180 / Math.PI)} degrees</span>
+        </div>
+        <div class="exponential-value-card">
+          <strong>e^{i theta}</strong>
+          <span>${numberFormat(re)} ${im < 0 ? "-" : "+"} ${Math.abs(im).toFixed(3)}i</span>
+          <span>(theta, Re, Im)</span>
+        </div>
+        <div class="exponential-value-card">
+          <strong>same path</strong>
+          <span>real view: cos(theta) = ${numberFormat(re)}</span>
+          <span>imaginary view: sin(theta) = ${numberFormat(im)}</span>
+        </div>
+      `;
+    }
+
+    function animate(timestamp) {
+      if (lastTime === null) lastTime = timestamp;
+      const elapsed = timestamp - lastTime;
+      lastTime = timestamp;
+      if (playing) update(theta + elapsed * 0.0011);
+      setCamera(timestamp);
+      renderer.render(scene, camera);
+      requestAnimationFrame(animate);
+    }
+
+    thetaInput.addEventListener("input", () => update(Number(thetaInput.value), true));
+    toggle.addEventListener("click", () => {
+      playing = !playing;
+      toggle.textContent = playing ? "pause" : "play";
+    });
+    viewButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        viewMode = button.dataset.view;
+        cameraTransition = viewMode === "auto"
+          ? null
+          : {
+              from: currentCameraPose(),
+              to: cameraPose(viewMode),
+              start: performance.now(),
+            };
+        viewButtons.forEach((candidate) => {
+          candidate.setAttribute("aria-pressed", String(candidate === button));
+        });
+        resize();
+      });
+    });
+    window.addEventListener("resize", resize);
+
+    resize();
+    applyCameraPose(cameraPose("space"));
+    update(theta);
+    requestAnimationFrame(animate);
+  }
+
   renderEulerCircleDemo({
     kind: "cos",
     chartSelector: "#cos-euler-chart",
@@ -462,4 +791,6 @@
     toggleSelector: "#sin-euler-toggle",
     valuesSelector: "#sin-euler-values",
   });
+
+  renderComplexHelixDemo();
 })();

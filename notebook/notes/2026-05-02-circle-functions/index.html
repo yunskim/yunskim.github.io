@@ -41,7 +41,6 @@
     <h2>먼저 읽어야 할 글</h2>
     <h3>Geometric Meaning of Complex Operations</h3>
 </section>
-
 <section>
     <h2>연산을 그림으로 표현하기</h2>
     <h3>addition은 평행이동</h3>
@@ -103,6 +102,31 @@
         <div id="sin-euler-values" class="circle-values sans" aria-live="polite"></div>
     </figure>
 </section>
+<section>
+    <h2>Euler's Helix</h2>
+    <p>
+        \(\theta\)를 앞으로 보내면 \(e^{i\theta}\)는 복소평면의 단위 원 위를 돈다. 같은 값을
+        \((\theta, \operatorname{Re}, \operatorname{Im}) = (\theta, \cos\theta, \sin\theta)\)로 놓으면
+        \(\theta\) 방향으로 진행하는 나선이 된다.
+    </p>
+    <figure class="fullwidth circle-helix-demo">
+        <div class="circle-controls circle-helix-controls sans">
+            <button id="complex-helix-toggle" type="button">pause</button>
+            <label>
+                <span>theta</span>
+                <input id="complex-helix-theta" type="range" min="0" max="18.84955592153876" step="0.001" value="0">
+            </label>
+            <div class="circle-view-buttons" aria-label="3D view controls">
+                <button type="button" data-view="auto" aria-pressed="true">auto</button>
+                <button type="button" data-view="space" aria-pressed="false">3D</button>
+                <button type="button" data-view="cos" aria-pressed="false">cos</button>
+                <button type="button" data-view="sin" aria-pressed="false">sin</button>
+            </div>
+        </div>
+        <div id="complex-helix-scene" class="circle-helix-scene" role="img" aria-label="3D path of e to the i theta with cosine and sine projections"></div>
+        <div id="complex-helix-values" class="circle-values sans" aria-live="polite"></div>
+    </figure>
+</section>
       
     </article>
     <script>
@@ -122,6 +146,7 @@
     </script>
     <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.149.0/build/three.min.js"></script>
     <script src="/notebook/notes/2026-05-02-circle-functions/assets/app.js"></script>
   </body>
 </html>
