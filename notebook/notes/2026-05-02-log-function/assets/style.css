@@ -1,80 +1,344 @@
-.exponential-demo svg {
+.calculator-demo figure {
+  max-width: 85%;
+  margin-top: 1.5rem;
+}
+
+.calculator-demo figcaption {
+  float: none;
+  max-width: 100%;
+  margin-top: 0.75rem;
+}
+
+.calculator-demo svg {
   display: block;
   width: 100%;
-  height: 540px;
+  height: 360px;
+  overflow: visible;
+  touch-action: none;
+  user-select: none;
 }
 
-.exponential-curve,
-.exponential-ratio-line {
+.slide-rule-shadow {
+  fill: rgba(42, 37, 28, 0.16);
+  pointer-events: none;
+}
+
+.slide-rule-body {
+  fill: #f3ead8;
+  stroke: #6f6656;
+  stroke-width: 1.4;
+}
+
+.slide-rule-channel {
+  fill: #d8cbb2;
+  stroke: #8d8068;
+  stroke-width: 1;
+}
+
+.slide-rule-slide-plate {
+  fill: #fbf4e6;
+  stroke: #776b58;
+  stroke-width: 1.1;
+  cursor: grab;
+}
+
+.slide-rule-slide-hit-area {
+  fill: transparent;
+  cursor: grab;
+}
+
+.slide-rule-slide-hit-area:active {
+  cursor: grabbing;
+}
+
+.slide-rule-rivet {
+  fill: #c5b89c;
+  stroke: #73674f;
+  stroke-width: 1;
+}
+
+.slide-rule-brand,
+.slide-rule-help,
+.slide-rule-scale-name,
+.slide-rule-number,
+.slide-rule-cursor-label {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Noto Sans KR", sans-serif;
+}
+
+.slide-rule-brand {
+  fill: #1f211f;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.slide-rule-brand.small {
+  fill: #5b5448;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.slide-rule-help {
+  fill: var(--muted);
+  font-size: 13px;
+}
+
+.slide-rule-scale-line,
+.slide-rule-tick {
+  stroke: #171717;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.slide-rule-scale.red .slide-rule-scale-line,
+.slide-rule-scale.red .slide-rule-tick,
+.slide-rule-scale.red .slide-rule-scale-name,
+.slide-rule-scale.red .slide-rule-number {
+  stroke: #b2382f;
+  fill: #b2382f;
+}
+
+.slide-rule-tick.major {
+  stroke-width: 1.4;
+}
+
+.slide-rule-tick.minor {
+  stroke-width: 0.75;
+}
+
+.slide-rule-scale-name {
+  fill: #111;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.slide-rule-number {
+  fill: #222;
+  font-size: 10px;
+}
+
+.slide-rule-cursor-glass {
+  fill: rgba(220, 239, 243, 0.34);
+  cursor: ew-resize;
+}
+
+.slide-rule-cursor-frame {
   fill: none;
-  stroke: var(--ink);
-  stroke-width: 2.4;
+  stroke: #596064;
+  stroke-width: 2.2;
+  pointer-events: none;
 }
 
-.exponential-ratio-line {
-  stroke: var(--accent);
+.slide-rule-hairline {
+  stroke: #c5221f;
+  stroke-width: 1.2;
+  vector-effect: non-scaling-stroke;
+  pointer-events: none;
 }
 
-.exponential-tangent {
-  fill: none;
-  stroke: var(--accent);
-  stroke-width: 1.8;
-  stroke-linecap: round;
+.slide-rule-cursor-label {
+  fill: #111;
+  font-size: 12px;
+  font-weight: 700;
+  pointer-events: none;
 }
 
-.exponential-point,
-.exponential-ratio-point {
-  fill: var(--paper);
-  stroke: var(--accent);
-  stroke-width: 2;
+.slide-rule-slide.is-dragging .slide-rule-scale-line,
+.slide-rule-slide.is-dragging .slide-rule-tick,
+.slide-rule-cursor.is-dragging .slide-rule-cursor-frame {
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.28));
 }
 
-.exponential-axis path,
-.exponential-axis line,
-.exponential-grid line {
+.calculator-controls {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  width: 85%;
+  margin: 1rem 0;
+}
+
+.calculator-controls label {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.calculator-controls span {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.calculator-controls input {
+  width: 100%;
+}
+
+.calculator-values {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr));
+  gap: 0.75rem;
+  width: 85%;
+  margin: 1rem 0 2rem;
+}
+
+.calculator-values div {
+  border-top: 1px solid var(--rule);
+  padding-top: 0.55rem;
+}
+
+.calculator-values strong,
+.calculator-values span {
+  display: block;
+}
+
+.calculator-values span {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.log-transform-figure {
+  max-width: 85%;
+  margin-top: 1.5rem;
+}
+
+.log-transform-figure svg {
+  display: block;
+  width: 100%;
+  height: 430px;
+}
+
+.log-transform-panel {
+  fill: #fbfaf5;
   stroke: var(--rule);
 }
 
-.exponential-grid path {
+.log-transform-grid line {
+  stroke: var(--rule);
+  stroke-opacity: 0.55;
+}
+
+.log-transform-grid path {
   display: none;
 }
 
-.exponential-axis text,
-.exponential-label {
+.log-transform-axis path,
+.log-transform-axis line {
+  stroke: var(--muted);
+}
+
+.log-transform-axis text,
+.log-transform-title,
+.log-transform-axis-label,
+.log-transform-label,
+.log-transform-sum-label {
   fill: var(--muted);
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Noto Sans KR", sans-serif;
   font-size: 12px;
 }
 
-.exponential-values {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
-  gap: 0.75rem;
-  width: 55%;
-  margin: 1rem 0 2rem;
+.log-transform-title,
+.log-transform-sum-label {
+  fill: var(--ink);
+  font-weight: 700;
 }
 
-.exponential-value-card {
-  border-top: 1px solid var(--rule);
-  padding-top: 0.55rem;
+.log-transform-curve {
+  fill: none;
+  stroke: #1f2933;
+  stroke-width: 2.2;
 }
 
-.exponential-value-card strong,
-.exponential-value-card span {
-  display: block;
+.log-transform-curve.exp {
+  stroke: #b2382f;
 }
 
-.exponential-value-card span {
-  color: var(--muted);
-  font-size: 0.9rem;
+.log-transform-curve.identity {
+  stroke: #6f6656;
+  stroke-dasharray: 5 5;
+}
+
+.log-transform-guide {
+  stroke: var(--muted);
+  stroke-width: 1;
+  stroke-dasharray: 3 4;
+}
+
+.log-transform-dot {
+  fill: var(--paper);
+  stroke: #3b7ea1;
+  stroke-width: 2;
+}
+
+.log-transform-dot.b {
+  stroke: #7f6ab0;
+}
+
+.log-transform-dot.product {
+  stroke: #b2382f;
+}
+
+.log-transform-arrow {
+  fill: none;
+  stroke: #3b7ea1;
+  stroke-width: 1.8;
+}
+
+.log-transform-sum-box {
+  fill: #f3ead8;
+  stroke: #9b8e78;
+}
+
+.log-transform-operation rect {
+  fill: #f7fbfc;
+  stroke: #3b7ea1;
+  stroke-width: 1;
+}
+
+.log-transform-operation.b rect {
+  stroke: #7f6ab0;
+}
+
+.log-transform-operation text {
+  fill: var(--ink);
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Noto Sans KR", sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.log-transform-bracket {
+  fill: none;
+  stroke: #3b7ea1;
+  stroke-width: 1.5;
+}
+
+.log-transform-bracket.b {
+  stroke: #7f6ab0;
+}
+
+.log-transform-bracket.sum {
+  stroke: #b2382f;
+  stroke-width: 1.8;
+}
+
+.log-transform-bracket-label {
+  fill: var(--muted);
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Noto Sans KR", sans-serif;
+  font-size: 11px;
 }
 
 @media (max-width: 760px) {
-  .exponential-demo svg {
-    height: 460px;
+  .calculator-demo svg {
+    height: 300px;
   }
 
-  .exponential-values {
-    width: 100%;
+  .log-transform-figure svg {
+    height: 360px;
   }
+
+  .calculator-demo figure,
+  .log-transform-figure,
+  .calculator-controls,
+  .calculator-values {
+    width: 100%;
+    max-width: 100%;
+  }
+
 }

@@ -45,6 +45,45 @@
     <h2>\(f(xy) = f(x) + f(y) \)</h2>
     <h3>같은 비율로 변하면 같은 양이 늘어남</h3>
 </section>
+<section class="calculator-demo">
+    <h2>계산자는 로그 함수를 어떻게 쓰나</h2>
+    <p>
+        로그 계산자는 수를 직접 곱하지 않는다. 먼저 두 수를 로그 눈금 위의 길이로 바꾸고,
+        그 길이를 더한 다음, 다시 원래 수 눈금으로 되돌린다. 그래서 a x b 대신
+        log(a) + log(b) = log(ab)를 계산한다.
+    </p>
+    <figure>
+        <svg id="log-calculator-chart" role="img" aria-label="드래그할 수 있는 로그 계산척도가 곱셈을 덧셈으로 바꾸는 과정"></svg>
+        <figcaption>
+            가운데 슬라이드를 끌어 첫 번째 수를 맞추고, 투명 커서를 끌어 두 번째 수와 곱을 읽는다.
+            로그 눈금에서는 같은 비율의 변화가 같은 길이가 된다.
+        </figcaption>
+    </figure>
+    <div class="calculator-controls sans" aria-label="로그 계산자 입력">
+        <label>
+            <span>첫 번째 수 a</span>
+            <input id="log-a-input" type="range" min="1" max="90" value="8" step="0.5">
+        </label>
+        <label>
+            <span>두 번째 수 b</span>
+            <input id="log-b-input" type="range" min="1" max="90" value="12" step="0.5">
+        </label>
+    </div>
+    <div id="log-calculator-values" class="calculator-values sans" aria-live="polite"></div>
+    <figure class="log-transform-figure">
+        <svg id="log-transform-chart" role="img" aria-label="log10 함수와 10의 거듭제곱 함수가 곱셈을 덧셈으로 바꾸고 되돌리는 과정"></svg>
+        <figcaption>
+            실수 x축에 a와 b를 표시한 뒤 log10(x) 곡선에서 (a, log10(a)), (b, log10(b))를 읽는다.
+            (a, log10(a))에서 log10(b)만큼 더해 (a, log10(ab))를 만들고, 같은 높이의 곡선 위 점을 통해 ab를 읽는다.
+        </figcaption>
+    </figure>
+    <p>
+        예를 들어 8 x 12 = 96이다. 로그 계산자는 8과 12를 각각
+        log10(8), log10(12)라는 위치로 옮겨 놓고 두 거리를 더한다.
+        더해진 위치를 다시 10의 거듭제곱으로 읽으면 96이 나온다. 예전의 계산척도,
+        로그표, 공학용 계산기의 일부 내부 계산이 모두 이 아이디어에서 출발한다.
+    </p>
+</section>
       
       <section aria-labelledby="related-notes-heading">
         <h2 id="related-notes-heading">관련 노트</h2>
