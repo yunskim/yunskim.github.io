@@ -38,6 +38,29 @@
       <p class="note-meta sans">2026-XX-XX</p>
       <p class="note-tags sans"><a href="/notebook/?tag=math">math</a> <a href="/notebook/?tag=statistics">statistics</a></p>
       <section>
+    <h2>standard normal distribution의 score function</h2>
+    <p>
+        standard normal distribution의 density는
+        \[
+            \phi(x)=\frac{1}{\sqrt{2\pi}}\exp\left(-\frac{x^2}{2}\right)
+        \]
+        이다. 위치 모수 \(\mu\)를 움직이는 방향의 score function은
+        \[
+            S_\mu(x)=\eval{\pdv{}{\mu}\log \phi(x-\mu)}_{\mu=0}=x
+        \]
+        이므로, \(0\)을 지나며 \(x\)에 비례해 선형으로 증가한다.
+    </p>
+    <figure class="normal-score-demo">
+        <svg id="normal-score-chart" role="img" aria-label="표준정규분포와 위치 모수 score function"></svg>
+        <figcaption>
+            위 패널은 standard normal density phi(x), 아래 패널은 위치 score function S_mu(x)=x이다.
+        </figcaption>
+    </figure>
+    <div id="normal-score-values" class="normal-score-values sans" aria-live="polite"></div>
+</section>
+<section>
+    <h2>Information Entropy</h2>
+    <a href="https://ruvi.blog/posts/entropygeometric/entropy01geo/">링크</a>
 </section>
       
       <section aria-labelledby="related-notes-heading">

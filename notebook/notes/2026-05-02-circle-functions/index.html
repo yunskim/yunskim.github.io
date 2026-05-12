@@ -127,6 +127,28 @@
         <div id="complex-helix-values" class="circle-values sans" aria-live="polite"></div>
     </figure>
 </section>
+<section>
+    <h2>Homer with epicycles</h2>
+    <p>
+        Mathologer의 Mathematica notebook은 Homer outline의 검은 픽셀을 복소수 좌표로 보고, 그 점열의 Fourier 계수를
+        원운동들의 합으로 다시 그린다. 아래 그림은 같은 과정을 D3로 옮긴 것이다.
+    </p>
+    <figure class="fullwidth circle-homer-demo">
+        <div class="circle-controls circle-homer-controls sans">
+            <button id="homer-epicycle-toggle" type="button">pause</button>
+            <label>
+                <span>epicycles</span>
+                <input id="homer-epicycle-count" type="range" min="8" max="720" step="1" value="360">
+            </label>
+            <label>
+                <span>speed</span>
+                <input id="homer-epicycle-speed" type="range" min="0.25" max="2" step="0.05" value="1">
+            </label>
+        </div>
+        <svg id="homer-epicycle-chart" role="img" aria-label="Homer Simpson outline drawn by Fourier epicycles"></svg>
+        <div id="homer-epicycle-values" class="circle-values sans" aria-live="polite"></div>
+    </figure>
+</section>
       
     </article>
     <script>

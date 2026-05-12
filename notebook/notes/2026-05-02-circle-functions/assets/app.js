@@ -469,10 +469,10 @@
     let cameraTransition = null;
 
     const scene = new three.Scene();
-    scene.background = new three.Color(0xfffff8);
 
     const camera = new three.OrthographicCamera(-10, 10, 4, -4, 0.1, 1000);
-    const renderer = new three.WebGLRenderer({ antialias: true });
+    const renderer = new three.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setClearColor(0x000000, 0);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
     container.appendChild(renderer.domElement);
 
@@ -776,6 +776,201 @@
     requestAnimationFrame(animate);
   }
 
+  async function renderHomerEpicycleDemo() {
+    const svg = d3.select("#homer-epicycle-chart");
+    const countInput = document.querySelector("#homer-epicycle-count");
+    const speedInput = document.querySelector("#homer-epicycle-speed");
+    const toggle = document.querySelector("#homer-epicycle-toggle");
+    const values = document.querySelector("#homer-epicycle-values");
+    if (svg.empty() || !countInput || !speedInput || !toggle || !values) return;
+
+    const demoWidth = 920;
+    const demoHeight = 560;
+    const center = { x: 430, y: 278 };
+    const thetaFormat = d3.format(".2f");
+    const numberFormat = d3.format(".3f");
+    let playing = true;
+    let theta = 0;
+    let lastTime = null;
+    let pathPoints = [];
+
+    svg.attr("viewBox", `0 0 ${demoWidth} ${demoHeight}`).selectAll("*").remove();
+    svg.append("rect")
+      .attr("class", "homer-stage")
+      .attr("width", demoWidth)
+      .attr("height", demoHeight);
+
+    const axisG = svg.append("g").attr("class", "homer-axis");
+    axisG.append("line").attr("x1", 70).attr("x2", 790).attr("y1", center.y).attr("y2", center.y);
+    axisG.append("line").attr("x1", center.x).attr("x2", center.x).attr("y1", 58).attr("y2", 498);
+    axisG.append("text").attr("x", 795).attr("y", center.y - 8).text("Re");
+    axisG.append("text").attr("x", center.x + 10).attr("y", 55).text("Im");
+
+    const targetPath = svg.append("path").attr("class", "homer-target-path");
+    const reconstructionPath = svg.append("path").attr("class", "homer-reconstruction-path");
+    const trailPath = svg.append("path").attr("class", "homer-trail-path");
+    const epicycleG = svg.append("g").attr("class", "homer-epicycle-chain");
+    const vectorG = svg.append("g").attr("class", "homer-vector-chain");
+    const activePoint = svg.append("circle").attr("class", "homer-active-point").attr("r", 5.5);
+    let reconstructionCache = { count: null, path: "" };
+
+    function screenPoint(z, scale) {
+      return {
+        x: center.x + z.re * scale,
+        y: center.y - z.im * scale,
+      };
+    }
+
+    function complexAdd(a, b) {
+      return { re: a.re + b.re, im: a.im + b.im };
+    }
+
+    function complexRotate(c, frequency, angle) {
+      const phase = frequency * angle;
+      const cos = Math.cos(phase);
+      const sin = Math.sin(phase);
+      return {
+        re: c.re * cos - c.im * sin,
+        im: c.re * sin + c.im * cos,
+      };
+    }
+
+    async function loadHomerData() {
+      const response = await fetch("./assets/homer-fourier.json");
+      if (!response.ok) throw new Error(`Could not load Homer Fourier data: ${response.status}`);
+      const data = await response.json();
+      return {
+        points: data.points.map(([re, im]) => ({ re, im })),
+        coefficients: data.coefficients.map(([frequency, re, im]) => ({ frequency, re, im })),
+      };
+    }
+
+    function makeLinePath(points) {
+      return d3.line()
+        .x((d) => d.x)
+        .y((d) => d.y)
+        .curve(d3.curveLinear)(points);
+    }
+
+    const homerData = await loadHomerData();
+    const homerPoints = homerData.points;
+    const coefficients = homerData.coefficients
+      .map((coefficient) => ({
+        ...coefficient,
+        radius: Math.hypot(coefficient.re, coefficient.im),
+      }))
+      .sort((a, b) => b.radius - a.radius);
+    if (!homerPoints.length) return;
+
+    countInput.max = String(coefficients.length);
+    countInput.value = String(Math.min(Number(countInput.value), coefficients.length));
+    const scale = Math.min(3.25, 390 / d3.max(homerPoints, (d) => Math.hypot(d.re, d.im)));
+    targetPath.attr("d", makeLinePath(homerPoints.map((point) => screenPoint(point, scale))) + "Z");
+
+    function partialSum(angle, count) {
+      let sum = { re: 0, im: 0 };
+      const circles = [];
+      const visibleCount = Math.min(count, coefficients.length);
+      for (let i = 0; i < visibleCount; i += 1) {
+        const start = sum;
+        const vector = complexRotate(coefficients[i], coefficients[i].frequency, angle);
+        sum = complexAdd(sum, vector);
+        circles.push({ start, end: sum, radius: coefficients[i].radius });
+      }
+      return { point: sum, circles };
+    }
+
+    function update(nextTheta, fromAnimation = false) {
+      theta = nextTheta % (Math.PI * 2);
+      const count = Number(countInput.value);
+      const state = partialSum(theta, count);
+      const point = screenPoint(state.point, scale);
+
+      if (reconstructionCache.count !== count) {
+        const samples = 960;
+        const reconstructionPoints = d3.range(samples + 1).map((index) => {
+          const angle = Math.PI * 2 * index / samples;
+          return screenPoint(partialSum(angle, count).point, scale);
+        });
+        reconstructionCache = {
+          count,
+          path: makeLinePath(reconstructionPoints),
+        };
+      }
+      reconstructionPath.attr("d", reconstructionCache.path);
+
+      if (fromAnimation) {
+        if (theta < 0.03) pathPoints = [];
+        pathPoints.push(point);
+        if (pathPoints.length > 720) pathPoints.shift();
+      } else {
+        pathPoints = d3.range(0, theta + 0.001, 0.018).map((angle) => screenPoint(partialSum(angle, count).point, scale));
+      }
+
+      const visibleCircles = state.circles
+        .filter((circle) => circle.radius * scale >= 0.9)
+        .slice(1, 181);
+
+      epicycleG.selectAll("circle")
+        .data(visibleCircles)
+        .join("circle")
+        .attr("class", "homer-epicycle-circle")
+        .attr("cx", (d) => screenPoint(d.start, scale).x)
+        .attr("cy", (d) => screenPoint(d.start, scale).y)
+        .attr("r", (d) => Math.max(0.35, d.radius * scale));
+
+      vectorG.selectAll("line")
+        .data(visibleCircles)
+        .join("line")
+        .attr("class", "homer-epicycle-vector")
+        .attr("x1", (d) => screenPoint(d.start, scale).x)
+        .attr("y1", (d) => screenPoint(d.start, scale).y)
+        .attr("x2", (d) => screenPoint(d.end, scale).x)
+        .attr("y2", (d) => screenPoint(d.end, scale).y);
+
+      trailPath.attr("d", makeLinePath(pathPoints));
+      activePoint.attr("cx", point.x).attr("cy", point.y);
+      values.innerHTML = `
+        <div class="exponential-value-card">
+          <strong>samples</strong>
+          <span>${homerPoints.length} outline points</span>
+          <span>${count} epicycles</span>
+          <span>${visibleCircles.length} visible circles</span>
+        </div>
+        <div class="exponential-value-card">
+          <strong>theta</strong>
+          <span>${thetaFormat(theta)} rad</span>
+          <span>${thetaFormat(theta * 180 / Math.PI)} degrees</span>
+        </div>
+        <div class="exponential-value-card">
+          <strong>current point</strong>
+          <span>Re ${numberFormat(state.point.re)}</span>
+          <span>Im ${numberFormat(state.point.im)}</span>
+        </div>
+      `;
+    }
+
+    function animate(timestamp) {
+      if (lastTime === null) lastTime = timestamp;
+      const elapsed = timestamp - lastTime;
+      lastTime = timestamp;
+      if (playing) {
+        update(theta + elapsed * 0.00075 * Number(speedInput.value), true);
+      }
+      requestAnimationFrame(animate);
+    }
+
+    countInput.addEventListener("input", () => update(theta));
+    speedInput.addEventListener("input", () => update(theta));
+    toggle.addEventListener("click", () => {
+      playing = !playing;
+      toggle.textContent = playing ? "pause" : "play";
+    });
+
+    update(theta);
+    requestAnimationFrame(animate);
+  }
+
   renderEulerCircleDemo({
     kind: "cos",
     chartSelector: "#cos-euler-chart",
@@ -792,5 +987,6 @@
     valuesSelector: "#sin-euler-values",
   });
 
+  renderHomerEpicycleDemo();
   renderComplexHelixDemo();
 })();

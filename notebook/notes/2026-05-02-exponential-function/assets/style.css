@@ -40,6 +40,12 @@
   height: 500px;
 }
 
+.astrophage-growth-demo svg {
+  display: block;
+  width: 100%;
+  height: 460px;
+}
+
 .taylor-expansion-demo svg {
   display: block;
   width: 100%;
@@ -101,6 +107,22 @@
   width: 70%;
 }
 
+.astrophage-growth-controls {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(8rem, 1fr));
+  align-items: end;
+  gap: 0.75rem;
+  width: 90%;
+  margin: 0.5rem 0 1rem;
+}
+
+.astrophage-growth-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 2rem;
+}
+
 .salary-growth-controls,
 .caffeine-decay-controls,
 .piketty-growth-controls {
@@ -116,6 +138,8 @@
 .moore-law-controls span,
 .taylor-expansion-controls label,
 .taylor-expansion-controls span,
+.astrophage-growth-controls label,
+.astrophage-growth-controls span,
 .salary-growth-controls label,
 .salary-growth-controls span,
 .caffeine-decay-controls label,
@@ -129,10 +153,15 @@
   display: flex;
 }
 
+.astrophage-growth-controls .astrophage-growth-checkbox {
+  display: flex;
+}
+
 .exponential-shift-controls span,
 .covid-growth-controls span,
 .moore-law-controls span,
 .taylor-expansion-controls span,
+.astrophage-growth-controls span,
 .salary-growth-controls span,
 .caffeine-decay-controls span,
 .piketty-growth-controls span {
@@ -145,6 +174,7 @@
 .covid-growth-controls input,
 .moore-law-controls input[type="range"],
 .taylor-expansion-controls input,
+.astrophage-growth-controls input[type="number"],
 .salary-growth-controls input,
 .caffeine-decay-controls input,
 .piketty-growth-controls input {
@@ -271,6 +301,38 @@
 .moore-actual-line {
   fill: none;
   stroke-width: 2.4;
+}
+
+.astrophage-ideal-line,
+.astrophage-capped-line {
+  fill: none;
+  stroke-width: 2.4;
+}
+
+.astrophage-ideal-line {
+  stroke: var(--accent);
+}
+
+.astrophage-capped-line {
+  stroke: var(--ink);
+}
+
+.astrophage-capacity-line {
+  stroke: var(--muted);
+  stroke-width: 1.5;
+  stroke-dasharray: 5 5;
+}
+
+.astrophage-ideal-label {
+  fill: var(--accent);
+}
+
+.astrophage-capped-label {
+  fill: var(--ink);
+}
+
+.astrophage-capacity-label {
+  fill: var(--muted);
 }
 
 .moore-model-line {
@@ -479,6 +541,7 @@ circle.covid-projection-high {
 .caffeine-decay-values,
 .piketty-growth-values,
 .moore-law-values,
+.astrophage-growth-values,
 .taylor-expansion-values {
   display: grid;
   grid-template-columns: repeat(3, minmax(9rem, 1fr));
@@ -559,6 +622,10 @@ circle.covid-projection-high {
     height: 430px;
   }
 
+  .astrophage-growth-demo svg {
+    height: 420px;
+  }
+
   .taylor-expansion-demo svg {
     height: 460px;
   }
@@ -570,6 +637,8 @@ circle.covid-projection-high {
   .covid-growth-values,
   .moore-law-controls,
   .moore-law-values,
+  .astrophage-growth-controls,
+  .astrophage-growth-values,
   .taylor-expansion-controls,
   .taylor-expansion-values,
   .salary-growth-controls,
@@ -586,6 +655,8 @@ circle.covid-projection-high {
   .covid-growth-values,
   .moore-law-controls,
   .moore-law-values,
+  .astrophage-growth-controls,
+  .astrophage-growth-values,
   .taylor-expansion-controls,
   .taylor-expansion-values,
   .salary-growth-controls,

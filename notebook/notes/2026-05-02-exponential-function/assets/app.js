@@ -731,6 +731,160 @@
 
   renderPikettyGrowthDemo();
 
+  function renderAstrophageGrowthDemo() {
+    const chart = d3.select("#astrophage-growth-chart");
+    const chartNode = chart.node();
+    const initialInput = document.querySelector("#astrophage-initial");
+    const doublingInput = document.querySelector("#astrophage-doubling");
+    const hoursInput = document.querySelector("#astrophage-hours");
+    const capacityInput = document.querySelector("#astrophage-capacity");
+    const logInput = document.querySelector("#astrophage-log-scale");
+    const values = document.querySelector("#astrophage-growth-values");
+    if (!chartNode || !initialInput || !doublingInput || !hoursInput || !capacityInput || !logInput || !values) return;
+
+    const width = 920;
+    const height = 460;
+    const margin = { top: 34, right: 116, bottom: 58, left: 82 };
+    const innerWidth = width - margin.left - margin.right;
+    const innerHeight = height - margin.top - margin.bottom;
+    const x = d3.scaleLinear().range([0, innerWidth]);
+    let y = d3.scaleLog().range([innerHeight, 0]);
+    const line = d3.line()
+      .x((d) => x(d.hour))
+      .y((d) => y(d.count));
+
+    chart.attr("viewBox", `0 0 ${width} ${height}`).selectAll("*").remove();
+    const root = chart.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
+    const yGrid = root.append("g").attr("class", "exponential-grid");
+    const xGrid = root.append("g")
+      .attr("class", "exponential-grid")
+      .attr("transform", `translate(0,${innerHeight})`);
+    const xAxis = root.append("g")
+      .attr("class", "exponential-axis")
+      .attr("transform", `translate(0,${innerHeight})`);
+    const yAxis = root.append("g").attr("class", "exponential-axis");
+    const idealPath = root.append("path").attr("class", "astrophage-ideal-line");
+    const cappedPath = root.append("path").attr("class", "astrophage-capped-line");
+    const capacityLine = root.append("line").attr("class", "astrophage-capacity-line");
+    const idealLabel = root.append("text").attr("class", "exponential-label astrophage-ideal-label");
+    const cappedLabel = root.append("text").attr("class", "exponential-label astrophage-capped-label");
+    const capacityLabel = root.append("text").attr("class", "exponential-label astrophage-capacity-label");
+
+    root.append("text")
+      .attr("class", "exponential-label")
+      .attr("x", innerWidth)
+      .attr("y", innerHeight + 38)
+      .attr("text-anchor", "end")
+      .text("culture time (hours)");
+    root.append("text")
+      .attr("class", "exponential-label")
+      .attr("x", 0)
+      .attr("y", -12)
+      .text("astrophage count");
+
+    function countAt(hour, initial, doublingHours) {
+      return initial * Math.pow(2, hour / doublingHours);
+    }
+
+    function cappedCountAt(hour, initial, doublingHours, capacity) {
+      const ideal = countAt(hour, initial, doublingHours);
+      return capacity * ideal / (capacity + ideal - initial);
+    }
+
+    function formatCount(value) {
+      if (value >= 1e12) return `${d3.format(".2f")(value / 1e12)}T`;
+      if (value >= 1e9) return `${d3.format(".2f")(value / 1e9)}B`;
+      if (value >= 1e6) return `${d3.format(".2f")(value / 1e6)}M`;
+      if (value >= 1e3) return `${d3.format(".2f")(value / 1e3)}K`;
+      return d3.format(",.0f")(value);
+    }
+
+    function update() {
+      const initial = Math.max(1, Number(initialInput.value) || 1);
+      const doublingHours = Math.max(0.25, Number(doublingInput.value) || 3);
+      const hours = Math.max(1, Math.min(120, Number(hoursInput.value) || 36));
+      const capacity = Math.max(initial * 1.01, Number(capacityInput.value) || 1e12);
+      const useLog = logInput.checked;
+      const step = Math.max(0.25, hours / 160);
+      const ideal = d3.range(0, hours + step, step).map((hour) => ({
+        hour: Math.min(hour, hours),
+        count: countAt(Math.min(hour, hours), initial, doublingHours),
+      }));
+      const capped = ideal.map((d) => ({
+        hour: d.hour,
+        count: cappedCountAt(d.hour, initial, doublingHours, capacity),
+      }));
+      const idealEnd = ideal[ideal.length - 1];
+      const cappedEnd = capped[capped.length - 1];
+      const doublingCount = hours / doublingHours;
+      const timeToCapacity = initial < capacity
+        ? doublingHours * Math.log2(capacity / initial)
+        : 0;
+      const maxValue = Math.max(idealEnd.count, capacity, initial);
+      const minValue = Math.max(1, initial * 0.8);
+
+      x.domain([0, hours]);
+      y = useLog
+        ? d3.scaleLog().domain([minValue, maxValue]).range([innerHeight, 0]).nice()
+        : d3.scaleLinear().domain([0, maxValue]).range([innerHeight, 0]).nice();
+
+      const yAxisGenerator = useLog
+        ? d3.axisLeft(y).ticks(6, "~s")
+        : d3.axisLeft(y).ticks(6).tickFormat(d3.format(".2s"));
+      yGrid.call(yAxisGenerator.tickSize(-innerWidth).tickFormat(""));
+      xGrid.call(d3.axisBottom(x).ticks(8).tickSize(-innerHeight).tickFormat(""));
+      xAxis.call(d3.axisBottom(x).ticks(8));
+      yAxis.call(yAxisGenerator);
+
+      idealPath.datum(ideal).attr("d", line);
+      cappedPath.datum(capped).attr("d", line);
+      capacityLine
+        .attr("x1", 0)
+        .attr("x2", innerWidth)
+        .attr("y1", y(capacity))
+        .attr("y2", y(capacity));
+      capacityLabel
+        .attr("x", innerWidth)
+        .attr("y", y(capacity) - 8)
+        .attr("text-anchor", "end")
+        .text(`capacity ${formatCount(capacity)}`);
+      idealLabel
+        .attr("x", innerWidth + 8)
+        .attr("y", y(idealEnd.count) + 4)
+        .text("ideal");
+      cappedLabel
+        .attr("x", innerWidth + 8)
+        .attr("y", y(cappedEnd.count) + 4)
+        .text("capacity limited");
+
+      values.innerHTML = `
+        <div class="exponential-value-card">
+          <strong>ideal culture</strong>
+          <span>N0 * 2^(t/Td) = ${formatCount(idealEnd.count)}</span>
+          <span>${d3.format(".1f")(doublingCount)} doublings</span>
+        </div>
+        <div class="exponential-value-card">
+          <strong>capacity limited</strong>
+          <span>${formatCount(cappedEnd.count)}</span>
+          <span>${d3.format(".1f")(cappedEnd.count / capacity * 100)}% of capacity</span>
+        </div>
+        <div class="exponential-value-card">
+          <strong>capacity crossing</strong>
+          <span>${timeToCapacity <= hours ? `${d3.format(".1f")(timeToCapacity)} hours` : `after ${d3.format(".1f")(timeToCapacity)} hours`}</span>
+        </div>
+      `;
+    }
+
+    initialInput.addEventListener("input", update);
+    doublingInput.addEventListener("input", update);
+    hoursInput.addEventListener("input", update);
+    capacityInput.addEventListener("input", update);
+    logInput.addEventListener("change", update);
+    update();
+  }
+
+  renderAstrophageGrowthDemo();
+
   function renderMooreLawDemo() {
     const chart = d3.select("#moore-law-chart");
     const chartNode = chart.node();
