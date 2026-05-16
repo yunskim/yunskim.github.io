@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>가로수길 프로젝트</title>
+    <meta
+            name="description"
+            content="서울 가로수길 상권과 젠트리피케이션을 점과정과 Hawkes process로 읽는 연구 프로젝트 소개."
+    >
+    <link rel="stylesheet" href="/common/tufte.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700;800&family=Noto+Serif+KR:wght@400;600&display=swap">
+    <link rel="stylesheet" href="/common/site.css">
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="/common/tufte.js"></script>
+    <script defer src="/notebook/promoted-notes.js"></script>
+</head>
+<body>
+<article>
+    <nav class="site-nav" aria-label="사이트 내비게이션">
+        <a href="/">Home</a>
+        <a href="/boxoffice/">Boxoffice</a>
+        <a href="/starbucks/">Starbucks</a>
+        <a href="/zipcodes/">Zipcodes</a>
+        <a href="/apartments/">Apartments</a>
+        <a href="/garosu-gil/" aria-current="page">Garosu-gil</a>
+        <a href="/notebook/">Notebook</a>
+    </nav>
+
+    <header class="project-hero">
+        <p class="eyebrow sans">서울 상권과 젠트리피케이션 연구</p>
+        <h1>가로수길 프로젝트</h1>
+        <p class="subtitle">
+            카페 하나가 들어오고, 스타벅스가 들어서고, 오래된 점포가 사라지는 과정
+        </p>
+    </header>
+
+    <section class="intro-grid" aria-label="프로젝트 핵심 요약">
+        <div>
+            <h2>가로수길을 모르는 사람을 위한 한 문장</h2>
+            <p>
+                가로수길은 서울 강남구 신사동에 있는 상업 거리이다. 한때 작은 가게와
+                동네 상권이 섞여 있던 거리가 카페, 패션 편집숍, 프랜차이즈, 높은 임대료의
+                상징으로 바뀌면서 서울의 젠트리피케이션을 관찰하기 좋은 사례가 되었다.
+            </p>
+        </div>
+        <aside class="brief sans">
+            <dl>
+                <div>
+                    <dt>대상</dt>
+                    <dd>서울 가로수길과 주변 상권</dd>
+                </div>
+                <div>
+                    <dt>질문</dt>
+                    <dd>어떤 사건이 다음 변화를 부르는가</dd>
+                </div>
+                <div>
+                    <dt>방법</dt>
+                    <dd>점과정, Hawkes process, 생존분석</dd>
+                </div>
+                <div>
+                    <dt>목표</dt>
+                    <dd>젠트리피케이션의 조기 신호 찾기</dd>
+                </div>
+            </dl>
+        </aside>
+    </section>
+
+    <section aria-labelledby="map-heading">
+        <h2 id="map-heading">가로수길은 어디인가</h2>
+        <p>
+            가로수길은 신사역에서 압구정 현대고등학교 방향으로 이어지는 은행나무 가로수 거리이다.
+            아래 지도는 연구 설명을 위한 대략적 위치와 주 보행축을 표시한 것이다. 실제 분석에서는
+            점포와 점포 사이 직선 거리를 구하는 대신 보행자가 다닐 수 있는 보행로를 기준으로 가장
+            가까운 거리를 구하는 방법을 도입해야 한다.
+        </p>
+        <figure class="fullwidth garosu-map-figure">
+            <div id="garosu-map" class="garosu-map" aria-label="신사동 가로수길 위치 지도"></div>
+            <figcaption class="map-note sans">
+                표시된 선은 가로수길의 대략적 보행축이다.
+            </figcaption>
+        </figure>
+    </section>
+
+    <section>
+        <h2>아이디어의 기원</h2>
+        <p>
+            범죄가 일어나는 관계를 연구한 <a href="http://www.stat.ucla.edu/~frederic/papers/crime1.pdf">논문</a>이 있다.
+        </p>
+        <p>
+            주거 침입과 갱 폭력처럼 시공간적으로 몰리는 도시 사건을 지진의 여진 모델과 비슷한 방식으로 다룰 수
+            있음을 보인다. 가로수길 프로젝트는 그 사고방식을 범죄가 아니라 상권 변화에 적용한다.
+        </p>
+        <p>
+            Hawkes process는 과거 사건이 이후 사건의 발생 강도를 올리거나 낮추는 구조를
+            표현하는 점과정 모델이다. 지진 뒤 여진이 몰리는 현상을 설명할 때 쓰이는 사고방식을
+            도시 상권에 옮기면, 한 점포의 출점이나 폐업이 주변의 다음 출점·폐업 가능성을 얼마나
+            키우는지 추정할 수 있다.
+        </p>
+        <p>
+            이 연구는 가로수길의 점포를 크게 Blue와 Red로 나눈다. Blue는 로컬 자영업자와
+            독립 점포, Red는 대형 프랜차이즈와 자본화된 브랜드를 가리키는 작업상의 구분이다.
+            분석은 이 둘의 입점과 폐업을 각각 따로 세어 네 가지 사건 유형으로 만든다.
+        </p>
+        <p>
+            <code>{Blue, Red}</code> \(\times\) <code>{Open, Close}</code>
+        </p>
+        <p>
+            <code>"어제 털린 집이나 그 근처는 오늘 또 털릴 가능성이 평소보다 높다."</code>라는 범죄연구의 결론은 각 유형의 점포가 비슷한 시기에 뭉쳐서 입점하고 폐점할 것이라는 가설로 확장된다.
+        </p>
+    </section>
+
+    <section class="visual-band" aria-labelledby="chain-heading">
+        <div class="visual-inner">
+            <div>
+                <p class="eyebrow sans">연쇄반응의 관점</p>
+                <h2 id="chain-heading">한 점포의 변화가 동네의 확률을 바꾼다</h2>
+            </div>
+            <ol class="chain sans" aria-label="상권 변화의 사건 흐름">
+                <li>
+                    <span>01</span>
+                    <strong>새로운 앵커 점포</strong>
+                    <p>{B+}: 브랜드 카페나 편집숍이 들어오며 방문 동선이 바뀐다.</p>
+                </li>
+                <li>
+                    <span>02</span>
+                    <strong>주변 점포 반응</strong>
+                    <p>{B+, B-} 유사 업종의 출점 확률이 오르고, 일부 기존 업종은 압박을 받는다.</p>
+                </li>
+                <li>
+                    <span>03</span>
+                    <strong>상권의 단계 전이</strong>
+                    <p>{B-, R+}: 로컬 상권에서 프랜차이즈 중심 상권으로 구조가 이동한다.</p>
+                </li>
+                <li>
+                    <span>04</span>
+                    <strong>상권의 축소 단계</strong>
+                    <p>{B-, R-}: 프렌차이즈 점포까지 폐점하고 상권이 공동화된다.</p>
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <section>
+        <h2>네 가지 이벤트</h2>
+        <p>
+        </p>
+        <table class="event-table sans">
+            <thead>
+            <tr>
+                <th scope="col">사건</th>
+                <th scope="col">의미</th>
+                <th scope="col">보고 싶은 신호</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Blue+</td>
+                <td>독립 점포가 새로 들어옴</td>
+                <td>로컬 상권의 회복력</td>
+            </tr>
+            <tr>
+                <td>Blue-</td>
+                <td>기존 소규모 점포가 사라짐</td>
+                <td>밀려남과 생존 위험</td>
+            </tr>
+            <tr>
+                <td>Red+</td>
+                <td>프랜차이즈·대형 브랜드 진입</td>
+                <td>상권 자본화의 속도</td>
+            </tr>
+            <tr>
+                <td>Red-</td>
+                <td>대형 브랜드도 버티지 못함</td>
+                <td>상권 쇠퇴 또는 과열 후 냉각</td>
+            </tr>
+            </tbody>
+        </table>
+        <p>
+            네 사건 사이의 16개 상호작용 계수를 시간 창을 굴려가며 추정하면, 상권이 어떤 국면에
+            있는지 볼 수 있다. 예를 들어 Red+ 이후 Blue- 위험이 커지는 패턴이 반복되면
+            단순한 인기 상승이 아니라 displacement의 신호로 읽을 수 있다.
+        </p>
+
+        <section class="transaction-panel sans" aria-labelledby="transaction-heading">
+            <h3 id="transaction-heading">16개 transaction을 읽는 법</h3>
+            <p>
+                여기서 transaction은 돈을 주고받는 거래가 아니라, 한 사건이 다른 사건의 발생 강도에
+                남기는 방향성 있는 영향이다. 사건 유형이 4개이므로 가능한 영향은
+                <code>4 x 4 = 16</code>개이다다. <code>α(target←source)</code>는 source 사건이
+                발생한 뒤 target 사건의 강도가 얼마나 커지는지를 뜻한다.
+            </p>
+            <table class="transaction-table">
+                <thead>
+                <tr>
+                    <th scope="col">계수</th>
+                    <th scope="col">가설 / 현상</th>
+                    <th scope="col">해석</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><code>α(B+←B+)</code></td>
+                    <td>크리에이티브 클러스터링</td>
+                    <td>Blue가 Blue를 부르는 1기 태동의 동학. 이 값이 지배적이면 규제보다 지원이 어울린다.</td>
+                </tr>
+                <tr>
+                    <td><code>α(B+←B-)</code></td>
+                    <td>로컬 재진입</td>
+                    <td>Blue가 빠진 자리에 다시 Blue가 들어오는지 확인한다. 지역 상권의 회복력을 나타낸다.</td>
+                </tr>
+                <tr>
+                    <td><code>α(B+←R+)</code></td>
+                    <td>Red 동반 상승</td>
+                    <td>Red 진입 이후 Blue도 늘어나는지 관찰한다. 집객 효과와 임대료 압박이 아직 분리되지 않은 구간이다.</td>
+                </tr>
+                <tr>
+                    <td><code>α(B+←R-)</code></td>
+                    <td>재생</td>
+                    <td>Red가 빠진 자리를 Blue가 회복하는 경로이다. 정책적으로 바람직하지만 자연 상태에서는 작을 수 있다.</td>
+                </tr>
+                <tr>
+                    <td><code>α(B-←B+)</code></td>
+                    <td>Blue 과밀</td>
+                    <td>Blue 입점 증가가 이후 Blue 폐업을 부르는지 확인한다. 로컬 상권 내부 경쟁의 신호이다.</td>
+                </tr>
+                <tr>
+                    <td><code>α(B-←B-)</code></td>
+                    <td>도미노 폐점</td>
+                    <td>Blue 폐점이 다른 Blue 폐점을 데려가는 경로. 상권 공동체의 네트워크가 무너지는 단계이다.</td>
+                </tr>
+                <tr>
+                    <td><code>α(B-←R+)</code></td>
+                    <td>직접 축출</td>
+                    <td>Red 진입이 Blue 폐업 위험을 키우는지 보는 핵심 계수이다. 축출 논의에 가장 가깝다.</td>
+                </tr>
+                <tr>
+                    <td><code>α(B-←R-)</code></td>
+                    <td>동반 쇠퇴</td>
+                    <td>Red 철수 뒤 Blue 폐업도 늘어나는지 본다. 특정 자본의 문제가 아니라 상권 자체의 냉각을 알리는 신호.</td>
+                </tr>
+                <tr>
+                    <td><code>α(R+←B+)</code></td>
+                    <td>파도타기</td>
+                    <td>Blue가 만든 매력을 Red가 추격하는 경로. 2기에서 3기로 넘어가는 조기 경고로 해석.</td>
+                </tr>
+                <tr>
+                    <td><code>α(R+←B-)</code></td>
+                    <td>공백 대체</td>
+                    <td>Blue가 떠난 자리를 Red가 채우는지 확인. 지대격차와 상권 대체를 직접 검증하는 계수.</td>
+                </tr>
+                <tr>
+                    <td><code>α(R+←R+)</code></td>
+                    <td>앵커 효과</td>
+                    <td>Red가 Red를 부르는 동질화 가속 경로. 이 값이 커질 때는 개입할 수 있는 기회가 제한된다.</td>
+                </tr>
+                <tr>
+                    <td><code>α(R+←R-)</code></td>
+                    <td>Red 교체</td>
+                    <td>Red 철수 뒤 다른 Red가 들어오는지 확인한다. 쇠퇴라기보다 브랜드 교체와 임대차 재편 신호.</td>
+                </tr>
+                <tr>
+                    <td><code>α(R-←B+)</code></td>
+                    <td>로컬 반작용</td>
+                    <td>Blue 활성화가 Red 철수와 연결되는지 관찰한다. Red가 지역 색과 맞지 않아 빠지는 경로.</td>
+                </tr>
+                <tr>
+                    <td><code>α(R-←B-)</code></td>
+                    <td>Blue 쇠퇴의 파급</td>
+                    <td>Blue 폐업이 Red 폐업까지 뒤따르게 하는지 관찰한다. 로컬 매력 소실이 전체 상권 약화로 번지는 신호.</td>
+                </tr>
+                <tr>
+                    <td><code>α(R-←R+)</code></td>
+                    <td>Red 과밀</td>
+                    <td>Red 입점 증가가 이후 Red 폐업을 부르는지 관찰. 프랜차이즈 과잉 진입과 자기잠식의 신호.</td>
+                </tr>
+                <tr>
+                    <td><code>α(R-←R-)</code></td>
+                    <td>연쇄 철수</td>
+                    <td>Red 폐업이 Red 폐업을 따라 부르는 4기 쇠퇴의 지표. 공실률 상승과 동반한다.</td>
+                </tr>
+                </tbody>
+            </table>
+            <p>
+                각 행의 계수가 크면 source 사건 뒤 target 사건이 더 빨리 또는 더 자주 나타난다는
+                뜻이다. 계수를 시기별 rolling window로 다시 추정하면, 같은 가로수길이라도
+                성장기에는 "Blue 입점 -> Red 입점"이 강하고, 과열기에는 "Red 입점 -> Blue 폐업"이
+                강해지는 식의 국면 변화를 볼 수 있다.
+            </p>
+        </section>
+    </section>
+
+    <section>
+        <h2>데이터</h2>
+        <p>
+            핵심 데이터는 지방행정 인허가 데이터인 LOCALDATA에서 추출한 점포의 인허가일,
+            폐업일, 업종, 위치정보 등이다. 인허가일과 실제 개점일 사이의 지연은 보정 대상이며,
+            로드맵은 프랜차이즈 쪽에서 학습한 지연 구조를 로컬 점포에 적용하는 방식도 가능하다.
+        </p>
+        <table class="data-table sans">
+            <thead>
+            <tr>
+                <th scope="col">데이터</th>
+                <th scope="col">주요 필드</th>
+                <th scope="col">이 연구에서의 역할</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>LOCALDATA 인허가</td>
+                <td>상호명, 업종, 인허가일, 폐업일, 영업상태, 주소</td>
+                <td>점포 입점·폐업 이벤트의 기본 원천. Blue/Red 사건의 timestamp를 만든다.</td>
+            </tr>
+            <tr>
+                <td>주소 좌표화</td>
+                <td>도로명·지번 주소, 위도, 경도, 행정동, 거리축</td>
+                <td>사건을 지도 위 점으로 바꾸고, 가로수길 본선·이면도로·주변부를 구분한다.</td>
+            </tr>
+            <tr>
+                <td>브랜드·프랜차이즈 사전</td>
+                <td>브랜드명, 법인명, 체인 여부, 업종군</td>
+                <td>점포를 Red와 Blue로 나누는 분류 기준. 대형 브랜드의 인허가-개점 지연 보정에도 쓴다.</td>
+            </tr>
+            <tr>
+                <td>상권·도로 경계</td>
+                <td>가로수길 분석 구역, 버퍼 반경, 도로 네트워크, 블록</td>
+                <td>반경 기반 거리보다 실제 보행 동선에 가까운 네트워크 커널을 만들기 위한 공간 틀이다.</td>
+            </tr>
+            <tr>
+                <td>부동산·임대료 보조 지표</td>
+                <td>상업용 임대료, 공시지가, 건물 용도, 거래·가격 지표</td>
+                <td>점포 변화가 단순 유행인지 비용 압력과 연결된 변화인지 해석하는 보조 변수이다.</td>
+            </tr>
+            <tr>
+                <td>현장 검증·수작업 정제</td>
+                <td>폐업 누락, 상호 변경, 이전 개업, 복수 지점, 업종 오분류</td>
+                <td>행정 데이터가 놓치는 예외를 줄이고, 모델에 넣을 사건 목록을 정제한다.</td>
+            </tr>
+            </tbody>
+        </table>
+        <p>
+            분석 단위는 "점포 하나"가 아니라 "언제, 어디서, 어떤 유형의 사건이 발생했는가"이다.
+            따라서 한 레코드는 대체로 <code>날짜</code>, <code>좌표</code>, <code>사건 유형</code>,
+            <code>점포 속성</code>을 갖는 event row로 바뀐다. 이 event row들이 Hawkes 모델의 입력이 된다.
+        </p>
+    </section>
+
+    <section class="caution-panel">
+        <h2>주의할 점</h2>
+        <p>
+            Hawkes process는 인과 모델이 아니다. 가로수길의 점포 변화에는 임대료, 건물주 의사결정,
+            경기 상황, 미디어 노출, 보행 동선 변화, 행정 신고 지연이 함께 작용한다. 따라서
+            <code>α(B-←R+)</code> 같은 계수는 "Red가 Blue를 반드시 밀어냈다"는 직접 증거가 아니라,
+            Red 입점 이후 Blue 폐업 사건이 시간적·공간적으로 더 군집하는지를 보여주는 exploratory signal로
+            읽어야 한다.
+        </p>
+        <p>
+            특히 Blue/Red 분류와 timestamp 보정이 결과에 영향을 준다. LOCALDATA에는 프랜차이즈 여부와
+            실제 개점일이 직접 들어 있지 않기 때문에, 브랜드 사전 매칭과 인허가일 보정이 필요한다.
+            최종 결과는 하나의 확정 판정이 아니라 분류 기준, 보정 방식, rolling window 크기를 바꿔도
+            유지되는 패턴인지 확인하는 민감도 분석과 함께 제시되어야 한다.
+        </p>
+        <p class="source sans">
+            자료:
+            <a href="/garosu-gil/proposals/Self-exciting%20point%20process%20modeling%20of%20crime.pdf">Self-exciting
+                point process modeling of crime.pdf</a>
+        </p>
+    </section>
+</article>
+<script>
+    window.MathJax = {
+        loader: {
+            load: ["[tex]/physics"]
+        },
+        tex: {
+            inlineMath: [["\\(", "\\)"]],
+            displayMath: [["\\[", "\\]"]],
+            packages: {"[+]": ["physics"]}
+        },
+        svg: {
+            fontCache: "global"
+        }
+    };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
