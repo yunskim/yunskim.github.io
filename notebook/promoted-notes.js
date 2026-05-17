@@ -7,8 +7,10 @@
     ["/starbucks/", "Starbucks"],
     ["/zipcodes/", "Zipcodes"],
     ["/apartments/", "Apartments"],
-    ["/garosu-gil/", "Garosu-gil"],
   ];
+  const DISABLED_PROJECT_HREFS = new Set([
+    "/garosu-gil/",
+  ]);
 
   function escapeHtml(value) {
     return String(value ?? "").replace(/[&<>"']/g, (character) => ({
@@ -25,6 +27,9 @@
   }
 
   function ensureBaseNavLinks(nav) {
+    DISABLED_PROJECT_HREFS.forEach((href) => {
+      nav.querySelector(`a[href="${href}"]`)?.remove();
+    });
     const notebookLink = nav.querySelector(`a[href="${NOTEBOOK_HREF}"]`);
     BASE_NAV_LINKS.forEach(([href, label]) => {
       if (nav.querySelector(`a[href="${href}"]`)) return;
