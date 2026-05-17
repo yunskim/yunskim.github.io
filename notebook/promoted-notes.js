@@ -7,9 +7,9 @@
     ["/starbucks/", "Starbucks"],
     ["/zipcodes/", "Zipcodes"],
     ["/apartments/", "Apartments"],
+    ["/garosu-gil/", "Garosu-gil"],
   ];
   const DISABLED_PROJECT_HREFS = new Set([
-    "/garosu-gil/",
   ]);
 
   function escapeHtml(value) {
